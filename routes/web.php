@@ -21,5 +21,6 @@ Route::get( '/jobs/{job}', 'JobsController@show' );
 Route::post( '/jobs/{job}/proposals', 'ProposalsController@store' );
 Route::get( '/proposals/{proposal}', 'ProposalsController@show' );
 Route::patch( '/proposals/{proposal}', 'ProposalsController@update' );
+Route::delete( '/proposals/{proposal}', 'ProposalsController@destroy' );
 
 Route::get( '/home', 'HomeController@index' )->name( 'home' );

@@ -11,7 +11,7 @@ class ApplyToJobsTest extends TestCase {
 	/**
 	 * @test
 	 */
-	public function guestsCanNotApplyToThreads() {
+	public function guestsCanNotApplyToJobs() {
 		$job      = create( 'App\Job' );
 		$proposal = make( 'App\Proposal' );
 
@@ -24,7 +24,7 @@ class ApplyToJobsTest extends TestCase {
 	 * @test
 	 */
 	public function contractorsCanNotApplyToJobs() {
-		$user = create( 'App\User', [ 'role' => 'contractor' ] );
+		$user = create( 'App\User' );
 		$this->signIn( $user );
 
 		$job      = create( 'App\Job' );
@@ -69,17 +69,21 @@ class ApplyToJobsTest extends TestCase {
 	 * @test
 	 */
 	public function jobOwnerCanViewProposalDetail() {
-		$user = create( 'App\User' );
-		$this->signIn( $user );
+		$user = create( 'App\User', [ 'role' => 'freelancer' ] );
+		$this->signIn();
 
-		$job      = create( 'App\Job', [ 'contractor_id' => $user->id ] );
+		$contractor = auth()->user();
+
+		$job      = create( 'App\Job', [ 'contractor_id' => auth()->id() ] );
 		$proposal = make( 'App\Proposal' );
 
-		$this->post( $job->path() . '/proposals', $proposal->toArray() );
+		$this->signIn( $user )
+		     ->post( $job->path() . '/proposals', $proposal->toArray() );
 
 		$proposal = $job->proposals[ 0 ];
 
-		$this->get( $proposal->path() )
+		$this->signIn( $contractor )
+		     ->get( $proposal->path() )
 		     ->assertSee( $proposal->body );
 	}
 
@@ -87,12 +91,14 @@ class ApplyToJobsTest extends TestCase {
 	 * @test
 	 */
 	public function notJobOwnerCanNotViewProposalDetail() {
+		$user = create( 'App\User', [ 'role' => 'freelancer' ] );
 		$this->signIn();
 
 		$job      = create( 'App\Job' );
 		$proposal = make( 'App\Proposal' );
 
-		$this->post( $job->path() . '/proposals', $proposal->toArray() );
+		$this->signIn( $user )
+		     ->post( $job->path() . '/proposals', $proposal->toArray() );
 
 		$proposal = $job->proposals[ 0 ];
 
@@ -104,7 +110,8 @@ class ApplyToJobsTest extends TestCase {
 	 * @test
 	 */
 	public function proposalOwnerCanEditProposal() {
-		$this->signIn();
+		$user = create( 'App\User', [ 'role' => 'freelancer' ] );
+		$this->signIn( $user );
 
 		$proposal = create( 'App\Proposal', [ 'user_id' => auth()->id() ] );
 
@@ -112,31 +119,70 @@ class ApplyToJobsTest extends TestCase {
 
 		$this->patch( $proposal->path(), [ 'body' => $updatedBody ] );
 
-		$this->assertDatabaseHas( 'proposals', [ 'body' => $updatedBody] );
+		$this->assertDatabaseHas( 'proposals', [ 'body' => $updatedBody ] );
 	}
 
-//	/**
-//	 * @test
-//	 */
-//	public function notProposalOwnersCanNotEditProposal() {
-//
-//		$proposal = create( 'App\Proposal' );
-//
-//		$updatedBody = 'EEdited Edited Edited Edited dited Body';
-//
-//		$this->withExceptionHandling()
-//		     ->patch( $proposal->path(), [ 'body' => $updatedBody ] )
-//		     ->assertRedirect( '/login' );
-//
-//		// Contractors
-//		$this->signIn()
-//		     ->patch( $proposal->path(), [ 'body' => $updatedBody ] )
-//		     ->assertStatus( 403 );
-//
-//		//Freelancers
-//		$user = create( 'App\User', [ 'role' => 'freelancer' ] );
-//		$this->signIn( $user )
-//		     ->patch( $proposal->path(), [ 'body' => $updatedBody ] )
-//		     ->assertStatus( 403 );
-//	}
+	/**
+	 * @test
+	 */
+	public function notProposalOwnersCanNotEditProposal() {
+
+		$proposal = create( 'App\Proposal' );
+
+		$updatedBody = 'EEdited Edited Edited Edited dited Body';
+
+		$this->withExceptionHandling()
+		     ->patch( $proposal->path(), [ 'body' => $updatedBody ] )
+		     ->assertRedirect( '/login' );
+
+		//		 Contractors
+		$this->signIn()
+		     ->patch( $proposal->path(), [ 'body' => $updatedBody ] )
+		     ->assertRedirect( '/' );
+
+		//		//Freelancers
+		$user = create( 'App\User', [ 'role' => 'freelancer' ] );
+		$this->signIn( $user )
+		     ->patch( $proposal->path(), [ 'body' => $updatedBody ] )
+		     ->assertStatus( 403 );
+
+		$this->assertDatabaseMissing( 'proposals', [ 'body' => $updatedBody ] );
+	}
+
+	/**
+	 * @test
+	 */
+	public function proposalOwnerCanDeleteProposal() {
+		$user = createFreelancer();
+		$this->signIn( $user );
+
+		$proposal = create( 'App\Proposal', [ 'user_id' => auth()->id() ] );
+		$this->delete( $proposal->path() )->assertStatus( 302 );
+		$this->assertDatabaseMissing( 'proposals', [ 'id' => $proposal->id ] );
+		$this->assertEquals( 0, $proposal->job->fresh()->proposals_count );
+	}
+
+	/**
+	 * @test
+	 */
+	public function notProposalOwnersCanNotDeleteProposals() {
+		$proposal = create( 'App\Proposal' );
+
+		$this->withExceptionHandling()
+		     ->delete( $proposal->path() )
+		     ->assertRedirect( '/login' );
+
+		//		 Contractors
+		$this->signIn()
+		     ->delete( $proposal->path() )
+		     ->assertRedirect( '/' );
+
+		//		//Freelancers
+		$user = create( 'App\User', [ 'role' => 'freelancer' ] );
+		$this->signIn( $user )
+		     ->delete( $proposal->path() )
+		     ->assertStatus( 403 );
+
+		$this->assertDatabaseHas( 'proposals', [ 'id' => $proposal->id ] );
+	}
 }

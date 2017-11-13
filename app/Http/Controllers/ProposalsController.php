@@ -10,10 +10,11 @@ class ProposalsController extends Controller {
 	public function __construct() {
 		$this->middleware( 'auth', [ 'except' => 'index' ] );
 		$this->middleware( 'role:freelancer', [ 'except' => 'show' ] );
-		//		$this->middleware( 'role:contractor', [ 'only' => 'show' ] );
+		$this->middleware( 'role:contractor', [ 'only' => 'show' ] );
 	}
 
 	public function store( Job $job ) {
+
 		request()->validate( [
 			'body' => 'required'
 		] );
@@ -26,20 +27,25 @@ class ProposalsController extends Controller {
 	}
 
 	public function show( Proposal $proposal ) {
-		if ( $proposal->job->contractor->id == auth()->id() ) {
-			return view( 'proposals.show', compact( 'proposal' ) );
-		} else {
-			return redirect( '/' );
-		}
+		$this->authorize( 'view', $proposal );
+
+		return view( 'proposals.show', compact( 'proposal' ) );
 	}
 
 	public function update( Proposal $proposal ) {
-		//		if ( $proposal->owner->id == auth()->id() ) {
+		$this->authorize( 'update', $proposal );
 		request()->validate( [
 			'body' => 'required'
 		] );
 
 		$proposal->update( request( [ 'body' ] ) );
-		//		}
+	}
+
+	public function destroy( Proposal $proposal ) {
+		$this->authorize( 'delete', $proposal );
+
+		$proposal->delete();
+
+		return redirect( $proposal->job->path() );
 	}
 }

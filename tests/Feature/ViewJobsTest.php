@@ -17,7 +17,7 @@ class ViewJobsTest extends TestCase {
 	/**
 	 * @test
 	 */
-	public function userCanViewAllJobs() {
+	public function usersCanViewAllJobs() {
 		$this->get( '/jobs' )
 		     ->assertSee( $this->job->title );
 	}
@@ -25,7 +25,7 @@ class ViewJobsTest extends TestCase {
 	/**
 	 * @test
 	 */
-	public function userCanViewSingleJob() {
+	public function usersCanViewSingleJob() {
 		$this->get( $this->job->path() )
 		     ->assertSee( $this->job->title );
 	}
