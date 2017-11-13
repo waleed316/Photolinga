@@ -23,30 +23,14 @@ class ApplyToJobsTest extends TestCase {
 	/**
 	 * @test
 	 */
-	public function contractorsCanNotApplyToJobs() {
+	public function usersCanApplyToJobs() {
 		$user = create( 'App\User' );
 		$this->signIn( $user );
 
 		$job      = create( 'App\Job' );
 		$proposal = make( 'App\Proposal' );
 
-		$this->post( $job->path() . '/proposals', $proposal->toArray() )
-		     ->assertRedirect( '/' );
-
-		$this->assertDatabaseMissing( 'proposals', [ 'body' => $proposal->body ] );
-	}
-
-	/**
-	 * @test
-	 */
-	public function freelancersCanApplyToThreads() {
-		$user = create( 'App\User', [ 'role' => 'freelancer' ] );
-		$this->signIn( $user );
-
-		$job      = create( 'App\Job' );
-		$proposal = make( 'App\Proposal' );
-
-		$response = $this->post( $job->path() . '/proposals', $proposal->toArray() );
+		$this->post( $job->path() . '/proposals', $proposal->toArray() );
 
 		$this->assertDatabaseHas( 'proposals', [ 'body' => $proposal->body ] );
 	}
@@ -54,8 +38,28 @@ class ApplyToJobsTest extends TestCase {
 	/**
 	 * @test
 	 */
+	public function userCanNotApplyToOwnJob() {
+		$this->withExceptionHandling();
+
+		$user = create( 'App\User' );
+		$this->signIn();
+
+		$contractor = auth()->user();
+
+		$job      = create( 'App\Job', [ 'contractor_id' => auth()->id() ] );
+		$proposal = make( 'App\Proposal' );
+
+		$this->post( $job->path() . '/proposals', $proposal->toArray() )
+		     ->assertStatus( 403 );
+
+		$this->assertDatabaseMissing( 'proposals', [ 'body' => $proposal->body ] );
+	}
+
+	/**
+	 * @test
+	 */
 	public function proposalRequiresABody() {
-		$user = create( 'App\User', [ 'role' => 'freelancer' ] );
+		$user = create( 'App\User' );
 		$this->withExceptionHandling()->signIn( $user );
 
 		$job      = create( 'App\Job' );
@@ -69,7 +73,7 @@ class ApplyToJobsTest extends TestCase {
 	 * @test
 	 */
 	public function jobOwnerCanViewProposalDetail() {
-		$user = create( 'App\User', [ 'role' => 'freelancer' ] );
+		$user = create( 'App\User' );
 		$this->signIn();
 
 		$contractor = auth()->user();
@@ -91,16 +95,10 @@ class ApplyToJobsTest extends TestCase {
 	 * @test
 	 */
 	public function notJobOwnerCanNotViewProposalDetail() {
-		$user = create( 'App\User', [ 'role' => 'freelancer' ] );
+		$this->withExceptionHandling();
 		$this->signIn();
 
-		$job      = create( 'App\Job' );
-		$proposal = make( 'App\Proposal' );
-
-		$this->signIn( $user )
-		     ->post( $job->path() . '/proposals', $proposal->toArray() );
-
-		$proposal = $job->proposals[ 0 ];
+		$proposal = create( 'App\Proposal' );
 
 		$this->get( $proposal->path() )
 		     ->assertDontSee( $proposal->body );
@@ -110,7 +108,7 @@ class ApplyToJobsTest extends TestCase {
 	 * @test
 	 */
 	public function proposalOwnerCanEditProposal() {
-		$user = create( 'App\User', [ 'role' => 'freelancer' ] );
+		$user = create( 'App\User' );
 		$this->signIn( $user );
 
 		$proposal = create( 'App\Proposal', [ 'user_id' => auth()->id() ] );
@@ -135,14 +133,7 @@ class ApplyToJobsTest extends TestCase {
 		     ->patch( $proposal->path(), [ 'body' => $updatedBody ] )
 		     ->assertRedirect( '/login' );
 
-		//		 Contractors
 		$this->signIn()
-		     ->patch( $proposal->path(), [ 'body' => $updatedBody ] )
-		     ->assertRedirect( '/' );
-
-		//		//Freelancers
-		$user = create( 'App\User', [ 'role' => 'freelancer' ] );
-		$this->signIn( $user )
 		     ->patch( $proposal->path(), [ 'body' => $updatedBody ] )
 		     ->assertStatus( 403 );
 
@@ -153,8 +144,7 @@ class ApplyToJobsTest extends TestCase {
 	 * @test
 	 */
 	public function proposalOwnerCanDeleteProposal() {
-		$user = createFreelancer();
-		$this->signIn( $user );
+		$this->signIn();
 
 		$proposal = create( 'App\Proposal', [ 'user_id' => auth()->id() ] );
 		$this->delete( $proposal->path() )->assertStatus( 302 );
@@ -172,17 +162,17 @@ class ApplyToJobsTest extends TestCase {
 		     ->delete( $proposal->path() )
 		     ->assertRedirect( '/login' );
 
-		//		 Contractors
 		$this->signIn()
-		     ->delete( $proposal->path() )
-		     ->assertRedirect( '/' );
-
-		//		//Freelancers
-		$user = create( 'App\User', [ 'role' => 'freelancer' ] );
-		$this->signIn( $user )
 		     ->delete( $proposal->path() )
 		     ->assertStatus( 403 );
 
 		$this->assertDatabaseHas( 'proposals', [ 'id' => $proposal->id ] );
+	}
+
+	/**
+	* @test
+	*/
+	public function contractorCanChatWithFreelancers(){
+
 	}
 }

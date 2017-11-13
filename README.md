@@ -2,7 +2,8 @@ Contractors Can:
 -
 - Create Jobs
 - Edit/Delete Own Jobs
-- Search Freelancers
+- Message Freelancers
+- Browse Freelancers
 - Browse Packages/Gigs
 - Update Own Profile
 
@@ -12,9 +13,10 @@ Freelancer/Studio Can:
 -
 - Browse Jobs
 - Apply To Jobs
-- Can Edit/Delete Own Job Proposals
-- Can Create Packages/Gigs
-- Can Update Own Profile
+- Edit/Delete Own Job Proposals
+- Create Packages/Gigs
+- Update Own Profile
+- Browse Freelancers
 
 #
 

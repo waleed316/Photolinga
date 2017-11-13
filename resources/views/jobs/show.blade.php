@@ -2,7 +2,7 @@
 
 @section('content')
 
-    @include('layouts.header')
+    @include('layouts.nav')
 
     <!-- main section -->
     <div class="container-fluid mt-1 pt-1 pb-1 details-margin">
@@ -42,101 +42,108 @@
                         <h6 class="details-text detail-text-pb"><b>{{ $job->budget }} PKR</b></h6>
                     </div>
 
-                    <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 px-0">
-                        <h6 class="details-title ml-3 hidden-sm-down">&nbsp;</h6>
-                        <h6 class="details-text"><a href="javascript:void(0)" id="bid" class="btn-bid">Bid</a></h6>
-                    </div>
+                    @if(auth()->id() != $job->contractor->id)
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 px-0">
+                            <h6 class="details-title ml-3 hidden-sm-down">&nbsp;</h6>
+                            <h6 class="details-text"><a href="javascript:void(0)" id="bid" class="btn-bid">Bid</a></h6>
+                        </div>
+                    @endif
 
                 </div>
 
-                <div class="row mt-3 pb-4" id="bid-hide">
-                    <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 bord">
-                        <div class="row">
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 pl-4">
-                                <form action="">
-                                    <ul class="dash-bloady">
-                                        <li>
-                                            <div class="row">
-                                                <div class="col-xl-6 col-lg-6 col-md-8 col-sm-9 col-8 r-nb">
-                                                    <b class="aaa">Bid:</b>
-                                                </div>
+                @if(auth()->id() != $job->contractor->id)
+                    <div class="row mt-3 pb-4" id="bid-hide">
+                        <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 bord">
+                            <div class="row">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 pl-4">
+                                    <form action="">
+                                        <ul class="dash-bloady">
+                                            <li>
+                                                <div class="row">
+                                                    <div class="col-xl-6 col-lg-6 col-md-8 col-sm-9 col-8 r-nb">
+                                                        <b class="aaa">Bid:</b>
+                                                    </div>
 
-                                                <div class="col-xl-6 col-lg-6 col-md-4 col-sm-3 col-4 hode">
-                                                    <b class="aaa">Deliver in:</b>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <div class="form-group row mb-0">
-                                                <label for="smFormGroupInput"
-                                                       class="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-4 r-nb col-form-label col-form-label-sm">Place
-                                                    your bid:</label>
-                                                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5 col-4 mob-mary">
-                                                    <div class="input-group r-bid">
-                                                        <input type="text" class="form-control r-bid-i"
-                                                               placeholder="3500" aria-label="Amount">
-                                                        <span class="input-group-addon r-bid-i rr">PKR</span>
+                                                    <div class="col-xl-6 col-lg-6 col-md-4 col-sm-3 col-4 hode">
+                                                        <b class="aaa">Deliver in:</b>
                                                     </div>
                                                 </div>
+                                            </li>
 
-                                                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-3 col-4 mob-mary">
-                                                    <div class="input-group r-bid">
-                                                        <input type="text" class="form-control r-bid-i" placeholder="30"
-                                                               aria-label="Duration">
-                                                        <span class="input-group-addon r-bid-i">Days</span>
+                                            <li>
+                                                <div class="form-group row mb-0">
+                                                    <label for="smFormGroupInput"
+                                                           class="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-4 r-nb col-form-label col-form-label-sm">Place
+                                                        your bid:</label>
+                                                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5 col-4 mob-mary">
+                                                        <div class="input-group r-bid">
+                                                            <input type="text" class="form-control r-bid-i"
+                                                                   placeholder="3500" aria-label="Amount">
+                                                            <span class="input-group-addon r-bid-i rr">PKR</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-xl-2 col-lg-3 col-md-3 col-sm-3 col-4 mob-mary">
+                                                        <div class="input-group r-bid">
+                                                            <input type="text" class="form-control r-bid-i"
+                                                                   placeholder="30"
+                                                                   aria-label="Duration">
+                                                            <span class="input-group-addon r-bid-i">Days</span>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </li>
+                                            </li>
 
-                                        <li>
-                                            <div class="form-group row mb-0">
-                                                <label class="col-xl-3 col-lg-3 col-md-4 col-sm-4 r-nb col-6 pb-0 col-form-label r-bid-i">Photolinga
-                                                    Project Fee:</label>
-                                                <div class="col-sm-4 col-6 mob-mary">
-                                                    <p class="form-control-static pb-0 r-bid-i"><b> 388.89 PKR</b></p>
+                                            <li>
+                                                <div class="form-group row mb-0">
+                                                    <label class="col-xl-3 col-lg-3 col-md-4 col-sm-4 r-nb col-6 pb-0 col-form-label r-bid-i">Photolinga
+                                                        Project Fee:</label>
+                                                    <div class="col-sm-4 col-6 mob-mary">
+                                                        <p class="form-control-static pb-0 r-bid-i"><b> 388.89 PKR</b>
+                                                        </p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </li>
+                                            </li>
 
-                                        <li>
-                                            <div class="form-group row mb-0">
-                                                <label class="col-xl-3 col-lg-3 col-md-4 r-nb col-sm-4 col-6 pb-0 col-form-label r-bid-i">Your
-                                                    bid:</label>
-                                                <div class="col-sm-6 col-6 mob-mary">
-                                                    <p class="form-control-static pb-0 r-bid-i"><b>38 PKR</b></p>
+                                            <li>
+                                                <div class="form-group row mb-0">
+                                                    <label class="col-xl-3 col-lg-3 col-md-4 r-nb col-sm-4 col-6 pb-0 col-form-label r-bid-i">Your
+                                                        bid:</label>
+                                                    <div class="col-sm-6 col-6 mob-mary">
+                                                        <p class="form-control-static pb-0 r-bid-i"><b>38 PKR</b></p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    <p class="demo r-nb"><b>Note:</b> Freelancer Project Fee will only be charged when
-                                        you get awarded and accept the project</p>
-                                    <hr>
-                                    <div class="form-group">
-                                        <label for="exampleTextarea">Description:</label>
-                                        <textarea class="form-control" id="exampleTextarea" rows="10"></textarea>
-                                    </div>
+                                            </li>
+                                        </ul>
+                                        <p class="demo r-nb"><b>Note:</b> Freelancer Project Fee will only be charged
+                                            when
+                                            you get awarded and accept the project</p>
+                                        <hr>
+                                        <div class="form-group">
+                                            <label for="exampleTextarea">Description:</label>
+                                            <textarea class="form-control" id="exampleTextarea" rows="10"></textarea>
+                                        </div>
 
-                                    <button type="button" class="btn btn-send-prop pull-right">Place Bid</button>
+                                        <button type="button" class="btn btn-send-prop pull-right">Place Bid</button>
 
-                                </form>
+                                    </form>
+
+                                </div>
 
                             </div>
+                        </div>
 
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+                            <div class="boxer">
+                                <h6 class="bid-left">BIDS LEFT</h6>
+                                <h6 class="ratio">7 <sub>/8</sub></h6>
+                                <!-- <hr> -->
+                                <!-- <h6 class="bid-left">Quality Score</h6>
+                                <h6 class="ratio">76</h6> -->
+                            </div>
                         </div>
                     </div>
-
-                    <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
-                        <div class="boxer">
-                            <h6 class="bid-left">BIDS LEFT</h6>
-                            <h6 class="ratio">7 <sub>/8</sub></h6>
-                            <!-- <hr> -->
-                            <!-- <h6 class="bid-left">Quality Score</h6>
-                            <h6 class="ratio">76</h6> -->
-                        </div>
-                    </div>
-                </div>
+                @endif
 
                 <div class="row details-bg-white pt-0">
                     <div class="col-xl-2 col-lg-2 col-md-2 col-sm-4 col-4 det-com details-border">
@@ -184,7 +191,7 @@
                         <p class="details-detail mt-3">{{ $job->description }}</p>
 
                         {{--<div class="details-image">--}}
-                            {{--<img src="{{ asset('images/project_detail.jpg') }}" alt="">--}}
+                        {{--<img src="{{ asset('images/project_detail.jpg') }}" alt="">--}}
                         {{--</div>--}}
                         {{--<hr class="hidden-sm-down">--}}
 
@@ -237,50 +244,56 @@
                         </div>
 
                         <ul class="details-freelance-list">
-                            <li>
-                                <div class="row details-bg-white">
-                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                                        <div class="row">
-                                            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-3 col-4">
-                                                <div class="comments-images ml-1 mt-3">
-                                                    <a href="profile.php"><img src="{{ asset('images/person-2.jpg') }}"
-                                                                               class="freelance-margin img-fluid rounded-circle"
-                                                                               alt=""></a>
+                            @foreach($job->proposals as $proposal)
+                                <li>
+                                    <div class="row details-bg-white">
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                            <div class="row">
+                                                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-3 col-4">
+                                                    <div class="comments-images ml-1 mt-3">
+                                                        <a href="profile.php"><img
+                                                                    src="{{ asset('images/person-2.jpg') }}"
+                                                                    class="freelance-margin img-fluid rounded-circle"
+                                                                    alt=""></a>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xl-9 col-lg-9 col-md-8 col-sm-9 col-8 mt-4 px-0">
+                                                    <h6 class="details-freelance-name mb-1"><a
+                                                                href="{{ $proposal->owner->path() }}">{{ $proposal->owner->name }}</a>
+                                                    </h6>
+                                                    <p class="details-freelance-desig mb-1">Senior Graphic - Web
+                                                        Designer</p>
+                                                    @if(auth()->id() == $job->contractor->id)
+                                                        <a href="{{ $proposal->path() }}" class="btn-sm viev-all">View
+                                                            Proposal</a>
+                                                    @endif
                                                 </div>
                                             </div>
+                                        </div>
 
-                                            <div class="col-xl-9 col-lg-9 col-md-8 col-sm-9 col-8 mt-4 px-0">
-                                                <h6 class="details-freelance-name mb-1"><a href="profile.php">Hoang
-                                                        Nguyen</a></h6>
-                                                <p class="details-freelance-desig mb-1">Senior Graphic - Web
-                                                    Designer</p>
-                                                <a href="biddetail.php" class="btn-sm viev-all">View</a>
+                                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-6 no-padding-on-sm">
+                                            <div class="freelance-year-btn mt-4">
+                                                <a href="#" class="freelance-reput">
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                </a>
+
+                                                <a href="#" class="freelance-year px-2">2+ Years</a>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-6">
+                                            <div class="freelance-biding mt-3">
+                                                <p class="freeware">&nbsp;<span>{{ $proposal->amount }} PKR</span></p>
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-6 no-padding-on-sm">
-                                        <div class="freelance-year-btn mt-4">
-                                            <a href="#" class="freelance-reput">
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                            </a>
-
-                                            <a href="#" class="freelance-year px-2">2+ Years</a>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-6">
-                                        <div class="freelance-biding mt-3">
-                                            <p class="freeware">&nbsp;<span>$ 375</span><br>in 7 days</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
 
@@ -303,7 +316,8 @@
                                     </div>
 
                                     <div class="col-xl-9 col-lg-9 col-md-8 col-sm-10 col-9 mt-4 px-0">
-                                        <h6 class="details-freelance-name mb-1"><a href="#"><b>{{ $job->contractor->name }}</b></a></h6>
+                                        <h6 class="details-freelance-name mb-1"><a
+                                                    href="#"><b>{{ $job->contractor->name }}</b></a></h6>
                                         <p class="details-freelance-desig"><i class="fa fa-star" aria-hidden="true"></i><i
                                                     class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star"
                                                                                                  aria-hidden="true"></i><i

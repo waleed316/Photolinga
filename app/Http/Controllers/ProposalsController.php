@@ -9,11 +9,12 @@ class ProposalsController extends Controller {
 
 	public function __construct() {
 		$this->middleware( 'auth', [ 'except' => 'index' ] );
-		$this->middleware( 'role:freelancer', [ 'except' => 'show' ] );
-		$this->middleware( 'role:contractor', [ 'only' => 'show' ] );
 	}
 
 	public function store( Job $job ) {
+		if ( auth()->id() == $job->contractor->id ) {
+			abort( 403, 'You can not apply to your own job' );
+		}
 
 		request()->validate( [
 			'body' => 'required'

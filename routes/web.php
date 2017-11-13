@@ -15,7 +15,7 @@ Auth::routes();
 
 Route::get( '/', 'HomeController@index' );
 
-Route::get( '/jobs', 'JobsController@index' );
+Route::get( '/jobs', 'JobsController@index' )->name( 'jobs' );
 Route::get( '/jobs/{job}', 'JobsController@show' );
 
 Route::post( '/jobs/{job}/proposals', 'ProposalsController@store' );
@@ -23,4 +23,4 @@ Route::get( '/proposals/{proposal}', 'ProposalsController@show' );
 Route::patch( '/proposals/{proposal}', 'ProposalsController@update' );
 Route::delete( '/proposals/{proposal}', 'ProposalsController@destroy' );
 
-Route::get( '/home', 'HomeController@index' )->name( 'home' );
+Route::get('/profiles/{user}','ProfilesController@show');

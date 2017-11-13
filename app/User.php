@@ -33,4 +33,12 @@ class User extends Authenticatable {
 	public function hasRole( $role ) {
 		return $this->role == $role;
 	}
+
+	public function createdJobs() {
+		return $this->hasMany( Job::class, 'contractor_id' );
+	}
+
+	public function path() {
+		return '/profiles/' . $this->id;
+	}
 }

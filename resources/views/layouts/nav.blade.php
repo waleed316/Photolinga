@@ -5,7 +5,7 @@
             aria-label="Toggle navigation">
         <span class="navbar-toggler-icon navbar-text-color"></span>
     </button>
-    <a class="navbar-brand" href="index.php">
+    <a class="navbar-brand" href="/">
         <img src="{{ asset('images/logoblack.png') }}" alt="Photolinga" class="d-inline-block align-top img-fluid  navbar-logo">
     </a>
 
@@ -27,7 +27,11 @@
                 <ul class="navbar-nav mr-auto navbar-text-color justify-content-end">
 
                     <li class="nav-item">
-                        <a class="nav-link " href="post.php">Post a job<span class="sr-only">(current)</span></a>
+                        <a href="{{ route('jobs') }}" class="nav-link">All Jobs</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link " href="/post-a-job">Post a job<span class="sr-only">(current)</span></a>
                     </li>
 
                     <li class="nav-item dropdown">
@@ -142,12 +146,21 @@
                                                                            alt=""
                                                                            class="img-fluid avatar rounded"></a>
                         <div class="dropdown-menu dropdown-menu-zero-padding-last">
-                            <h5 class="dropdown-heading">Salman Tariq</h5>
+                            <h5 class="dropdown-heading">{{ auth()->user()->name }}</h5>
                             <a class="dropdown-item" href="account.php">Setting</a>
-                            <a class="dropdown-item invite-clr" href="#">Invite Friend and get 500 PKR </a>
+                            <a class="dropdown-item invite-clr" href="/profiles/{{ auth()->id() }}">My Profile</a>
                             <div class="dropdown-divider navbar-divider"></div>
                             <a class="dropdown-item" href="#">Help</a>
-                            <a class="dropdown-item" href="#">Logout</a>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                Logout
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                  style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
                         </div>
                     </li>
                 </ul>

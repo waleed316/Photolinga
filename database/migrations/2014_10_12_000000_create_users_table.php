@@ -17,7 +17,6 @@ class CreateUsersTable extends Migration {
 			$table->string( 'name' );
 			$table->string( 'email' )->unique();
 			$table->string( 'password' );
-			$table->string( 'role' );
 			$table->boolean( 'is_studio' )->default( false );
 			$table->rememberToken();
 			$table->timestamps();

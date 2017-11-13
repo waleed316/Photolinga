@@ -2,7 +2,7 @@
 
 @section('content')
 
-    @include('layouts.header')
+    @include('layouts.nav')
 
     <!-- main section -->
     <div class="container-fluid post-bg-color">

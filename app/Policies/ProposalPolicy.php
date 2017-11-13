@@ -19,7 +19,7 @@ class ProposalPolicy {
 	 * @return mixed
 	 */
 	public function view( User $user, Proposal $proposal ) {
-		return $user->hasRole( 'contractor' ) and $proposal->job->contractor->id == $user->id;
+		return $proposal->job->contractor->id == $user->id;
 	}
 
 	/**
@@ -30,7 +30,7 @@ class ProposalPolicy {
 	 * @return mixed
 	 */
 	public function create( User $user ) {
-		//
+
 	}
 
 	/**
