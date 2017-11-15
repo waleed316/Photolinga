@@ -54,6 +54,6 @@ class ProposalPolicy {
 	 * @return mixed
 	 */
 	public function delete( User $user, Proposal $proposal ) {
-		return $proposal->user_id == $user->id;
+		return $proposal->user_id == $user->id and ! $proposal->isAwarded();
 	}
 }

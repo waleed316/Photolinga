@@ -46,7 +46,7 @@ class AwardedJobsTest extends TestCase {
 	/**
 	 * @test
 	 */
-	public function AwardedProposalCanNotBeEdited() {
+	public function awardedProposalCanNotBeEdited() {
 		$this->withExceptionHandling();
 
 		$this->signIn();
@@ -60,7 +60,23 @@ class AwardedJobsTest extends TestCase {
 		     ->assertStatus( 403 );
 
 		$this->assertDatabaseMissing( 'proposals', [ 'body' => $updatedBody ] );
+	}
 
+	/**
+	 * @test
+	 */
+	public function awardedProposalCanNotBeDeleted() {
+		$this->withExceptionHandling();
+
+		$this->signIn();
+
+		$proposal = create( 'App\Proposal', [ 'user_id' => auth()->id() ] );
+		$proposal->job->awardJob( $proposal );
+
+		$this->delete( $proposal->path() )
+		     ->assertStatus( 403 );
+
+		$this->assertDatabaseHas( 'proposals', [ 'id' => $proposal->id ] );
 	}
 
 }

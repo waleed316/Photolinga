@@ -23,22 +23,11 @@ class RootTest extends DuskTestCase {
 	/**
 	 * @test
 	 */
-	public function registeredUsersWillNotSeeLandingPage() {
+	public function registeredUsersWillSeeJobsPage() {
 		$this->browse( function ( Browser $browser ) {
 			$browser->loginAs( create( 'App\User' ) )
 			        ->visit( '/' )
-			        ->assertDontSee( 'Don\'t Just Dream, Do' );
-		} );
-	}
-
-	/**
-	 * @test
-	 */
-	public function registeredFreelancersWillSeeJobsPage() {
-		$this->browse( function ( Browser $browser ) {
-			$browser->loginAs( create( 'App\User' ,['user_type' => 0]) )
-			        ->visit( '/' )
-			        ->assertPathIs('/jobs');
+			        ->assertPathIs( '/jobs' );
 		} );
 	}
 }

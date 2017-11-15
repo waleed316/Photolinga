@@ -23,8 +23,27 @@ class ProfilesTest extends TestCase {
 	public function userProfileShowsPastJobs() {
 		$user = create( 'App\User' );
 		$job  = create( 'App\Job', [ 'contractor_id' => $user->id ] );
-	    $this->get( '/profiles/' . $user->id )
-	         ->assertSee( $job->title );
+		$this->get( '/profiles/' . $user->id )
+		     ->assertSee( $job->title );
+	}
+
+	/**
+	 * @test
+	 */
+	public function userProfileRequiresADescription() {
+		$this->withExceptionHandling();
+
+		$user = create( 'App\User' );
+
+		$this->patch( '/profiles/' . $user->id, [ 'description' => null ] )
+		     ->assertSessionHasErrors( 'description' );
+	}
+
+	/**
+	* @test
+	*/
+	public function userProfile(){
+
 	}
 
 }

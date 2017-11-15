@@ -20,6 +20,7 @@ class CreateJobsTable extends Migration {
 			$table->unsignedInteger( 'contractor_id' );
 			$table->unsignedInteger( 'freelancer_id' )->nullable();
 			$table->unsignedInteger( 'awarded_proposal_id' )->nullable();
+			$table->unsignedInteger( 'category_id' );
 			$table->boolean( 'in_progress' )->default( false );
 			$table->timestamps();
 			$table->foreign( 'contractor_id' )

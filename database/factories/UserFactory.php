@@ -33,6 +33,9 @@ $factory->define( App\Job::class, function ( Faker $faker ) {
 		'contractor_id' => function () {
 			return factory( 'App\User' )->create()->id;
 		},
+		'category_id'   => function () {
+			return factory( 'App\Category' )->create()->id;
+		}
 	];
 } );
 
@@ -46,5 +49,13 @@ $factory->define( App\Proposal::class, function ( Faker $faker ) {
 			return factory( 'App\User' )->create()->id;
 		},
 		'amount'  => $faker->numberBetween( 1000, 5000 )
+	];
+} );
+
+$factory->define( App\Category::class, function ( Faker $faker ) {
+	$name = $faker->name;
+	return [
+		'name' => $name,
+		'slug' => $name
 	];
 } );

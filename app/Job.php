@@ -16,6 +16,10 @@ class Job extends Model {
 		return $this->hasMany( 'App\Proposal' );
 	}
 
+	public function category() {
+		return $this->belongsTo( 'App\Category' );
+	}
+
 	public function addProposal( $proposal ) {
 		$proposal = $this->proposals()->create( $proposal );
 

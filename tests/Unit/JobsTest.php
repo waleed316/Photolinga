@@ -42,5 +42,23 @@ class JobsTest extends TestCase {
 		$this->assertInstanceOf( 'Illuminate\Database\Eloquent\Collection', $this->job->proposals );
 	}
 
+	/**
+	 * @test
+	 */
+	public function jobCanAddAProposal() {
+		$this->job->addProposal( [
+			'body'    => 'Foobar',
+			'amount'  => 2500,
+			'user_id' => 1
+		] );
+		$this->assertCount( 1, $this->job->proposals );
+	}
+
+	/**
+	 * @test
+	 */
+	public function jobBelongsToACategory() {
+		$this->assertInstanceOf( 'App\Category', $this->job->category );
+	}
 
 }
