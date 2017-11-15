@@ -5,7 +5,7 @@ namespace Tests\Unit;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class ProposalTest extends TestCase {
+class ProposalsTest extends TestCase {
 
 	/**
 	 * @test

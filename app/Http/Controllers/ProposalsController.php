@@ -12,9 +12,14 @@ class ProposalsController extends Controller {
 	}
 
 	public function store( Job $job ) {
-		if ( auth()->id() == $job->contractor->id ) {
-			abort( 403, 'You can not apply to your own job' );
-		}
+		//		if ( auth()->id() == $job->contractor->id ) {
+		//			abort( 403, 'You can not apply to your own job' );
+		//		}
+		//
+		//		if ( $job->proposals()->where( 'user_id', auth()->id() )->count() != 0 ) {
+		//			abort( 403, 'You have already applied to this job' );
+		//		}
+		$this->authorize( 'apply', $job );
 
 		request()->validate( [
 			'body' => 'required'

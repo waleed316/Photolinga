@@ -8,6 +8,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ApplyToJobsTest extends TestCase {
 
+	use DatabaseMigrations;
+
 	/**
 	 * @test
 	 */
@@ -24,8 +26,7 @@ class ApplyToJobsTest extends TestCase {
 	 * @test
 	 */
 	public function usersCanApplyToJobs() {
-		$user = create( 'App\User' );
-		$this->signIn( $user );
+		$this->signIn();
 
 		$job      = create( 'App\Job' );
 		$proposal = make( 'App\Proposal' );
@@ -33,6 +34,23 @@ class ApplyToJobsTest extends TestCase {
 		$this->post( $job->path() . '/proposals', $proposal->toArray() );
 
 		$this->assertDatabaseHas( 'proposals', [ 'body' => $proposal->body ] );
+	}
+
+	/**
+	 * @test
+	 */
+	public function userCanNotApplyToSameJobTwice() {
+		$this->withExceptionHandling();
+		$this->signIn();
+
+		$job       = create( 'App\Job' );
+		$proposal  = create( 'App\Proposal', [ 'job_id' => $job->id, 'user_id' => auth()->id() ] );
+		$proposal2 = make( 'App\Proposal' );
+
+		$this->post( $job->path() . '/proposals', $proposal2->toArray() )
+		     ->assertStatus( 403 );
+
+		$this->assertDatabaseMissing( 'proposals', [ 'body' => $proposal2->body ] );
 	}
 
 	/**
@@ -169,10 +187,5 @@ class ApplyToJobsTest extends TestCase {
 		$this->assertDatabaseHas( 'proposals', [ 'id' => $proposal->id ] );
 	}
 
-	/**
-	* @test
-	*/
-	public function contractorCanChatWithFreelancers(){
 
-	}
 }

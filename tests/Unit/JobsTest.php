@@ -41,4 +41,6 @@ class JobsTest extends TestCase {
 	public function jobHasProposals() {
 		$this->assertInstanceOf( 'Illuminate\Database\Eloquent\Collection', $this->job->proposals );
 	}
+
+
 }

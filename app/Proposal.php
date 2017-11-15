@@ -13,7 +13,12 @@ class Proposal extends Model {
 	}
 
 	public function owner() {
-		return $this->belongsTo( 'App\User','user_id' );
+		return $this->belongsTo( 'App\User', 'user_id' );
+	}
+
+	public function isAwarded() {
+
+		return $this->job->awarded_proposal_id == $this->id;
 	}
 
 	public function path() {

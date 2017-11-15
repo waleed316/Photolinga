@@ -23,10 +23,6 @@ class CreateProposalsTable extends Migration {
 			      ->references( 'id' )
 			      ->on( 'users' )
 			      ->onDelete( 'cascade' );
-			$table->foreign( 'job_id' )
-			      ->references( 'id' )
-			      ->on( 'jobs' )
-			      ->onDelete( 'cascade' );
 		} );
 	}
 
