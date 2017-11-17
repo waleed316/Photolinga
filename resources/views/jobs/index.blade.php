@@ -68,7 +68,8 @@
                                     <li>
                                         <div class="row">
                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                                <h6 class="event-desc-head"><a href="{{ $job->path() }}">{{ $job->title }}</a></h6>
+                                                <h6 class="event-desc-head"><a
+                                                            href="{{ $job->path() }}">{{ $job->title }}</a></h6>
                                                 <h6 class="event-budget">Budget: {{ $job->budget }} PKR</h6>
                                                 <p class="event-description">{{ $job->description }}</p>
                                                 <ul class="event-loc-list">
@@ -90,18 +91,23 @@
                     </div>
                 </div>
 
-                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-12">
-                    <ul class="profile-list">
-                        <li><a href="profile.php"><img src="{{ asset('images/person-2.jpg') }}" alt=""
-                                                       class="img-fluid profile-img"></a><span class="profile-name"> My Profile</span>
-                        </li>
-                        <li><h5 class="profile-available">Availability</h5></li>
-                        <li class="availablity"><i class="fa fa-clock-o" aria-hidden="true"></i> Available to work</li>
-                        <li><h5 class="profile-available">Proposals</h5></li>
-                        <li><a href="#" class="proposals">3 submitted proposals</a></li>
-                        <li><a href="#" class="proposals">4 bids remaining</a></li>
-                    </ul>
-                </div>
+                @auth
+                    <div class="col-xl-2 col-lg-3 col-md-3 col-sm-12">
+                        <ul class="profile-list">
+                            <li><a href="{{ route('profile',Auth::user()) }}"><img
+                                            src="{{ asset('images/person-2.jpg') }}" alt=""
+                                            class="img-fluid profile-img"></a><span
+                                        class="profile-name"> My Profile</span>
+                            </li>
+                            <li><h5 class="profile-available">Availability</h5></li>
+                            <li class="availablity"><i class="fa fa-clock-o" aria-hidden="true"></i> Available to work
+                            </li>
+                            <li><h5 class="profile-available">Proposals</h5></li>
+                            <li><a href="#" class="proposals">3 submitted proposals</a></li>
+                            <li><a href="#" class="proposals">4 bids remaining</a></li>
+                        </ul>
+                    </div>
+                @endauth
             </div>
 
         </div>

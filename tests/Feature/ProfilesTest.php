@@ -33,17 +33,46 @@ class ProfilesTest extends TestCase {
 	public function userProfileRequiresADescription() {
 		$this->withExceptionHandling();
 
-		$user = create( 'App\User' );
+		$this->signIn();
 
-		$this->patch( '/profiles/' . $user->id, [ 'description' => null ] )
+		$this->patch( '/profiles/' . auth()->id(), [ 'description' => null ] )
 		     ->assertSessionHasErrors( 'description' );
 	}
 
 	/**
-	* @test
-	*/
-	public function userProfile(){
+	 * @test
+	 */
+	public function userProfileShowsDescription() {
+		$user = create( 'App\User' );
 
+		$this->get( '/profiles/' . $user->id )
+		     ->assertSee( $user->description );
 	}
 
+	/**
+	 * @test
+	 */
+	public function userCanUpdateOwnProfile() {
+		$this->signIn();
+
+		$this->patch( '/profiles/' . auth()->id(), [ 'description' => "Some Description" ] );
+
+		$this->assertDatabaseHas( 'users', [ 'description' => "Some Description" ] );
+	}
+
+	/**
+	 * @test
+	 */
+	public function userCanNotUpdateOthersProfile() {
+		$this->withExceptionHandling();
+
+		$users = create( 'App\User', [], 2 );
+		$this->signIn( $users[ 0 ] );
+
+
+		$this->patch( '/profiles/' . $users[ 1 ]->id, [ 'description' => "Some Description" ] )
+		     ->assertStatus( 403 );
+
+		$this->assertDatabaseMissing( 'users', [ 'description' => "Some Description" ] );
+	}
 }

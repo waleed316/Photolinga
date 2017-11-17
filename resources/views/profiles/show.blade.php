@@ -12,7 +12,7 @@
                     <img src="{{ asset('images/profile-bg.jpg') }}" alt="" class="img-fluid">
                     <div class="profile-banner"></div>
 
-                    <div class="container profile-name">
+                    <div class="container profile-name" style="position: absolute !important;top: 20%!important;color: white;">
                         <div class="row">
                             <div class="col-xl-12 text-center">
                                 <h1 class="main-profile-name">{{ $profileUser->name }}</h1>
@@ -40,21 +40,7 @@
             <div class="row">
                 <div class="col-xl-9 col-lg-8 col-md-7 col-sm-12 column-color">
                     <h3 class="overview-heading">Overview</h3>
-                    <p class="overview-detail">Lorem Ipsum is simply dummy text of the printing and typesetting
-                        industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                        unknown printer took a galley of type and scrambled it to make a type specimen book. It has
-                        survived not only five centuries, but also the leap into electronic typesetting, remaining
-                        essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
-                        containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
-                        PageMaker including versions of Lorem Ipsum. Contrary to popular belief, Lorem Ipsum is not
-                        simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it
-                        over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in
-                        Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum
-                        passage, and going through the cites of the word in classical literature, discovered the
-                        undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum
-                        et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise
-                        on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum,
-                        "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+                    <p class="overview-detail">{{ $profileUser->description }}</p>
                 </div>
 
                 <div class="col-xl-3 col-lg-4 col-md-5 col-sm-12 mobile-view-margin">
@@ -233,7 +219,7 @@
                                     </div>
 
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
-                                        <h6 class="cover-event-amount text-right">PKR 10,000 earned</h6>
+                                        <h6 class="cover-event-amount text-right">{{ $job->in_progress ? 'In Progress' : 'PKR 10,000 earned' }}</h6>
                                     </div>
                                 </div>
                                 <hr>

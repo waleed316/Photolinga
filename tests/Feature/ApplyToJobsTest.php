@@ -145,7 +145,7 @@ class ApplyToJobsTest extends TestCase {
 
 		$proposal = create( 'App\Proposal' );
 
-		$updatedBody = 'EEdited Edited Edited Edited dited Body';
+		$updatedBody = 'Edited Edited Edited Edited Edited Body';
 
 		$this->withExceptionHandling()
 		     ->patch( $proposal->path(), [ 'body' => $updatedBody ] )

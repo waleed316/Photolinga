@@ -182,7 +182,6 @@
                     </li>
                 </ul>
             </div>
-
         @endguest
     </div>
 </nav>

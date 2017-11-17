@@ -13,9 +13,15 @@ class ProfilesController extends Controller {
 	}
 
 	public function update( User $user ) {
+		$this->authorize( 'update', $user );
 
-		$user->update( request()->validate( [
-			'description' => 'required',
-		] ) );
+		request()->validate( [
+			'description' => 'required'
+		] );
+		$user->update( [
+			'description' => request( 'description' ),
+		] );
+
+		return $user;
 	}
 }

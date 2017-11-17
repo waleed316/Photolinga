@@ -23,7 +23,9 @@ Route::get( '/proposals/{proposal}', 'ProposalsController@show' );
 Route::patch( '/proposals/{proposal}', 'ProposalsController@update' );
 Route::delete( '/proposals/{proposal}', 'ProposalsController@destroy' );
 
-Route::get('/profiles/{user}','ProfilesController@show');
-Route::patch('/profiles/{user}','ProfilesController@update');
+Route::get( '/profiles/{user}', 'ProfilesController@show' )->name( 'profile' );
+Route::patch( '/profiles/{user}', 'ProfilesController@update' );
 
-Route::post('/proposals/{proposal}/award','AwardProposalsController@store');
+Route::post( '/proposals/{proposal}/award', 'AwardProposalsController@store' );
+
+Route::post( '/api/users/{user}/avatar', 'Api\UserAvatarsController@store' )->name( 'avatar' );
