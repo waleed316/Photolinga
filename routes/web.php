@@ -16,7 +16,11 @@ Auth::routes();
 Route::get( '/', 'HomeController@index' );
 
 Route::get( '/jobs', 'JobsController@index' )->name( 'jobs' );
+Route::post( '/jobs', 'JobsController@store' );
+Route::get( '/jobs/create', 'JobsController@create' )->name( 'jobs.create' );
 Route::get( '/jobs/{job}', 'JobsController@show' );
+
+Route::get( '/jobs/browse/{category}', 'JobsController@index' );
 
 Route::post( '/jobs/{job}/proposals', 'ProposalsController@store' );
 Route::get( '/proposals/{proposal}', 'ProposalsController@show' );

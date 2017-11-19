@@ -42,16 +42,22 @@
                         <h6 class="details-text detail-text-pb"><b>{{ $job->budget }} PKR</b></h6>
                     </div>
 
-                    @if(auth()->id() != $job->contractor->id)
+                    @can('apply',$job)
                         <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 px-0">
                             <h6 class="details-title ml-3 hidden-sm-down">&nbsp;</h6>
                             <h6 class="details-text"><a href="javascript:void(0)" id="bid" class="btn-bid">Bid</a></h6>
                         </div>
-                    @endif
+                    @endcan
+                    @guest
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 px-0">
+                            <h6 class="details-title ml-3 hidden-sm-down">&nbsp;</h6>
+                            <h6 class="details-text"><a class="btn-bid">Log In</a></h6>
+                        </div>
+                    @endguest
 
                 </div>
 
-                @if(auth()->id() != $job->contractor->id)
+                @can('apply',$job)
                     <div class="row mt-3 pb-4" id="bid-hide">
                         <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 bord">
                             <div class="row">
@@ -143,7 +149,7 @@
                             </div>
                         </div>
                     </div>
-                @endif
+                @endcan
 
                 <div class="row details-bg-white pt-0">
                     <div class="col-xl-2 col-lg-2 col-md-2 col-sm-4 col-4 det-com details-border">
@@ -231,7 +237,7 @@
                     <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
                         <div class="row hidden-sm-down">
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                                <h6 class="details-title">BIDDING FREELACERS(4)</h6>
+                                <h6 class="details-title">BIDDING FREELANCERS ({{ count($job->proposals) }})</h6>
                             </div>
 
                             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">

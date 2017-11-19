@@ -13,11 +13,12 @@
                 </div>
 
                 <div class="col-xl-8 col-lg-6 col-md-6 col-sm-6">
-                    <form class="form">
+                    <form class="form" method="GET" action="{{ route('jobs') }}">
                         <div class="input-group form-search">
-                            <input type="text" class="form-control navbar-search" placeholder="Search by Location">
+                            <input type="text" name="location" class="form-control navbar-search"
+                                   placeholder="Search by Location">
                             <span class="input-group-btn">
-                                <button class="btn btn-secondary navbar-search-btn" type="button"><svg version="1.1"
+                                <button class="btn btn-secondary navbar-search-btn" type="submit"><svg version="1.1"
                                                                                                        id="Capa_3"
                                                                                                        xmlns="http://www.w3.org/2000/svg"
                                                                                                        xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -35,22 +36,23 @@
             <div class="row jobs-top-margin">
 
                 <div class="col-xl-2 col-lg-3 col-md-3 col-sm-12">
-                    <h6 class="recent-search-heading">Recent Searches</h6>
+                    <h6 class="recent-search-heading">Popular Searches</h6>
                     <ul class="recent-search-list">
-                        <li><a class="recent-search" href="#">Karachi</a></li>
-                        <li><a class="recent-search" href="#">Hyderabad</a></li>
-                        <li><a class="recent-search" href="#">Lahore</a></li>
-                        <li><a class="recent-search" href="#">Quetta</a></li>
-                        <li><a class="recent-search" href="#">Islamabad</a></li>
+                        <li><a class="recent-search" href="{{ route('jobs',['location'=>'Karachi']) }}">Karachi</a></li>
+                        <li><a class="recent-search" href="{{ route('jobs',['location'=>'Hyderabad']) }}">Hyderabad</a>
+                        </li>
+                        <li><a class="recent-search" href="{{ route('jobs',['location'=>'Lahore']) }}">Lahore</a></li>
+                        <li><a class="recent-search" href="{{ route('jobs',['location'=>'Quetta']) }}">Quetta</a></li>
+                        <li><a class="recent-search" href="{{ route('jobs',['location'=>'Islamabad']) }}">Islamabad</a>
+                        </li>
                     </ul>
 
-                    <h6 class="recent-search-heading">My Categories</h6>
+                    <h6 class="recent-search-heading">Job Categories</h6>
                     <ul class="recent-search-list">
-                        <li><a class="recent-search" href="#">Wedding</a></li>
-                        <li><a class="recent-search" href="#">Corporate</a></li>
-                        <li><a class="recent-search" href="#">Nature</a></li>
-                        <li><a class="recent-search" href="#">Birthday</a></li>
-                        <li><a class="recent-search" href="#">Sports</a></li>
+                        @foreach(\App\Category::latest()->get() as $category)
+                            <li><a class="recent-search"
+                                   href="/jobs/browse/{{ $category->slug }}">{{ $category->name }}</a></li>
+                        @endforeach
                     </ul>
                 </div>
 
@@ -74,12 +76,12 @@
                                                 <p class="event-description">{{ $job->description }}</p>
                                                 <ul class="event-loc-list">
                                                     <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>
-                                                            Karachi</a></li>
-                                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i><i
-                                                                    class="fa fa-star" aria-hidden="true"></i><i
-                                                                    class="fa fa-star" aria-hidden="true"></i><i
-                                                                    class="fa fa-star" aria-hidden="true"></i><i
-                                                                    class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                            {{ $job->location }}</a></li>
+                                                    {{--<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i><i--}}
+                                                                    {{--class="fa fa-star" aria-hidden="true"></i><i--}}
+                                                                    {{--class="fa fa-star" aria-hidden="true"></i><i--}}
+                                                                    {{--class="fa fa-star" aria-hidden="true"></i><i--}}
+                                                                    {{--class="fa fa-star" aria-hidden="true"></i></a></li>--}}
                                                 </ul>
                                             </div>
                                         </div>

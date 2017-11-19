@@ -36,7 +36,8 @@ $factory->define( App\Job::class, function ( Faker $faker ) {
 		},
 		'category_id'   => function () {
 			return factory( 'App\Category' )->create()->id;
-		}
+		},
+		'location'      => $faker->city
 	];
 } );
 
@@ -54,7 +55,7 @@ $factory->define( App\Proposal::class, function ( Faker $faker ) {
 } );
 
 $factory->define( App\Category::class, function ( Faker $faker ) {
-	$name = $faker->name;
+	$name = $faker->word;
 
 	return [
 		'name' => $name,

@@ -12,7 +12,7 @@ class HomeController extends Controller {
 	 * @return void
 	 */
 	public function __construct() {
-		$this->middleware( 'auth' );
+//		$this->middleware( 'auth' );
 	}
 
 	/**
@@ -21,6 +21,10 @@ class HomeController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index() {
-		return redirect( route( 'jobs' ) );
+		if ( auth()->id() ) {
+			return redirect( route( 'jobs' ) );
+		} else {
+			return view( 'landing' );
+		}
 	}
 }

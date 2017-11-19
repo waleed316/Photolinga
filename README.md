@@ -25,3 +25,15 @@ Guests Can:
 - Browse Jobs
 - Browse Packages
 - Browse Freelancers
+
+
+#
+
+To Do:
+-
+- Upload Profile Picture
+- Upload Portfolio
+- CRUD Packages
+- Browse and Buy Packages
+- Search Freelancers
+- Chat with Freelancers

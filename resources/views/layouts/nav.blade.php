@@ -6,7 +6,8 @@
         <span class="navbar-toggler-icon navbar-text-color"></span>
     </button>
     <a class="navbar-brand" href="/">
-        <img src="{{ asset('images/logoblack.png') }}" alt="Photolinga" class="d-inline-block align-top img-fluid  navbar-logo">
+        <img src="{{ asset('images/logoblack.png') }}" alt="Photolinga"
+             class="d-inline-block align-top img-fluid  navbar-logo">
     </a>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -22,18 +23,17 @@
             </form>
         </div>
 
-        @auth()
-            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
-                <ul class="navbar-nav mr-auto navbar-text-color justify-content-end">
+        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
+            <ul class="navbar-nav mr-auto navbar-text-color justify-content-end">
 
-                    <li class="nav-item">
-                        <a href="{{ route('jobs') }}" class="nav-link">All Jobs</a>
-                    </li>
+                <li class="nav-item">
+                    <a href="{{ route('jobs') }}" class="nav-link">All Jobs</a>
+                </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link " href="/post-a-job">Post a job<span class="sr-only">(current)</span></a>
-                    </li>
-
+                <li class="nav-item">
+                    <a class="nav-link " href="{{ route('jobs.create') }}">Post a job<span class="sr-only">(current)</span></a>
+                </li>
+                @auth
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
                            aria-haspopup="true" aria-expanded="false">1000 PKR</a>
@@ -52,7 +52,6 @@
                             <a class="dropdown-item" href="#">Transaction history</a>
                         </div>
                     </li>
-
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
                            aria-haspopup="true" aria-expanded="false">Message</a>
@@ -163,25 +162,21 @@
                             </form>
                         </div>
                     </li>
-                </ul>
-            </div>
+            </ul>
+        </div>
         @endauth
 
         @guest()
-            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
-                <ul class="navbar-nav mr-auto navbar-text-color justify-content-end">
-                    <li class="nav-item">
-                        <a href="/login" class="nav-link">
-                            Sign In
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/register" class="nav-link">
-                            Join
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            <li class="nav-item">
+                <a href="/login" class="nav-link">
+                    Sign In
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/register" class="nav-link">
+                    Join
+                </a>
+            </li>
         @endguest
     </div>
 </nav>

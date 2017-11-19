@@ -12,12 +12,12 @@
                     <div class="row">
                         <div class="col-xl-12 text-right animated fadeIn">
 
-                            <button type="button" data-toggle="modal" data-target=".bd-example-modal-sm"
-                                    class="btn btn-signin">Sign In
-                            </button>
-                            <button type="button" data-toggle="modal" data-target=".bd-example1-modal-sm"
-                                    class="btn btn-join">Join
-                            </button>
+                            <a href="/login"
+                               class="btn btn-signin" @click="openLoginPage">Sign In
+                            </a>
+                            <a href="/register"
+                               class="btn btn-join" @click="openRegistrationPage">Join
+                            </a>
 
                         </div>
                     </div>
@@ -30,12 +30,16 @@
                             <h1 class="text-center do-heading1 animated zoomIn">Don't Just Dream, Do</h1>
                             <h6 class="text-center do-heading2 animated slideInLeft">Freelance service for the lean
                                 Enterpreneur</h6>
-                            <div class="input-group input-group-lg input-search animated rotateInUpRight">
-                                <input type="text" class="form-control" placeholder="What are you Looking for...">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-secondary btn-search" type="button">Search</button>
-                                </span>
-                            </div>
+                            <form action="{{ route('jobs') }}" method="GET">
+
+                                <div class="input-group input-group-lg input-search animated rotateInUpRight">
+                                    <input name="location" type="text" class="form-control" placeholder="What are you Looking for...">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-secondary btn-search" type="submit">Search</button>
+                                    </span>
+                                </div>
+                            </form>
+
                         </div>
                         <div class="col-lg-3 col-xl-3 col-md-2"></div>
                     </div>
@@ -206,19 +210,22 @@
                         </div>
 
                         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
-                            <a href="#"><img src="{{ asset('images/search.png') }}" alt="" class="img-fluid flipouty"></a>
+                            <a href="#"><img src="{{ asset('images/search.png') }}" alt=""
+                                             class="img-fluid flipouty"></a>
                             <h3 class="market-place-heading hiw-icon-text">HIRE</h3>
                             <p class="lead text-muted">Check profile/ratings, reviews and hire your favorite</p>
                         </div>
 
                         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
-                            <a href="#"><img src="{{ asset('images/photo-camera.png') }}" alt="" class="img-fluid slidinright"></a>
+                            <a href="#"><img src="{{ asset('images/photo-camera.png') }}" alt=""
+                                             class="img-fluid slidinright"></a>
                             <h3 class="market-place-heading hiw-icon-text">CLICK</h3>
                             <p class="lead text-muted">Photographer/Videographer will cover your event or project</p>
                         </div>
 
                         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
-                            <a href="#"><img src="{{ asset('images/tick.png') }}" alt="" class="img-fluid zoomoutup"></a>
+                            <a href="#"><img src="{{ asset('images/tick.png') }}" alt=""
+                                             class="img-fluid zoomoutup"></a>
                             <h3 class="market-place-heading hiw-icon-text">DONE</h3>
                             <p class="lead text-muted">Pay through 100% Secure and Easy payment options</p>
                         </div>
