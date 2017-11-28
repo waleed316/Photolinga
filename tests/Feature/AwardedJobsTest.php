@@ -3,80 +3,82 @@
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 
-class AwardedJobsTest extends TestCase {
+class AwardedJobsTest extends TestCase
+{
+    use DatabaseMigrations;
 
-	use DatabaseMigrations;
+    /**
+     * @test
+     */
+    public function jobContractorCanAwardTheJobToAProposal()
+    {
+        $this->signIn();
 
-	/**
-	 * @test
-	 */
-	public function jobContractorCanAwardTheJobToAProposal() {
-		$this->signIn();
+        $job       = create('App\Job', [ 'contractor_id' => auth()->id() ]);
+        $proposals = create('App\Proposal', [ 'job_id' => $job->id ], 2);
 
-		$job       = create( 'App\Job', [ 'contractor_id' => auth()->id() ] );
-		$proposals = create( 'App\Proposal', [ 'job_id' => $job->id ], 2 );
+        $this->assertFalse($proposals[ 1 ]->isAwarded());
+        $this->post($proposals[ 1 ]->path() . '/award');
+        $this->assertTrue($proposals[ 1 ]->fresh()->isAwarded());
+    }
 
-		$this->assertFalse( $proposals[ 1 ]->isAwarded() );
-		$this->post( $proposals[ 1 ]->path() . '/award' );
-		$this->assertTrue( $proposals[ 1 ]->fresh()->isAwarded() );
-	}
+    /**
+     * @test
+     */
+    public function notJobContractorCanNotAwardTheJobToAProposal()
+    {
+        $this->withExceptionHandling();
 
-	/**
-	 * @test
-	 */
-	public function notJobContractorCanNotAwardTheJobToAProposal() {
+        $job       = create('App\Job');
+        $proposals = create('App\Proposal', [ 'job_id' => $job->id ], 2);
 
-		$this->withExceptionHandling();
+        $this->assertFalse($proposals[ 1 ]->isAwarded());
 
-		$job       = create( 'App\Job' );
-		$proposals = create( 'App\Proposal', [ 'job_id' => $job->id ], 2 );
+        // Guests
+        $this->post($proposals[ 1 ]->path() . '/award');
+        $this->assertFalse($proposals[ 1 ]->fresh()->isAwarded());
 
-		$this->assertFalse( $proposals[ 1 ]->isAwarded() );
+        // Other Users
+        $this->signIn()
+             ->post($proposals[ 1 ]->path() . '/award');
+        $this->assertFalse($proposals[ 1 ]->fresh()->isAwarded());
+    }
 
-		// Guests
-		$this->post( $proposals[ 1 ]->path() . '/award' );
-		$this->assertFalse( $proposals[ 1 ]->fresh()->isAwarded() );
+    /**
+     * @test
+     */
+    public function awardedProposalCanNotBeEdited()
+    {
+        $this->withExceptionHandling();
 
-		// Other Users
-		$this->signIn()
-		     ->post( $proposals[ 1 ]->path() . '/award' );
-		$this->assertFalse( $proposals[ 1 ]->fresh()->isAwarded() );
-	}
+        $this->signIn();
 
-	/**
-	 * @test
-	 */
-	public function awardedProposalCanNotBeEdited() {
-		$this->withExceptionHandling();
+        $proposal = create('App\Proposal', [ 'user_id' => auth()->id() ]);
+        $proposal->job->awardJob($proposal);
 
-		$this->signIn();
+        $updatedBody = "asdsalkjdsldasd";
 
-		$proposal = create( 'App\Proposal', [ 'user_id' => auth()->id() ] );
-		$proposal->job->awardJob( $proposal );
+        $this->patch($proposal->path(), [ 'body' => $updatedBody ])
+             ->assertStatus(403);
 
-		$updatedBody = "asdsalkjdsldasd";
+        $this->assertDatabaseMissing('proposals', [ 'body' => $updatedBody ]);
+    }
 
-		$this->patch( $proposal->path(), [ 'body' => $updatedBody ] )
-		     ->assertStatus( 403 );
+    /**
+     * @test
+     */
+    public function awardedProposalCanNotBeDeleted()
+    {
+        $this->withExceptionHandling();
 
-		$this->assertDatabaseMissing( 'proposals', [ 'body' => $updatedBody ] );
-	}
+        $this->signIn();
 
-	/**
-	 * @test
-	 */
-	public function awardedProposalCanNotBeDeleted() {
-		$this->withExceptionHandling();
+        $proposal = create('App\Proposal', [ 'user_id' => auth()->id() ]);
+        $proposal->job->awardJob($proposal);
 
-		$this->signIn();
+        $this->delete($proposal->path())
+             ->assertStatus(403);
 
-		$proposal = create( 'App\Proposal', [ 'user_id' => auth()->id() ] );
-		$proposal->job->awardJob( $proposal );
-
-		$this->delete( $proposal->path() )
-		     ->assertStatus( 403 );
-
-		$this->assertDatabaseHas( 'proposals', [ 'id' => $proposal->id ] );
-	}
-
+        $this->assertDatabaseHas('proposals', [ 'id' => $proposal->id ]);
+    }
 }

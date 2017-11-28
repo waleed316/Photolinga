@@ -32,4 +32,6 @@ Route::patch( '/profiles/{user}', 'ProfilesController@update' );
 
 Route::post( '/proposals/{proposal}/award', 'AwardProposalsController@store' );
 
+Route::post( '/portfolios', 'PortfoliosController@store' );
+
 Route::post( '/api/users/{user}/avatar', 'Api\UserAvatarsController@store' )->name( 'avatar' );
