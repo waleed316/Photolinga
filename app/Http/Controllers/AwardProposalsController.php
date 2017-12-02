@@ -7,9 +7,11 @@ use Illuminate\Http\Request;
 
 class AwardProposalsController extends Controller
 {
-    public function store(Proposal $proposal)
+    public function store( Proposal $proposal )
     {
-        $this->authorize('update', $proposal->job);
-        $proposal->job->awardJob($proposal);
+        $this->authorize( 'award', $proposal->job );
+        $proposal->job->awardJob( $proposal );
+
+        return redirect( $proposal->job->path() );
     }
 }

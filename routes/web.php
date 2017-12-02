@@ -29,6 +29,7 @@ Route::delete( '/proposals/{proposal}', 'ProposalsController@destroy' );
 
 Route::get( '/profiles/{user}', 'ProfilesController@show' )->name( 'profile' );
 Route::patch( '/profiles/{user}', 'ProfilesController@update' );
+Route::get( '/profiles/{user}/edit', 'ProfilesController@edit' );
 
 Route::post( '/proposals/{proposal}/award', 'AwardProposalsController@store' );
 

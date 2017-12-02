@@ -5782,6 +5782,10 @@ svgo@^0.7.0:
     sax "~1.2.1"
     whet.extend "~0.9.9"
 
+sweet-modal-vue@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/sweet-modal-vue/-/sweet-modal-vue-2.0.0.tgz#205ee28b7e5c8579e44303544b500ef7f4fcab21"
+
 tapable@^0.2.7:
   version "0.2.8"
   resolved "https://registry.yarnpkg.com/tapable/-/tapable-0.2.8.tgz#99372a5c999bf2df160afc0d74bed4f47948cd22"
@@ -6227,6 +6231,10 @@ vue-template-compiler@^2.0.0:
 vue-template-es2015-compiler@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.6.0.tgz#dc42697133302ce3017524356a6c61b7b69b4a18"
+
+vue-upload-component@^2.7.3:
+  version "2.7.3"
+  resolved "https://registry.yarnpkg.com/vue-upload-component/-/vue-upload-component-2.7.3.tgz#15735212b053603bfee106802f7fb3fc420e5b89"
 
 vue@^2.1.10:
   version "2.5.3"

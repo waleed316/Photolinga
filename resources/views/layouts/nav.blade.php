@@ -29,14 +29,15 @@
                 <li class="nav-item">
                     <a href="{{ route('jobs') }}" class="nav-link">All Jobs</a>
                 </li>
-
-                <li class="nav-item">
-                    <a class="nav-link " href="{{ route('jobs.create') }}">Post a job<span class="sr-only">(current)</span></a>
-                </li>
                 @auth
+                    <li class="nav-item">
+                        <a class="nav-link " href="{{ route('jobs.create') }}">Post a job<span
+                                    class="sr-only">(current)</span></a>
+                    </li>
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                           aria-haspopup="true" aria-expanded="false">1000 PKR</a>
+                           aria-haspopup="true" aria-expanded="false">0 PKR</a>
                         <div class="dropdown-menu dropdown-menu-zero-padding">
                             <h5 class="dropdown-heading">Balance</h5>
                             <a class="dropdown-item" href="#">PKR</a>
@@ -54,40 +55,47 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                           aria-haspopup="true" aria-expanded="false">Message</a>
+                           aria-haspopup="true" aria-expanded="false">Messages</a>
                         <div class="dropdown-menu dropdown-menu-zero-padding dropdown-menu-message-padding">
                             <h5 class="dropdown-heading">Messages</h5>
 
                             <table class="table table-responsive table-hover"
                                    style="padding:5px 20px 0 20px;margin-bottom:0">
                                 <tbody>
-                                    <ul class="message-list">
+                                <ul class="message-list">
 
-                                        <li>
-                                            <tr>
-                                                <td class="img-top-padding"><a href="#" class="message-anchor"><img
-                                                                src="images/person-2.jpg" alt=""
-                                                                class="message-profile"></a></td>
-                                                <td>
-                                                    <a href="#" class="message-anchor">
-                                                        <h6 class="message-head">Salman Tariq</h6>
-                                                        <h6 class="message-last-seen">Last Message</h6>
-                                                    </a>
-                                                </td>
-                                                <TD class="message-hidden"></TD>
-                                                <td class="message-hidden"></td>
-                                                <td class="message-time-align"><a href="#" class="message-anchor"><h6
-                                                                class="message-time">1 Day ago</h6></a></td>
-                                            </tr>
-                                        </li>
-                                        <li>
-                                            <tr>
-                                                <td colspan="5" class="text-center"><a href="#" class="see-message">See
-                                                        all
-                                                        messages</a></td>
-                                            </tr>
-                                        </li>
-                                    </ul>
+                                    {{--<li>--}}
+                                        {{--<tr>--}}
+                                            {{--<td class="img-top-padding"><a href="#" class="message-anchor"><img--}}
+                                                            {{--src="/images/person-2.jpg" alt=""--}}
+                                                            {{--class="message-profile"></a></td>--}}
+                                            {{--<td>--}}
+                                                {{--<a href="#" class="message-anchor">--}}
+                                                    {{--<h6 class="message-head">Salman Tariq</h6>--}}
+                                                    {{--<h6 class="message-last-seen">Last Message</h6>--}}
+                                                {{--</a>--}}
+                                            {{--</td>--}}
+                                            {{--<TD class="message-hidden"></TD>--}}
+                                            {{--<td class="message-hidden"></td>--}}
+                                            {{--<td class="message-time-align"><a href="#" class="message-anchor"><h6--}}
+                                                            {{--class="message-time">1 Day ago</h6></a></td>--}}
+                                        {{--</tr>--}}
+                                    {{--</li>--}}
+                                    {{--<li>--}}
+                                        {{--<tr>--}}
+                                            {{--<td colspan="5" class="text-center"><a href="#" class="see-message">See--}}
+                                                    {{--all--}}
+                                                    {{--messages</a></td>--}}
+                                        {{--</tr>--}}
+                                    {{--</li>--}}
+                                    <li>
+                                        <tr>
+                                            <td colspan="5" class="text-center"><a href="#" class="see-message">No
+                                                    new
+                                                    messages</a></td>
+                                        </tr>
+                                    </li>
+                                </ul>
                                 </tbody>
                             </table>
 
@@ -104,35 +112,42 @@
                             <table class="table table-responsive table-hover"
                                    style="padding:5px 20px 0 20px;margin-bottom:0">
                                 <tbody>
-                                    <ul class="message-list">
+                                <ul class="message-list">
 
-                                        <li>
-                                            <tr>
-                                                <td class="img-top-padding"><a href="#" class="message-anchor"><img
-                                                                src="images/person-2.jpg" alt=""
-                                                                class="message-profile"></a></td>
-                                                <td>
-                                                    <a href="#" class="message-anchor">
-                                                        <h6 class="notification-head"><span
-                                                                    class="person-name">Salman Tariq</span> awarded you
-                                                            their job <span class="event-title"> Cover an Event</span>
-                                                        </h6>
-                                                    </a>
-                                                </td>
-                                                <!-- <TD class="message-hidden"></TD><td class="message-hidden"></td> -->
-                                                <td class="message-time-align"><a href="#" class="message-anchor"><h6
-                                                                class="notification-time">1 Day ago</h6></a></td>
-                                            </tr>
-                                        </li>
+                                    {{--<li>--}}
+                                        {{--<tr>--}}
+                                            {{--<td class="img-top-padding"><a href="#" class="message-anchor"><img--}}
+                                                            {{--src="/images/person-2.jpg" alt=""--}}
+                                                            {{--class="message-profile"></a></td>--}}
+                                            {{--<td>--}}
+                                                {{--<a href="#" class="message-anchor">--}}
+                                                    {{--<h6 class="notification-head"><span--}}
+                                                                {{--class="person-name">Salman Tariq</span> awarded you--}}
+                                                        {{--their job <span class="event-title"> Cover an Event</span>--}}
+                                                    {{--</h6>--}}
+                                                {{--</a>--}}
+                                            {{--</td>--}}
+                                            {{--<!-- <TD class="message-hidden"></TD><td class="message-hidden"></td> -->--}}
+                                            {{--<td class="message-time-align"><a href="#" class="message-anchor"><h6--}}
+                                                            {{--class="notification-time">1 Day ago</h6></a></td>--}}
+                                        {{--</tr>--}}
+                                    {{--</li>--}}
 
-                                        <li>
-                                            <tr>
-                                                <td colspan="5" class="text-center"><a href="#" class="see-message">See
-                                                        all
-                                                        notifications</a></td>
-                                            </tr>
-                                        </li>
-                                    </ul>
+                                    {{--<li>--}}
+                                        {{--<tr>--}}
+                                            {{--<td colspan="5" class="text-center"><a href="#" class="see-message">See--}}
+                                                    {{--all--}}
+                                                    {{--notifications</a></td>--}}
+                                        {{--</tr>--}}
+                                    {{--</li>--}}
+                                    <li>
+                                        <tr>
+                                            <td colspan="5" class="text-center"><a href="#" class="see-message">No
+                                                    new
+                                                    notifications</a></td>
+                                        </tr>
+                                    </li>
+                                </ul>
                                 </tbody>
                             </table>
 
@@ -141,12 +156,12 @@
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                           aria-haspopup="true" aria-expanded="false"><img src="{{ asset('images/person-2.jpg') }}"
-                                                                           alt=""
-                                                                           class="img-fluid avatar rounded"></a>
+                           aria-haspopup="true" aria-expanded="false">
+                            <img src="{{ asset(auth()->user()->avatar()) }}" alt=""
+                                 class="img-fluid avatar rounded"></a>
                         <div class="dropdown-menu dropdown-menu-zero-padding-last">
                             <h5 class="dropdown-heading">{{ auth()->user()->name }}</h5>
-                            <a class="dropdown-item" href="account.php">Setting</a>
+                            <a class="dropdown-item" href="account.php">Settings</a>
                             <a class="dropdown-item invite-clr" href="/profiles/{{ auth()->id() }}">My Profile</a>
                             <div class="dropdown-divider navbar-divider"></div>
                             <a class="dropdown-item" href="#">Help</a>

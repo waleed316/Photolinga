@@ -2,62 +2,103 @@
 
 @section('content')
 
+    @include('layouts.nav')
+
     <div class="container-fluid post-bg-color">
         <div class="container">
             <div class="row">
                 <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
 
-                    <div class="form">
-                        <h2 class="heading-font"><span class="badge badge-default badge-no">1</span> What do you need
-                            done?</h2>
+                    <form action="/jobs" method="post">
+                        {{ csrf_field() }}
 
-                        <label class="label-name" for="name-of-project">What's the name of the project? <a href="#"
-                                                                                                           data-toggle="tooltip"
-                                                                                                           data-placement="top"
-                                                                                                           title="help"><span
-                                        class="badge badge-default second-badge">?</span></a></label>
-                        <input class="form-control" type="text" id="example-text-input">
+                        @if (count($errors))
+                            <ul class="alert alert-danger">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        @endif
 
-                        <h2 class="heading-font"><span class="badge badge-default badge-no">2</span> Tell us more about
-                            your project</h2>
+                        <div class="form">
+                            <h2 class="heading-font"><span class="badge badge-default badge-no">1</span> What do you
+                                need
+                                done?</h2>
 
-                        <label class="label-name" for="skill">What skill are required? <a href="#" data-toggle="tooltip"
-                                                                                          data-placement="top"
-                                                                                          title="help"><span
-                                        class="badge badge-default second-badge">?</span></a></label>
-                        <input class="form-control" type="text" placeholder="Required skills" id="example-text-input">
+                            <label class="label-name" for="name-of-project">What's the name of the project? <a href="#"
+                                                                                                               data-toggle="tooltip"
+                                                                                                               data-placement="top"
+                                                                                                               title="help"><span
+                                            class="badge badge-default second-badge">?</span></a></label>
+                            <input name="title" class="form-control" type="text" id="example-text-input" value="{{ old('title') }}" required>
 
-                        <label class="label-name label-margin" for="description">Describe your project <a href="#"
-                                                                                                          data-toggle="tooltip"
-                                                                                                          data-placement="top"
-                                                                                                          title="help"><span
-                                        class="badge badge-default second-badge">?</span></a></label>
-                        <textarea class="form-control" id="exampleTextarea" placeholder="Describe your Project here ..."
-                                  rows="5"></textarea>
+                            <h2 class="heading-font"><span class="badge badge-default badge-no">2</span> Tell us more
+                                about
+                                your project</h2>
 
-                        <h2 class="heading-font"><span class="badge badge-default badge-no">3</span> What budget do you
-                            have in mind?</h2>
+                            <label class="label-name" for="budget">What Category does your project belong to? <a href="#" data-toggle="tooltip"
+                                                                                       data-placement="top"
+                                                                                       title="help"><span
+                                            class="badge badge-default second-badge">?</span></a></label>
 
-                        <label class="label-name" for="budget">Budget limits <a href="#" data-toggle="tooltip"
-                                                                                data-placement="top" title="help"><span
-                                        class="badge badge-default second-badge">?</span></a></label>
-                        <select class="form-control" id="exampleSelect1">
-                            <option>Very small project (5000 - 10000 PKR)</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
+                            <select name="category_id" class="form-control" id="exampleSelect1" required>
+                                <option>Select a category ...</option>
+                                @foreach(App\Category::latest()->get() as $category)
+                                    <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                                        {{ $category->name }}
+                                    </option>
+                                @endforeach
+                            </select>
 
-                        <div class="form-group btn-padding">
-                            <button type="button" class="btn btn-post">Post Project Now</button>
-                            <button class="btn-text">By clicking 'Post Project now', you are indicating that you have
-                                read and agree to the <a href="#">terms & Conditions</a> and <a href="#">privacy
-                                    Policy</a></button>
+                            <br>
+
+                            <label class="label-name" for="skill">Where is your event? <a href="#"
+                                                                                       data-toggle="tooltip"
+                                                                                       data-placement="top"
+                                                                                       title="help"><span
+                                            class="badge badge-default second-badge">?</span></a></label>
+                            <input class="form-control" name="location" type="text" value="{{ old('location') }}"
+                                   id="example-text-input" required>
+                            {{--<label class="label-name" for="skill">What skill are required? <a href="#"--}}
+                            {{--data-toggle="tooltip"--}}
+                            {{--data-placement="top"--}}
+                            {{--title="help"><span--}}
+                            {{--class="badge badge-default second-badge">?</span></a></label>--}}
+                            {{--<input class="form-control" title="" type="text" placeholder="Required skills"--}}
+                            {{--id="example-text-input" required>--}}
+
+                            <label class="label-name label-margin" for="description">Describe your project <a href="#"
+                                                                                                              data-toggle="tooltip"
+                                                                                                              data-placement="top"
+                                                                                                              title="help"><span
+                                            class="badge badge-default second-badge">?</span></a></label>
+                            <textarea class="form-control" id="exampleTextarea"
+                                      required
+                                      name="description"
+                                      rows="5">
+                                {{ old('description') }}
+                            </textarea>
+
+                            <br>
+
+                            <label class="label-name" for="budget">What budget do you have in mind?<a href="#" data-toggle="tooltip"
+                                                                                    data-placement="top"
+                                                                                    title="help"><span
+                                            class="badge badge-default second-badge">?</span></a></label>
+                            <input type="number" class="form-control" id="example-text-input" name="budget" value="{{ old('budget') }}">
+
+                            <div class="form-group btn-padding">
+                                <button type="submit" class="btn btn-post">Post Project Now</button>
+                                <button class="btn-text">By clicking 'Post Project now', you are indicating that you
+                                    have
+                                    read and agree to the <a href="#">terms & Conditions</a> and <a href="#">privacy
+                                        Policy</a></button>
+                            </div>
+
                         </div>
-
-                    </div>
+                    </form>
                 </div>
+
 
                 <div class="col-xl-4 col-lg-4 col-md-4 hidden-on-mobile">
                     <div class="card side-panel-margin">

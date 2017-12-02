@@ -24,7 +24,7 @@ class ProfilesTest extends TestCase
     public function userProfileShowsPastJobs()
     {
         $user = create('App\User');
-        $job = create('App\Job', ['contractor_id' => $user->id]);
+        $job = create('App\Job', [ 'contractor_id' => $user->id ]);
         $this->get('/profiles/' . $user->id)
             ->assertSee($job->title);
     }
@@ -38,7 +38,7 @@ class ProfilesTest extends TestCase
 
         $this->signIn();
 
-        $this->patch('/profiles/' . auth()->id(), ['description' => null])
+        $this->patch('/profiles/' . auth()->id(), [ 'description' => null ])
             ->assertSessionHasErrors('description');
     }
 
@@ -56,13 +56,61 @@ class ProfilesTest extends TestCase
     /**
      * @test
      */
+    public function userCanUpdateProfileDescription()
+    {
+        $this->signIn();
+
+        $description = auth()->user()->description;
+
+        $this->assertDatabaseHas('users', [ 'description' => $description ]);
+
+        $updatedDescription = 'Some Description';
+
+        $this->patch('/profiles/' . auth()->id(), [ 'description' => $updatedDescription ]);
+        $this->assertDatabaseHas('users', [ 'description' => $updatedDescription ]);
+    }
+
+//    /**
+//     * @test
+//     */
+//    public function userCanBrowseToOwnEditProfile()
+//    {
+//        $this->signIn();
+//
+//        $this->get( auth()->user()->profile() . '/edit' )
+//            ->assertSee( auth()->user()->description )
+//            ->assertStatus( 200 );
+//    }
+//
+//    /**
+//     * @test
+//     */
+//    public function userCanNotBrowseToNotOwnEditProfile()
+//    {
+//        $this->withExceptionHandling();
+//
+//        $user = create( 'App\User' );
+//
+//        $this->get( $user->profile() . '/edit' )
+//            ->assertDontSee( $user->description )
+//            ->assertRedirect( '/login' );
+//
+//        $this->signIn()
+//            ->get( $user->profile() . '/edit' )
+//            ->assertDontSee( $user->description )
+//            ->assertStatus( 403 );
+//    }
+
+    /**
+     * @test
+     */
     public function userCanUpdateOwnProfile()
     {
         $this->signIn();
 
-        $this->patch('/profiles/' . auth()->id(), ['description' => "Some Description"]);
+        $this->patch('/profiles/' . auth()->id(), [ 'description' => "Some Description" ]);
 
-        $this->assertDatabaseHas('users', ['description' => "Some Description"]);
+        $this->assertDatabaseHas('users', [ 'description' => "Some Description" ]);
     }
 
     /**
@@ -76,10 +124,10 @@ class ProfilesTest extends TestCase
         $this->signIn($users[0]);
 
 
-        $this->patch('/profiles/' . $users[1]->id, ['description' => "Some Description"])
+        $this->patch('/profiles/' . $users[1]->id, [ 'description' => "Some Description" ])
             ->assertStatus(403);
 
-        $this->assertDatabaseMissing('users', ['description' => "Some Description"]);
+        $this->assertDatabaseMissing('users', [ 'description' => "Some Description" ]);
     }
 
     /**
@@ -88,11 +136,23 @@ class ProfilesTest extends TestCase
     public function userCanAddPortfolio()
     {
         $this->signIn();
-        $user = create('App\User');
-        $portfolio = make( 'App\Portfolio' );
-        $this->post('/portfolios',$portfolio->toArray())
+        $portfolio = make('App\Portfolio');
+        $this->post('/portfolios', $portfolio->toArray())
             ->assertStatus(200);
 
-        $this->assertDatabaseHas('portfolios',['title'=>$portfolio->title]);
+
+        $this->assertDatabaseHas('portfolios', [ 'title' => $portfolio->title ]);
+    }
+
+    /**
+     * @test
+     */
+    public function userProfileContainsPortfolio()
+    {
+        $user = create('App\User');
+        $portfolio = create('App\Portfolio', [ 'user_id' => $user->id ]);
+
+        $this->get('/profiles/' . $user->id)
+            ->assertSee($portfolio->title);
     }
 }

@@ -14,12 +14,12 @@ class AwardedJobsTest extends TestCase
     {
         $this->signIn();
 
-        $job       = create('App\Job', [ 'contractor_id' => auth()->id() ]);
-        $proposals = create('App\Proposal', [ 'job_id' => $job->id ], 2);
+        $job = create( 'App\Job', [ 'contractor_id' => auth()->id() ] );
+        $proposals = create( 'App\Proposal', [ 'job_id' => $job->id ], 2 );
 
-        $this->assertFalse($proposals[ 1 ]->isAwarded());
-        $this->post($proposals[ 1 ]->path() . '/award');
-        $this->assertTrue($proposals[ 1 ]->fresh()->isAwarded());
+        $this->assertFalse( $proposals[ 1 ]->isAwarded() );
+        $this->post( $proposals[ 1 ]->path() . '/award' );
+        $this->assertTrue( $proposals[ 1 ]->fresh()->isAwarded() );
     }
 
     /**
@@ -29,19 +29,19 @@ class AwardedJobsTest extends TestCase
     {
         $this->withExceptionHandling();
 
-        $job       = create('App\Job');
-        $proposals = create('App\Proposal', [ 'job_id' => $job->id ], 2);
+        $job = create( 'App\Job' );
+        $proposals = create( 'App\Proposal', [ 'job_id' => $job->id ], 2 );
 
-        $this->assertFalse($proposals[ 1 ]->isAwarded());
+        $this->assertFalse( $proposals[ 1 ]->isAwarded() );
 
         // Guests
-        $this->post($proposals[ 1 ]->path() . '/award');
-        $this->assertFalse($proposals[ 1 ]->fresh()->isAwarded());
+        $this->post( $proposals[ 1 ]->path() . '/award' );
+        $this->assertFalse( $proposals[ 1 ]->fresh()->isAwarded() );
 
         // Other Users
         $this->signIn()
-             ->post($proposals[ 1 ]->path() . '/award');
-        $this->assertFalse($proposals[ 1 ]->fresh()->isAwarded());
+            ->post( $proposals[ 1 ]->path() . '/award' );
+        $this->assertFalse( $proposals[ 1 ]->fresh()->isAwarded() );
     }
 
     /**
@@ -53,15 +53,15 @@ class AwardedJobsTest extends TestCase
 
         $this->signIn();
 
-        $proposal = create('App\Proposal', [ 'user_id' => auth()->id() ]);
-        $proposal->job->awardJob($proposal);
+        $proposal = create( 'App\Proposal', [ 'user_id' => auth()->id() ] );
+        $proposal->job->awardJob( $proposal );
 
         $updatedBody = "asdsalkjdsldasd";
 
-        $this->patch($proposal->path(), [ 'body' => $updatedBody ])
-             ->assertStatus(403);
+        $this->patch( $proposal->path(), [ 'body' => $updatedBody ] )
+            ->assertStatus( 403 );
 
-        $this->assertDatabaseMissing('proposals', [ 'body' => $updatedBody ]);
+        $this->assertDatabaseMissing( 'proposals', [ 'body' => $updatedBody ] );
     }
 
     /**
@@ -73,12 +73,36 @@ class AwardedJobsTest extends TestCase
 
         $this->signIn();
 
-        $proposal = create('App\Proposal', [ 'user_id' => auth()->id() ]);
-        $proposal->job->awardJob($proposal);
+        $proposal = create( 'App\Proposal', [ 'user_id' => auth()->id() ] );
+        $proposal->job->awardJob( $proposal );
 
-        $this->delete($proposal->path())
-             ->assertStatus(403);
+        $this->delete( $proposal->path() )
+            ->assertStatus( 403 );
 
-        $this->assertDatabaseHas('proposals', [ 'id' => $proposal->id ]);
+        $this->assertDatabaseHas( 'proposals', [ 'id' => $proposal->id ] );
+    }
+
+    /**
+     * @test
+     */
+    public function jobContractorCanNotAwardTheSameJobToMultipleProposals()
+    {
+        $this->withExceptionHandling();
+        $this->signIn();
+
+        $job = create( 'App\Job', [ 'contractor_id' => auth()->id() ] );
+        $proposals = create( 'App\Proposal', [ 'job_id' => $job->id ], 2 );
+
+        $this->assertFalse( $proposals[ 1 ]->isAwarded() );
+        $this->post( $proposals[ 1 ]->path() . '/award' );
+        $this->assertTrue( $proposals[ 1 ]->fresh()->isAwarded() );
+
+        $this->post( $proposals[ 1 ]->path() . '/award' )
+            ->assertStatus( 403 );
+
+        $this->post( $proposals[ 0 ]->path() . '/award' )
+            ->assertStatus( 403 );
+
+        $this->assertFalse( $proposals[ 0 ]->isAwarded() );
     }
 }

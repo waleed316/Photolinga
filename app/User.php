@@ -32,18 +32,28 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    public function hasRole($role)
+    public function hasRole( $role )
     {
         return $this->role == $role;
     }
 
     public function createdJobs()
     {
-        return $this->hasMany(Job::class, 'contractor_id');
+        return $this->hasMany( Job::class, 'contractor_id' );
     }
 
-    public function path()
+    public function portfolio()
+    {
+        return $this->hasMany( Portfolio::class );
+    }
+
+    public function profile()
     {
         return '/profiles/' . $this->id;
+    }
+
+    public function avatar()
+    {
+        return $this->avatar_path ?: 'images/person-2.jpg';
     }
 }

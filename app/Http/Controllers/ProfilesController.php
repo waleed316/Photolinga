@@ -6,23 +6,37 @@ use App\User;
 
 class ProfilesController extends Controller
 {
-    public function show(User $user)
+
+    public function __construct()
     {
-        return view('profiles.show', [
-            'profileUser' => $user
-        ]);
+        $this->middleware( 'auth', [ 'except' => 'show' ] );
     }
 
-    public function update(User $user)
+    public function show( User $user )
     {
-        $this->authorize('update', $user);
+        return view( 'profiles.show', [
+            'profileUser' => $user
+        ] );
+    }
 
-        request()->validate([
+    public function edit( User $user )
+    {
+        $this->authorize( 'update', $user );
+        return view( 'profiles.edit', [
+            'profileUser' => $user
+        ] );
+    }
+
+    public function update( User $user )
+    {
+        $this->authorize( 'update', $user );
+
+        request()->validate( [
             'description' => 'required'
-        ]);
-        $user->update([
-            'description' => request('description'),
-        ]);
+        ] );
+        $user->update( [
+            'description' => request( 'description' ),
+        ] );
 
         return $user;
     }

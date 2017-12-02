@@ -15,12 +15,12 @@ class ApplyToJobsTest extends TestCase
      */
     public function guestsCanNotApplyToJobs()
     {
-        $job      = create('App\Job');
-        $proposal = make('App\Proposal');
+        $job = create( 'App\Job' );
+        $proposal = make( 'App\Proposal' );
 
         $this->withExceptionHandling()
-             ->post($job->path() . '/proposals', $proposal->toArray())
-             ->assertRedirect('/login');
+            ->post( $job->path() . '/proposals', $proposal->toArray() )
+            ->assertRedirect( '/login' );
     }
 
     /**
@@ -30,12 +30,12 @@ class ApplyToJobsTest extends TestCase
     {
         $this->signIn();
 
-        $job      = create('App\Job');
-        $proposal = make('App\Proposal');
+        $job = create( 'App\Job' );
+        $proposal = make( 'App\Proposal' );
 
-        $this->post($job->path() . '/proposals', $proposal->toArray());
+        $this->post( $job->path() . '/proposals', $proposal->toArray() );
 
-        $this->assertDatabaseHas('proposals', [ 'body' => $proposal->body ]);
+        $this->assertDatabaseHas( 'proposals', [ 'body' => $proposal->body ] );
     }
 
     /**
@@ -46,14 +46,14 @@ class ApplyToJobsTest extends TestCase
         $this->withExceptionHandling();
         $this->signIn();
 
-        $job       = create('App\Job');
-        $proposal  = create('App\Proposal', [ 'job_id' => $job->id, 'user_id' => auth()->id() ]);
-        $proposal2 = make('App\Proposal');
+        $job = create( 'App\Job' );
+        $proposal = create( 'App\Proposal', [ 'job_id' => $job->id, 'user_id' => auth()->id() ] );
+        $proposal2 = make( 'App\Proposal' );
 
-        $this->post($job->path() . '/proposals', $proposal2->toArray())
-             ->assertStatus(403);
+        $this->post( $job->path() . '/proposals', $proposal2->toArray() )
+            ->assertStatus( 403 );
 
-        $this->assertDatabaseMissing('proposals', [ 'body' => $proposal2->body ]);
+        $this->assertDatabaseMissing( 'proposals', [ 'body' => $proposal2->body ] );
     }
 
     /**
@@ -63,18 +63,18 @@ class ApplyToJobsTest extends TestCase
     {
         $this->withExceptionHandling();
 
-        $user = create('App\User');
+        $user = create( 'App\User' );
         $this->signIn();
 
         $contractor = auth()->user();
 
-        $job      = create('App\Job', [ 'contractor_id' => auth()->id() ]);
-        $proposal = make('App\Proposal');
+        $job = create( 'App\Job', [ 'contractor_id' => auth()->id() ] );
+        $proposal = make( 'App\Proposal' );
 
-        $this->post($job->path() . '/proposals', $proposal->toArray())
-             ->assertStatus(403);
+        $this->post( $job->path() . '/proposals', $proposal->toArray() )
+            ->assertStatus( 403 );
 
-        $this->assertDatabaseMissing('proposals', [ 'body' => $proposal->body ]);
+        $this->assertDatabaseMissing( 'proposals', [ 'body' => $proposal->body ] );
     }
 
     /**
@@ -82,14 +82,14 @@ class ApplyToJobsTest extends TestCase
      */
     public function proposalRequiresABody()
     {
-        $user = create('App\User');
-        $this->withExceptionHandling()->signIn($user);
+        $user = create( 'App\User' );
+        $this->withExceptionHandling()->signIn( $user );
 
-        $job      = create('App\Job');
-        $proposal = make('App\Proposal', [ 'body' => null ]);
+        $job = create( 'App\Job' );
+        $proposal = make( 'App\Proposal', [ 'body' => null ] );
 
-        $this->post($job->path() . '/proposals', $proposal->toArray())
-             ->assertSessionHasErrors('body');
+        $this->post( $job->path() . '/proposals', $proposal->toArray() )
+            ->assertSessionHasErrors( 'body' );
     }
 
     /**
@@ -97,22 +97,22 @@ class ApplyToJobsTest extends TestCase
      */
     public function jobOwnerCanViewProposalDetail()
     {
-        $user = create('App\User');
+        $user = create( 'App\User' );
         $this->signIn();
 
         $contractor = auth()->user();
 
-        $job      = create('App\Job', [ 'contractor_id' => auth()->id() ]);
-        $proposal = make('App\Proposal');
+        $job = create( 'App\Job', [ 'contractor_id' => auth()->id() ] );
+        $proposal = make( 'App\Proposal' );
 
-        $this->signIn($user)
-             ->post($job->path() . '/proposals', $proposal->toArray());
+        $this->signIn( $user )
+            ->post( $job->path() . '/proposals', $proposal->toArray() );
 
         $proposal = $job->proposals[ 0 ];
 
-        $this->signIn($contractor)
-             ->get($proposal->path())
-             ->assertSee($proposal->body);
+        $this->signIn( $contractor )
+            ->get( $proposal->path() )
+            ->assertSee( $proposal->body );
     }
 
     /**
@@ -123,10 +123,10 @@ class ApplyToJobsTest extends TestCase
         $this->withExceptionHandling();
         $this->signIn();
 
-        $proposal = create('App\Proposal');
+        $proposal = create( 'App\Proposal' );
 
-        $this->get($proposal->path())
-             ->assertDontSee($proposal->body);
+        $this->get( $proposal->path() )
+            ->assertDontSee( $proposal->body );
     }
 
     /**
@@ -134,16 +134,16 @@ class ApplyToJobsTest extends TestCase
      */
     public function proposalOwnerCanEditProposal()
     {
-        $user = create('App\User');
-        $this->signIn($user);
+        $user = create( 'App\User' );
+        $this->signIn( $user );
 
-        $proposal = create('App\Proposal', [ 'user_id' => auth()->id() ]);
+        $proposal = create( 'App\Proposal', [ 'user_id' => auth()->id() ] );
 
         $updatedBody = 'Edited Body';
 
-        $this->patch($proposal->path(), [ 'body' => $updatedBody ]);
+        $this->patch( $proposal->path(), [ 'body' => $updatedBody, 'amount' => 123 ] );
 
-        $this->assertDatabaseHas('proposals', [ 'body' => $updatedBody ]);
+        $this->assertDatabaseHas( 'proposals', [ 'body' => $updatedBody, 'amount' => 123 ] );
     }
 
     /**
@@ -151,19 +151,19 @@ class ApplyToJobsTest extends TestCase
      */
     public function notProposalOwnersCanNotEditProposal()
     {
-        $proposal = create('App\Proposal');
+        $proposal = create( 'App\Proposal' );
 
         $updatedBody = 'Edited Edited Edited Edited Edited Body';
 
         $this->withExceptionHandling()
-             ->patch($proposal->path(), [ 'body' => $updatedBody ])
-             ->assertRedirect('/login');
+            ->patch( $proposal->path(), [ 'body' => $updatedBody ] )
+            ->assertRedirect( '/login' );
 
         $this->signIn()
-             ->patch($proposal->path(), [ 'body' => $updatedBody ])
-             ->assertStatus(403);
+            ->patch( $proposal->path(), [ 'body' => $updatedBody ] )
+            ->assertStatus( 403 );
 
-        $this->assertDatabaseMissing('proposals', [ 'body' => $updatedBody ]);
+        $this->assertDatabaseMissing( 'proposals', [ 'body' => $updatedBody ] );
     }
 
     /**
@@ -173,10 +173,10 @@ class ApplyToJobsTest extends TestCase
     {
         $this->signIn();
 
-        $proposal = create('App\Proposal', [ 'user_id' => auth()->id() ]);
-        $this->delete($proposal->path())->assertStatus(302);
-        $this->assertDatabaseMissing('proposals', [ 'id' => $proposal->id ]);
-        $this->assertEquals(0, $proposal->job->fresh()->proposals_count);
+        $proposal = create( 'App\Proposal', [ 'user_id' => auth()->id() ] );
+        $this->delete( $proposal->path() )->assertStatus( 302 );
+        $this->assertDatabaseMissing( 'proposals', [ 'id' => $proposal->id ] );
+        $this->assertEquals( 0, $proposal->job->fresh()->proposals_count );
     }
 
     /**
@@ -184,16 +184,16 @@ class ApplyToJobsTest extends TestCase
      */
     public function notProposalOwnersCanNotDeleteProposals()
     {
-        $proposal = create('App\Proposal');
+        $proposal = create( 'App\Proposal' );
 
         $this->withExceptionHandling()
-             ->delete($proposal->path())
-             ->assertRedirect('/login');
+            ->delete( $proposal->path() )
+            ->assertRedirect( '/login' );
 
         $this->signIn()
-             ->delete($proposal->path())
-             ->assertStatus(403);
+            ->delete( $proposal->path() )
+            ->assertStatus( 403 );
 
-        $this->assertDatabaseHas('proposals', [ 'id' => $proposal->id ]);
+        $this->assertDatabaseHas( 'proposals', [ 'id' => $proposal->id ] );
     }
 }

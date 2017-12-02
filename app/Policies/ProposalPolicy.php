@@ -20,7 +20,7 @@ class ProposalPolicy
      */
     public function view(User $user, Proposal $proposal)
     {
-        return $proposal->job->contractor->id == $user->id;
+        return $proposal->job->contractor->id === $user->id;
     }
 
     /**

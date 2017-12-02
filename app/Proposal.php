@@ -8,6 +8,14 @@ class Proposal extends Model
 {
     protected $guarded = [];
 
+
+    /**
+     * The relationships to always eager load
+     *
+     * @var array
+     */
+    protected $with = [ 'owner', 'job' ];
+
     public function job()
     {
         return $this->belongsTo('App\Job');

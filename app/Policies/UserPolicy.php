@@ -17,7 +17,7 @@ class UserPolicy
      *
      * @return mixed
      */
-    public function view(User $user, User $model)
+    public function view( User $user, User $model )
     {
         //
     }
@@ -29,22 +29,22 @@ class UserPolicy
      *
      * @return mixed
      */
-    public function create(User $user)
+    public function create( User $user )
     {
         //
     }
 
     /**
-     * Determine whether the user can update the model.
+     * Determine whether the user can update the given profile.
      *
      * @param  \App\User $user
-     * @param  \App\User $model
+     * @param  \App\User $signedInUser
      *
      * @return mixed
      */
-    public function update(User $user, User $model)
+    public function update( User $signedInUser, User $user)
     {
-        return $user->id == $model->id;
+        return $user->id === $signedInUser->id;
     }
 
     /**
@@ -55,7 +55,7 @@ class UserPolicy
      *
      * @return mixed
      */
-    public function delete(User $user, User $model)
+    public function delete( User $user, User $model )
     {
         //
     }

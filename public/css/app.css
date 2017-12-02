@@ -4,6 +4,160 @@
   font-family: 'Roboto', sans-serif;
 }
 
+.level {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.mr-1 {
+  margin-right: 1em;
+}
+
+.ml-1 {
+  margin-left: 1em;
+}
+
+.panel-footer {
+  padding: 10px;
+  border: 2px solid #EEEEEE;
+  width: 100%;
+}
+
+[v-cloak] {
+  display: none;
+}
+
+/* Modal CSS */
+
+.modal-mask {
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: table;
+  -webkit-transition: opacity .3s ease;
+  transition: opacity .3s ease;
+}
+
+.modal-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.modal-container {
+  width: 300px;
+  margin: 0px auto;
+  padding: 20px 30px;
+  background-color: #fff;
+  border-radius: 2px;
+  -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.modal-header h3 {
+  margin-top: 0;
+  color: #42b983;
+}
+
+.modal-body {
+  margin: 20px 0;
+}
+
+.modal-default-button {
+  float: right;
+}
+
+/*
+ * The following styles are auto-applied to elements with
+ * transition="modal" when their visibility is toggled
+ * by Vue.js.
+ *
+ * You can easily play with the modal transition by editing
+ * these styles.
+ */
+
+.modal-enter {
+  opacity: 0;
+}
+
+.modal-leave-active {
+  opacity: 0;
+}
+
+.modal-enter .modal-container,
+.modal-leave-active .modal-container {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+/* End Modal CSS */
+
+.ribbon {
+  position: absolute;
+  left: -5px;
+  top: -5px;
+  z-index: 1;
+  overflow: hidden;
+  width: 75px;
+  height: 75px;
+  text-align: right;
+}
+
+.ribbon span {
+  font-size: 10px;
+  font-weight: bold;
+  color: #FFF;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 20px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  width: 100px;
+  display: block;
+  background: #79A70A;
+  background: -webkit-gradient(linear, left top, left bottom, from(#2C004F), to(#2C004F));
+  background: linear-gradient(#2C004F 0%, #2C004F 100%);
+  -webkit-box-shadow: 0 3px 10px -5px black;
+          box-shadow: 0 3px 10px -5px black;
+  position: absolute;
+  top: 19px;
+  left: -21px;
+}
+
+.ribbon span::before {
+  content: "";
+  position: absolute;
+  left: 0px;
+  top: 100%;
+  z-index: -1;
+  border-left: 3px solid #2C004F;
+  border-right: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #2C004F;
+}
+
+.ribbon span::after {
+  content: "";
+  position: absolute;
+  right: 0px;
+  top: 100%;
+  z-index: -1;
+  border-left: 3px solid transparent;
+  border-right: 3px solid #2C004F;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #2C004F;
+}
+
 /* navbar styling */
 
 .navbar-bg-color {
