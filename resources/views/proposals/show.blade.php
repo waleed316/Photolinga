@@ -28,7 +28,8 @@
                                          class="img-fluid rounded-circle">
                                 </div>
                                 <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-9 pl-0">
-                                    <h4 class="detail-heading"><a href="{{ $proposal->owner->profile() }}">{{ $proposal->owner->name }}</a>
+                                    <h4 class="detail-heading"><a
+                                                href="{{ $proposal->owner->profile() }}">{{ $proposal->owner->name }}</a>
                                     </h4>
                                     <ul class="detail-page">
                                         <li><a href="#"
@@ -92,12 +93,12 @@
                         <button class="btn btn-proposal" onclick="event.preventDefault();
                                                      document.getElementById('awardForm').submit();">Hire
                         </button>
-                @endcan
+                    @endcan
                 <!-- <button class="btn btn-save-job">Save Job</button> -->
 
                     <ul class="required-connect">
-{{--                        <li><a href="{{ $proposal->owner->profile() }}" class="connect-prop">View Profile</a></li>--}}
-                        <!-- <li><a href="#" class="connect-prop">Proposal: 2</a></li>
+                    {{--                        <li><a href="{{ $proposal->owner->profile() }}" class="connect-prop">View Profile</a></li>--}}
+                    <!-- <li><a href="#" class="connect-prop">Proposal: 2</a></li>
                         <li><a href="#" class="connect-prop">Available Connects : 80</a></li>                         -->
                     </ul>
 
@@ -112,34 +113,34 @@
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star" aria-hidden="true"></i>
-                            (4.70)25
+                            {{--(4.70)25--}}
                         </li>
-                        <li class="bold2">95% job Success</li>
+                        {{--<li class="bold2">95% job Success</li>--}}
                     </ul>
 
                     <ul class="rating-client">
                         <li class="bold">Pakistan</li>
-                        <li class="bold2">KyberPakhtunkhwa</li>
+                        <li class="bold2">{{ $proposal->owner->contactInformation->city }}</li>
                     </ul>
 
-                    <ul class="rating-client">
-                        <li class="bold">Hours Worked</li>
-                        <li class="bold2">168 Hours</li>
-                    </ul>
+                    {{--<ul class="rating-client">--}}
+                    {{--<li class="bold">Hours Worked</li>--}}
+                    {{--<li class="bold2">168 Hours</li>--}}
+                    {{--</ul>--}}
+
+                    {{--<ul class="rating-client">--}}
+                    {{--<li class="bold">Over $50,000 Total Gain</li>--}}
+                    {{--<li class="bold2">39 Jobs Done, 2 Active</li>--}}
+                    {{--</ul>--}}
+
+                    {{--<ul class="rating-client">--}}
+                    {{--<li class="bold">$5.42<span>/hr</span> Avg Hourly Rate Paid</li>--}}
+                    {{--<li class="bold2">34,986 Hours</li>--}}
+                    {{--</ul>--}}
+
 
                     <ul class="rating-client">
-                        <li class="bold">Over $50,000 Total Gain</li>
-                        <li class="bold2">39 Jobs Done, 2 Active</li>
-                    </ul>
-
-                    <ul class="rating-client">
-                        <li class="bold">$5.42<span>/hr</span> Avg Hourly Rate Paid</li>
-                        <li class="bold2">34,986 Hours</li>
-                    </ul>
-
-
-                    <ul class="rating-client">
-                        <li class="bold2">Member Since Dec 3 2012</li>
+                        <li class="bold2">Member since {{ $proposal->owner->created_at->diffForHumans() }}</li>
                     </ul>
 
                 </div>
@@ -152,7 +153,7 @@
                     <h6 class="other-heading mb-4">OTHERS BIDS</h6>
                     <div class="row hidden-sm-down">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                            <h6 class="details-title">BIDDING FREELACERS(4)</h6>
+                            <h6 class="details-title">BIDDING FREELACERS({{ count($proposal->job->proposals)-1 }})</h6>
                         </div>
 
                         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
@@ -165,177 +166,52 @@
                     </div>
 
                     <ul class="details-freelance-list">
-                        <li>
-                            <div class="row details-bg-white">
-                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                                    <div class="row">
-                                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-3 col-4">
-                                            <div class="comments-images ml-1 mt-3">
-                                                <a href="profile.php"><img src="images/person-2.jpg"
-                                                                           class="freelance-margin img-fluid rounded-circle"
-                                                                           alt=""></a>
+                        @foreach(\App\Proposal::where('job_id',$proposal->job->id)->where('user_id','!=',$proposal->owner->id)->get() as $proposal)
+                            <li>
+                                <div class="row details-bg-white">
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                        <div class="row">
+                                            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-3 col-4">
+                                                <div class="comments-images ml-1 mt-3">
+                                                    <a href="{{ $proposal->owner->profile() }}"><img
+                                                                src="{{ $proposal->owner->avatar() }}"
+                                                                class="freelance-margin img-fluid rounded-circle"
+                                                                alt=""></a>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-9 col-lg-9 col-md-8 col-sm-9 col-8 mt-4 px-0">
+                                                <h6 class="details-freelance-name mb-1"><a
+                                                            href="{{ $proposal->owner->profile() }}">{{ $proposal->owner->name }}</a>
+                                                </h6>
+                                                <p class="details-freelance-desig mb-1">Senior Graphic - Web
+                                                    Designer</p>
+                                                <a href="{{ $proposal->path() }}" class="btn-sm viev-all">View
+                                                    Proposal</a>
                                             </div>
                                         </div>
+                                    </div>
 
-                                        <div class="col-xl-9 col-lg-9 col-md-8 col-sm-9 col-8 mt-4 px-0">
-                                            <h6 class="details-freelance-name mb-1"><a href="profile.php">Hoang
-                                                    Nguyen</a></h6>
-                                            <p class="details-freelance-desig mb-1">Senior Graphic - Web Designer</p>
-                                            <a href="biddetail.php" class="btn-sm viev-all">View</a>
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-6 no-padding-on-sm">
+                                        <div class="freelance-year-btn mt-4">
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                                            <a href="#" class="freelance-year px-2">2+ Years</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-6">
+                                        <div class="freelance-biding mt-3">
+                                            <p class="freeware">&nbsp;<span>{{ $proposal->amount }} PKR</span></p>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-6 no-padding-on-sm">
-                                    <div class="freelance-year-btn mt-4">
-                                        <a href="#" class="freelance-reput">
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                        </a>
-
-                                        <a href="#" class="freelance-year px-2">2+ Years</a>
-                                    </div>
-                                </div>
-
-                                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-6">
-                                    <div class="freelance-biding mt-3">
-                                        <p class="freeware">&nbsp;<span>$ 375</span><br>in 7 days</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="row details-bg-white">
-                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                                    <div class="row">
-                                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-3 col-4">
-                                            <div class="comments-images ml-1 mt-3">
-                                                <a href="profile.php"><img src="images/person-2.jpg"
-                                                                           class="freelance-margin img-fluid rounded-circle"
-                                                                           alt=""></a>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xl-9 col-lg-9 col-md-8 col-sm-9 col-8 mt-4 px-0">
-                                            <h6 class="details-freelance-name mb-1"><a href="profile.php">Hoang
-                                                    Nguyen</a></h6>
-                                            <p class="details-freelance-desig mb-1">Senior Graphic - Web Designer</p>
-                                            <a href="biddetail.php" class="viev-all btn-sm">View</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-6 no-padding-on-sm">
-                                    <div class="freelance-year-btn mt-4">
-                                        <a href="#" class="freelance-reput">
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                        </a>
-
-                                        <a href="#" class="freelance-year px-2">2+ Years</a>
-                                    </div>
-                                </div>
-
-                                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-6">
-                                    <div class="freelance-biding mt-3">
-                                        <p class="freeware">&nbsp;<span>$ 375</span><br>in 7 days</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="row details-bg-white">
-                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                                    <div class="row">
-                                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-3 col-4">
-                                            <div class="comments-images ml-1 mt-3">
-                                                <a href="profile.php"><img src="images/person-2.jpg"
-                                                                           class="freelance-margin img-fluid rounded-circle"
-                                                                           alt=""></a>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xl-9 col-lg-9 col-md-8 col-sm-9 col-8 mt-4 px-0">
-                                            <h6 class="details-freelance-name mb-1"><a href="profile.php">Hoang
-                                                    Nguyen</a></h6>
-                                            <p class="details-freelance-desig mb-1">Senior Graphic - Web Designer</p>
-                                            <a href="biddetail.php" class="viev-all btn-sm">View</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-6 no-padding-on-sm">
-                                    <div class="freelance-year-btn mt-4">
-                                        <a href="#" class="freelance-reput">
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                        </a>
-
-                                        <a href="#" class="freelance-year px-2">2+ Years</a>
-                                    </div>
-                                </div>
-
-                                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-6">
-                                    <div class="freelance-biding mt-3">
-                                        <p class="freeware">&nbsp;<span>$ 375</span><br>in 7 days</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="row details-bg-white">
-                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                                    <div class="row">
-                                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-3 col-4">
-                                            <div class="comments-images ml-1 mt-3">
-                                                <a href="profile.php"><img src="images/person-2.jpg"
-                                                                           class="freelance-margin img-fluid rounded-circle"
-                                                                           alt=""></a>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xl-9 col-lg-9 col-md-8 col-sm-9 col-8 mt-4 px-0">
-                                            <h6 class="details-freelance-name mb-1"><a href="profile.php">Hoang
-                                                    Nguyen</a></h6>
-                                            <p class="details-freelance-desig mb-1">Senior Graphic - Web Designer</p>
-                                            <a href="biddetail.php" class="viev-all btn-sm">View</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-6 no-padding-on-sm">
-                                    <div class="freelance-year-btn mt-4">
-                                        <a href="#" class="freelance-reput">
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                        </a>
-
-                                        <a href="#" class="freelance-year px-2">2+ Years</a>
-                                    </div>
-                                </div>
-
-                                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-6">
-                                    <div class="freelance-biding mt-3">
-                                        <p class="freeware">&nbsp;<span>$ 375</span><br>in 7 days</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>

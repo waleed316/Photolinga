@@ -27,6 +27,23 @@
   display: none;
 }
 
+.form-control {
+  color: #000 !important;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: red;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: red;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: red;
+}
+
 /* Modal CSS */
 
 .modal-mask {
@@ -213,7 +230,6 @@
   color: black;
   padding-left: 0.5rem;
   /* margin-right: 1px; */
-
 }
 
 .deposit-text {
@@ -222,7 +238,8 @@
   padding-left: 1.5rem;
 }
 
-.deposit-text:hover, .amount-num:hover {
+.deposit-text:hover,
+.amount-num:hover {
   text-decoration: none;
   color: black;
 }
@@ -406,6 +423,7 @@
 /* 5th section */
 
 /* 6th section */
+
 .remove-list-style {
   list-style: none;
   margin-top: 3%;
@@ -424,6 +442,7 @@
 }
 
 /* modal */
+
 .modal-text-center {
   margin-left: 22%;
   font-weight: bold;
@@ -486,7 +505,8 @@
 /* second section */
 
 .post-bg-color {
-  background-color: #F0F0F0;
+  //background-color: #F0F0F0;
+  background-color: #f1f5f8;
 }
 
 .badge-no {
@@ -668,7 +688,6 @@
 
 .card-head-bg-color {
   background-color: #F8F8F8;
-
 }
 
 .event-description-list {
@@ -768,7 +787,6 @@
   font-size: 15px;
   text-decoration: none;
   color: #2C004F;
-
 }
 
 .proposals:hover {
@@ -842,7 +860,8 @@
   line-height: 1.3em;
 }
 
-.person-name, .event-title {
+.person-name,
+.event-title {
   font-weight: bold;
 }
 
@@ -1019,7 +1038,6 @@
   right: 0;
   margin: auto;
   z-index: 1;
-
 }
 
 .column-color {
@@ -1046,7 +1064,8 @@
   /* margin: 5px; */
 }
 
-.overall-list, .associated-list {
+.overall-list,
+.associated-list {
   list-style: none;
 }
 
@@ -1079,7 +1098,8 @@
   font-weight: bold;
 }
 
-.upgrade-heading:hover, .copy-link:hover {
+.upgrade-heading:hover,
+.copy-link:hover {
   text-decoration: none;
 }
 
@@ -1209,7 +1229,8 @@
   font-size: 14px;
 }
 
-.tags:hover, .show-more:hover {
+.tags:hover,
+.show-more:hover {
   text-decoration: none;
   color: #2C004F;
 }
@@ -1375,7 +1396,8 @@
   cursor: pointer;
 }
 
-.btn-filter:hover, .save-changes-btn:hover {
+.btn-filter:hover,
+.save-changes-btn:hover {
   background-color: white !important;
   color: #F74545 !important;
 }
@@ -1854,16 +1876,21 @@
   font-size: 13px;
 }
 
-.rating-review, .bid-profile-name, .bid-profile-view {
+.rating-review,
+.bid-profile-name,
+.bid-profile-view {
   color: #F74545;
 }
 
-.rating-review:hover, .bid-profile-name:hover, .bid-profile-view:hover {
+.rating-review:hover,
+.bid-profile-name:hover,
+.bid-profile-view:hover {
   color: #F74545;
   text-decoration: none;
 }
 
-.portfolio-td, .name-td {
+.portfolio-td,
+.name-td {
   border: 0 !important;
 }
 
@@ -1956,7 +1983,6 @@
 
 .social-list-details-1 {
   color: #F74545;
-
 }
 
 .social-list-details-2 {
@@ -1982,7 +2008,12 @@
   color: #2C004F;
 }
 
-.det-com, .det-bid, .det-avg, .det-time, .det-price, .det-social {
+.det-com,
+.det-bid,
+.det-avg,
+.det-time,
+.det-price,
+.det-social {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
@@ -2089,12 +2120,14 @@
   color: #F74545;
 }
 
-.freelance-reput, .freelance-year {
+.freelance-reput,
+.freelance-year {
   border: 1px solid lightgray;
   padding: 5px;
 }
 
-.freelance-reput:hover, .freelance-year:hover {
+.freelance-reput:hover,
+.freelance-year:hover {
   text-decoration: none;
   color: #F74545;
 }
@@ -2141,7 +2174,10 @@
   letter-spacing: 1.7px;
 }
 
-.dashboard-profile, .revenues, .tasks, .graph {
+.dashboard-profile,
+.revenues,
+.tasks,
+.graph {
   background-color: white;
   box-shadow: 0px 1px 15px lightgrey;
 }
@@ -2292,16 +2328,19 @@
   color: #2C004F;
 }
 
-.dashboard-anchor:hover, .dollar-anchor:hover {
+.dashboard-anchor:hover,
+.dollar-anchor:hover {
   text-decoration: none;
   color: #F74545;
 }
 
-.dash-anchor, .order-view {
+.dash-anchor,
+.order-view {
   color: #F74545;
 }
 
-.dash-anchor:hover, .order-view:hover {
+.dash-anchor:hover,
+.order-view:hover {
   text-decoration: none;
   color: #2C004F;
 }
@@ -2326,7 +2365,8 @@
   font-size: 12px;
 }
 
-.ra:hover, .ra1:hover {
+.ra:hover,
+.ra1:hover {
   text-decoration: none;
 }
 
@@ -2401,7 +2441,8 @@
   padding: 15px;
 }
 
-.bid-left, .ratio {
+.bid-left,
+.ratio {
   text-align: center;
   font-weight: bold;
 }
@@ -2410,13 +2451,15 @@
   border-bottom: 1px solid lightgrey;
 } */
 
-.btn-send-prop, .btn-modal-sponsor {
+.btn-send-prop,
+.btn-modal-sponsor {
   background-color: #F74545 !important;
   color: white;
   cursor: pointer;
 }
 
-.btn-send-prop:hover, .btn-modal-sponsor:hover {
+.btn-send-prop:hover,
+.btn-modal-sponsor:hover {
   background-color: white !important;
   color: #F74545;
   border-color: #F74545;
@@ -2544,46 +2587,660 @@
   font-weight: bold;
 }
 
+/* all jobs page styling */
+
+.all-jos {
+  //background-image: url('../images/bench.jpg');
+  padding: 0 25px 25px 25px;
+}
+
+.jobs-num {
+  color: white;
+  font-size: 1.9em;
+  margin-bottom: 0;
+}
+
+.bluuur {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.jobs-flex {
+  display: flex;
+  border: 1px solid lightgrey;
+}
+
+.jobs-flex .first-box {
+  width: 25%;
+  background-color: white;
+  padding: 15px;
+  border-right: 1px solid lightgrey;
+}
+
+.jobs-flex .first-box .cat-heading {
+  font-size: 0.8em;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.first-box .cat-form {
+  margin-bottom: 0;
+  position: relative;
+}
+
+.category-input {
+  position: relative;
+}
+
+.cat-search {
+  position: absolute;
+  right: 10px;
+  top: 7px;
+  font-size: 14px !important;
+}
+
+.first-box .tags-required .required-skills {
+  display: inline-block;
+  margin-bottom: 2px;
+}
+
+.jobdetail-list {
+  list-style: none;
+}
+
+.jobdetail-list li {
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.jobdetail-list li .project-head {
+  width: 40%;
+}
+
+.main-jobs {
+  background-color: white;
+  padding: 5px 10px;
+}
+
+.jobdetail-list li .project-by,
+.project-date,
+.project-budget {
+  width: 15%;
+}
+
+.jobdetail-list li .project-img {
+  width: 25px;
+}
+
+.main-jobs .job-title,
+.main-jobs .job-by,
+.main-jobs .job-date,
+.main-jobs .job-budget {
+  color: black;
+}
+
+.main-jobs .job-title {
+  font-weight: bold;
+}
+
+.job-title,
+.job-by,
+.job-date,
+.job-budget {
+  font-size: 0.8em;
+  color: darkgrey;
+  padding-left: 10px;
+  margin-bottom: 0;
+  display: inline;
+  vertical-align: middle;
+}
+
+.project-btn {
+  background-color: red !important;
+  font-size: 12px !important;
+  margin-bottom: 0 !important;
+  padding: 3px 8px 2px 8px !important;
+  color: white !important;
+}
+
+/* All Profile */
+
+.p-list {
+  list-style: none;
+}
+
+.p-list > li {
+  width: 48%;
+  margin-bottom: 1%;
+  display: inline-block;
+  background-color: white;
+  border-radius: 5px;
+  margin-right: 1%;
+  border: 1px solid lightgray;
+  cursor: pointer;
+}
+
+.p-list > li:hover {
+  border-color: #2C004F;
+}
+
+.p-list > li .profile-box {
+  width: 100%;
+}
+
+.p-list > li .profile-box .profile-upper-box {
+  display: flex;
+  height: 85px;
+  padding: 10px;
+  position: relative;
+}
+
+.p-list > li .profile-box .profile-upper-box .profile-image {
+  position: relative;
+  width: 15%;
+  margin-right: 10px;
+}
+
+.p-list > li .profile-box .profile-upper-box .profile-image img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.p-list > li .profile-box .profile-upper-box .p-name-section {
+  width: 85%;
+  padding-top: 10px;
+}
+
+.p-list > li .profile-box .profile-upper-box .p-name-section .details-freelance-name {
+  font-size: 1.5em;
+  margin-bottom: 2px;
+}
+
+.p-list > li .profile-box .profile-upper-box .p-name-section .details-freelance-desig {
+  font-size: 0.8em;
+}
+
+.p-list > li .profile-box .profile-upper-box .viev-all {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.p-list > li .profile-box .profile-lower-box {
+  display: flex;
+  padding: 10px;
+}
+
+.p-list > li .profile-box .profile-lower-box .p-left-section {
+  width: 48%;
+  margin-right: 4%;
+}
+
+.p-list > li .profile-box .profile-lower-box .p-left-section .p-rating-section {
+  width: 33.33%;
+  height: 30px;
+  border: 1px solid lightgray;
+  padding-top: 2px;
+  border-right: 0;
+  float: left;
+}
+
+.p-list > li .profile-box .profile-lower-box .p-left-section .p-rating-section ul.r-list {
+  list-style: none;
+  text-align: center;
+}
+
+.p-list > li .profile-box .profile-lower-box .p-left-section .p-rating-section ul.r-list li {
+  display: inline;
+}
+
+.p-list > li .profile-box .profile-lower-box .p-left-section .p-rating-section ul.r-list li a {
+  font-size: 12px;
+}
+
+.p-list > li .profile-box .profile-lower-box .p-left-section .p-hour,
+.p-list > li .profile-box .profile-lower-box .p-left-section .p-year {
+  width: 33.33%;
+  float: left;
+  border: 1px solid lightgray;
+  height: 30px;
+}
+
+.p-list > li .profile-box .profile-lower-box .p-left-section .p-hour .hour,
+.p-list > li .profile-box .profile-lower-box .p-left-section .p-hour .year,
+.p-list > li .profile-box .profile-lower-box .p-left-section .p-year .hour,
+.p-list > li .profile-box .profile-lower-box .p-left-section .p-year .year {
+  margin-bottom: 0;
+  padding-top: 7px;
+  text-align: center;
+  font-size: 14px;
+  color: #2C004F;
+}
+
+.p-list > li .profile-box .profile-lower-box .p-left-section .p-hour {
+  border-right: 0;
+}
+
+.p-list > li .profile-box .profile-lower-box .p-right-section {
+  width: 48%;
+}
+
+.p-list > li .profile-box .profile-lower-box .p-right-section p {
+  margin-bottom: 0;
+}
+
+/* Profile Page Styling */
+
+.about-freelancer-box .about-head {
+  color: #BBC5CF;
+  font-size: 0.8em;
+}
+
+.about-freelancer-box .freelance-box {
+  background-color: white;
+}
+
+.about-freelancer-box .freelance-box .upper-portion {
+  padding: 15px;
+  display: flex;
+  border-bottom: 1px solid #efe9e9;
+}
+
+.about-freelancer-box .freelance-box .upper-portion .left-sec {
+  display: flex;
+  width: 48%;
+  padding-top: 10px;
+}
+
+.about-freelancer-box .freelance-box .upper-portion .left-sec .img {
+  width: 25%;
+  margin-right: 10px;
+  position: relative;
+}
+
+.about-freelancer-box .freelance-box .upper-portion .left-sec .name {
+  width: 75%;
+  padding-top: 15px;
+}
+
+.about-freelancer-box .freelance-box .upper-portion .left-sec .name .details-freelance-name {
+  margin-bottom: 2px;
+  font-size: 1.3em;
+}
+
+.about-freelancer-box .freelance-box .upper-portion .left-sec .name .details-freelance-desig {
+  margin-bottom: 3px;
+  font-size: 0.8em;
+}
+
+.about-freelancer-box .freelance-box .upper-portion .left-sec .name .review-p {
+  font-size: 0.8em;
+}
+
+.about-freelancer-box .freelance-box .upper-portion .left-sec .name .review-p a:hover {
+  text-decoration: none;
+}
+
+.about-freelancer-box .freelance-box .upper-portion .right-sec {
+  padding-top: 25px;
+  width: 55%;
+}
+
+.about-freelancer-box .freelance-box .mid-portion {
+  padding: 15px;
+  border-bottom: 1px solid #efe9e9;
+}
+
+.about-freelancer-box .freelance-box .mid-portion .p-overview-head {
+  font-size: 1.3em;
+  color: #2C004F;
+}
+
+.about-freelancer-box .freelance-box .mid-portion .overview-desc {
+  font-size: 0.8em;
+  letter-spacing: 1px;
+  color: #808589;
+}
+
+.about-freelancer-box .freelance-box .history-portion {
+  padding: 15px;
+}
+
+.about-freelancer-box .freelance-box .history-portion .review-head {
+  font-size: 1.3em;
+  color: #2C004F;
+}
+
+.about-freelancer-box .freelance-box .history-portion .review-list {
+  list-style: none;
+}
+
+.about-freelancer-box .freelance-box .history-portion .review-list li {
+  margin-bottom: 5px;
+  border-bottom: 1px solid #efe9e9;
+}
+
+.about-freelancer-box .freelance-box .history-portion .review-list li:last-of-type {
+  border-bottom: 0;
+}
+
+.about-freelancer-box .freelance-box .history-portion .review-box {
+  display: flex;
+  padding: 15px;
+}
+
+.about-freelancer-box .freelance-box .history-portion .review-box .r-image {
+  width: 5%;
+  position: relative;
+  margin-right: 1%;
+}
+
+.about-freelancer-box .freelance-box .history-portion .review-box .r-image img {
+  height: 30px;
+}
+
+.about-freelancer-box .freelance-box .history-portion .review-box .r-name {
+  width: 69%;
+  padding-top: 5px;
+}
+
+.about-freelancer-box .freelance-box .history-portion .review-box .r-name .r-company-name {
+  color: #2C004F;
+}
+
+.about-freelancer-box .freelance-box .history-portion .review-box .r-history {
+  width: 25%;
+  text-align: right;
+  padding-top: 5px;
+}
+
+.about-freelancer-box .freelance-box .history-portion .review-box .r-history .r-date {
+  font-size: 0.7em;
+  margin-bottom: 5px;
+}
+
+.about-freelancer-box .freelance-box .portfolio-portion {
+  padding: 15px;
+  border-bottom: 1px solid #efe9e9;
+}
+
+.about-freelancer-box .freelance-box .portfolio-portion .portfolio-head {
+  font-size: 1.3em;
+  color: #2C004F;
+}
+
+.about-freelancer-box .freelance-box .portfolio-portion .portfolio-list {
+  list-style: none;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.about-freelancer-box .freelance-box .portfolio-portion .portfolio-list li {
+  display: inline;
+  margin: 0 5px;
+}
+
+.about-freelancer-box .freelance-box .portfolio-portion .portfolio-list li .portfoli-box {
+  margin-bottom: 12px;
+  width: 200px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.about-freelancer-box .freelance-box .portfolio-portion .portfolio-list li .portfoli-box .p-image {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+}
+
+.about-freelancer-box .freelance-box .portfolio-portion .portfolio-list li .portfoli-box .p-image:hover .p-text {
+  bottom: 0;
+  top: 0;
+}
+
+.about-freelancer-box .freelance-box .portfolio-portion .portfolio-list li .portfoli-box .p-image .p-text {
+  position: absolute;
+  bottom: -200px;
+  top: 200px;
+  width: 100%;
+  transition: all 0.2s ease-in-out;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.about-freelancer-box .freelance-box .portfolio-portion .portfolio-list li .portfoli-box .p-image .p-text h6 {
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.about-freelancer-box .f-profile-box {
+  background-color: white;
+}
+
+.about-freelancer-box .f-profile-box .btn-box {
+  padding: 20px 0 10px 0;
+  text-align: center;
+}
+
+.about-freelancer-box .f-profile-box .btn-box .btn-join-me {
+  background-color: #F74545;
+  padding: 5px 5px;
+  color: white;
+  font-size: 12px;
+  margin-right: 5px;
+}
+
+.about-freelancer-box .f-profile-box .btn-box .btn-join-me:hover {
+  text-decoration: none;
+}
+
+.about-freelancer-box .f-profile-box .btn-box .contact-me {
+  margin-left: 5px;
+  font-size: 0.8em;
+}
+
+.about-freelancer-box .f-profile-box .person-detail {
+  padding: 10px 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.about-freelancer-box .f-profile-box .person-detail li {
+  border-top: 1px solid #efe9e9;
+  padding: 8px 10px;
+}
+
+.about-freelancer-box .f-profile-box .person-detail li .p-box {
+  display: flex;
+}
+
+.about-freelancer-box .f-profile-box .person-detail li .p-box .ico {
+  width: 15%;
+}
+
+.about-freelancer-box .f-profile-box .person-detail li .p-box .ico i {
+  font-size: 13px;
+  color: #808589;
+}
+
+.about-freelancer-box .f-profile-box .person-detail li .p-box .it {
+  width: 60%;
+}
+
+.about-freelancer-box .f-profile-box .person-detail li .p-box .it h6 {
+  font-size: 14px;
+  display: inline;
+  color: #808589;
+}
+
+.about-freelancer-box .f-profile-box .person-detail li .p-box .bold {
+  width: 25%;
+  text-align: right;
+}
+
+.about-freelancer-box .f-profile-box .person-detail li .p-box .bold b {
+  display: inline;
+  vertical-align: sub;
+  color: black;
+}
+
+/* Privacy Section */
+
+.privacy-heading {
+  font-size: 1.9em;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 1.6px;
+  color: #2C004F;
+}
+
+.overview-heading {
+  color: #2C004F;
+}
+
+.privacy-desc {
+  font-size: 14px;
+  letter-spacing: 1.2px;
+}
+
+.privacy-list {
+  padding-left: 5%;
+}
+
+.privacy-list .privacy-desc {
+  margin-bottom: 5px;
+}
+
+.privacy-section {
+  margin-left: 5px;
+}
+
+.privacy-section .card {
+  margin-bottom: 10px;
+}
+
+.privacy-section .card .card-header {
+  background-color: #2C004F;
+}
+
+.privacy-section .card .overview-heading {
+  color: white;
+}
+
+.privacy-section .card .overview-heading:hover,
+.privacy-section .card .overview-heading:focus {
+  text-decoration: none;
+}
+
+.privacy-section .fa-chevron-up:before {
+  content: "\f068";
+}
+
+.privacy-section .collapsed .fa-chevron-up:before {
+  content: "\f067";
+}
+
+.privacy-section .fa-chevron-down:before {
+  content: "\f068";
+}
+
+.privacy-section .collapsed .fa-chevron-down:before {
+  content: "\f067";
+}
+
+/*# sourceMappingURL=style1.css.map */
+
+/*# sourceMappingURL=style1.css.map */
+
+@media (min-width: 280px) and (max-width: 575px) {
+  .p-list > li {
+    width: 100% !important;
+  }
+  .p-list > li .profile-upper-box .p-name-section {
+    width: 55% !important;
+  }
+  .p-list > li .profile-upper-box .p-name-section .details-freelance-name {
+    font-size: 0.9em !important;
+  }
+  .p-list > li .profile-upper-box .p-name-section .details-freelance-desig {
+    font-size: 0.7em !important;
+  }
+  .p-list > li .profile-upper-box .profile-image {
+    width: 25% !important;
+  }
+  .p-list > li .profile-upper-box .viev-all {
+    width: 25% !important;
+    height: 30px;
+    text-align: center;
+    position: unset !important;
+  }
+  .p-list > li .profile-lower-box {
+    flex-direction: column;
+  }
+  .p-list > li .profile-lower-box .p-left-section {
+    width: 100% !important;
+    margin-bottom: 5px;
+  }
+  .p-list > li .profile-lower-box .p-right-section {
+    width: 100% !important;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .p-list > li {
+    width: 100% !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .p-list > li {
+    width: 100% !important;
+  }
+  .p-list > li .profile-box .profile-image {
+    width: 12% !important;
+  }
+}
+
+/*# sourceMappingURL=style1.css.map */
+
 @media (max-width: 420px) {
   .event-loc-list li {
     font-size: 12px;
   }
-
   .message-hidden {
     display: none;
   }
-
   .account-list li {
     display: inline !important;
     margin-right: 3%;
   }
-
   .account-list {
     text-align: center;
   }
-
   #pro-service {
     height: 150px !important;
   }
-
   .col-text-center {
     text-align: center;
     margin-bottom: 5%;
   }
-
   .try-photo {
     font-size: 8px;
     line-height: 1.5em;
   }
-
   .margin {
     margin-top: 3%
   }
-
   .details-padding-zero {
     padding: 0 !important;
   }
-
   .details-title {
     color: #2C004F !important;
     font-weight: 600;
@@ -2593,7 +3250,6 @@
     margin-top: 10px;
     text-align: center;
   }
-
   .details-text {
     font-size: 12px;
     padding: 11px;
@@ -2601,122 +3257,125 @@
     margin-bottom: 0 !important;
     text-align: center;
   }
-
   .btn-bid {
     width: 100% !important;
   }
-
   .details-bids {
     font-size: 10px;
     padding: 8px 0px;
   }
-
   .details-social-list {
     text-align: center;
   }
-
   .details-social-list li {
     border: 0 !important;
   }
-
   .no-margin-on-med {
     padding-left: 2px !important;
   }
-
   .dash-orders {
     font-size: 10px;
     font-weight: bold;
   }
-
   .dash-quality {
     font-size: 10px;
   }
-
   .badge-active {
     width: 20%;
   }
-
   .dash-job-detail {
     font-size: 12px;
   }
-
   .r-bid-i {
     font-size: 10px !important;
     padding: 5px !important;
   }
-
   .aaa {
     font-size: 10px;
   }
-
   .r-nb {
     font-size: 12px !important;
     padding: 0 !important;
     margin-top: 10px;
   }
-
   .boxer {
     display: none;
   }
-
   .rr {
     display: none !important;
   }
-
   .mob-mary {
     margin-top: 6px;
   }
-
+  .main-jobs {
+    display: block !important;
+  }
+  .project-img {
+    float: left;
+  }
+  .project-head {
+    width: 100% !important;
+  }
+  .project-by {
+    float: left;
+    clear: both;
+  }
+  .main-jobs .project-budget,
+  .main-jobs .project-by,
+  .main-jobs .project-date {
+    width: 33% !important;
+    float: left;
+  }
+  .main-jobs .job-by,
+  .main-jobs .job-date,
+  .main-jobs .job-budget {
+    font-size: 0.7em !important;
+  }
+  .project-btn1 {
+    text-align: center;
+    width: 100;
+    clear: both;
+  }
 }
 
 /* // Extra small devices (portrait phones, less than 576px) */
-@media (max-width: 575px) {
 
+@media (max-width: 575px) {
   .right-border {
     border-bottom: 1px solid white;
     margin-bottom: 15px;
   }
-
   #Capa_1 {
     height: 40px;
   }
-
   .svg-text h5 {
     font-size: 9px;
   }
-
   .do-heading1 {
     font-size: 16px;
   }
-
   .do-heading2 {
     font-size: 12px;
   }
-
   .input-search {
     height: 35px;
     font-size: 13px;
   }
-
   .btn-search {
     height: 35px;
     font-size: 13px !important;
   }
-
   .btn-signin {
     font-size: 10px !important;
   }
-
   .btn-join {
     font-size: 10px !important;
   }
-
   .label-name {
     color: #696969;
     font-weight: bold;
     font-size: 12px !important;
   }
-
   .second-badge {
     background-color: #696969 !important;
     height: 18px;
@@ -2725,7 +3384,6 @@
     vertical-align: top !important;
     padding: 5px !important;
   }
-
   .badge-no {
     background-color: #2C004F !important;
     color: white;
@@ -2736,13 +3394,11 @@
     font-size: 12px !important;
     padding: 3px !important;
   }
-
   .heading-font {
     font-weight: bold;
     margin-bottom: 5%;
     font-size: 14px !important;
   }
-
   .btn-text {
     width: 250px !important;
     vertical-align: top;
@@ -2754,42 +3410,33 @@
     font-weight: 600;
     margin-left: 0;
   }
-
   .hidden-on-mobile {
     display: none;
   }
-
   .profile-bg-height {
     height: 100px !important;
   }
-
   .profile-bg-height1 {
     height: 120px !important;
   }
-
   .profile-name {
     top: 37%;
   }
-
   .main-profile-name {
     font-size: 18px;
     margin-bottom: 2px;
   }
-
   .main-profile-desig {
     font-size: 12px;
     margin-bottom: 2px;
   }
-
   .main-profile-loc {
     font-size: 10px;
   }
-
   .profile-avatar {
     height: 80px !important;
     border-radius: 40px !important;
   }
-
   .profile-pic {
     position: absolute;
     width: 100%;
@@ -2801,196 +3448,186 @@
     margin: auto;
     z-index: 1;
   }
-
   .mobile-view-margin {
     margin-top: 5%;
   }
-
   .column-margin {
     margin-bottom: 10px !important;
   }
-
-  .why-photolinga, .pro-icon-padding h4, .pro-service-heading {
+  .why-photolinga,
+  .pro-icon-padding h4,
+  .pro-service-heading {
     /* font-weight: 700!important; */
     /* color: #2C004F!important; */
     font-size: 18px !important;
   }
-
-  .why-para, .pro-icon-padding p, .pro-service-desc {
+  .why-para,
+  .pro-icon-padding p,
+  .pro-service-desc {
     color: black !important;
     font-size: 14px !important;
   }
-
   #pro-service {
     height: 150px !important;
   }
-
   .ready-pro {
     font-size: 18px !important;
   }
-
   .margin {
     margin-top: 3%
   }
-
   .details-text {
     text-align: center;
   }
-
   .details-title {
     margin-top: 15px;
     text-align: center;
   }
-
   .details-bids {
     font-size: 10px;
     padding: 8px 0px;
   }
-
   .details-social-list {
     text-align: center;
   }
-
   .details-social-list li {
     border: 0 !important;
   }
-
   .freelance-margin {
     margin-top: 5px;
   }
-
   .details-freelance-name {
     font-size: 16px;
   }
-
   .details-freelance-desig {
     font-size: 10px;
   }
-
   .freelance-reput {
     padding: 3px !important;
   }
-
   .no-padding-on-sm {
     padding-right: 2px !important;
     text-align: center;
   }
-
   .freelance-reput i {
     font-size: 8px;
   }
-
   .freelance-year-btn {
     margin-top: 5px;
   }
-
   .freelance-year {
     font-size: 10px;
     padding: 9px 0 5px 0px !important
   }
-
   .freelance-biding {
     text-align: center;
     margin-top: 8px !important;
   }
-
   .freeware {
     font-size: 12px;
   }
-
   .border-right {
     border-right: 0 !important;
     border-bottom: 1px solid lightgray;
   }
-
   .revenue-head {
     text-align: center;
     font-weight: bold;
     font-size: 16px;
     margin-top: 15px;
   }
-
   .revenue-earning {
     text-align: center;
     margin-bottom: 15px;
   }
-
   .border-right:last-of-type {
     border-bottom: 0 !important;
   }
-
   .zara-margin {
     margin-bottom: 10%;
   }
-
   .r-bid-i {
     font-size: 12px !important;
   }
-
   .detail-heading {
     margin-top: 2% !important;
     font-size: 16px;
   }
-
   .anchor-badge {
     font-size: 8px !important;
   }
-
   .detail-page li {
     margin-right: 2px !important;
   }
-
   .margin-hr {
     margin-top: 2rem;
+  }
+  .main-jobs {
+    display: block !important;
+  }
+  .project-img {
+    float: left;
+  }
+  .project-head {
+    width: 100% !important;
+  }
+  .project-by {
+    float: left;
+    clear: both;
+  }
+  .main-jobs .project-budget,
+  .main-jobs .project-by,
+  .main-jobs .project-date {
+    width: 33% !important;
+    float: left;
+  }
+  .main-jobs .job-by,
+  .main-jobs .job-date,
+  .main-jobs .job-budget {
+    font-size: 0.7em !important;
+  }
+  .project-btn1 {
+    text-align: center;
+    width: 100;
+    clear: both;
   }
 }
 
 /* // Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) and (max-width: 767px) {
 
+@media (min-width: 576px) and (max-width: 767px) {
   .right-border {
     border-right: 1px solid white;
-
   }
-
   .no-md {
     display: none;
   }
-
   .hidden-on-mobile {
     display: none;
   }
-
   .account-list li {
     display: inline !important;
     margin-right: 3%;
   }
-
   .account-list {
     text-align: center;
   }
-
   .profile-bg-height {
     height: 150px !important;
   }
-
   .profile-bg-height1 {
     height: 180px !important;
   }
-
   .profile-name {
     top: 36%;
   }
-
   .main-profile-name {
     font-size: 28px;
   }
-
   .profile-avatar {
     height: 120px !important;
     border-radius: 60px !important;
   }
-
   .profile-pic {
     position: absolute;
     width: 100%;
@@ -3002,53 +3639,46 @@
     margin: auto;
     z-index: 1;
   }
-
   .mobile-view-margin {
     margin-top: 5%;
   }
-
   .column-margin {
     margin-bottom: 10px !important;
   }
-
-  .why-photolinga, .pro-icon-padding h4, .pro-service-heading {
+  .why-photolinga,
+  .pro-icon-padding h4,
+  .pro-service-heading {
     /* font-weight: 700!important; */
     /* color: #2C004F!important; */
     font-size: 18px !important;
   }
-
-  .why-para, .pro-icon-padding p, .pro-service-desc {
+  .why-para,
+  .pro-icon-padding p,
+  .pro-service-desc {
     color: black !important;
     font-size: 14px !important;
   }
-
   .ready-pro {
     font-size: 18px !important;
   }
-
   .margin {
     margin-top: 3%
   }
-
   .portfolio-td {
     padding-top: 0 !important;
   }
-
   .bid-profile {
     height: 96px !important;
   }
-
   .profile-td {
     display: inline-table !important;
     margin-top: 22%;
   }
-
   .name-td {
     /* display: inline-table!important; */
     margin-top: 2%;
     margin-left: 10px;
   }
-
   .details-title {
     color: #2C004F !important;
     font-weight: 600;
@@ -3058,7 +3688,6 @@
     margin-top: 10px;
     text-align: center;
   }
-
   .details-text {
     font-size: 14px;
     padding: 11px;
@@ -3066,194 +3695,182 @@
     margin-bottom: 0 !important;
     text-align: center;
   }
-
   .btn-bid {
     width: 100% !important;
   }
-
   .details-bids {
     padding: 7px 0px;
     font-size: 14px;
   }
-
   .details-social-list {
     padding: 1px 0 0px 0px !important;
     text-align: center;
   }
-
   .details-social-list li {
     padding: 3px 9px;
     border: 0 !important;
   }
-
   .freelance-margin {
     margin-top: 5px;
   }
-
   .details-freelance-name {
     font-size: 16px;
   }
-
   .details-freelance-desig {
     font-size: 10px;
   }
-
   .freelance-reput {
     padding: 3px !important;
   }
-
   .no-padding-on-sm {
     padding: 0px 2px !important;
   }
-
   .freelance-reput i {
     font-size: 8px;
   }
-
   .freelance-year-btn {
     margin-top: 5px;
   }
-
   .freelance-year {
     font-size: 10px;
     padding: 9px 0 5px 0px !important
   }
-
   .freelance-biding {
     text-align: center;
   }
-
   .freeware {
     font-size: 12px;
   }
-
   .border-right {
     border-right: 0 !important;
     border-bottom: 1px solid lightgray;
   }
-
   .revenue-head {
     text-align: center;
     font-weight: bold;
     font-size: 16px;
     margin-top: 15px;
   }
-
   .revenue-earning {
     text-align: center;
     margin-bottom: 15px;
   }
-
   .border-right:last-of-type {
     border-bottom: 0 !important;
   }
-
   .dash-job-detail {
     margin-top: 10px;
   }
-
   .zara-margin {
     margin-bottom: 10%;
   }
-
   .r-bid-i {
     font-size: 10px !important;
   }
-
   .aaa {
     font-size: 12px;
   }
-
   .boxer {
     /* padding-top: 10px; */
     padding: 15px 0 0 0 !important;
   }
-
-  .bid-left, .ratio {
+  .bid-left,
+  .ratio {
     font-size: 10px;
   }
-
   .demo {
     font-size: 10px;
   }
-
   .detail-heading {
     margin-top: 2% !important;
     font-size: 16px;
   }
-
   .anchor-badge {
     font-size: 10px !important;
   }
-
   .margin-hr {
     margin-top: 2rem;
   }
-
+  .main-jobs {
+    display: block !important;
+  }
+  .project-img {
+    float: left;
+  }
+  .project-head {
+    width: 100% !important;
+  }
+  .project-by {
+    float: left;
+    clear: both;
+  }
+  .main-jobs .project-budget,
+  .main-jobs .project-by,
+  .main-jobs .project-date {
+    width: 33% !important;
+    float: left;
+  }
+  .main-jobs .job-by,
+  .main-jobs .job-date,
+  .main-jobs .job-budget {
+    font-size: 0.9em !important;
+  }
+  .project-btn1 {
+    text-align: center;
+    width: 100;
+    clear: both;
+  }
 }
 
 /* // Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) and (max-width: 991px) {
 
+@media (min-width: 768px) and (max-width: 991px) {
   .right-border {
     border-right: 1px solid white;
   }
-
   .no-md {
     display: none;
   }
-
   .side-heading {
     font-weight: bold;
     margin-top: 8px;
     margin-bottom: 0 !important;
     font-size: 13px;
   }
-
   #Capa_2 {
     height: 15px;
     margin-top: 5px;
   }
-
   .list-heading {
     margin-left: 0px;
     color: black;
     font-size: 10px;
   }
-
   .profile-name {
     font-size: 16px;
   }
-
   .availablity {
     font-size: 16px;
   }
-
   .proposals {
     font-size: 14px;
   }
-
   .profile-bg-height {
     height: 180px !important;
   }
-
   .profile-bg-height1 {
     height: 200px !important;
   }
-
   .profile-name {
     top: 40%;
   }
-
   .main-profile-name {
     font-size: 28px;
   }
-
   .profile-avatar {
     height: 150px !important;
     border-radius: 75px !important;
   }
-
   .profile-pic {
     position: absolute;
     width: 100%;
@@ -3265,34 +3882,27 @@
     margin: auto;
     z-index: 1;
   }
-
   .column-margin {
     margin-bottom: 10px !important;
   }
-
   .margin {
     margin-top: 3%
   }
-
   .btn-proposal {
     padding: 8px !important;
   }
-
   .portfolio-td {
     padding-top: 0 !important;
   }
-
   .profile-td {
     display: inline-table !important;
     margin-top: 2%;
   }
-
   .name-td {
     display: inline-table !important;
     margin-top: 2%;
     margin-left: 10px;
   }
-
   .details-title {
     color: #2C004F !important;
     font-weight: 600;
@@ -3302,7 +3912,6 @@
     margin-top: 10px;
     text-align: center;
   }
-
   .details-text {
     font-size: 12px;
     padding: 11px;
@@ -3310,149 +3919,119 @@
     margin-bottom: 0 !important;
     text-align: center;
   }
-
   .btn-bid {
     width: 100% !important;
     padding: 3px 25px !important;
   }
-
   .detail-text-pb {
     padding-bottom: 13px !important;
   }
-
   .details-bids {
     padding: 7px 0px;
     font-size: 10px;
   }
-
   .details-social-list {
     padding: 1px 0 0px 0px !important;
   }
-
   .details-social-list li {
     padding: 3px 9px;
   }
-
   .no-margin-on-med {
     padding-left: 2px !important;
   }
-
-  .social-list-details, .social-list-details-1, .social-list-details-2 {
+  .social-list-details,
+  .social-list-details-1,
+  .social-list-details-2 {
     font-size: 12px;
   }
-
   .freelance-margin {
     margin-top: 5px;
   }
-
   .details-freelance-name {
     font-size: 14px;
   }
-
   .details-freelance-desig {
     font-size: 9px;
   }
-
   .freelance-reput {
     padding: 3px !important;
   }
-
   .freelance-reput i {
     font-size: 10px;
   }
-
   .freelance-year {
     font-size: 10px;
     padding: 9px 0 5px 0px !important
   }
-
   .freelance-biding {
     text-align: center;
   }
-
   .freeware {
     font-size: 10px;
   }
-
   .margin-on-large {
     margin-left: 5px !important;
   }
-
   .no-padd-on-md-down {
     padding: 0px 6px 0 0 !important;
   }
-
   .revenue-head {
     text-align: center;
     font-weight: bold;
     font-size: 9px;
     margin-top: 15px;
   }
-
   .revenue-earning {
     text-align: center;
     margin-bottom: 15px;
   }
-
   .border-right {
     padding: 0 !important;
   }
-
   .border-right:last-of-type {
     border-right: 0 !important;
   }
-
   .dash-orders {
     font-size: 12px !important;
   }
-
   .dash-job-detail {
     font-size: 10px;
   }
-
-  .bid-left, .ratio {
+  .bid-left,
+  .ratio {
     font-size: 10px;
   }
-
   .detail-heading {
     margin-top: 2% !important;
     font-size: 16px;
   }
-
   .anchor-badge {
     font-size: 10px !important;
   }
-
   .margin-hr {
     margin-top: 5rem;
   }
-
 }
 
 /* // Large devices (desktops, 992px and up) */
-@media (min-width: 992px) and (max-width: 1199px) {
 
+@media (min-width: 992px) and (max-width: 1199px) {
   .right-border {
     border-right: 1px solid white;
   }
-
   .profile-bg-height {
     height: 250px !important;
   }
-
   .profile-bg-height1 {
     height: 220px !important;
   }
-
   .profile-name {
     top: 42%;
   }
-
   .profile-avatar {
     height: 200px !important;
     border-radius: 100px !important;
   }
-
   .profile-pic {
     position: absolute;
     width: 100%;
@@ -3464,147 +4043,117 @@
     margin: auto;
     z-index: 1;
   }
-
   .image-gigs {
     height: 100px !important;
   }
-
   .gigs-profile {
     height: 40px;
     border-radius: 35px;
   }
-
   .gigs-name {
     font-weight: bold;
     color: #2C004F;
     margin-bottom: 3px;
     font-size: 12px !important;
   }
-
   .profile-td {
     display: inline-table !important;
     margin-top: 2%;
   }
-
   .portfolio-td {
     padding-top: 0 !important;
   }
-
   .name-td {
     display: inline-table !important;
     margin-top: 2%;
     margin-left: 10px;
   }
-
   .details-bids {
     padding: 8px 0px;
     font-size: 11px;
   }
-
   .details-social-list {
     padding: 4px 0 0px 0px !important;
   }
-
   .details-social-list li {
     padding: 6px 15px;
   }
-
   .freelance-margin {
     margin-top: 5px;
   }
-
   .details-freelance-name {
     font-size: 14px;
   }
-
   .details-freelance-desig {
     font-size: 9px;
   }
-
   .margin-on-large {
     margin-left: 5px !important;
   }
-
   .revenue-head {
     text-align: center;
     font-weight: bold;
     font-size: 12px;
     margin-top: 15px;
   }
-
   .revenue-earning {
     text-align: center;
     margin-bottom: 15px;
   }
-
   .border-right {
     padding: 0 !important;
   }
-
   .border-right:last-of-type {
     border-right: 0 !important;
   }
-
   .margin-hr {
     margin-top: 6rem;
   }
-
 }
 
 /* // Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
 
+@media (min-width: 1200px) {
   .right-border {
     border-right: 1px solid white;
   }
-
   .do-heading1 {
     font-size: 55px;
   }
-
   .main-profile-name {
     font-size: 50px;
   }
-
   .profile-td {
     display: inline-table !important;
     margin-top: 2%;
   }
-
   .name-td {
     display: inline-table !important;
     margin-top: 2%;
     margin-left: 10px;
   }
-
   .portfolio-td {
     padding-top: 0 !important;
     /* text-align: center; */
   }
-
   .details-bids {
     font-size: 14px;
     padding: 10px 0px;
   }
-
   .margin-on-large {
     margin-left: 5px !important;
   }
-
   .revenue-head {
     text-align: center;
     font-weight: bold;
     font-size: 12px;
   }
-
   .revenue-earning {
     text-align: center;
   }
-
   .border-right:last-of-type {
     border-right: 0 !important;
   }
-
 }
 
 .animated {
@@ -3628,21 +4177,23 @@
 }
 
 @keyframes bounce {
-  from, 20%, 53%, 80%, to {
+  from,
+  20%,
+  53%,
+  80%,
+  to {
     animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
     transform: translate3d(0, 0, 0);
   }
-
-  40%, 43% {
+  40%,
+  43% {
     animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
     transform: translate3d(0, -30px, 0);
   }
-
   70% {
     animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
     transform: translate3d(0, -15px, 0);
   }
-
   90% {
     transform: translate3d(0, -4px, 0);
   }
@@ -3654,11 +4205,13 @@
 }
 
 @keyframes flash {
-  from, 50%, to {
+  from,
+  50%,
+  to {
     opacity: 1;
   }
-
-  25%, 75% {
+  25%,
+  75% {
     opacity: 0;
   }
 }
@@ -3673,11 +4226,9 @@
   from {
     transform: scale3d(1, 1, 1);
   }
-
   50% {
     transform: scale3d(1.05, 1.05, 1.05);
   }
-
   to {
     transform: scale3d(1, 1, 1);
   }
@@ -3691,27 +4242,21 @@
   from {
     transform: scale3d(1, 1, 1);
   }
-
   30% {
     transform: scale3d(1.25, 0.75, 1);
   }
-
   40% {
     transform: scale3d(0.75, 1.25, 1);
   }
-
   50% {
     transform: scale3d(1.15, 0.85, 1);
   }
-
   65% {
     transform: scale3d(.95, 1.05, 1);
   }
-
   75% {
     transform: scale3d(1.05, .95, 1);
   }
-
   to {
     transform: scale3d(1, 1, 1);
   }
@@ -3722,15 +4267,21 @@
 }
 
 @keyframes shake {
-  from, to {
+  from,
+  to {
     transform: translate3d(0, 0, 0);
   }
-
-  10%, 30%, 50%, 70%, 90% {
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
     transform: translate3d(-10px, 0, 0);
   }
-
-  20%, 40%, 60%, 80% {
+  20%,
+  40%,
+  60%,
+  80% {
     transform: translate3d(10px, 0, 0);
   }
 }
@@ -3743,23 +4294,18 @@
   0% {
     transform: translateX(0);
   }
-
   6.5% {
     transform: translateX(-6px) rotateY(-9deg);
   }
-
   18.5% {
     transform: translateX(5px) rotateY(7deg);
   }
-
   31.5% {
     transform: translateX(-3px) rotateY(-5deg);
   }
-
   43.5% {
     transform: translateX(2px) rotateY(3deg);
   }
-
   50% {
     transform: translateX(0);
   }
@@ -3774,19 +4320,15 @@
   20% {
     transform: rotate3d(0, 0, 1, 15deg);
   }
-
   40% {
     transform: rotate3d(0, 0, 1, -10deg);
   }
-
   60% {
     transform: rotate3d(0, 0, 1, 5deg);
   }
-
   80% {
     transform: rotate3d(0, 0, 1, -5deg);
   }
-
   to {
     transform: rotate3d(0, 0, 1, 0deg);
   }
@@ -3801,19 +4343,21 @@
   from {
     transform: scale3d(1, 1, 1);
   }
-
-  10%, 20% {
+  10%,
+  20% {
     transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
   }
-
-  30%, 50%, 70%, 90% {
+  30%,
+  50%,
+  70%,
+  90% {
     transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
   }
-
-  40%, 60%, 80% {
+  40%,
+  60%,
+  80% {
     transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
   }
-
   to {
     transform: scale3d(1, 1, 1);
   }
@@ -3829,27 +4373,21 @@
   from {
     transform: none;
   }
-
   15% {
     transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
   }
-
   30% {
     transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
   }
-
   45% {
     transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
   }
-
   60% {
     transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
   }
-
   75% {
     transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
   }
-
   to {
     transform: none;
   }
@@ -3860,34 +4398,29 @@
 }
 
 @keyframes jello {
-  from, 11.1%, to {
+  from,
+  11.1%,
+  to {
     transform: none;
   }
-
   22.2% {
     transform: skewX(-12.5deg) skewY(-12.5deg);
   }
-
   33.3% {
     transform: skewX(6.25deg) skewY(6.25deg);
   }
-
   44.4% {
     transform: skewX(-3.125deg) skewY(-3.125deg);
   }
-
   55.5% {
     transform: skewX(1.5625deg) skewY(1.5625deg);
   }
-
   66.6% {
     transform: skewX(-0.78125deg) skewY(-0.78125deg);
   }
-
   77.7% {
     transform: skewX(0.390625deg) skewY(0.390625deg);
   }
-
   88.8% {
     transform: skewX(-0.1953125deg) skewY(-0.1953125deg);
   }
@@ -3899,32 +4432,31 @@
 }
 
 @keyframes bounceIn {
-  from, 20%, 40%, 60%, 80%, to {
+  from,
+  20%,
+  40%,
+  60%,
+  80%,
+  to {
     animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
   }
-
   0% {
     opacity: 0;
     transform: scale3d(.3, .3, .3);
   }
-
   20% {
     transform: scale3d(1.1, 1.1, 1.1);
   }
-
   40% {
     transform: scale3d(.9, .9, .9);
   }
-
   60% {
     opacity: 1;
     transform: scale3d(1.03, 1.03, 1.03);
   }
-
   80% {
     transform: scale3d(.97, .97, .97);
   }
-
   to {
     opacity: 1;
     transform: scale3d(1, 1, 1);
@@ -3936,28 +4468,27 @@
 }
 
 @keyframes bounceInDown {
-  from, 60%, 75%, 90%, to {
+  from,
+  60%,
+  75%,
+  90%,
+  to {
     animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
   }
-
   0% {
     opacity: 0;
     transform: translate3d(0, -3000px, 0);
   }
-
   60% {
     opacity: 1;
     transform: translate3d(0, 25px, 0);
   }
-
   75% {
     transform: translate3d(0, -10px, 0);
   }
-
   90% {
     transform: translate3d(0, 5px, 0);
   }
-
   to {
     transform: none;
   }
@@ -3968,28 +4499,27 @@
 }
 
 @keyframes bounceInLeft {
-  from, 60%, 75%, 90%, to {
+  from,
+  60%,
+  75%,
+  90%,
+  to {
     animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
   }
-
   0% {
     opacity: 0;
     transform: translate3d(-3000px, 0, 0);
   }
-
   60% {
     opacity: 1;
     transform: translate3d(25px, 0, 0);
   }
-
   75% {
     transform: translate3d(-10px, 0, 0);
   }
-
   90% {
     transform: translate3d(5px, 0, 0);
   }
-
   to {
     transform: none;
   }
@@ -4000,28 +4530,27 @@
 }
 
 @keyframes bounceInRight {
-  from, 60%, 75%, 90%, to {
+  from,
+  60%,
+  75%,
+  90%,
+  to {
     animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
   }
-
   from {
     opacity: 0;
     transform: translate3d(3000px, 0, 0);
   }
-
   60% {
     opacity: 1;
     transform: translate3d(-25px, 0, 0);
   }
-
   75% {
     transform: translate3d(10px, 0, 0);
   }
-
   90% {
     transform: translate3d(-5px, 0, 0);
   }
-
   to {
     transform: none;
   }
@@ -4032,28 +4561,27 @@
 }
 
 @keyframes bounceInUp {
-  from, 60%, 75%, 90%, to {
+  from,
+  60%,
+  75%,
+  90%,
+  to {
     animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
   }
-
   from {
     opacity: 0;
     transform: translate3d(0, 3000px, 0);
   }
-
   60% {
     opacity: 1;
     transform: translate3d(0, -20px, 0);
   }
-
   75% {
     transform: translate3d(0, 10px, 0);
   }
-
   90% {
     transform: translate3d(0, -5px, 0);
   }
-
   to {
     transform: translate3d(0, 0, 0);
   }
@@ -4067,12 +4595,11 @@
   20% {
     transform: scale3d(.9, .9, .9);
   }
-
-  50%, 55% {
+  50%,
+  55% {
     opacity: 1;
     transform: scale3d(1.1, 1.1, 1.1);
   }
-
   to {
     opacity: 0;
     transform: scale3d(.3, .3, .3);
@@ -4087,12 +4614,11 @@
   20% {
     transform: translate3d(0, 10px, 0);
   }
-
-  40%, 45% {
+  40%,
+  45% {
     opacity: 1;
     transform: translate3d(0, -20px, 0);
   }
-
   to {
     opacity: 0;
     transform: translate3d(0, 2000px, 0);
@@ -4108,7 +4634,6 @@
     opacity: 1;
     transform: translate3d(20px, 0, 0);
   }
-
   to {
     opacity: 0;
     transform: translate3d(-2000px, 0, 0);
@@ -4124,7 +4649,6 @@
     opacity: 1;
     transform: translate3d(-20px, 0, 0);
   }
-
   to {
     opacity: 0;
     transform: translate3d(2000px, 0, 0);
@@ -4139,12 +4663,11 @@
   20% {
     transform: translate3d(0, -10px, 0);
   }
-
-  40%, 45% {
+  40%,
+  45% {
     opacity: 1;
     transform: translate3d(0, 20px, 0);
   }
-
   to {
     opacity: 0;
     transform: translate3d(0, -2000px, 0);
@@ -4159,7 +4682,6 @@
   from {
     opacity: 0;
   }
-
   to {
     opacity: 1;
   }
@@ -4174,7 +4696,6 @@
     opacity: 0;
     transform: translate3d(0, -100%, 0);
   }
-
   to {
     opacity: 1;
     transform: none;
@@ -4190,7 +4711,6 @@
     opacity: 0;
     transform: translate3d(0, -2000px, 0);
   }
-
   to {
     opacity: 1;
     transform: none;
@@ -4206,7 +4726,6 @@
     opacity: 0;
     transform: translate3d(-100%, 0, 0);
   }
-
   to {
     opacity: 1;
     transform: none;
@@ -4222,7 +4741,6 @@
     opacity: 0;
     transform: translate3d(-2000px, 0, 0);
   }
-
   to {
     opacity: 1;
     transform: none;
@@ -4238,7 +4756,6 @@
     opacity: 0;
     transform: translate3d(100%, 0, 0);
   }
-
   to {
     opacity: 1;
     transform: none;
@@ -4254,7 +4771,6 @@
     opacity: 0;
     transform: translate3d(2000px, 0, 0);
   }
-
   to {
     opacity: 1;
     transform: none;
@@ -4270,7 +4786,6 @@
     opacity: 0;
     transform: translate3d(0, 100%, 0);
   }
-
   to {
     opacity: 1;
     transform: none;
@@ -4286,7 +4801,6 @@
     opacity: 0;
     transform: translate3d(0, 2000px, 0);
   }
-
   to {
     opacity: 1;
     transform: none;
@@ -4301,7 +4815,6 @@
   from {
     opacity: 1;
   }
-
   to {
     opacity: 0;
   }
@@ -4315,7 +4828,6 @@
   from {
     opacity: 1;
   }
-
   to {
     opacity: 0;
     transform: translate3d(0, 100%, 0);
@@ -4330,7 +4842,6 @@
   from {
     opacity: 1;
   }
-
   to {
     opacity: 0;
     transform: translate3d(0, 2000px, 0);
@@ -4345,7 +4856,6 @@
   from {
     opacity: 1;
   }
-
   to {
     opacity: 0;
     transform: translate3d(-100%, 0, 0);
@@ -4360,7 +4870,6 @@
   from {
     opacity: 1;
   }
-
   to {
     opacity: 0;
     transform: translate3d(-2000px, 0, 0);
@@ -4375,7 +4884,6 @@
   from {
     opacity: 1;
   }
-
   to {
     opacity: 0;
     transform: translate3d(100%, 0, 0);
@@ -4390,7 +4898,6 @@
   from {
     opacity: 1;
   }
-
   to {
     opacity: 0;
     transform: translate3d(2000px, 0, 0);
@@ -4405,7 +4912,6 @@
   from {
     opacity: 1;
   }
-
   to {
     opacity: 0;
     transform: translate3d(0, -100%, 0);
@@ -4420,7 +4926,6 @@
   from {
     opacity: 1;
   }
-
   to {
     opacity: 0;
     transform: translate3d(0, -2000px, 0);
@@ -4436,22 +4941,18 @@
     transform: perspective(400px) rotate3d(0, 1, 0, -360deg);
     animation-timing-function: ease-out;
   }
-
   40% {
     transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -190deg);
     animation-timing-function: ease-out;
   }
-
   50% {
     transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -170deg);
     animation-timing-function: ease-in;
   }
-
   80% {
     transform: perspective(400px) scale3d(.95, .95, .95);
     animation-timing-function: ease-in;
   }
-
   to {
     transform: perspective(400px);
     animation-timing-function: ease-in;
@@ -4470,21 +4971,17 @@
     animation-timing-function: ease-in;
     opacity: 0;
   }
-
   40% {
     transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
     animation-timing-function: ease-in;
   }
-
   60% {
     transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
     opacity: 1;
   }
-
   80% {
     transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
   }
-
   to {
     transform: perspective(400px);
   }
@@ -4502,21 +4999,17 @@
     animation-timing-function: ease-in;
     opacity: 0;
   }
-
   40% {
     transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
     animation-timing-function: ease-in;
   }
-
   60% {
     transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
     opacity: 1;
   }
-
   80% {
     transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
   }
-
   to {
     transform: perspective(400px);
   }
@@ -4532,12 +5025,10 @@
   from {
     transform: perspective(400px);
   }
-
   30% {
     transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
     opacity: 1;
   }
-
   to {
     transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
     opacity: 0;
@@ -4554,12 +5045,10 @@
   from {
     transform: perspective(400px);
   }
-
   30% {
     transform: perspective(400px) rotate3d(0, 1, 0, -15deg);
     opacity: 1;
   }
-
   to {
     transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
     opacity: 0;
@@ -4577,17 +5066,14 @@
     transform: translate3d(100%, 0, 0) skewX(-30deg);
     opacity: 0;
   }
-
   60% {
     transform: skewX(20deg);
     opacity: 1;
   }
-
   80% {
     transform: skewX(-5deg);
     opacity: 1;
   }
-
   to {
     transform: none;
     opacity: 1;
@@ -4603,7 +5089,6 @@
   from {
     opacity: 1;
   }
-
   to {
     transform: translate3d(100%, 0, 0) skewX(30deg);
     opacity: 0;
@@ -4621,7 +5106,6 @@
     transform: rotate3d(0, 0, 1, -200deg);
     opacity: 0;
   }
-
   to {
     transform-origin: center;
     transform: none;
@@ -4639,7 +5123,6 @@
     transform: rotate3d(0, 0, 1, -45deg);
     opacity: 0;
   }
-
   to {
     transform-origin: left bottom;
     transform: none;
@@ -4657,7 +5140,6 @@
     transform: rotate3d(0, 0, 1, 45deg);
     opacity: 0;
   }
-
   to {
     transform-origin: right bottom;
     transform: none;
@@ -4675,7 +5157,6 @@
     transform: rotate3d(0, 0, 1, 45deg);
     opacity: 0;
   }
-
   to {
     transform-origin: left bottom;
     transform: none;
@@ -4693,7 +5174,6 @@
     transform: rotate3d(0, 0, 1, -90deg);
     opacity: 0;
   }
-
   to {
     transform-origin: right bottom;
     transform: none;
@@ -4710,7 +5190,6 @@
     transform-origin: center;
     opacity: 1;
   }
-
   to {
     transform-origin: center;
     transform: rotate3d(0, 0, 1, 200deg);
@@ -4727,7 +5206,6 @@
     transform-origin: left bottom;
     opacity: 1;
   }
-
   to {
     transform-origin: left bottom;
     transform: rotate3d(0, 0, 1, 45deg);
@@ -4744,7 +5222,6 @@
     transform-origin: right bottom;
     opacity: 1;
   }
-
   to {
     transform-origin: right bottom;
     transform: rotate3d(0, 0, 1, -45deg);
@@ -4761,7 +5238,6 @@
     transform-origin: left bottom;
     opacity: 1;
   }
-
   to {
     transform-origin: left bottom;
     transform: rotate3d(0, 0, 1, -45deg);
@@ -4778,7 +5254,6 @@
     transform-origin: right bottom;
     opacity: 1;
   }
-
   to {
     transform-origin: right bottom;
     transform: rotate3d(0, 0, 1, 90deg);
@@ -4795,20 +5270,19 @@
     transform-origin: top left;
     animation-timing-function: ease-in-out;
   }
-
-  20%, 60% {
+  20%,
+  60% {
     transform: rotate3d(0, 0, 1, 80deg);
     transform-origin: top left;
     animation-timing-function: ease-in-out;
   }
-
-  40%, 80% {
+  40%,
+  80% {
     transform: rotate3d(0, 0, 1, 60deg);
     transform-origin: top left;
     animation-timing-function: ease-in-out;
     opacity: 1;
   }
-
   to {
     transform: translate3d(0, 700px, 0);
     opacity: 0;
@@ -4825,15 +5299,12 @@
     transform: scale(0.1) rotate(30deg);
     transform-origin: center bottom;
   }
-
   50% {
     transform: rotate(-10deg);
   }
-
   70% {
     transform: rotate(3deg);
   }
-
   to {
     opacity: 1;
     transform: scale(1);
@@ -4851,7 +5322,6 @@
     opacity: 0;
     transform: translate3d(-100%, 0, 0) rotate3d(0, 0, 1, -120deg);
   }
-
   to {
     opacity: 1;
     transform: none;
@@ -4868,7 +5338,6 @@
   from {
     opacity: 1;
   }
-
   to {
     opacity: 0;
     transform: translate3d(100%, 0, 0) rotate3d(0, 0, 1, 120deg);
@@ -4884,7 +5353,6 @@
     opacity: 0;
     transform: scale3d(.3, .3, .3);
   }
-
   50% {
     opacity: 1;
   }
@@ -4900,7 +5368,6 @@
     transform: scale3d(.1, .1, .1) translate3d(0, -1000px, 0);
     animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
   }
-
   60% {
     opacity: 1;
     transform: scale3d(.475, .475, .475) translate3d(0, 60px, 0);
@@ -4918,7 +5385,6 @@
     transform: scale3d(.1, .1, .1) translate3d(-1000px, 0, 0);
     animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
   }
-
   60% {
     opacity: 1;
     transform: scale3d(.475, .475, .475) translate3d(10px, 0, 0);
@@ -4936,7 +5402,6 @@
     transform: scale3d(.1, .1, .1) translate3d(1000px, 0, 0);
     animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
   }
-
   60% {
     opacity: 1;
     transform: scale3d(.475, .475, .475) translate3d(-10px, 0, 0);
@@ -4954,7 +5419,6 @@
     transform: scale3d(.1, .1, .1) translate3d(0, 1000px, 0);
     animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
   }
-
   60% {
     opacity: 1;
     transform: scale3d(.475, .475, .475) translate3d(0, -60px, 0);
@@ -4970,12 +5434,10 @@
   from {
     opacity: 1;
   }
-
   50% {
     opacity: 0;
     transform: scale3d(.3, .3, .3);
   }
-
   to {
     opacity: 0;
   }
@@ -4991,7 +5453,6 @@
     transform: scale3d(.475, .475, .475) translate3d(0, -60px, 0);
     animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
   }
-
   to {
     opacity: 0;
     transform: scale3d(.1, .1, .1) translate3d(0, 2000px, 0);
@@ -5009,7 +5470,6 @@
     opacity: 1;
     transform: scale3d(.475, .475, .475) translate3d(42px, 0, 0);
   }
-
   to {
     opacity: 0;
     transform: scale(.1) translate3d(-2000px, 0, 0);
@@ -5026,7 +5486,6 @@
     opacity: 1;
     transform: scale3d(.475, .475, .475) translate3d(-42px, 0, 0);
   }
-
   to {
     opacity: 0;
     transform: scale(.1) translate3d(2000px, 0, 0);
@@ -5044,7 +5503,6 @@
     transform: scale3d(.475, .475, .475) translate3d(0, 60px, 0);
     animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
   }
-
   to {
     opacity: 0;
     transform: scale3d(.1, .1, .1) translate3d(0, -2000px, 0);
@@ -5062,7 +5520,6 @@
     transform: translate3d(0, -100%, 0);
     visibility: visible;
   }
-
   to {
     transform: translate3d(0, 0, 0);
   }
@@ -5077,7 +5534,6 @@
     transform: translate3d(-100%, 0, 0);
     visibility: visible;
   }
-
   to {
     transform: translate3d(0, 0, 0);
   }
@@ -5092,7 +5548,6 @@
     transform: translate3d(100%, 0, 0);
     visibility: visible;
   }
-
   to {
     transform: translate3d(0, 0, 0);
   }
@@ -5107,7 +5562,6 @@
     transform: translate3d(0, 100%, 0);
     visibility: visible;
   }
-
   to {
     transform: translate3d(0, 0, 0);
   }
@@ -5121,7 +5575,6 @@
   from {
     transform: translate3d(0, 0, 0);
   }
-
   to {
     visibility: hidden;
     transform: translate3d(0, 100%, 0);
@@ -5136,7 +5589,6 @@
   from {
     transform: translate3d(0, 0, 0);
   }
-
   to {
     visibility: hidden;
     transform: translate3d(-100%, 0, 0);
@@ -5151,7 +5603,6 @@
   from {
     transform: translate3d(0, 0, 0);
   }
-
   to {
     visibility: hidden;
     transform: translate3d(100%, 0, 0);
@@ -5166,7 +5617,6 @@
   from {
     transform: translate3d(0, 0, 0);
   }
-
   to {
     visibility: hidden;
     transform: translate3d(0, -100%, 0);
@@ -5195,7 +5645,6 @@
   height: 100%;
   width: 6px;
   display: inline-block;
-
   -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
   animation: sk-stretchdelay 1.2s infinite ease-in-out;
 }
@@ -5221,7 +5670,9 @@
 }
 
 @-webkit-keyframes sk-stretchdelay {
-  0%, 40%, 100% {
+  0%,
+  40%,
+  100% {
     -webkit-transform: scaleY(0.4)
   }
   20% {
@@ -5230,7 +5681,9 @@
 }
 
 @keyframes sk-stretchdelay {
-  0%, 40%, 100% {
+  0%,
+  40%,
+  100% {
     transform: scaleY(0.4);
     -webkit-transform: scaleY(0.4);
   }

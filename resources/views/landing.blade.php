@@ -11,6 +11,9 @@
                 <div class="container-fluid login-row">
                     <div class="row">
                         <div class="col-xl-12 text-right animated fadeIn">
+                            <a href="/jobs" class="btn btn-signin">Browse Jobs</a>
+
+                            <a href="/profiles" class="btn btn-signin">Browse Photographers</a>
 
                             <a href="/login"
                                class="btn btn-signin" @click="openLoginPage">Sign In
@@ -33,7 +36,8 @@
                             <form action="{{ route('jobs') }}" method="GET">
 
                                 <div class="input-group input-group-lg input-search animated rotateInUpRight">
-                                    <input name="location" type="text" class="form-control" placeholder="What are you Looking for...">
+                                    <input name="location" type="text" class="form-control"
+                                           placeholder="What are you Looking for...">
                                     <span class="input-group-btn">
                                         <button class="btn btn-secondary btn-search" type="submit">Search</button>
                                     </span>
@@ -260,109 +264,109 @@
     </div>
 
     <!-- people saying -->
-    <div class="container-fluid how-bg-color">
-        <div class="container">
-            <div class="row icon-padding">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                    <h1 class="text-center market-place-heading">What people are saying</h1>
-                    <h6 class="text-center market-place-heading">Companies and individuals loves using Photolinga to
-                        work
-                        their way.</h6>
+    {{--<div class="container-fluid how-bg-color">--}}
+    {{--<div class="container">--}}
+    {{--<div class="row icon-padding">--}}
+    {{--<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">--}}
+    {{--<h1 class="text-center market-place-heading">What people are saying</h1>--}}
+    {{--<h6 class="text-center market-place-heading">Companies and individuals loves using Photolinga to--}}
+    {{--work--}}
+    {{--their way.</h6>--}}
 
-                    <ul class="remove-list-style">
-                        <li>
-                            <div class="row">
+    {{--<ul class="remove-list-style">--}}
+    {{--<li>--}}
+    {{--<div class="row">--}}
 
-                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                    <div class="row">
-                                        <div class="col-xl-2 col-lg-2 col-md-4 col-sm-2 col-4">
-                                            <img src="{{ asset('./images/Image -1.png') }}" alt="" class="img-fluid">
-                                        </div>
+    {{--<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">--}}
+    {{--<div class="row">--}}
+    {{--<div class="col-xl-2 col-lg-2 col-md-4 col-sm-2 col-4">--}}
+    {{--<img src="{{ asset('./images/Image -1.png') }}" alt="" class="img-fluid">--}}
+    {{--</div>--}}
 
-                                        <div class="col-xl-10 col-lg-10 col-md-8 col-sm-10 col-8">
-                                            <p class="desc">Guru is an amazing service thati highly recommend to
-                                                bussiness
-                                                of all sizes looking to find short or long-term, high quality
-                                                resources.</p>
-                                            <h6 class="author-name">Bev Flaxington</h6>
-                                            <footer class="blockquote-footer">PRINCIPAL OF THE<cite
-                                                        title="Source Title">COLLABORATIVE</cite>
-                                            </footer>
-                                        </div>
-                                    </div>
-                                </div>
+    {{--<div class="col-xl-10 col-lg-10 col-md-8 col-sm-10 col-8">--}}
+    {{--<p class="desc">Guru is an amazing service thati highly recommend to--}}
+    {{--bussiness--}}
+    {{--of all sizes looking to find short or long-term, high quality--}}
+    {{--resources.</p>--}}
+    {{--<h6 class="author-name">Bev Flaxington</h6>--}}
+    {{--<footer class="blockquote-footer">PRINCIPAL OF THE<cite--}}
+    {{--title="Source Title">COLLABORATIVE</cite>--}}
+    {{--</footer>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--</div>--}}
 
-                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                    <div class="row">
-                                        <div class="col-xl-2 col-lg-2 col-md-4 col-sm-2 col-4">
-                                            <img src="{{ asset('./images/Image -1.png') }}" alt="" class="img-fluid">
-                                        </div>
+    {{--<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">--}}
+    {{--<div class="row">--}}
+    {{--<div class="col-xl-2 col-lg-2 col-md-4 col-sm-2 col-4">--}}
+    {{--<img src="{{ asset('./images/Image -1.png') }}" alt="" class="img-fluid">--}}
+    {{--</div>--}}
 
-                                        <div class="col-xl-10 col-lg-10 col-md-8 col-sm-10 col-8">
-                                            <p class="desc">Guru is an amazing service thati highly recommend to
-                                                bussiness
-                                                of all sizes looking to find short or long-term, high quality
-                                                resources.</p>
-                                            <h6 class="author-name">Bev Flaxington</h6>
-                                            <footer class="blockquote-footer">PRINCIPAL OF THE<cite
-                                                        title="Source Title">COLLABORATIVE</cite>
-                                            </footer>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+    {{--<div class="col-xl-10 col-lg-10 col-md-8 col-sm-10 col-8">--}}
+    {{--<p class="desc">Guru is an amazing service thati highly recommend to--}}
+    {{--bussiness--}}
+    {{--of all sizes looking to find short or long-term, high quality--}}
+    {{--resources.</p>--}}
+    {{--<h6 class="author-name">Bev Flaxington</h6>--}}
+    {{--<footer class="blockquote-footer">PRINCIPAL OF THE<cite--}}
+    {{--title="Source Title">COLLABORATIVE</cite>--}}
+    {{--</footer>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--</div>--}}
 
-                        </li>
+    {{--</li>--}}
 
-                        <li>
-                            <div class="row">
+    {{--<li>--}}
+    {{--<div class="row">--}}
 
-                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                    <div class="row">
-                                        <div class="col-xl-2 col-lg-2 col-md-4 col-sm-2 col-4">
-                                            <img src="{{ asset('./images/Image -1.png') }}" alt="" class="img-fluid">
-                                        </div>
+    {{--<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">--}}
+    {{--<div class="row">--}}
+    {{--<div class="col-xl-2 col-lg-2 col-md-4 col-sm-2 col-4">--}}
+    {{--<img src="{{ asset('./images/Image -1.png') }}" alt="" class="img-fluid">--}}
+    {{--</div>--}}
 
-                                        <div class="col-xl-10 col-lg-10 col-md-8 col-sm-10 col-8">
-                                            <p class="desc">Guru is an amazing service thati highly recommend to
-                                                bussiness
-                                                of all sizes looking to find short or long-term, high quality
-                                                resources.</p>
-                                            <h6 class="author-name">Bev Flaxington</h6>
-                                            <footer class="blockquote-footer">PRINCIPAL OF THE<cite
-                                                        title="Source Title">COLLABORATIVE</cite>
-                                            </footer>
-                                        </div>
-                                    </div>
-                                </div>
+    {{--<div class="col-xl-10 col-lg-10 col-md-8 col-sm-10 col-8">--}}
+    {{--<p class="desc">Guru is an amazing service thati highly recommend to--}}
+    {{--bussiness--}}
+    {{--of all sizes looking to find short or long-term, high quality--}}
+    {{--resources.</p>--}}
+    {{--<h6 class="author-name">Bev Flaxington</h6>--}}
+    {{--<footer class="blockquote-footer">PRINCIPAL OF THE<cite--}}
+    {{--title="Source Title">COLLABORATIVE</cite>--}}
+    {{--</footer>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--</div>--}}
 
-                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                    <div class="row">
-                                        <div class="col-xl-2 col-lg-2 col-md-4 col-sm-2 col-4">
-                                            <img src="{{ asset('./images/Image -1.png') }}" alt="" class="img-fluid">
-                                        </div>
+    {{--<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">--}}
+    {{--<div class="row">--}}
+    {{--<div class="col-xl-2 col-lg-2 col-md-4 col-sm-2 col-4">--}}
+    {{--<img src="{{ asset('./images/Image -1.png') }}" alt="" class="img-fluid">--}}
+    {{--</div>--}}
 
-                                        <div class="col-xl-10 col-lg-10 col-md-8 col-sm-10 col-8">
-                                            <p class="desc">Guru is an amazing service thati highly recommend to
-                                                bussiness
-                                                of all sizes looking to find short or long-term, high quality
-                                                resources.</p>
-                                            <h6 class="author-name">Bev Flaxington</h6>
-                                            <footer class="blockquote-footer">PRINCIPAL OF THE<cite
-                                                        title="Source Title">COLLABORATIVE</cite>
-                                            </footer>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+    {{--<div class="col-xl-10 col-lg-10 col-md-8 col-sm-10 col-8">--}}
+    {{--<p class="desc">Guru is an amazing service thati highly recommend to--}}
+    {{--bussiness--}}
+    {{--of all sizes looking to find short or long-term, high quality--}}
+    {{--resources.</p>--}}
+    {{--<h6 class="author-name">Bev Flaxington</h6>--}}
+    {{--<footer class="blockquote-footer">PRINCIPAL OF THE<cite--}}
+    {{--title="Source Title">COLLABORATIVE</cite>--}}
+    {{--</footer>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--</div>--}}
 
-                        </li>
+    {{--</li>--}}
 
-                    </ul>
+    {{--</ul>--}}
 
-                </div>
-            </div>
-        </div>
-    </div>
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--</div>--}}
 
 @endsection

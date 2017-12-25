@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 13);
+/******/ 	return __webpack_require__(__webpack_require__.s = 14);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -71,7 +71,7 @@
 
 
 var bind = __webpack_require__(7);
-var isBuffer = __webpack_require__(25);
+var isBuffer = __webpack_require__(26);
 
 /*global toString:true*/
 
@@ -517,7 +517,7 @@ module.exports = g;
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(0);
-var normalizeHeaderName = __webpack_require__(27);
+var normalizeHeaderName = __webpack_require__(28);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -711,7 +711,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(47)
+var listToStyles = __webpack_require__(48)
 
 /*
 type StyleObject = {
@@ -1128,12 +1128,12 @@ module.exports = function bind(fn, thisArg) {
 
 
 var utils = __webpack_require__(0);
-var settle = __webpack_require__(28);
-var buildURL = __webpack_require__(30);
-var parseHeaders = __webpack_require__(31);
-var isURLSameOrigin = __webpack_require__(32);
+var settle = __webpack_require__(29);
+var buildURL = __webpack_require__(31);
+var parseHeaders = __webpack_require__(32);
+var isURLSameOrigin = __webpack_require__(33);
 var createError = __webpack_require__(9);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(33);
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(34);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -1231,7 +1231,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(34);
+      var cookies = __webpack_require__(35);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -1315,7 +1315,7 @@ module.exports = function xhrAdapter(config) {
 "use strict";
 
 
-var enhanceError = __webpack_require__(29);
+var enhanceError = __webpack_require__(30);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -1375,6 +1375,1246 @@ module.exports = Cancel;
 /* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
+/*!
+ * Name: vue-upload-component
+ * Version: 2.7.3
+ * Author: LianYue
+ */
+(function (global, factory) {
+	 true ? module.exports = factory() :
+	typeof define === 'function' && define.amd ? define(factory) :
+	(global.VueUploadComponent = factory());
+}(this, (function () { 'use strict';
+
+(function () {
+  if (typeof document !== 'undefined') {
+    var head = document.head || document.getElementsByTagName('head')[0],
+        style = document.createElement('style'),
+        css = "";style.type = 'text/css';if (style.styleSheet) {
+      style.styleSheet.cssText = css;
+    } else {
+      style.appendChild(document.createTextNode(css));
+    }head.appendChild(style);
+  }
+})();
+
+var InputFile = { render: function render() {
+    var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;return _c('input', { attrs: { "type": "file", "name": _vm.$parent.name, "id": _vm.$parent.inputId || _vm.$parent.name, "accept": _vm.$parent.accept, "webkitdirectory": _vm.$parent.directory && _vm.$parent.features.directory, "directory": _vm.$parent.directory && _vm.$parent.features.directory, "multiple": _vm.$parent.multiple && _vm.$parent.features.html5 }, on: { "change": _vm.change } });
+  }, staticRenderFns: [],
+  methods: {
+    change: function change(e) {
+      this.$destroy();
+      this.$parent.addInputFile(e.target);
+      // eslint-disable-next-line
+      new this.constructor({
+        parent: this.$parent,
+        el: this.$el
+      });
+    }
+  }
+};
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+(function () {
+  if (typeof document !== 'undefined') {
+    var head = document.head || document.getElementsByTagName('head')[0],
+        style = document.createElement('style'),
+        css = " .file-uploads { overflow: hidden; position: relative; text-align: center; display: inline-block; } .file-uploads.file-uploads-html4 input[type=\"file\"] { opacity: 0; font-size: 20em; z-index: 1; top: 0; left: 0; right: 0; bottom: 0; position: absolute; width: 100%; height: 100%; } .file-uploads.file-uploads-html5 input[type=\"file\"] { overflow: hidden; position: fixed; width: 1px; height: 1px; z-index: -1; opacity: 0; } ";style.type = 'text/css';if (style.styleSheet) {
+      style.styleSheet.cssText = css;
+    } else {
+      style.appendChild(document.createTextNode(css));
+    }head.appendChild(style);
+  }
+})();
+
+var FileUpload = { render: function render() {
+    var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;return _c('label', { class: _vm.className }, [_vm._t("default"), _vm._v(" "), _c('input-file')], 2);
+  }, staticRenderFns: [],
+  components: {
+    InputFile: InputFile
+  },
+  props: {
+    inputId: {
+      type: String
+    },
+
+    name: {
+      type: String,
+      default: 'file'
+    },
+
+    accept: {
+      type: String
+    },
+
+    multiple: {
+      type: Boolean
+    },
+
+    maximum: {
+      type: Number,
+      default: function _default() {
+        return this.multiple ? 0 : 1;
+      }
+    },
+
+    addIndex: {
+      type: [Boolean, Number]
+    },
+
+    directory: {
+      type: Boolean
+    },
+
+    postAction: {
+      type: String
+    },
+
+    putAction: {
+      type: String
+    },
+
+    headers: {
+      type: Object,
+      default: Object
+    },
+
+    data: {
+      type: Object,
+      default: Object
+    },
+
+    timeout: {
+      type: Number,
+      default: 0
+    },
+
+    drop: {
+      default: false
+    },
+
+    dropDirectory: {
+      type: Boolean,
+      default: true
+    },
+
+    size: {
+      type: Number,
+      default: 0
+    },
+
+    extensions: {
+      default: Array
+    },
+
+    value: {
+      type: Array,
+      default: Array
+    },
+
+    thread: {
+      type: Number,
+      default: 1
+    }
+  },
+
+  data: function data() {
+    return {
+      files: this.value,
+      features: {
+        html5: true,
+        directory: false,
+        drag: false
+      },
+
+      active: false,
+      dropActive: false,
+
+      uploading: 0,
+
+      destroy: false
+    };
+  },
+
+
+  /**
+   * mounted
+   * @return {[type]} [description]
+   */
+  mounted: function mounted() {
+    var input = document.createElement('input');
+    input.type = 'file';
+    input.multiple = true;
+
+    // html5 特征
+    if (window.FormData && input.files) {
+      // 上传目录特征
+      if (typeof input.webkitdirectory === 'boolean' || typeof input.directory === 'boolean') {
+        this.features.directory = true;
+      }
+
+      // 拖拽特征
+      if (this.features.html5 && typeof input.ondrop !== 'undefined') {
+        this.features.drop = true;
+      }
+    } else {
+      this.features.html5 = false;
+    }
+
+    // files 定位缓存
+    this.maps = {};
+
+    this.$nextTick(function () {
+
+      // 更新下父级
+      if (this.$parent) {
+        this.$parent.$forceUpdate();
+      }
+
+      // 拖拽渲染
+      this.watchDrop(this.drop);
+    });
+  },
+
+
+  /**
+   * beforeDestroy
+   * @return {[type]} [description]
+   */
+  beforeDestroy: function beforeDestroy() {
+    // 已销毁
+    this.destroy = true;
+
+    // 设置成不激活
+    this.active = false;
+  },
+
+
+  computed: {
+    /**
+     * uploading 正在上传的线程
+     * @return {[type]} [description]
+     */
+
+    /**
+     * uploaded 文件列表是否全部已上传
+     * @return {[type]} [description]
+     */
+    uploaded: function uploaded() {
+      var file = void 0;
+      for (var i = 0; i < this.files.length; i++) {
+        file = this.files[i];
+        if (file.fileObject && !file.error && !file.success) {
+          return false;
+        }
+      }
+      return true;
+    },
+    className: function className() {
+      return ['file-uploads', this.features.html5 ? 'file-uploads-html5' : 'file-uploads-html4', this.features.directory && this.directory ? 'file-uploads-directory' : undefined, this.features.drop && this.drop ? 'file-uploads-drop' : undefined];
+    }
+  },
+
+  watch: {
+    active: function active(_active) {
+      this.watchActive(_active);
+    },
+    dropActive: function dropActive() {
+      if (this.$parent) {
+        this.$parent.$forceUpdate();
+      }
+    },
+    drop: function drop(value) {
+      this.watchDrop(value);
+    },
+    value: function value(files) {
+      if (this.files === files) {
+        return;
+      }
+      this.files = files;
+
+      var oldMaps = this.maps;
+
+      // 重写 maps 缓存
+      this.maps = {};
+      for (var i = 0; i < this.files.length; i++) {
+        var file = this.files[i];
+        this.maps[file.id] = file;
+      }
+
+      // add, update
+      for (var key in this.maps) {
+        var newFile = this.maps[key];
+        var oldFile = oldMaps[key];
+        if (newFile !== oldFile) {
+          this.emitFile(newFile, oldFile);
+        }
+      }
+
+      // delete
+      for (var _key in oldMaps) {
+        if (!this.maps[_key]) {
+          this.emitFile(undefined, oldMaps[_key]);
+        }
+      }
+    }
+  },
+
+  methods: {
+
+    // 清空
+    clear: function clear() {
+      if (this.files.length) {
+        var files = this.files;
+        this.files = [];
+
+        // 定位
+        this.maps = {};
+
+        // 事件
+        this.emitInput();
+        for (var i = 0; i < files.length; i++) {
+          this.emitFile(undefined, files[i]);
+        }
+      }
+      return true;
+    },
+
+
+    // 选择
+    get: function get(id) {
+      if (!id) {
+        return false;
+      }
+
+      if ((typeof id === 'undefined' ? 'undefined' : _typeof(id)) === 'object') {
+        return this.maps[id.id] || false;
+      }
+
+      return this.maps[id] || false;
+    },
+
+
+    // 添加
+    add: function add(_files) {
+      var index = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.addIndex;
+
+      var files = _files;
+      var isArray = files instanceof Array;
+
+      // 不是数组整理成数组
+      if (!isArray) {
+        files = [files];
+      }
+
+      // 遍历规范对象
+      var addFiles = [];
+      for (var i = 0; i < files.length; i++) {
+        var file = files[i];
+        if (this.features.html5 && file instanceof Blob) {
+          file = {
+            file: file,
+            size: file.size,
+            name: file.webkitRelativePath || file.relativePath || file.name || 'unknown',
+            type: file.type
+          };
+        }
+        var fileObject = false;
+        if (file.fileObject === false) {
+          // false
+        } else if (file.fileObject) {
+          fileObject = true;
+        } else if (typeof Element !== 'undefined' && file.el instanceof Element) {
+          fileObject = true;
+        } else if (typeof Blob !== 'undefined' && file.file instanceof Blob) {
+          fileObject = true;
+        }
+        if (fileObject) {
+          file = _extends({
+            fileObject: true,
+            size: -1,
+            name: 'Filename',
+            type: '',
+            active: false,
+            error: '',
+            success: false,
+            putAction: this.putAction,
+            postAction: this.postAction,
+            timeout: this.timeout
+          }, file, {
+            response: {},
+
+            progress: '0.00', // 只读
+            speed: 0 // 只读
+            // xhr: false,                // 只读
+            // iframe: false,             // 只读
+          });
+
+          file.data = _extends({}, this.data, file.data ? file.data : {});
+
+          file.headers = _extends({}, this.headers, file.headers ? file.headers : {});
+        }
+
+        // 必须包含 id
+        if (!file.id) {
+          file.id = Math.random().toString(36).substr(2);
+        }
+
+        if (this.emitFilter(file, undefined)) {
+          continue;
+        }
+
+        // 最大数量限制
+        if (this.maximum > 1 && addFiles.length + this.files.length >= this.maximum) {
+          break;
+        }
+
+        addFiles.push(file);
+
+        // 最大数量限制
+        if (this.maximum === 1) {
+          break;
+        }
+      }
+
+      // 没有文件
+      if (!addFiles.length) {
+        return false;
+      }
+
+      // 如果是 1 清空
+      if (this.maximum === 1) {
+        this.clear();
+      }
+
+      // 添加进去 files
+      var newFiles = void 0;
+      if (index === true || index === 0) {
+        newFiles = addFiles.concat(this.files);
+      } else if (index) {
+        newFiles = addFiles.concat([]);
+        newFiles.splice(index, 0, addFiles);
+      } else {
+        newFiles = this.files.concat(addFiles);
+      }
+
+      this.files = newFiles;
+
+      // 定位
+      for (var _i = 0; _i < addFiles.length; _i++) {
+        var _file2 = addFiles[_i];
+        this.maps[_file2.id] = _file2;
+      }
+
+      // 事件
+      this.emitInput();
+      for (var _i2 = 0; _i2 < addFiles.length; _i2++) {
+        this.emitFile(addFiles[_i2], undefined);
+      }
+
+      return isArray ? addFiles : addFiles[0];
+    },
+
+
+    // 添加表单文件
+    addInputFile: function addInputFile(el) {
+      var files = [];
+      if (el.files) {
+        for (var i = 0; i < el.files.length; i++) {
+          var file = el.files[i];
+          files.push({
+            size: file.size,
+            name: file.webkitRelativePath || file.relativePath || file.name,
+            type: file.type,
+            file: file,
+            el: el
+          });
+        }
+      } else {
+        files.push({
+          name: el.value.replace(/^.*?([^\/\\\r\n]+)$/, '$1'),
+          el: el
+        });
+      }
+      return this.add(files);
+    },
+
+
+    // 添加 DataTransfer
+    addDataTransfer: function addDataTransfer(dataTransfer) {
+      var _this = this;
+
+      var files = [];
+      if (dataTransfer.items && dataTransfer.items.length) {
+        var items = [];
+        for (var i = 0; i < dataTransfer.items.length; i++) {
+          var item = dataTransfer.items[i];
+          if (item.getAsEntry) {
+            item = item.getAsEntry() || item.getAsFile();
+          } else if (item.webkitGetAsEntry) {
+            item = item.webkitGetAsEntry() || item.getAsFile();
+          } else {
+            item = item.getAsFile();
+          }
+          if (item) {
+            items.push(item);
+          }
+        }
+
+        return new Promise(function (resolve, reject) {
+          var forEach = function forEach(i) {
+            var item = items[i];
+            // 结束 文件数量大于 最大数量
+            if (!item || _this.maximum > 0 && files.length >= _this.maximum) {
+              return resolve(_this.add(files));
+            }
+            _this.getEntry(item).then(function (results) {
+              files.push.apply(files, _toConsumableArray(results));
+              forEach(i + 1);
+            });
+          };
+          forEach(0);
+        });
+      }
+
+      if (dataTransfer.files.length) {
+        for (var _i3 = 0; _i3 < dataTransfer.files.length; _i3++) {
+          files.push(dataTransfer.files[_i3]);
+          if (this.maximum > 0 && files.length >= this.maximum) {
+            break;
+          }
+        }
+        return Promise.resolve(this.add(files));
+      }
+
+      return Promise.resolve([]);
+    },
+
+
+    // 获得 entry
+    getEntry: function getEntry(entry) {
+      var _this2 = this;
+
+      var path = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+
+      return new Promise(function (resolve, reject) {
+        if (entry.isFile) {
+          entry.file(function (file) {
+            resolve([{
+              size: file.size,
+              name: path + file.name,
+              type: file.type,
+              file: file
+            }]);
+          });
+        } else if (entry.isDirectory && _this2.dropDirectory) {
+          var files = [];
+          var dirReader = entry.createReader();
+          var readEntries = function readEntries() {
+            dirReader.readEntries(function (entries) {
+              var forEach = function forEach(i) {
+                if (!entries[i] && i === 0 || _this2.maximum > 0 && files.length >= _this2.maximum) {
+                  return resolve(files);
+                }
+                if (!entries[i]) {
+                  return readEntries();
+                }
+                _this2.getEntry(entries[i], path + entry.name + '/').then(function (results) {
+                  files.push.apply(files, _toConsumableArray(results));
+                  forEach(i + 1);
+                });
+              };
+              forEach(0);
+            });
+          };
+          readEntries();
+        } else {
+          resolve([]);
+        }
+      });
+    },
+    replace: function replace(id1, id2) {
+      var file1 = this.get(id1);
+      var file2 = this.get(id2);
+      if (!file1 || !file2 || file1 === file2) {
+        return false;
+      }
+      var files = this.files.concat([]);
+      var index1 = files.indexOf(file1);
+      var index2 = files.indexOf(file2);
+      if (index1 === -1 || index2 === -1) {
+        return false;
+      }
+      files[index1] = file2;
+      files[index2] = file1;
+      this.files = files;
+      this.emitInput();
+      return true;
+    },
+
+
+    // 移除
+    remove: function remove(id) {
+      var file = this.get(id);
+      if (file) {
+        if (this.emitFilter(undefined, file)) {
+          return false;
+        }
+        var files = this.files.concat([]);
+        var index = files.indexOf(file);
+        if (index === -1) {
+          console.error('remove', file);
+          return false;
+        }
+        files.splice(index, 1);
+        this.files = files;
+
+        // 定位
+        delete this.maps[file.id];
+
+        // 事件
+        this.emitInput();
+        this.emitFile(undefined, file);
+      }
+      return file;
+    },
+
+
+    // 更新
+    update: function update(id, data) {
+      var file = this.get(id);
+      if (file) {
+        var newFile = _extends({}, file, data);
+        // 停用必须加上错误
+        if (file.fileObject && file.active && !newFile.active && !newFile.error && !newFile.success) {
+          newFile.error = 'abort';
+        }
+
+        if (this.emitFilter(newFile, file)) {
+          return false;
+        }
+
+        var files = this.files.concat([]);
+        var index = files.indexOf(file);
+        if (index === -1) {
+          console.error('update', file);
+          return false;
+        }
+        files.splice(index, 1, newFile);
+        this.files = files;
+
+        // 删除  旧定位 写入 新定位 （已便支持修改id)
+        delete this.maps[file.id];
+        this.maps[newFile.id] = newFile;
+
+        // 事件
+        this.emitInput();
+        this.emitFile(newFile, file);
+        return newFile;
+      }
+      return false;
+    },
+
+
+    // 预处理 事件 过滤器
+    emitFilter: function emitFilter(newFile, oldFile) {
+      var isPrevent = false;
+      this.$emit('input-filter', newFile, oldFile, function () {
+        isPrevent = true;
+        return isPrevent;
+      });
+      return isPrevent;
+    },
+
+
+    // 处理后 事件 分发
+    emitFile: function emitFile(newFile, oldFile) {
+      this.$emit('input-file', newFile, oldFile);
+      if (newFile && newFile.fileObject && newFile.active && (!oldFile || !oldFile.active)) {
+        this.uploading++;
+        // 激活
+        this.$nextTick(function () {
+          var _this3 = this;
+
+          setTimeout(function () {
+            _this3.upload(newFile).then(function () {
+              // eslint-disable-next-line
+              newFile = _this3.get(newFile);
+              if (newFile && newFile.fileObject) {
+                _this3.update(newFile, {
+                  active: false,
+                  success: !newFile.error
+                });
+              }
+            }).catch(function (e) {
+              _this3.update(newFile, {
+                active: false,
+                success: false,
+                error: e.code || e.error || e.message || e
+              });
+            });
+          }, parseInt(Math.random() * 50 + 50, 10));
+        });
+      } else if ((!newFile || !newFile.fileObject || !newFile.active) && oldFile && oldFile.fileObject && oldFile.active) {
+        // 停止
+        this.uploading--;
+      }
+
+      // 自动延续激活
+      if (this.active && (Boolean(newFile) !== Boolean(oldFile) || newFile.active !== oldFile.active)) {
+        this.watchActive(true);
+      }
+    },
+    emitInput: function emitInput() {
+      this.$emit('input', this.files);
+    },
+
+
+    // 上传
+    upload: function upload(id) {
+      var file = this.get(id);
+
+      // 被删除
+      if (!file) {
+        return Promise.reject('not_exists');
+      }
+
+      // 不是文件对象
+      if (!file.fileObject) {
+        return Promise.reject('file_object');
+      }
+
+      // 有错误直接响应
+      if (file.error) {
+        return Promise.reject(file.error);
+      }
+
+      // 已完成直接响应
+      if (file.success) {
+        return Promise.resolve(file);
+      }
+
+      // 后缀
+      var extensions = this.extensions;
+      if (extensions && (extensions.length || typeof extensions.length === 'undefined')) {
+        if ((typeof extensions === 'undefined' ? 'undefined' : _typeof(extensions)) !== 'object' || !(extensions instanceof RegExp)) {
+          if (typeof extensions === 'string') {
+            extensions = extensions.split(',').map(function (value) {
+              return value.trim();
+            }).filter(function (value) {
+              return value;
+            });
+          }
+          extensions = new RegExp('\\.(' + extensions.join('|').replace(/\./g, '\\.') + ')$', 'i');
+        }
+        if (file.name.search(extensions) === -1) {
+          return Promise.reject('extension');
+        }
+      }
+
+      // 大小
+      if (this.size > 0 && file.size >= 0 && file.size > this.size) {
+        return Promise.reject('size');
+      }
+
+      if (this.features.html5 && file.putAction) {
+        return this.uploadPut(file);
+      } else if (this.features.html5) {
+        return this.uploadHtml5(file);
+      } else {
+        return this.uploadHtml4(file);
+      }
+    },
+    uploadPut: function uploadPut(file) {
+      var querys = [];
+      var value = void 0;
+      for (var key in file.data) {
+        value = file.data[key];
+        if (value !== null && value !== undefined) {
+          querys.push(encodeURIComponent(key) + '=' + encodeURIComponent(value));
+        }
+      }
+      var queryString = querys.length ? (file.putAction.indexOf('?') === -1 ? '?' : '&') + querys.join('&') : '';
+      var xhr = new XMLHttpRequest();
+      xhr.open('PUT', file.putAction + queryString);
+      return this.uploadXhr(xhr, file, file.file);
+    },
+    uploadHtml5: function uploadHtml5(file) {
+      var form = new window.FormData();
+      var value = void 0;
+      for (var key in file.data) {
+        value = file.data[key];
+        if (value && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object' && typeof value.toString !== 'function') {
+          if (value instanceof File) {
+            form.append(key, value, value.name);
+          } else {
+            form.append(key, JSON.stringify(value));
+          }
+        } else if (value !== null && value !== undefined) {
+          form.append(key, value);
+        }
+      }
+      form.append(this.name, file.file, file.file.filename || file.name);
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', file.postAction);
+      return this.uploadXhr(xhr, file, form);
+    },
+    uploadXhr: function uploadXhr(xhr, _file, body) {
+      var _this4 = this;
+
+      var file = _file;
+      var speedTime = 0;
+      var speedLoaded = 0;
+
+      // 进度条
+      xhr.upload.onprogress = function (e) {
+        // 还未开始上传 已删除 未激活
+        file = _this4.get(file);
+        if (!e.lengthComputable || !file || !file.fileObject || !file.active) {
+          return;
+        }
+
+        // 进度 速度 每秒更新一次
+        var speedTime2 = Math.round(Date.now() / 1000);
+        if (speedTime2 === speedTime) {
+          return;
+        }
+        speedTime = speedTime2;
+
+        file = _this4.update(file, {
+          progress: (e.loaded / e.total * 100).toFixed(2),
+          speed: e.loaded - speedLoaded
+        });
+        speedLoaded = e.loaded;
+      };
+
+      // 检查激活状态
+      var interval = setInterval(function () {
+        file = _this4.get(file);
+        if (file && file.fileObject && !file.success && !file.error && file.active) {
+          return;
+        }
+
+        if (interval) {
+          clearInterval(interval);
+          interval = false;
+        }
+
+        try {
+          xhr.abort();
+          xhr.timeout = 1;
+        } catch (e) {}
+      }, 100);
+
+      return new Promise(function (resolve, reject) {
+        var complete = void 0;
+        var fn = function fn(e) {
+          // 已经处理过了
+          if (complete) {
+            return;
+          }
+          complete = true;
+          if (interval) {
+            clearInterval(interval);
+            interval = false;
+          }
+
+          file = _this4.get(file);
+
+          // 不存在直接响应
+          if (!file) {
+            return reject('not_exists');
+          }
+
+          // 不是文件对象
+          if (!file.fileObject) {
+            return reject('file_object');
+          }
+
+          // 有错误自动响应
+          if (file.error) {
+            return reject(file.error);
+          }
+
+          // 未激活
+          if (!file.active) {
+            return reject('abort');
+          }
+
+          // 已完成 直接相应
+          if (file.success) {
+            return resolve(file);
+          }
+
+          var data = {};
+
+          switch (e.type) {
+            case 'timeout':
+            case 'abort':
+              data.error = e.type;
+              break;
+            case 'error':
+              if (!xhr.status) {
+                data.error = 'network';
+              } else if (xhr.status >= 500) {
+                data.error = 'server';
+              } else if (xhr.status >= 400) {
+                data.error = 'denied';
+              }
+              break;
+            default:
+              if (xhr.status >= 500) {
+                data.error = 'server';
+              } else if (xhr.status >= 400) {
+                data.error = 'denied';
+              } else {
+                data.progress = '100.00';
+              }
+          }
+
+          if (xhr.responseText) {
+            var contentType = xhr.getResponseHeader('Content-Type');
+            if (contentType && contentType.indexOf('/json') !== -1) {
+              data.response = JSON.parse(xhr.responseText);
+            } else {
+              data.response = xhr.responseText;
+            }
+          }
+
+          // 更新
+          file = _this4.update(file, data);
+
+          // 相应错误
+          if (file.error) {
+            return reject(file.error);
+          }
+
+          // 响应
+          return resolve(file);
+        };
+
+        // 事件
+        xhr.onload = fn;
+        xhr.onerror = fn;
+        xhr.onabort = fn;
+        xhr.ontimeout = fn;
+
+        // 超时
+        if (file.timeout) {
+          xhr.timeout = file.timeout;
+        }
+
+        // headers
+        for (var key in file.headers) {
+          xhr.setRequestHeader(key, file.headers[key]);
+        }
+
+        // 更新 xhr
+        file = _this4.update(file, { xhr: xhr });
+
+        // 开始上传
+        xhr.send(body);
+      });
+    },
+    uploadHtml4: function uploadHtml4(_file) {
+      var _this5 = this;
+
+      var file = _file;
+      var onKeydown = function onKeydown(e) {
+        if (e.keyCode === 27) {
+          e.preventDefault();
+        }
+      };
+
+      var iframe = document.createElement('iframe');
+      iframe.id = 'upload-iframe-' + file.id;
+      iframe.name = 'upload-iframe-' + file.id;
+      iframe.src = 'about:blank';
+      iframe.setAttribute('style', 'width:1px;height:1px;top:-999em;position:absolute; margin-top:-999em;');
+
+      var form = document.createElement('form');
+
+      form.action = file.postAction;
+
+      form.name = 'upload-form-' + file.id;
+
+      form.setAttribute('method', 'POST');
+      form.setAttribute('target', 'upload-iframe-' + file.id);
+      form.setAttribute('enctype', 'multipart/form-data');
+
+      var value = void 0;
+      var input = void 0;
+      for (var key in file.data) {
+        value = file.data[key];
+        if (value && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object' && typeof value.toString !== 'function') {
+          value = JSON.stringify(value);
+        }
+        if (value !== null && value !== undefined) {
+          input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = key;
+          input.value = value;
+          form.appendChild(input);
+        }
+      }
+      form.appendChild(file.el);
+
+      document.body.appendChild(iframe).appendChild(form);
+
+      var getResponseData = function getResponseData() {
+        var doc = void 0;
+        try {
+          if (iframe.contentWindow) {
+            doc = iframe.contentWindow.document;
+          }
+        } catch (err) {}
+        if (!doc) {
+          try {
+            doc = iframe.contentDocument ? iframe.contentDocument : iframe.document;
+          } catch (err) {
+            doc = iframe.document;
+          }
+        }
+        if (doc && doc.body) {
+          return doc.body.innerHTML;
+        }
+        return null;
+      };
+
+      return new Promise(function (resolve, reject) {
+        setTimeout(function () {
+          file = _this5.update(file, { iframe: iframe });
+
+          // 不存在
+          if (!file) {
+            return reject('not_exists');
+          }
+
+          // 定时检查
+          var interval = setInterval(function () {
+            file = _this5.get(file);
+            if (file && file.fileObject && !file.success && !file.error && file.active) {
+              return;
+            }
+
+            if (interval) {
+              clearInterval(interval);
+              interval = false;
+            }
+
+            iframe.onabort({ type: file ? 'abort' : 'not_exists' });
+          }, 100);
+
+          var complete = void 0;
+          var fn = function fn(e) {
+            // 已经处理过了
+            if (complete) {
+              return;
+            }
+            complete = true;
+
+            if (interval) {
+              clearInterval(interval);
+              interval = false;
+            }
+
+            // 关闭 esc 事件
+            document.body.removeEventListener('keydown', onKeydown);
+
+            file = _this5.get(file);
+
+            // 不存在直接响应
+            if (!file) {
+              return reject('not_exists');
+            }
+
+            // 不是文件对象
+            if (!file.fileObject) {
+              return reject('file_object');
+            }
+
+            // 有错误自动响应
+            if (file.error) {
+              return reject(file.error);
+            }
+
+            // 未激活
+            if (!file.active) {
+              return reject('abort');
+            }
+
+            // 已完成 直接相应
+            if (file.success) {
+              return resolve(file);
+            }
+
+            var response = getResponseData();
+            var data = {};
+            switch (e.type) {
+              case 'abort':
+                data.error = 'abort';
+                break;
+              case 'error':
+                if (file.error) {
+                  data.error = file.error;
+                } else if (response === null) {
+                  data.error = 'network';
+                } else {
+                  data.error = 'denied';
+                }
+                break;
+              default:
+                if (file.error) {
+                  data.error = file.error;
+                } else if (data === null) {
+                  data.error = 'network';
+                } else {
+                  data.progress = '100.00';
+                }
+            }
+
+            if (response !== null) {
+              if (response && response.substr(0, 1) === '{' && response.substr(response.length - 1, 1) === '}') {
+                try {
+                  response = JSON.parse(response);
+                } catch (err) {}
+              }
+              data.response = response;
+            }
+
+            // 更新
+            file = _this5.update(file, data);
+
+            if (file.error) {
+              return reject(file.error);
+            }
+
+            // 响应
+            return resolve(file);
+          };
+
+          // 添加事件
+          iframe.onload = fn;
+          iframe.onerror = fn;
+          iframe.onabort = fn;
+
+          // 禁止 esc 键
+          document.body.addEventListener('keydown', onKeydown);
+
+          // 提交
+          form.submit();
+        }, 50);
+      }).then(function (res) {
+        iframe.parentNode && iframe.parentNode.removeChild(iframe);
+        return res;
+      }).catch(function (res) {
+        iframe.parentNode && iframe.parentNode.removeChild(iframe);
+        return res;
+      });
+    },
+    watchActive: function watchActive(active) {
+      var file = void 0;
+      var index = 0;
+      while (file = this.files[index]) {
+        index++;
+        if (!file.fileObject) {
+          // 不是文件对象
+        } else if (active && !this.destroy) {
+          if (this.uploading >= this.thread || this.uploading && !this.features.html5) {
+            break;
+          }
+          if (!file.active && !file.error && !file.success) {
+            this.update(file, { active: true });
+          }
+        } else {
+          if (file.active) {
+            this.update(file, { active: false });
+          }
+        }
+      }
+      if (this.uploading === 0) {
+        this.active = false;
+      }
+    },
+    watchDrop: function watchDrop(_el) {
+      var el = _el;
+      if (!this.features.drop) {
+        return;
+      }
+
+      // 移除挂载
+      if (this.dropElement) {
+        try {
+          document.removeEventListener('dragenter', this.onDragenter, false);
+          document.removeEventListener('dragleave', this.onDragleave, false);
+          this.dropElement.removeEventListener('dragover', this.onDragover, false);
+          this.dropElement.removeEventListener('drop', this.onDrop, false);
+        } catch (e) {}
+      }
+
+      if (!el) {
+        el = false;
+      } else if (typeof el === 'string') {
+        el = document.querySelector(el) || this.$root.$el.querySelector(el);
+      } else if (el === true) {
+        el = this.$parent.$el;
+      }
+
+      this.dropElement = el;
+
+      if (this.dropElement) {
+        document.addEventListener('dragenter', this.onDragenter, false);
+        document.addEventListener('dragleave', this.onDragleave, false);
+        this.dropElement.addEventListener('dragover', this.onDragover, false);
+        this.dropElement.addEventListener('drop', this.onDrop, false);
+      }
+    },
+    onDragenter: function onDragenter(e) {
+      e.preventDefault();
+      if (!this.dropActive) {
+        this.dropActive = true;
+      }
+    },
+    onDragleave: function onDragleave(e) {
+      e.preventDefault();
+      if (e.target.nodeName === 'HTML' || e.screenX === 0 && e.screenY === 0 && !e.fromElement && e.offsetX <= 0) {
+        this.dropActive = false;
+      }
+    },
+    onDragover: function onDragover(e) {
+      e.preventDefault();
+    },
+    onDrop: function onDrop(e) {
+      e.preventDefault();
+      this.dropActive = false;
+      this.addDataTransfer(e.dataTransfer);
+    }
+  }
+};
+
+var FileUpload$1 = Object.freeze({
+	default: FileUpload
+});
+
+var require$$0 = ( FileUpload$1 && FileUpload ) || FileUpload$1;
+
+var src = require$$0;
+
+return src;
+
+})));
+//# sourceMappingURL=vue-upload-component.js.map
+
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
@@ -1420,33 +2660,33 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(14);
-module.exports = __webpack_require__(78);
+__webpack_require__(15);
+module.exports = __webpack_require__(83);
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweet_modal_vue_src_plugin_js__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweet_modal_vue_src_plugin_js__ = __webpack_require__(43);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-__webpack_require__(15);
+__webpack_require__(16);
 
 
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_sweet_modal_vue_src_plugin_js__["a" /* default */]);
 
-var VueUploadComponent = __webpack_require__(55);
+var VueUploadComponent = __webpack_require__(12);
 Vue.component('file-upload', VueUploadComponent);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -1455,23 +2695,25 @@ Vue.component('file-upload', VueUploadComponent);
  */
 
 Vue.component('flash', __webpack_require__(56));
-Vue.component('new-proposal', __webpack_require__(12));
 Vue.component('errors', __webpack_require__(62));
-Vue.component('modal', __webpack_require__(65));
-Vue.component('portfolio-upload', __webpack_require__(84));
 
-Vue.component('job-view', __webpack_require__(68));
-Vue.component('profile-view', __webpack_require__(76));
+Vue.component('new-proposal', __webpack_require__(13));
+Vue.component('modal', __webpack_require__(65));
+Vue.component('portfolio-upload', __webpack_require__(68));
+
+Vue.component('job-view', __webpack_require__(71));
+Vue.component('profile-view', __webpack_require__(79));
+Vue.component('settings-view', __webpack_require__(81));
 
 var app = new Vue({
   el: '#app'
 });
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
-window._ = __webpack_require__(16);
+window._ = __webpack_require__(17);
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -1480,12 +2722,12 @@ window._ = __webpack_require__(16);
  */
 
 try {
-  window.$ = window.jQuery = __webpack_require__(18);
+  window.$ = window.jQuery = __webpack_require__(19);
 
-  __webpack_require__(19);
+  __webpack_require__(20);
 } catch (e) {}
 
-window.Vue = __webpack_require__(20);
+window.Vue = __webpack_require__(21);
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -1493,7 +2735,7 @@ window.Vue = __webpack_require__(20);
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = __webpack_require__(23);
+window.axios = __webpack_require__(24);
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -1539,7 +2781,7 @@ window.flash = function (message) {
 };
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -18628,10 +19870,10 @@ window.flash = function (message) {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(17)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(18)(module)))
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -18659,7 +19901,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -28919,7 +30161,7 @@ return jQuery;
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports) {
 
 /*!
@@ -31302,7 +32544,7 @@ if (typeof jQuery === 'undefined') {
 
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41922,10 +43164,10 @@ Vue$3.compile = compileToFunctions;
 
 module.exports = Vue$3;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(21).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(22).setImmediate))
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var apply = Function.prototype.apply;
@@ -41978,13 +43220,13 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(22);
+__webpack_require__(23);
 exports.setImmediate = setImmediate;
 exports.clearImmediate = clearImmediate;
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -42177,13 +43419,13 @@ exports.clearImmediate = clearImmediate;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(6)))
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(24);
+module.exports = __webpack_require__(25);
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42191,7 +43433,7 @@ module.exports = __webpack_require__(24);
 
 var utils = __webpack_require__(0);
 var bind = __webpack_require__(7);
-var Axios = __webpack_require__(26);
+var Axios = __webpack_require__(27);
 var defaults = __webpack_require__(3);
 
 /**
@@ -42226,14 +43468,14 @@ axios.create = function create(instanceConfig) {
 
 // Expose Cancel & CancelToken
 axios.Cancel = __webpack_require__(11);
-axios.CancelToken = __webpack_require__(40);
+axios.CancelToken = __webpack_require__(41);
 axios.isCancel = __webpack_require__(10);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(41);
+axios.spread = __webpack_require__(42);
 
 module.exports = axios;
 
@@ -42242,7 +43484,7 @@ module.exports.default = axios;
 
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports) {
 
 /*!
@@ -42269,7 +43511,7 @@ function isSlowBuffer (obj) {
 
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42277,8 +43519,8 @@ function isSlowBuffer (obj) {
 
 var defaults = __webpack_require__(3);
 var utils = __webpack_require__(0);
-var InterceptorManager = __webpack_require__(35);
-var dispatchRequest = __webpack_require__(36);
+var InterceptorManager = __webpack_require__(36);
+var dispatchRequest = __webpack_require__(37);
 
 /**
  * Create a new instance of Axios
@@ -42355,7 +43597,7 @@ module.exports = Axios;
 
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42374,7 +43616,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42407,7 +43649,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42435,7 +43677,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42510,7 +43752,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42570,7 +43812,7 @@ module.exports = function parseHeaders(headers) {
 
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42645,7 +43887,7 @@ module.exports = (
 
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42688,7 +43930,7 @@ module.exports = btoa;
 
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42748,7 +43990,7 @@ module.exports = (
 
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42807,18 +44049,18 @@ module.exports = InterceptorManager;
 
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(0);
-var transformData = __webpack_require__(37);
+var transformData = __webpack_require__(38);
 var isCancel = __webpack_require__(10);
 var defaults = __webpack_require__(3);
-var isAbsoluteURL = __webpack_require__(38);
-var combineURLs = __webpack_require__(39);
+var isAbsoluteURL = __webpack_require__(39);
+var combineURLs = __webpack_require__(40);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -42900,7 +44142,7 @@ module.exports = function dispatchRequest(config) {
 
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42927,7 +44169,7 @@ module.exports = function transformData(data, headers, fns) {
 
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42948,7 +44190,7 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42969,7 +44211,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43033,7 +44275,7 @@ module.exports = CancelToken;
 
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43067,11 +44309,11 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__main_js__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__main_js__ = __webpack_require__(44);
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -43082,13 +44324,13 @@ module.exports = function spread(callback) {
 });
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_SweetModal__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_SweetModal__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_SweetModal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_SweetModal__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_SweetModalTab__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_SweetModalTab__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_SweetModalTab___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_SweetModalTab__);
 /* harmony reexport (default from non-hamory) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__components_SweetModal___default.a; });
 /* harmony reexport (default from non-hamory) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_1__components_SweetModalTab___default.a; });
@@ -43099,19 +44341,19 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(45)
+  __webpack_require__(46)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(48)
+var __vue_script__ = __webpack_require__(49)
 /* template */
-var __vue_template__ = __webpack_require__(49)
+var __vue_template__ = __webpack_require__(50)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -43151,13 +44393,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(46);
+var content = __webpack_require__(47);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -43177,7 +44419,7 @@ if(false) {
 }
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(undefined);
@@ -43191,7 +44433,7 @@ exports.push([module.i, "\n@-webkit-keyframes animateSuccessTip {\n0% {\n    wid
 
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports) {
 
 /**
@@ -43224,7 +44466,7 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -43662,7 +44904,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 });
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -43933,19 +45175,19 @@ if (false) {
 }
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(51)
+  __webpack_require__(52)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(53)
+var __vue_script__ = __webpack_require__(54)
 /* template */
-var __vue_template__ = __webpack_require__(54)
+var __vue_template__ = __webpack_require__(55)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -43985,13 +45227,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(52);
+var content = __webpack_require__(53);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -44011,7 +45253,7 @@ if(false) {
 }
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(undefined);
@@ -44025,7 +45267,7 @@ exports.push([module.i, "", ""]);
 
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -44077,7 +45319,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -44100,1246 +45342,6 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-4e55f337", module.exports)
   }
 }
-
-/***/ }),
-/* 55 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/*!
- * Name: vue-upload-component
- * Version: 2.7.3
- * Author: LianYue
- */
-(function (global, factory) {
-	 true ? module.exports = factory() :
-	typeof define === 'function' && define.amd ? define(factory) :
-	(global.VueUploadComponent = factory());
-}(this, (function () { 'use strict';
-
-(function () {
-  if (typeof document !== 'undefined') {
-    var head = document.head || document.getElementsByTagName('head')[0],
-        style = document.createElement('style'),
-        css = "";style.type = 'text/css';if (style.styleSheet) {
-      style.styleSheet.cssText = css;
-    } else {
-      style.appendChild(document.createTextNode(css));
-    }head.appendChild(style);
-  }
-})();
-
-var InputFile = { render: function render() {
-    var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;return _c('input', { attrs: { "type": "file", "name": _vm.$parent.name, "id": _vm.$parent.inputId || _vm.$parent.name, "accept": _vm.$parent.accept, "webkitdirectory": _vm.$parent.directory && _vm.$parent.features.directory, "directory": _vm.$parent.directory && _vm.$parent.features.directory, "multiple": _vm.$parent.multiple && _vm.$parent.features.html5 }, on: { "change": _vm.change } });
-  }, staticRenderFns: [],
-  methods: {
-    change: function change(e) {
-      this.$destroy();
-      this.$parent.addInputFile(e.target);
-      // eslint-disable-next-line
-      new this.constructor({
-        parent: this.$parent,
-        el: this.$el
-      });
-    }
-  }
-};
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-(function () {
-  if (typeof document !== 'undefined') {
-    var head = document.head || document.getElementsByTagName('head')[0],
-        style = document.createElement('style'),
-        css = " .file-uploads { overflow: hidden; position: relative; text-align: center; display: inline-block; } .file-uploads.file-uploads-html4 input[type=\"file\"] { opacity: 0; font-size: 20em; z-index: 1; top: 0; left: 0; right: 0; bottom: 0; position: absolute; width: 100%; height: 100%; } .file-uploads.file-uploads-html5 input[type=\"file\"] { overflow: hidden; position: fixed; width: 1px; height: 1px; z-index: -1; opacity: 0; } ";style.type = 'text/css';if (style.styleSheet) {
-      style.styleSheet.cssText = css;
-    } else {
-      style.appendChild(document.createTextNode(css));
-    }head.appendChild(style);
-  }
-})();
-
-var FileUpload = { render: function render() {
-    var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;return _c('label', { class: _vm.className }, [_vm._t("default"), _vm._v(" "), _c('input-file')], 2);
-  }, staticRenderFns: [],
-  components: {
-    InputFile: InputFile
-  },
-  props: {
-    inputId: {
-      type: String
-    },
-
-    name: {
-      type: String,
-      default: 'file'
-    },
-
-    accept: {
-      type: String
-    },
-
-    multiple: {
-      type: Boolean
-    },
-
-    maximum: {
-      type: Number,
-      default: function _default() {
-        return this.multiple ? 0 : 1;
-      }
-    },
-
-    addIndex: {
-      type: [Boolean, Number]
-    },
-
-    directory: {
-      type: Boolean
-    },
-
-    postAction: {
-      type: String
-    },
-
-    putAction: {
-      type: String
-    },
-
-    headers: {
-      type: Object,
-      default: Object
-    },
-
-    data: {
-      type: Object,
-      default: Object
-    },
-
-    timeout: {
-      type: Number,
-      default: 0
-    },
-
-    drop: {
-      default: false
-    },
-
-    dropDirectory: {
-      type: Boolean,
-      default: true
-    },
-
-    size: {
-      type: Number,
-      default: 0
-    },
-
-    extensions: {
-      default: Array
-    },
-
-    value: {
-      type: Array,
-      default: Array
-    },
-
-    thread: {
-      type: Number,
-      default: 1
-    }
-  },
-
-  data: function data() {
-    return {
-      files: this.value,
-      features: {
-        html5: true,
-        directory: false,
-        drag: false
-      },
-
-      active: false,
-      dropActive: false,
-
-      uploading: 0,
-
-      destroy: false
-    };
-  },
-
-
-  /**
-   * mounted
-   * @return {[type]} [description]
-   */
-  mounted: function mounted() {
-    var input = document.createElement('input');
-    input.type = 'file';
-    input.multiple = true;
-
-    // html5 特征
-    if (window.FormData && input.files) {
-      // 上传目录特征
-      if (typeof input.webkitdirectory === 'boolean' || typeof input.directory === 'boolean') {
-        this.features.directory = true;
-      }
-
-      // 拖拽特征
-      if (this.features.html5 && typeof input.ondrop !== 'undefined') {
-        this.features.drop = true;
-      }
-    } else {
-      this.features.html5 = false;
-    }
-
-    // files 定位缓存
-    this.maps = {};
-
-    this.$nextTick(function () {
-
-      // 更新下父级
-      if (this.$parent) {
-        this.$parent.$forceUpdate();
-      }
-
-      // 拖拽渲染
-      this.watchDrop(this.drop);
-    });
-  },
-
-
-  /**
-   * beforeDestroy
-   * @return {[type]} [description]
-   */
-  beforeDestroy: function beforeDestroy() {
-    // 已销毁
-    this.destroy = true;
-
-    // 设置成不激活
-    this.active = false;
-  },
-
-
-  computed: {
-    /**
-     * uploading 正在上传的线程
-     * @return {[type]} [description]
-     */
-
-    /**
-     * uploaded 文件列表是否全部已上传
-     * @return {[type]} [description]
-     */
-    uploaded: function uploaded() {
-      var file = void 0;
-      for (var i = 0; i < this.files.length; i++) {
-        file = this.files[i];
-        if (file.fileObject && !file.error && !file.success) {
-          return false;
-        }
-      }
-      return true;
-    },
-    className: function className() {
-      return ['file-uploads', this.features.html5 ? 'file-uploads-html5' : 'file-uploads-html4', this.features.directory && this.directory ? 'file-uploads-directory' : undefined, this.features.drop && this.drop ? 'file-uploads-drop' : undefined];
-    }
-  },
-
-  watch: {
-    active: function active(_active) {
-      this.watchActive(_active);
-    },
-    dropActive: function dropActive() {
-      if (this.$parent) {
-        this.$parent.$forceUpdate();
-      }
-    },
-    drop: function drop(value) {
-      this.watchDrop(value);
-    },
-    value: function value(files) {
-      if (this.files === files) {
-        return;
-      }
-      this.files = files;
-
-      var oldMaps = this.maps;
-
-      // 重写 maps 缓存
-      this.maps = {};
-      for (var i = 0; i < this.files.length; i++) {
-        var file = this.files[i];
-        this.maps[file.id] = file;
-      }
-
-      // add, update
-      for (var key in this.maps) {
-        var newFile = this.maps[key];
-        var oldFile = oldMaps[key];
-        if (newFile !== oldFile) {
-          this.emitFile(newFile, oldFile);
-        }
-      }
-
-      // delete
-      for (var _key in oldMaps) {
-        if (!this.maps[_key]) {
-          this.emitFile(undefined, oldMaps[_key]);
-        }
-      }
-    }
-  },
-
-  methods: {
-
-    // 清空
-    clear: function clear() {
-      if (this.files.length) {
-        var files = this.files;
-        this.files = [];
-
-        // 定位
-        this.maps = {};
-
-        // 事件
-        this.emitInput();
-        for (var i = 0; i < files.length; i++) {
-          this.emitFile(undefined, files[i]);
-        }
-      }
-      return true;
-    },
-
-
-    // 选择
-    get: function get(id) {
-      if (!id) {
-        return false;
-      }
-
-      if ((typeof id === 'undefined' ? 'undefined' : _typeof(id)) === 'object') {
-        return this.maps[id.id] || false;
-      }
-
-      return this.maps[id] || false;
-    },
-
-
-    // 添加
-    add: function add(_files) {
-      var index = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.addIndex;
-
-      var files = _files;
-      var isArray = files instanceof Array;
-
-      // 不是数组整理成数组
-      if (!isArray) {
-        files = [files];
-      }
-
-      // 遍历规范对象
-      var addFiles = [];
-      for (var i = 0; i < files.length; i++) {
-        var file = files[i];
-        if (this.features.html5 && file instanceof Blob) {
-          file = {
-            file: file,
-            size: file.size,
-            name: file.webkitRelativePath || file.relativePath || file.name || 'unknown',
-            type: file.type
-          };
-        }
-        var fileObject = false;
-        if (file.fileObject === false) {
-          // false
-        } else if (file.fileObject) {
-          fileObject = true;
-        } else if (typeof Element !== 'undefined' && file.el instanceof Element) {
-          fileObject = true;
-        } else if (typeof Blob !== 'undefined' && file.file instanceof Blob) {
-          fileObject = true;
-        }
-        if (fileObject) {
-          file = _extends({
-            fileObject: true,
-            size: -1,
-            name: 'Filename',
-            type: '',
-            active: false,
-            error: '',
-            success: false,
-            putAction: this.putAction,
-            postAction: this.postAction,
-            timeout: this.timeout
-          }, file, {
-            response: {},
-
-            progress: '0.00', // 只读
-            speed: 0 // 只读
-            // xhr: false,                // 只读
-            // iframe: false,             // 只读
-          });
-
-          file.data = _extends({}, this.data, file.data ? file.data : {});
-
-          file.headers = _extends({}, this.headers, file.headers ? file.headers : {});
-        }
-
-        // 必须包含 id
-        if (!file.id) {
-          file.id = Math.random().toString(36).substr(2);
-        }
-
-        if (this.emitFilter(file, undefined)) {
-          continue;
-        }
-
-        // 最大数量限制
-        if (this.maximum > 1 && addFiles.length + this.files.length >= this.maximum) {
-          break;
-        }
-
-        addFiles.push(file);
-
-        // 最大数量限制
-        if (this.maximum === 1) {
-          break;
-        }
-      }
-
-      // 没有文件
-      if (!addFiles.length) {
-        return false;
-      }
-
-      // 如果是 1 清空
-      if (this.maximum === 1) {
-        this.clear();
-      }
-
-      // 添加进去 files
-      var newFiles = void 0;
-      if (index === true || index === 0) {
-        newFiles = addFiles.concat(this.files);
-      } else if (index) {
-        newFiles = addFiles.concat([]);
-        newFiles.splice(index, 0, addFiles);
-      } else {
-        newFiles = this.files.concat(addFiles);
-      }
-
-      this.files = newFiles;
-
-      // 定位
-      for (var _i = 0; _i < addFiles.length; _i++) {
-        var _file2 = addFiles[_i];
-        this.maps[_file2.id] = _file2;
-      }
-
-      // 事件
-      this.emitInput();
-      for (var _i2 = 0; _i2 < addFiles.length; _i2++) {
-        this.emitFile(addFiles[_i2], undefined);
-      }
-
-      return isArray ? addFiles : addFiles[0];
-    },
-
-
-    // 添加表单文件
-    addInputFile: function addInputFile(el) {
-      var files = [];
-      if (el.files) {
-        for (var i = 0; i < el.files.length; i++) {
-          var file = el.files[i];
-          files.push({
-            size: file.size,
-            name: file.webkitRelativePath || file.relativePath || file.name,
-            type: file.type,
-            file: file,
-            el: el
-          });
-        }
-      } else {
-        files.push({
-          name: el.value.replace(/^.*?([^\/\\\r\n]+)$/, '$1'),
-          el: el
-        });
-      }
-      return this.add(files);
-    },
-
-
-    // 添加 DataTransfer
-    addDataTransfer: function addDataTransfer(dataTransfer) {
-      var _this = this;
-
-      var files = [];
-      if (dataTransfer.items && dataTransfer.items.length) {
-        var items = [];
-        for (var i = 0; i < dataTransfer.items.length; i++) {
-          var item = dataTransfer.items[i];
-          if (item.getAsEntry) {
-            item = item.getAsEntry() || item.getAsFile();
-          } else if (item.webkitGetAsEntry) {
-            item = item.webkitGetAsEntry() || item.getAsFile();
-          } else {
-            item = item.getAsFile();
-          }
-          if (item) {
-            items.push(item);
-          }
-        }
-
-        return new Promise(function (resolve, reject) {
-          var forEach = function forEach(i) {
-            var item = items[i];
-            // 结束 文件数量大于 最大数量
-            if (!item || _this.maximum > 0 && files.length >= _this.maximum) {
-              return resolve(_this.add(files));
-            }
-            _this.getEntry(item).then(function (results) {
-              files.push.apply(files, _toConsumableArray(results));
-              forEach(i + 1);
-            });
-          };
-          forEach(0);
-        });
-      }
-
-      if (dataTransfer.files.length) {
-        for (var _i3 = 0; _i3 < dataTransfer.files.length; _i3++) {
-          files.push(dataTransfer.files[_i3]);
-          if (this.maximum > 0 && files.length >= this.maximum) {
-            break;
-          }
-        }
-        return Promise.resolve(this.add(files));
-      }
-
-      return Promise.resolve([]);
-    },
-
-
-    // 获得 entry
-    getEntry: function getEntry(entry) {
-      var _this2 = this;
-
-      var path = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-
-      return new Promise(function (resolve, reject) {
-        if (entry.isFile) {
-          entry.file(function (file) {
-            resolve([{
-              size: file.size,
-              name: path + file.name,
-              type: file.type,
-              file: file
-            }]);
-          });
-        } else if (entry.isDirectory && _this2.dropDirectory) {
-          var files = [];
-          var dirReader = entry.createReader();
-          var readEntries = function readEntries() {
-            dirReader.readEntries(function (entries) {
-              var forEach = function forEach(i) {
-                if (!entries[i] && i === 0 || _this2.maximum > 0 && files.length >= _this2.maximum) {
-                  return resolve(files);
-                }
-                if (!entries[i]) {
-                  return readEntries();
-                }
-                _this2.getEntry(entries[i], path + entry.name + '/').then(function (results) {
-                  files.push.apply(files, _toConsumableArray(results));
-                  forEach(i + 1);
-                });
-              };
-              forEach(0);
-            });
-          };
-          readEntries();
-        } else {
-          resolve([]);
-        }
-      });
-    },
-    replace: function replace(id1, id2) {
-      var file1 = this.get(id1);
-      var file2 = this.get(id2);
-      if (!file1 || !file2 || file1 === file2) {
-        return false;
-      }
-      var files = this.files.concat([]);
-      var index1 = files.indexOf(file1);
-      var index2 = files.indexOf(file2);
-      if (index1 === -1 || index2 === -1) {
-        return false;
-      }
-      files[index1] = file2;
-      files[index2] = file1;
-      this.files = files;
-      this.emitInput();
-      return true;
-    },
-
-
-    // 移除
-    remove: function remove(id) {
-      var file = this.get(id);
-      if (file) {
-        if (this.emitFilter(undefined, file)) {
-          return false;
-        }
-        var files = this.files.concat([]);
-        var index = files.indexOf(file);
-        if (index === -1) {
-          console.error('remove', file);
-          return false;
-        }
-        files.splice(index, 1);
-        this.files = files;
-
-        // 定位
-        delete this.maps[file.id];
-
-        // 事件
-        this.emitInput();
-        this.emitFile(undefined, file);
-      }
-      return file;
-    },
-
-
-    // 更新
-    update: function update(id, data) {
-      var file = this.get(id);
-      if (file) {
-        var newFile = _extends({}, file, data);
-        // 停用必须加上错误
-        if (file.fileObject && file.active && !newFile.active && !newFile.error && !newFile.success) {
-          newFile.error = 'abort';
-        }
-
-        if (this.emitFilter(newFile, file)) {
-          return false;
-        }
-
-        var files = this.files.concat([]);
-        var index = files.indexOf(file);
-        if (index === -1) {
-          console.error('update', file);
-          return false;
-        }
-        files.splice(index, 1, newFile);
-        this.files = files;
-
-        // 删除  旧定位 写入 新定位 （已便支持修改id)
-        delete this.maps[file.id];
-        this.maps[newFile.id] = newFile;
-
-        // 事件
-        this.emitInput();
-        this.emitFile(newFile, file);
-        return newFile;
-      }
-      return false;
-    },
-
-
-    // 预处理 事件 过滤器
-    emitFilter: function emitFilter(newFile, oldFile) {
-      var isPrevent = false;
-      this.$emit('input-filter', newFile, oldFile, function () {
-        isPrevent = true;
-        return isPrevent;
-      });
-      return isPrevent;
-    },
-
-
-    // 处理后 事件 分发
-    emitFile: function emitFile(newFile, oldFile) {
-      this.$emit('input-file', newFile, oldFile);
-      if (newFile && newFile.fileObject && newFile.active && (!oldFile || !oldFile.active)) {
-        this.uploading++;
-        // 激活
-        this.$nextTick(function () {
-          var _this3 = this;
-
-          setTimeout(function () {
-            _this3.upload(newFile).then(function () {
-              // eslint-disable-next-line
-              newFile = _this3.get(newFile);
-              if (newFile && newFile.fileObject) {
-                _this3.update(newFile, {
-                  active: false,
-                  success: !newFile.error
-                });
-              }
-            }).catch(function (e) {
-              _this3.update(newFile, {
-                active: false,
-                success: false,
-                error: e.code || e.error || e.message || e
-              });
-            });
-          }, parseInt(Math.random() * 50 + 50, 10));
-        });
-      } else if ((!newFile || !newFile.fileObject || !newFile.active) && oldFile && oldFile.fileObject && oldFile.active) {
-        // 停止
-        this.uploading--;
-      }
-
-      // 自动延续激活
-      if (this.active && (Boolean(newFile) !== Boolean(oldFile) || newFile.active !== oldFile.active)) {
-        this.watchActive(true);
-      }
-    },
-    emitInput: function emitInput() {
-      this.$emit('input', this.files);
-    },
-
-
-    // 上传
-    upload: function upload(id) {
-      var file = this.get(id);
-
-      // 被删除
-      if (!file) {
-        return Promise.reject('not_exists');
-      }
-
-      // 不是文件对象
-      if (!file.fileObject) {
-        return Promise.reject('file_object');
-      }
-
-      // 有错误直接响应
-      if (file.error) {
-        return Promise.reject(file.error);
-      }
-
-      // 已完成直接响应
-      if (file.success) {
-        return Promise.resolve(file);
-      }
-
-      // 后缀
-      var extensions = this.extensions;
-      if (extensions && (extensions.length || typeof extensions.length === 'undefined')) {
-        if ((typeof extensions === 'undefined' ? 'undefined' : _typeof(extensions)) !== 'object' || !(extensions instanceof RegExp)) {
-          if (typeof extensions === 'string') {
-            extensions = extensions.split(',').map(function (value) {
-              return value.trim();
-            }).filter(function (value) {
-              return value;
-            });
-          }
-          extensions = new RegExp('\\.(' + extensions.join('|').replace(/\./g, '\\.') + ')$', 'i');
-        }
-        if (file.name.search(extensions) === -1) {
-          return Promise.reject('extension');
-        }
-      }
-
-      // 大小
-      if (this.size > 0 && file.size >= 0 && file.size > this.size) {
-        return Promise.reject('size');
-      }
-
-      if (this.features.html5 && file.putAction) {
-        return this.uploadPut(file);
-      } else if (this.features.html5) {
-        return this.uploadHtml5(file);
-      } else {
-        return this.uploadHtml4(file);
-      }
-    },
-    uploadPut: function uploadPut(file) {
-      var querys = [];
-      var value = void 0;
-      for (var key in file.data) {
-        value = file.data[key];
-        if (value !== null && value !== undefined) {
-          querys.push(encodeURIComponent(key) + '=' + encodeURIComponent(value));
-        }
-      }
-      var queryString = querys.length ? (file.putAction.indexOf('?') === -1 ? '?' : '&') + querys.join('&') : '';
-      var xhr = new XMLHttpRequest();
-      xhr.open('PUT', file.putAction + queryString);
-      return this.uploadXhr(xhr, file, file.file);
-    },
-    uploadHtml5: function uploadHtml5(file) {
-      var form = new window.FormData();
-      var value = void 0;
-      for (var key in file.data) {
-        value = file.data[key];
-        if (value && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object' && typeof value.toString !== 'function') {
-          if (value instanceof File) {
-            form.append(key, value, value.name);
-          } else {
-            form.append(key, JSON.stringify(value));
-          }
-        } else if (value !== null && value !== undefined) {
-          form.append(key, value);
-        }
-      }
-      form.append(this.name, file.file, file.file.filename || file.name);
-      var xhr = new XMLHttpRequest();
-      xhr.open('POST', file.postAction);
-      return this.uploadXhr(xhr, file, form);
-    },
-    uploadXhr: function uploadXhr(xhr, _file, body) {
-      var _this4 = this;
-
-      var file = _file;
-      var speedTime = 0;
-      var speedLoaded = 0;
-
-      // 进度条
-      xhr.upload.onprogress = function (e) {
-        // 还未开始上传 已删除 未激活
-        file = _this4.get(file);
-        if (!e.lengthComputable || !file || !file.fileObject || !file.active) {
-          return;
-        }
-
-        // 进度 速度 每秒更新一次
-        var speedTime2 = Math.round(Date.now() / 1000);
-        if (speedTime2 === speedTime) {
-          return;
-        }
-        speedTime = speedTime2;
-
-        file = _this4.update(file, {
-          progress: (e.loaded / e.total * 100).toFixed(2),
-          speed: e.loaded - speedLoaded
-        });
-        speedLoaded = e.loaded;
-      };
-
-      // 检查激活状态
-      var interval = setInterval(function () {
-        file = _this4.get(file);
-        if (file && file.fileObject && !file.success && !file.error && file.active) {
-          return;
-        }
-
-        if (interval) {
-          clearInterval(interval);
-          interval = false;
-        }
-
-        try {
-          xhr.abort();
-          xhr.timeout = 1;
-        } catch (e) {}
-      }, 100);
-
-      return new Promise(function (resolve, reject) {
-        var complete = void 0;
-        var fn = function fn(e) {
-          // 已经处理过了
-          if (complete) {
-            return;
-          }
-          complete = true;
-          if (interval) {
-            clearInterval(interval);
-            interval = false;
-          }
-
-          file = _this4.get(file);
-
-          // 不存在直接响应
-          if (!file) {
-            return reject('not_exists');
-          }
-
-          // 不是文件对象
-          if (!file.fileObject) {
-            return reject('file_object');
-          }
-
-          // 有错误自动响应
-          if (file.error) {
-            return reject(file.error);
-          }
-
-          // 未激活
-          if (!file.active) {
-            return reject('abort');
-          }
-
-          // 已完成 直接相应
-          if (file.success) {
-            return resolve(file);
-          }
-
-          var data = {};
-
-          switch (e.type) {
-            case 'timeout':
-            case 'abort':
-              data.error = e.type;
-              break;
-            case 'error':
-              if (!xhr.status) {
-                data.error = 'network';
-              } else if (xhr.status >= 500) {
-                data.error = 'server';
-              } else if (xhr.status >= 400) {
-                data.error = 'denied';
-              }
-              break;
-            default:
-              if (xhr.status >= 500) {
-                data.error = 'server';
-              } else if (xhr.status >= 400) {
-                data.error = 'denied';
-              } else {
-                data.progress = '100.00';
-              }
-          }
-
-          if (xhr.responseText) {
-            var contentType = xhr.getResponseHeader('Content-Type');
-            if (contentType && contentType.indexOf('/json') !== -1) {
-              data.response = JSON.parse(xhr.responseText);
-            } else {
-              data.response = xhr.responseText;
-            }
-          }
-
-          // 更新
-          file = _this4.update(file, data);
-
-          // 相应错误
-          if (file.error) {
-            return reject(file.error);
-          }
-
-          // 响应
-          return resolve(file);
-        };
-
-        // 事件
-        xhr.onload = fn;
-        xhr.onerror = fn;
-        xhr.onabort = fn;
-        xhr.ontimeout = fn;
-
-        // 超时
-        if (file.timeout) {
-          xhr.timeout = file.timeout;
-        }
-
-        // headers
-        for (var key in file.headers) {
-          xhr.setRequestHeader(key, file.headers[key]);
-        }
-
-        // 更新 xhr
-        file = _this4.update(file, { xhr: xhr });
-
-        // 开始上传
-        xhr.send(body);
-      });
-    },
-    uploadHtml4: function uploadHtml4(_file) {
-      var _this5 = this;
-
-      var file = _file;
-      var onKeydown = function onKeydown(e) {
-        if (e.keyCode === 27) {
-          e.preventDefault();
-        }
-      };
-
-      var iframe = document.createElement('iframe');
-      iframe.id = 'upload-iframe-' + file.id;
-      iframe.name = 'upload-iframe-' + file.id;
-      iframe.src = 'about:blank';
-      iframe.setAttribute('style', 'width:1px;height:1px;top:-999em;position:absolute; margin-top:-999em;');
-
-      var form = document.createElement('form');
-
-      form.action = file.postAction;
-
-      form.name = 'upload-form-' + file.id;
-
-      form.setAttribute('method', 'POST');
-      form.setAttribute('target', 'upload-iframe-' + file.id);
-      form.setAttribute('enctype', 'multipart/form-data');
-
-      var value = void 0;
-      var input = void 0;
-      for (var key in file.data) {
-        value = file.data[key];
-        if (value && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object' && typeof value.toString !== 'function') {
-          value = JSON.stringify(value);
-        }
-        if (value !== null && value !== undefined) {
-          input = document.createElement('input');
-          input.type = 'hidden';
-          input.name = key;
-          input.value = value;
-          form.appendChild(input);
-        }
-      }
-      form.appendChild(file.el);
-
-      document.body.appendChild(iframe).appendChild(form);
-
-      var getResponseData = function getResponseData() {
-        var doc = void 0;
-        try {
-          if (iframe.contentWindow) {
-            doc = iframe.contentWindow.document;
-          }
-        } catch (err) {}
-        if (!doc) {
-          try {
-            doc = iframe.contentDocument ? iframe.contentDocument : iframe.document;
-          } catch (err) {
-            doc = iframe.document;
-          }
-        }
-        if (doc && doc.body) {
-          return doc.body.innerHTML;
-        }
-        return null;
-      };
-
-      return new Promise(function (resolve, reject) {
-        setTimeout(function () {
-          file = _this5.update(file, { iframe: iframe });
-
-          // 不存在
-          if (!file) {
-            return reject('not_exists');
-          }
-
-          // 定时检查
-          var interval = setInterval(function () {
-            file = _this5.get(file);
-            if (file && file.fileObject && !file.success && !file.error && file.active) {
-              return;
-            }
-
-            if (interval) {
-              clearInterval(interval);
-              interval = false;
-            }
-
-            iframe.onabort({ type: file ? 'abort' : 'not_exists' });
-          }, 100);
-
-          var complete = void 0;
-          var fn = function fn(e) {
-            // 已经处理过了
-            if (complete) {
-              return;
-            }
-            complete = true;
-
-            if (interval) {
-              clearInterval(interval);
-              interval = false;
-            }
-
-            // 关闭 esc 事件
-            document.body.removeEventListener('keydown', onKeydown);
-
-            file = _this5.get(file);
-
-            // 不存在直接响应
-            if (!file) {
-              return reject('not_exists');
-            }
-
-            // 不是文件对象
-            if (!file.fileObject) {
-              return reject('file_object');
-            }
-
-            // 有错误自动响应
-            if (file.error) {
-              return reject(file.error);
-            }
-
-            // 未激活
-            if (!file.active) {
-              return reject('abort');
-            }
-
-            // 已完成 直接相应
-            if (file.success) {
-              return resolve(file);
-            }
-
-            var response = getResponseData();
-            var data = {};
-            switch (e.type) {
-              case 'abort':
-                data.error = 'abort';
-                break;
-              case 'error':
-                if (file.error) {
-                  data.error = file.error;
-                } else if (response === null) {
-                  data.error = 'network';
-                } else {
-                  data.error = 'denied';
-                }
-                break;
-              default:
-                if (file.error) {
-                  data.error = file.error;
-                } else if (data === null) {
-                  data.error = 'network';
-                } else {
-                  data.progress = '100.00';
-                }
-            }
-
-            if (response !== null) {
-              if (response && response.substr(0, 1) === '{' && response.substr(response.length - 1, 1) === '}') {
-                try {
-                  response = JSON.parse(response);
-                } catch (err) {}
-              }
-              data.response = response;
-            }
-
-            // 更新
-            file = _this5.update(file, data);
-
-            if (file.error) {
-              return reject(file.error);
-            }
-
-            // 响应
-            return resolve(file);
-          };
-
-          // 添加事件
-          iframe.onload = fn;
-          iframe.onerror = fn;
-          iframe.onabort = fn;
-
-          // 禁止 esc 键
-          document.body.addEventListener('keydown', onKeydown);
-
-          // 提交
-          form.submit();
-        }, 50);
-      }).then(function (res) {
-        iframe.parentNode && iframe.parentNode.removeChild(iframe);
-        return res;
-      }).catch(function (res) {
-        iframe.parentNode && iframe.parentNode.removeChild(iframe);
-        return res;
-      });
-    },
-    watchActive: function watchActive(active) {
-      var file = void 0;
-      var index = 0;
-      while (file = this.files[index]) {
-        index++;
-        if (!file.fileObject) {
-          // 不是文件对象
-        } else if (active && !this.destroy) {
-          if (this.uploading >= this.thread || this.uploading && !this.features.html5) {
-            break;
-          }
-          if (!file.active && !file.error && !file.success) {
-            this.update(file, { active: true });
-          }
-        } else {
-          if (file.active) {
-            this.update(file, { active: false });
-          }
-        }
-      }
-      if (this.uploading === 0) {
-        this.active = false;
-      }
-    },
-    watchDrop: function watchDrop(_el) {
-      var el = _el;
-      if (!this.features.drop) {
-        return;
-      }
-
-      // 移除挂载
-      if (this.dropElement) {
-        try {
-          document.removeEventListener('dragenter', this.onDragenter, false);
-          document.removeEventListener('dragleave', this.onDragleave, false);
-          this.dropElement.removeEventListener('dragover', this.onDragover, false);
-          this.dropElement.removeEventListener('drop', this.onDrop, false);
-        } catch (e) {}
-      }
-
-      if (!el) {
-        el = false;
-      } else if (typeof el === 'string') {
-        el = document.querySelector(el) || this.$root.$el.querySelector(el);
-      } else if (el === true) {
-        el = this.$parent.$el;
-      }
-
-      this.dropElement = el;
-
-      if (this.dropElement) {
-        document.addEventListener('dragenter', this.onDragenter, false);
-        document.addEventListener('dragleave', this.onDragleave, false);
-        this.dropElement.addEventListener('dragover', this.onDragover, false);
-        this.dropElement.addEventListener('drop', this.onDrop, false);
-      }
-    },
-    onDragenter: function onDragenter(e) {
-      e.preventDefault();
-      if (!this.dropActive) {
-        this.dropActive = true;
-      }
-    },
-    onDragleave: function onDragleave(e) {
-      e.preventDefault();
-      if (e.target.nodeName === 'HTML' || e.screenX === 0 && e.screenY === 0 && !e.fromElement && e.offsetX <= 0) {
-        this.dropActive = false;
-      }
-    },
-    onDragover: function onDragover(e) {
-      e.preventDefault();
-    },
-    onDrop: function onDrop(e) {
-      e.preventDefault();
-      this.dropActive = false;
-      this.addDataTransfer(e.dataTransfer);
-    }
-  }
-};
-
-var FileUpload$1 = Object.freeze({
-	default: FileUpload
-});
-
-var require$$0 = ( FileUpload$1 && FileUpload ) || FileUpload$1;
-
-var src = require$$0;
-
-return src;
-
-})));
-//# sourceMappingURL=vue-upload-component.js.map
-
 
 /***/ }),
 /* 56 */
@@ -45822,734 +45824,7 @@ var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(69)
 /* template */
-var __vue_template__ = null
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/pages/Job.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-52855010", Component.options)
-  } else {
-    hotAPI.reload("data-v-52855010", Component.options)
-' + '  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 69 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Proposals_vue__ = __webpack_require__(70);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Proposals_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_Proposals_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_NewProposal_vue__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_NewProposal_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_NewProposal_vue__);
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['initialProposalsCount'],
-
-  components: { Proposals: __WEBPACK_IMPORTED_MODULE_0__components_Proposals_vue___default.a, NewProposal: __WEBPACK_IMPORTED_MODULE_1__components_NewProposal_vue___default.a },
-
-  data: function data() {
-    return {
-      proposalsCount: this.initialProposalsCount,
-      showBidForm: false,
-      bidButtonText: 'Bid'
-    };
-  },
-
-
-  methods: {
-    toggleBidForm: function toggleBidForm() {
-      this.showBidForm = !this.showBidForm;
-      this.bidButtonText = this.showBidForm ? 'Cancel' : 'Bid';
-    }
-  }
-});
-
-/***/ }),
-/* 70 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(71)
-/* template */
-var __vue_template__ = __webpack_require__(75)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/Proposals.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3ca2eb1a", Component.options)
-  } else {
-    hotAPI.reload("data-v-3ca2eb1a", Component.options)
-' + '  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 71 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Proposal_vue__ = __webpack_require__(72);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Proposal_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Proposal_vue__);
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['proposals'],
-  components: { Proposal: __WEBPACK_IMPORTED_MODULE_0__Proposal_vue___default.a },
-
-  data: function data() {
-    return {
-      items: this.proposals
-    };
-  },
-
-
-  methods: {
-    remove: function remove(index) {
-      console.log('Removing item at index ' + index);
-      this.items.splice(index, 1);
-
-      this.$emit('removed');
-    }
-  }
-});
-
-/***/ }),
-/* 72 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(73)
-/* template */
-var __vue_template__ = __webpack_require__(74)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/Proposal.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4ee7c9ae", Component.options)
-  } else {
-    hotAPI.reload("data-v-4ee7c9ae", Component.options)
-' + '  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 73 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['data'],
-
-  data: function data() {
-    return {
-      editing: false,
-      id: this.data.id,
-      amount: this.data.amount,
-      body: this.data.body
-    };
-  },
-
-
-  computed: {
-    canUpdate: function canUpdate() {
-      var _this = this;
-
-      return this.authorize(function (user) {
-        return _this.data.owner.id == user.id;
-      });
-    },
-    canView: function canView() {
-      var _this2 = this;
-
-      return this.authorize(function (user) {
-        return user.id == _this2.data.job.contractor_id;
-      });
-    }
-  },
-
-  methods: {
-    update: function update() {
-      axios.patch('/proposals/' + this.id, {
-        body: this.body,
-        amount: this.amount
-      });
-
-      this.editing = false;
-      flash('Your proposal has been updated');
-    },
-    destroy: function destroy() {
-      axios.delete('/proposals/' + this.id);
-
-      this.$emit('deleted', this.id);
-
-      flash('Your Proposal has been deleted');
-
-      //        $(this.$el).fadeOut(300, () => {
-      //          flash('Your Proposal has been deleted');
-      //        });
-    }
-  }
-});
-
-/***/ }),
-/* 74 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("li", [
-    _c("div", { staticClass: "row details-bg-white panel" }, [
-      _c("div", { staticClass: "col-xl-6 col-lg-6 col-md-6 col-sm-6" }, [
-        _c("div", { staticClass: "row" }, [
-          _c(
-            "div",
-            { staticClass: "col-xl-3 col-lg-3 col-md-4 col-sm-3 col-4" },
-            [
-              _c("div", { staticClass: "comments-images ml-1 mt-3" }, [
-                _c("a", { attrs: { href: "/profiles/" + _vm.data.owner.id } }, [
-                  _c("img", {
-                    staticClass: "freelance-margin img-fluid rounded-circle",
-                    attrs: {
-                      src: "/" + _vm.data.owner.avatar(),
-                      alt: _vm.data.owner.name
-                    }
-                  })
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "col-xl-9 col-lg-9 col-md-8 col-sm-9 col-8 mt-4 px-0"
-            },
-            [
-              _c("h6", { staticClass: "details-freelance-name mb-1" }, [
-                _c("a", {
-                  attrs: { href: this.data.owner.name },
-                  domProps: { textContent: _vm._s(this.data.owner.name) }
-                })
-              ]),
-              _vm._v(" "),
-              _vm.editing
-                ? _c("div", [
-                    _c("textarea", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.body,
-                          expression: "body"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      domProps: { value: _vm.body },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.body = $event.target.value
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "btn btn-xs btn-danger",
-                        on: { click: _vm.update }
-                      },
-                      [_vm._v("Update")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "btn btn-xs btn-link",
-                        on: {
-                          click: function($event) {
-                            _vm.editing = false
-                          }
-                        }
-                      },
-                      [_vm._v("Cancel")]
-                    )
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.canView
-                ? _c(
-                    "a",
-                    {
-                      staticClass: "btn-sm viev-all",
-                      attrs: { href: "proposals/" + this.id }
-                    },
-                    [
-                      _vm._v(
-                        "\n                        View Proposal\n                    "
-                      )
-                    ]
-                  )
-                : _vm._e()
-            ]
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _vm._m(0),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-xl-2 col-lg-2 col-md-2 col-sm-3 col-6" }, [
-        _c("div", { staticClass: "freelance-biding mt-3" }, [
-          _vm.editing
-            ? _c("div", [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.amount,
-                      expression: "amount"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "number", name: "amount" },
-                  domProps: { value: _vm.amount },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.amount = $event.target.value
-                    }
-                  }
-                }),
-                _c("span", [_vm._v(" PKR")])
-              ])
-            : _c("div", [
-                _c("p", { staticClass: "freeware" }, [
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    { domProps: { textContent: _vm._s(_vm.amount) } },
-                    [_vm._v("PKR")]
-                  )
-                ])
-              ])
-        ])
-      ]),
-      _vm._v(" "),
-      _vm.canUpdate
-        ? _c("div", { staticClass: "panel-footer level" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn-sm btn mr-1 ml-1",
-                on: {
-                  click: function($event) {
-                    _vm.editing = true
-                  }
-                }
-              },
-              [_vm._v("Edit")]
-            ),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn-sm btn btn-danger mr-1",
-                on: { click: _vm.destroy }
-              },
-              [_vm._v("Delete")]
-            )
-          ])
-        : _vm._e()
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "col-xl-4 col-lg-4 col-md-4 col-sm-3 col-6 no-padding-on-sm"
-      },
-      [
-        _c("div", { staticClass: "freelance-year-btn mt-4" }, [
-          _c("a", { staticClass: "freelance-reput", attrs: { href: "#" } }, [
-            _c("i", {
-              staticClass: "fa fa-star",
-              attrs: { "aria-hidden": "true" }
-            }),
-            _vm._v(" "),
-            _c("i", {
-              staticClass: "fa fa-star",
-              attrs: { "aria-hidden": "true" }
-            }),
-            _vm._v(" "),
-            _c("i", {
-              staticClass: "fa fa-star",
-              attrs: { "aria-hidden": "true" }
-            }),
-            _vm._v(" "),
-            _c("i", {
-              staticClass: "fa fa-star",
-              attrs: { "aria-hidden": "true" }
-            }),
-            _vm._v(" "),
-            _c("i", {
-              staticClass: "fa fa-star",
-              attrs: { "aria-hidden": "true" }
-            })
-          ])
-        ])
-      ]
-    )
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-4ee7c9ae", module.exports)
-  }
-}
-
-/***/ }),
-/* 75 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    _vm._l(_vm.items, function(proposal, index) {
-      return _c(
-        "div",
-        [
-          _c("proposal", {
-            attrs: { data: proposal },
-            on: {
-              deleted: function($event) {
-                _vm.remove(index)
-              }
-            }
-          })
-        ],
-        1
-      )
-    })
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-3ca2eb1a", module.exports)
-  }
-}
-
-/***/ }),
-/* 76 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(77)
-/* template */
-var __vue_template__ = null
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/pages/Profile.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-67865b08", Component.options)
-  } else {
-    hotAPI.reload("data-v-67865b08", Component.options)
-' + '  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 77 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['user', 'avatar'],
-  data: function data() {
-    return {
-      description: this.user.description,
-      editing: false,
-      image: this.avatar
-    };
-  },
-  mounted: function mounted() {
-    //      console.log(this.user);
-  },
-
-  methods: {
-    onFileChange: function onFileChange(e) {
-      var files = e.target.files || e.dataTransfer.files;
-      if (!files.length) {
-        return;
-      }
-      this.createImage(files[0]);
-    },
-    createImage: function createImage(file) {
-      var image = new Image();
-      var reader = new FileReader();
-      var vm = this;
-
-      reader.onload = function (e) {
-        vm.image = e.target.result;
-      };
-      reader.readAsDataURL(file);
-    },
-    updateDescription: function updateDescription() {
-      var _this = this;
-
-      axios.patch('/profiles/' + this.user.id, { description: this.description }).then(function (response) {
-        console.log(response);
-        flash('Overview updated');
-        _this.editing = false;
-      });
-    },
-    openPortfolioModal: function openPortfolioModal() {
-      this.$refs.portfolio_modal.open();
-    }
-  }
-});
-
-/***/ }),
-/* 78 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 79 */,
-/* 80 */,
-/* 81 */,
-/* 82 */,
-/* 83 */,
-/* 84 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(85)
-/* template */
-var __vue_template__ = __webpack_require__(86)
+var __vue_template__ = __webpack_require__(70)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -46589,12 +45864,12 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 85 */
+/* 69 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_upload_component__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_upload_component__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_upload_component___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_upload_component__);
 //
 //
@@ -46678,7 +45953,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 86 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -46776,6 +46051,846 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-72f275ae", module.exports)
   }
 }
+
+/***/ }),
+/* 71 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(72)
+/* template */
+var __vue_template__ = null
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/pages/Job.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-52855010", Component.options)
+  } else {
+    hotAPI.reload("data-v-52855010", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 72 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Proposals_vue__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Proposals_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_Proposals_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_NewProposal_vue__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_NewProposal_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_NewProposal_vue__);
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['initialProposalsCount'],
+
+  components: { Proposals: __WEBPACK_IMPORTED_MODULE_0__components_Proposals_vue___default.a, NewProposal: __WEBPACK_IMPORTED_MODULE_1__components_NewProposal_vue___default.a },
+
+  data: function data() {
+    return {
+      proposalsCount: this.initialProposalsCount,
+      showBidForm: false,
+      bidButtonText: 'Bid'
+    };
+  },
+
+
+  methods: {
+    toggleBidForm: function toggleBidForm() {
+      this.showBidForm = !this.showBidForm;
+      this.bidButtonText = this.showBidForm ? 'Cancel' : 'Bid';
+    }
+  }
+});
+
+/***/ }),
+/* 73 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(74)
+/* template */
+var __vue_template__ = __webpack_require__(78)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/Proposals.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3ca2eb1a", Component.options)
+  } else {
+    hotAPI.reload("data-v-3ca2eb1a", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 74 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Proposal_vue__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Proposal_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Proposal_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['proposals'],
+  components: { Proposal: __WEBPACK_IMPORTED_MODULE_0__Proposal_vue___default.a },
+
+  data: function data() {
+    return {
+      items: this.proposals
+    };
+  },
+
+
+  methods: {
+    remove: function remove(index) {
+      console.log('Removing item at index ' + index);
+      this.items.splice(index, 1);
+
+      this.$emit('removed');
+    }
+  }
+});
+
+/***/ }),
+/* 75 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(76)
+/* template */
+var __vue_template__ = __webpack_require__(77)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/Proposal.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4ee7c9ae", Component.options)
+  } else {
+    hotAPI.reload("data-v-4ee7c9ae", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 76 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['data'],
+
+  data: function data() {
+    return {
+      editing: false,
+      id: this.data.id,
+      amount: this.data.amount,
+      body: this.data.body
+    };
+  },
+
+
+  computed: {
+    userAvatar: function userAvatar() {
+      return this.data.user.avatar_path ? this.data.user.avatar_path : '/images/person-2.jpg';
+    },
+    canUpdate: function canUpdate() {
+      var _this = this;
+
+      return this.authorize(function (user) {
+        return _this.data.owner.id == user.id;
+      });
+    },
+    canView: function canView() {
+      var _this2 = this;
+
+      return this.authorize(function (user) {
+        return user.id == _this2.data.job.contractor_id;
+      });
+    }
+  },
+
+  methods: {
+    update: function update() {
+      axios.patch('/proposals/' + this.id, {
+        body: this.body,
+        amount: this.amount
+      });
+
+      this.editing = false;
+      flash('Your proposal has been updated');
+    },
+    destroy: function destroy() {
+      axios.delete('/proposals/' + this.id);
+
+      this.$emit('deleted', this.id);
+
+      flash('Your Proposal has been deleted');
+
+      //        $(this.$el).fadeOut(300, () => {
+      //          flash('Your Proposal has been deleted');
+      //        });
+    }
+  }
+});
+
+/***/ }),
+/* 77 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("li", [
+    _c("div", { staticClass: "row details-bg-white panel panel-success" }, [
+      _c("div", { staticClass: "col-xl-6 col-lg-6 col-md-6 col-sm-6" }, [
+        _c("div", { staticClass: "row" }, [
+          _c(
+            "div",
+            { staticClass: "col-xl-3 col-lg-3 col-md-4 col-sm-3 col-4" },
+            [
+              _c("div", { staticClass: "comments-images ml-1 mt-3" }, [
+                _vm.data.owner.avatar_path
+                  ? _c("img", {
+                      staticClass: "freelance-margin img-fluid rounded-circle",
+                      attrs: {
+                        src: _vm.data.owner.avatar_path,
+                        alt: _vm.data.owner.name
+                      }
+                    })
+                  : _c("img", {
+                      staticClass: "freelance-margin img-fluid rounded-circle",
+                      attrs: {
+                        src: "/images/person-2.jpg",
+                        alt: _vm.data.owner.name
+                      }
+                    })
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "col-xl-9 col-lg-9 col-md-8 col-sm-9 col-8 mt-4 px-0"
+            },
+            [
+              _c("h6", { staticClass: "details-freelance-name mb-1" }, [
+                _c("a", {
+                  attrs: { href: _vm.data.owner.id },
+                  domProps: { textContent: _vm._s(this.data.owner.name) }
+                })
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "details-freelance-desig mb-1" }, [
+                _vm._v("Senior Graphic - Web Designer")
+              ]),
+              _vm._v(" "),
+              _vm.editing
+                ? _c("div", [
+                    _c("textarea", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.body,
+                          expression: "body"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      domProps: { value: _vm.body },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.body = $event.target.value
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "btn btn-xs btn-danger",
+                        on: { click: _vm.update }
+                      },
+                      [_vm._v("Update")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "btn btn-xs btn-link",
+                        on: {
+                          click: function($event) {
+                            _vm.editing = false
+                          }
+                        }
+                      },
+                      [_vm._v("Cancel")]
+                    )
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.canView
+                ? _c(
+                    "a",
+                    {
+                      staticClass: "btn-sm viev-all",
+                      attrs: { href: "/proposals/" + this.id }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        View Proposal\n                    "
+                      )
+                    ]
+                  )
+                : _vm._e()
+            ]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-xl-2 col-lg-2 col-md-2 col-sm-3 col-6" }, [
+        _c("div", { staticClass: "freelance-biding mt-3" }, [
+          _vm.editing
+            ? _c("div", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.amount,
+                      expression: "amount"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "number", name: "amount" },
+                  domProps: { value: _vm.amount },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.amount = $event.target.value
+                    }
+                  }
+                }),
+                _c("span", [_vm._v(" PKR")])
+              ])
+            : _c("div", [
+                _c("p", { staticClass: "freeware" }, [
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    { domProps: { textContent: _vm._s(_vm.amount) } },
+                    [_vm._v("PKR")]
+                  )
+                ])
+              ])
+        ])
+      ]),
+      _vm._v(" "),
+      _vm.canUpdate
+        ? _c("div", { staticClass: "panel-footer level" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn-sm btn mr-1 ml-1",
+                on: {
+                  click: function($event) {
+                    _vm.editing = true
+                  }
+                }
+              },
+              [_vm._v("Edit")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn-sm btn btn-danger mr-1",
+                on: { click: _vm.destroy }
+              },
+              [_vm._v("Delete")]
+            )
+          ])
+        : _vm._e()
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "col-xl-4 col-lg-4 col-md-4 col-sm-3 col-6 no-padding-on-sm"
+      },
+      [
+        _c("div", { staticClass: "freelance-year-btn mt-4" }, [
+          _c("i", {
+            staticClass: "fa fa-star",
+            attrs: { "aria-hidden": "true" }
+          }),
+          _vm._v(" "),
+          _c("i", {
+            staticClass: "fa fa-star",
+            attrs: { "aria-hidden": "true" }
+          }),
+          _vm._v(" "),
+          _c("i", {
+            staticClass: "fa fa-star",
+            attrs: { "aria-hidden": "true" }
+          }),
+          _vm._v(" "),
+          _c("i", {
+            staticClass: "fa fa-star",
+            attrs: { "aria-hidden": "true" }
+          }),
+          _vm._v(" "),
+          _c("i", {
+            staticClass: "fa fa-star",
+            attrs: { "aria-hidden": "true" }
+          })
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-4ee7c9ae", module.exports)
+  }
+}
+
+/***/ }),
+/* 78 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    _vm._l(_vm.items, function(proposal, index) {
+      return _c(
+        "div",
+        [
+          _c("proposal", {
+            attrs: { data: proposal },
+            on: {
+              deleted: function($event) {
+                _vm.remove(index)
+              }
+            }
+          })
+        ],
+        1
+      )
+    })
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3ca2eb1a", module.exports)
+  }
+}
+
+/***/ }),
+/* 79 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(80)
+/* template */
+var __vue_template__ = null
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/pages/Profile.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-67865b08", Component.options)
+  } else {
+    hotAPI.reload("data-v-67865b08", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 80 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['user', 'avatar'],
+  data: function data() {
+    return {
+      description: this.user.description,
+      editing: false,
+      image: this.avatar
+    };
+  },
+  mounted: function mounted() {
+    //      console.log(this.user);
+  },
+
+  methods: {
+    onFileChange: function onFileChange(e) {
+      var files = e.target.files || e.dataTransfer.files;
+      if (!files.length) {
+        return;
+      }
+      this.createImage(files[0]);
+    },
+    createImage: function createImage(file) {
+      var image = new Image();
+      var reader = new FileReader();
+      var vm = this;
+
+      reader.onload = function (e) {
+        vm.image = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    },
+    updateDescription: function updateDescription() {
+      var _this = this;
+
+      axios.patch('/profiles/' + this.user.id, { description: this.description }).then(function (response) {
+        console.log(response);
+        flash('Overview updated');
+        _this.editing = false;
+      });
+    },
+    openPortfolioModal: function openPortfolioModal() {
+      this.$refs.portfolio_modal.open();
+    }
+  }
+});
+
+/***/ }),
+/* 81 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(82)
+/* template */
+var __vue_template__ = null
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/pages/Settings.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-d6372c40", Component.options)
+  } else {
+    hotAPI.reload("data-v-d6372c40", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 82 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['contact_info', 'currentUser'],
+
+  data: function data() {
+    return {
+      editing: false,
+      showAccount: true,
+      showSecurity: false,
+      showNotifications: false,
+      account: {
+        name: this.currentUser.name,
+        email: this.currentUser.email,
+        skype: this.contact_info.skype,
+        address: this.contact_info.address,
+        contact_number: this.contact_info.contact_number,
+        city: this.contact_info.city,
+        country: this.contact_info.country
+      }
+    };
+  },
+  mounted: function mounted() {
+    console.log('Logging settings account');
+    console.log(this.account);
+  },
+
+
+  methods: {
+    updateAccountSettings: function updateAccountSettings() {
+      console.log(this.account);
+      axios.patch('/settings/account', {
+        'name': this.account.name,
+        'email': this.account.email,
+        'skype': this.account.skype,
+        'address': this.account.address,
+        'contact_number': this.account.contact_number,
+        'city': this.account.city,
+        'country': this.account.country
+      }).then(function (response) {
+        console.log(response);
+        flash('Account Setting updated.');
+      }, function (err) {
+        console.log('Logging error: ');
+        console.error(err.response);
+        flash('Error while processing request');
+      });
+    }
+  }
+});
+
+/***/ }),
+/* 83 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

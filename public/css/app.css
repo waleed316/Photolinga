@@ -31,6 +31,48 @@
   display: none;
 }
 
+.form-control {
+  color: #000 !important;
+}
+
+::-webkit-input-placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: red;
+  opacity: 1;
+  /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: red;
+  opacity: 1;
+  /* Firefox */
+}
+
+::-ms-input-placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: red;
+  opacity: 1;
+  /* Firefox */
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: red;
+  opacity: 1;
+  /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: red;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: red;
+}
+
 /* Modal CSS */
 
 .modal-mask {
@@ -501,7 +543,7 @@
 /* second section */
 
 .post-bg-color {
-  background-color: #F0F0F0;
+  background-color: #f1f5f8;
 }
 
 .badge-no {
@@ -2597,6 +2639,659 @@
   font-weight: bold;
 }
 
+/* all jobs page styling */
+
+.all-jos {
+  padding: 0 25px 25px 25px;
+}
+
+.jobs-num {
+  color: white;
+  font-size: 1.9em;
+  margin-bottom: 0;
+}
+
+.bluuur {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.jobs-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border: 1px solid lightgrey;
+}
+
+.jobs-flex .first-box {
+  width: 25%;
+  background-color: white;
+  padding: 15px;
+  border-right: 1px solid lightgrey;
+}
+
+.jobs-flex .first-box .cat-heading {
+  font-size: 0.8em;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.first-box .cat-form {
+  margin-bottom: 0;
+  position: relative;
+}
+
+.category-input {
+  position: relative;
+}
+
+.cat-search {
+  position: absolute;
+  right: 10px;
+  top: 7px;
+  font-size: 14px !important;
+}
+
+.first-box .tags-required .required-skills {
+  display: inline-block;
+  margin-bottom: 2px;
+}
+
+.jobdetail-list {
+  list-style: none;
+}
+
+.jobdetail-list li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.jobdetail-list li .project-head {
+  width: 40%;
+}
+
+.main-jobs {
+  background-color: white;
+  padding: 5px 10px;
+}
+
+.jobdetail-list li .project-by,
+.project-date,
+.project-budget {
+  width: 15%;
+}
+
+.jobdetail-list li .project-img {
+  width: 25px;
+}
+
+.main-jobs .job-title,
+.main-jobs .job-by,
+.main-jobs .job-date,
+.main-jobs .job-budget {
+  color: black;
+}
+
+.main-jobs .job-title {
+  font-weight: bold;
+}
+
+.job-title,
+.job-by,
+.job-date,
+.job-budget {
+  font-size: 0.8em;
+  color: darkgrey;
+  padding-left: 10px;
+  margin-bottom: 0;
+  display: inline;
+  vertical-align: middle;
+}
+
+.project-btn {
+  background-color: red !important;
+  font-size: 12px !important;
+  margin-bottom: 0 !important;
+  padding: 3px 8px 2px 8px !important;
+  color: white !important;
+}
+
+/* All Profile */
+
+.p-list {
+  list-style: none;
+}
+
+.p-list > li {
+  width: 48%;
+  margin-bottom: 1%;
+  display: inline-block;
+  background-color: white;
+  border-radius: 5px;
+  margin-right: 1%;
+  border: 1px solid lightgray;
+  cursor: pointer;
+}
+
+.p-list > li:hover {
+  border-color: #2C004F;
+}
+
+.p-list > li .profile-box {
+  width: 100%;
+}
+
+.p-list > li .profile-box .profile-upper-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 85px;
+  padding: 10px;
+  position: relative;
+}
+
+.p-list > li .profile-box .profile-upper-box .profile-image {
+  position: relative;
+  width: 15%;
+  margin-right: 10px;
+}
+
+.p-list > li .profile-box .profile-upper-box .profile-image img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.p-list > li .profile-box .profile-upper-box .p-name-section {
+  width: 85%;
+  padding-top: 10px;
+}
+
+.p-list > li .profile-box .profile-upper-box .p-name-section .details-freelance-name {
+  font-size: 1.5em;
+  margin-bottom: 2px;
+}
+
+.p-list > li .profile-box .profile-upper-box .p-name-section .details-freelance-desig {
+  font-size: 0.8em;
+}
+
+.p-list > li .profile-box .profile-upper-box .viev-all {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.p-list > li .profile-box .profile-lower-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 10px;
+}
+
+.p-list > li .profile-box .profile-lower-box .p-left-section {
+  width: 48%;
+  margin-right: 4%;
+}
+
+.p-list > li .profile-box .profile-lower-box .p-left-section .p-rating-section {
+  width: 33.33%;
+  height: 30px;
+  border: 1px solid lightgray;
+  padding-top: 2px;
+  border-right: 0;
+  float: left;
+}
+
+.p-list > li .profile-box .profile-lower-box .p-left-section .p-rating-section ul.r-list {
+  list-style: none;
+  text-align: center;
+}
+
+.p-list > li .profile-box .profile-lower-box .p-left-section .p-rating-section ul.r-list li {
+  display: inline;
+}
+
+.p-list > li .profile-box .profile-lower-box .p-left-section .p-rating-section ul.r-list li a {
+  font-size: 12px;
+}
+
+.p-list > li .profile-box .profile-lower-box .p-left-section .p-hour,
+.p-list > li .profile-box .profile-lower-box .p-left-section .p-year {
+  width: 33.33%;
+  float: left;
+  border: 1px solid lightgray;
+  height: 30px;
+}
+
+.p-list > li .profile-box .profile-lower-box .p-left-section .p-hour .hour,
+.p-list > li .profile-box .profile-lower-box .p-left-section .p-hour .year,
+.p-list > li .profile-box .profile-lower-box .p-left-section .p-year .hour,
+.p-list > li .profile-box .profile-lower-box .p-left-section .p-year .year {
+  margin-bottom: 0;
+  padding-top: 7px;
+  text-align: center;
+  font-size: 14px;
+  color: #2C004F;
+}
+
+.p-list > li .profile-box .profile-lower-box .p-left-section .p-hour {
+  border-right: 0;
+}
+
+.p-list > li .profile-box .profile-lower-box .p-right-section {
+  width: 48%;
+}
+
+.p-list > li .profile-box .profile-lower-box .p-right-section p {
+  margin-bottom: 0;
+}
+
+/* Profile Page Styling */
+
+.about-freelancer-box .about-head {
+  color: #BBC5CF;
+  font-size: 0.8em;
+}
+
+.about-freelancer-box .freelance-box {
+  background-color: white;
+}
+
+.about-freelancer-box .freelance-box .upper-portion {
+  padding: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-bottom: 1px solid #efe9e9;
+}
+
+.about-freelancer-box .freelance-box .upper-portion .left-sec {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 48%;
+  padding-top: 10px;
+}
+
+.about-freelancer-box .freelance-box .upper-portion .left-sec .img {
+  width: 25%;
+  margin-right: 10px;
+  position: relative;
+}
+
+.about-freelancer-box .freelance-box .upper-portion .left-sec .name {
+  width: 75%;
+  padding-top: 15px;
+}
+
+.about-freelancer-box .freelance-box .upper-portion .left-sec .name .details-freelance-name {
+  margin-bottom: 2px;
+  font-size: 1.3em;
+}
+
+.about-freelancer-box .freelance-box .upper-portion .left-sec .name .details-freelance-desig {
+  margin-bottom: 3px;
+  font-size: 0.8em;
+}
+
+.about-freelancer-box .freelance-box .upper-portion .left-sec .name .review-p {
+  font-size: 0.8em;
+}
+
+.about-freelancer-box .freelance-box .upper-portion .left-sec .name .review-p a:hover {
+  text-decoration: none;
+}
+
+.about-freelancer-box .freelance-box .upper-portion .right-sec {
+  padding-top: 25px;
+  width: 55%;
+}
+
+.about-freelancer-box .freelance-box .mid-portion {
+  padding: 15px;
+  border-bottom: 1px solid #efe9e9;
+}
+
+.about-freelancer-box .freelance-box .mid-portion .p-overview-head {
+  font-size: 1.3em;
+  color: #2C004F;
+}
+
+.about-freelancer-box .freelance-box .mid-portion .overview-desc {
+  font-size: 0.8em;
+  letter-spacing: 1px;
+  color: #808589;
+}
+
+.about-freelancer-box .freelance-box .history-portion {
+  padding: 15px;
+}
+
+.about-freelancer-box .freelance-box .history-portion .review-head {
+  font-size: 1.3em;
+  color: #2C004F;
+}
+
+.about-freelancer-box .freelance-box .history-portion .review-list {
+  list-style: none;
+}
+
+.about-freelancer-box .freelance-box .history-portion .review-list li {
+  margin-bottom: 5px;
+  border-bottom: 1px solid #efe9e9;
+}
+
+.about-freelancer-box .freelance-box .history-portion .review-list li:last-of-type {
+  border-bottom: 0;
+}
+
+.about-freelancer-box .freelance-box .history-portion .review-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 15px;
+}
+
+.about-freelancer-box .freelance-box .history-portion .review-box .r-image {
+  width: 5%;
+  position: relative;
+  margin-right: 1%;
+}
+
+.about-freelancer-box .freelance-box .history-portion .review-box .r-image img {
+  height: 30px;
+}
+
+.about-freelancer-box .freelance-box .history-portion .review-box .r-name {
+  width: 69%;
+  padding-top: 5px;
+}
+
+.about-freelancer-box .freelance-box .history-portion .review-box .r-name .r-company-name {
+  color: #2C004F;
+}
+
+.about-freelancer-box .freelance-box .history-portion .review-box .r-history {
+  width: 25%;
+  text-align: right;
+  padding-top: 5px;
+}
+
+.about-freelancer-box .freelance-box .history-portion .review-box .r-history .r-date {
+  font-size: 0.7em;
+  margin-bottom: 5px;
+}
+
+.about-freelancer-box .freelance-box .portfolio-portion {
+  padding: 15px;
+  border-bottom: 1px solid #efe9e9;
+}
+
+.about-freelancer-box .freelance-box .portfolio-portion .portfolio-head {
+  font-size: 1.3em;
+  color: #2C004F;
+}
+
+.about-freelancer-box .freelance-box .portfolio-portion .portfolio-list {
+  list-style: none;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.about-freelancer-box .freelance-box .portfolio-portion .portfolio-list li {
+  display: inline;
+  margin: 0 5px;
+}
+
+.about-freelancer-box .freelance-box .portfolio-portion .portfolio-list li .portfoli-box {
+  margin-bottom: 12px;
+  width: 200px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.about-freelancer-box .freelance-box .portfolio-portion .portfolio-list li .portfoli-box .p-image {
+  position: relative;
+  overflow: hidden;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.about-freelancer-box .freelance-box .portfolio-portion .portfolio-list li .portfoli-box .p-image:hover .p-text {
+  bottom: 0;
+  top: 0;
+}
+
+.about-freelancer-box .freelance-box .portfolio-portion .portfolio-list li .portfoli-box .p-image .p-text {
+  position: absolute;
+  bottom: -200px;
+  top: 200px;
+  width: 100%;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.about-freelancer-box .freelance-box .portfolio-portion .portfolio-list li .portfoli-box .p-image .p-text h6 {
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.about-freelancer-box .f-profile-box {
+  background-color: white;
+}
+
+.about-freelancer-box .f-profile-box .btn-box {
+  padding: 20px 0 10px 0;
+  text-align: center;
+}
+
+.about-freelancer-box .f-profile-box .btn-box .btn-join-me {
+  background-color: #F74545;
+  padding: 5px 5px;
+  color: white;
+  font-size: 12px;
+  margin-right: 5px;
+}
+
+.about-freelancer-box .f-profile-box .btn-box .btn-join-me:hover {
+  text-decoration: none;
+}
+
+.about-freelancer-box .f-profile-box .btn-box .contact-me {
+  margin-left: 5px;
+  font-size: 0.8em;
+}
+
+.about-freelancer-box .f-profile-box .person-detail {
+  padding: 10px 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.about-freelancer-box .f-profile-box .person-detail li {
+  border-top: 1px solid #efe9e9;
+  padding: 8px 10px;
+}
+
+.about-freelancer-box .f-profile-box .person-detail li .p-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.about-freelancer-box .f-profile-box .person-detail li .p-box .ico {
+  width: 15%;
+}
+
+.about-freelancer-box .f-profile-box .person-detail li .p-box .ico i {
+  font-size: 13px;
+  color: #808589;
+}
+
+.about-freelancer-box .f-profile-box .person-detail li .p-box .it {
+  width: 60%;
+}
+
+.about-freelancer-box .f-profile-box .person-detail li .p-box .it h6 {
+  font-size: 14px;
+  display: inline;
+  color: #808589;
+}
+
+.about-freelancer-box .f-profile-box .person-detail li .p-box .bold {
+  width: 25%;
+  text-align: right;
+}
+
+.about-freelancer-box .f-profile-box .person-detail li .p-box .bold b {
+  display: inline;
+  vertical-align: sub;
+  color: black;
+}
+
+/* Privacy Section */
+
+.privacy-heading {
+  font-size: 1.9em;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 1.6px;
+  color: #2C004F;
+}
+
+.overview-heading {
+  color: #2C004F;
+}
+
+.privacy-desc {
+  font-size: 14px;
+  letter-spacing: 1.2px;
+}
+
+.privacy-list {
+  padding-left: 5%;
+}
+
+.privacy-list .privacy-desc {
+  margin-bottom: 5px;
+}
+
+.privacy-section {
+  margin-left: 5px;
+}
+
+.privacy-section .card {
+  margin-bottom: 10px;
+}
+
+.privacy-section .card .card-header {
+  background-color: #2C004F;
+}
+
+.privacy-section .card .overview-heading {
+  color: white;
+}
+
+.privacy-section .card .overview-heading:hover,
+.privacy-section .card .overview-heading:focus {
+  text-decoration: none;
+}
+
+.privacy-section .fa-chevron-up:before {
+  content: "\F068";
+}
+
+.privacy-section .collapsed .fa-chevron-up:before {
+  content: "\F067";
+}
+
+.privacy-section .fa-chevron-down:before {
+  content: "\F068";
+}
+
+.privacy-section .collapsed .fa-chevron-down:before {
+  content: "\F067";
+}
+
+
+
+
+
+@media (min-width: 280px) and (max-width: 575px) {
+  .p-list > li {
+    width: 100% !important;
+  }
+
+  .p-list > li .profile-upper-box .p-name-section {
+    width: 55% !important;
+  }
+
+  .p-list > li .profile-upper-box .p-name-section .details-freelance-name {
+    font-size: 0.9em !important;
+  }
+
+  .p-list > li .profile-upper-box .p-name-section .details-freelance-desig {
+    font-size: 0.7em !important;
+  }
+
+  .p-list > li .profile-upper-box .profile-image {
+    width: 25% !important;
+  }
+
+  .p-list > li .profile-upper-box .viev-all {
+    width: 25% !important;
+    height: 30px;
+    text-align: center;
+    position: unset !important;
+  }
+
+  .p-list > li .profile-lower-box {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+
+  .p-list > li .profile-lower-box .p-left-section {
+    width: 100% !important;
+    margin-bottom: 5px;
+  }
+
+  .p-list > li .profile-lower-box .p-right-section {
+    width: 100% !important;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .p-list > li {
+    width: 100% !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .p-list > li {
+    width: 100% !important;
+  }
+
+  .p-list > li .profile-box .profile-image {
+    width: 12% !important;
+  }
+}
+
+
+
 @media (max-width: 420px) {
   .event-loc-list li {
     font-size: 12px;
@@ -2718,6 +3413,42 @@
 
   .mob-mary {
     margin-top: 6px;
+  }
+
+  .main-jobs {
+    display: block !important;
+  }
+
+  .project-img {
+    float: left;
+  }
+
+  .project-head {
+    width: 100% !important;
+  }
+
+  .project-by {
+    float: left;
+    clear: both;
+  }
+
+  .main-jobs .project-budget,
+  .main-jobs .project-by,
+  .main-jobs .project-date {
+    width: 33% !important;
+    float: left;
+  }
+
+  .main-jobs .job-by,
+  .main-jobs .job-date,
+  .main-jobs .job-budget {
+    font-size: 0.7em !important;
+  }
+
+  .project-btn1 {
+    text-align: center;
+    width: 100;
+    clear: both;
   }
 }
 
@@ -3000,6 +3731,42 @@
   .margin-hr {
     margin-top: 2rem;
   }
+
+  .main-jobs {
+    display: block !important;
+  }
+
+  .project-img {
+    float: left;
+  }
+
+  .project-head {
+    width: 100% !important;
+  }
+
+  .project-by {
+    float: left;
+    clear: both;
+  }
+
+  .main-jobs .project-budget,
+  .main-jobs .project-by,
+  .main-jobs .project-date {
+    width: 33% !important;
+    float: left;
+  }
+
+  .main-jobs .job-by,
+  .main-jobs .job-date,
+  .main-jobs .job-budget {
+    font-size: 0.7em !important;
+  }
+
+  .project-btn1 {
+    text-align: center;
+    width: 100;
+    clear: both;
+  }
 }
 
 /* // Small devices (landscape phones, 576px and up) */
@@ -3250,6 +4017,42 @@
 
   .margin-hr {
     margin-top: 2rem;
+  }
+
+  .main-jobs {
+    display: block !important;
+  }
+
+  .project-img {
+    float: left;
+  }
+
+  .project-head {
+    width: 100% !important;
+  }
+
+  .project-by {
+    float: left;
+    clear: both;
+  }
+
+  .main-jobs .project-budget,
+  .main-jobs .project-by,
+  .main-jobs .project-date {
+    width: 33% !important;
+    float: left;
+  }
+
+  .main-jobs .job-by,
+  .main-jobs .job-date,
+  .main-jobs .job-budget {
+    font-size: 0.9em !important;
+  }
+
+  .project-btn1 {
+    text-align: center;
+    width: 100;
+    clear: both;
   }
 }
 

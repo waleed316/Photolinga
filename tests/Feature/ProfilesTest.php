@@ -70,37 +70,6 @@ class ProfilesTest extends TestCase
         $this->assertDatabaseHas('users', [ 'description' => $updatedDescription ]);
     }
 
-//    /**
-//     * @test
-//     */
-//    public function userCanBrowseToOwnEditProfile()
-//    {
-//        $this->signIn();
-//
-//        $this->get( auth()->user()->profile() . '/edit' )
-//            ->assertSee( auth()->user()->description )
-//            ->assertStatus( 200 );
-//    }
-//
-//    /**
-//     * @test
-//     */
-//    public function userCanNotBrowseToNotOwnEditProfile()
-//    {
-//        $this->withExceptionHandling();
-//
-//        $user = create( 'App\User' );
-//
-//        $this->get( $user->profile() . '/edit' )
-//            ->assertDontSee( $user->description )
-//            ->assertRedirect( '/login' );
-//
-//        $this->signIn()
-//            ->get( $user->profile() . '/edit' )
-//            ->assertDontSee( $user->description )
-//            ->assertStatus( 403 );
-//    }
-
     /**
      * @test
      */
@@ -154,5 +123,15 @@ class ProfilesTest extends TestCase
 
         $this->get('/profiles/' . $user->id)
             ->assertSee($portfolio->title);
+    }
+
+    /**
+     * @test
+     */
+    public function userCanBrowseFreelancers()
+    {
+        $user = create('App\User');
+        $this->get('/profiles')
+            ->assertSee($user->name);
     }
 }

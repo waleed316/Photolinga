@@ -31,9 +31,26 @@ Guests Can:
 
 To Do:
 -
-- Upload Profile Picture
+- Upload Profile Picture (DONE)
 - Upload Portfolio
-- CRUD Packages
-- Browse and Buy Packages
+<!-- - CRUD Packages -->
+<!-- - Browse and Buy Packages -->
 - Search Freelancers
 - Chat with Freelancers
+<!-- - Footer Links -->
+<!-- - Settings Page -->
+- Transaction History
+- Messages
+- Notifications
+- Change Profile Cover Photo
+- Hightlight "Post a job"
+- Photolinga Pro "Let's talk" and "Become a Pro" modal
+- 404 Page
+
+Categories:
+-
+- Wedding, Portrait, Landscape, Corporate Event, Fashion, Product, Architecture, Nature, Birthday, Sports, Macro, Baby, Food, Erotic, Wildlife, Documentary 
+
+Skills:
+-
+- 

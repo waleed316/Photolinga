@@ -14,7 +14,7 @@ class CreateJobsTable extends Migration
      */
     public function up()
     {
-        Schema::create('jobs', function (Blueprint $table) {
+        Schema::create('jobs', function ( Blueprint $table ) {
             $table->increments('id');
             $table->string('title');
             $table->text('description');
@@ -23,21 +23,22 @@ class CreateJobsTable extends Migration
             $table->unsignedInteger('freelancer_id')->nullable();
             $table->unsignedInteger('awarded_proposal_id')->nullable();
             $table->unsignedInteger('category_id');
+            $table->boolean('featured')->default(false);
             $table->string('location');
             $table->boolean('in_progress')->default(false);
             $table->timestamps();
             $table->foreign('contractor_id')
-                  ->references('id')
-                  ->on('users')
-                  ->onDelete('cascade');
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
             $table->foreign('freelancer_id')
-                  ->references('id')
-                  ->on('users')
-                  ->onDelete('set null');
+                ->references('id')
+                ->on('users')
+                ->onDelete('set null');
             $table->foreign('awarded_proposal_id')
-                  ->references('id')
-                  ->on('proposals')
-                  ->onDelete('set null');
+                ->references('id')
+                ->on('proposals')
+                ->onDelete('set null');
         });
     }
 

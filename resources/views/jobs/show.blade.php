@@ -42,25 +42,23 @@
                         </h6>
                     </div>
 
-                    @can('apply',$job)
-                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 px-0">
-                            <h6 class="details-title ml-3 hidden-sm-down">&nbsp;</h6>
-                            <h6 class="details-text">
+                    <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 px-0">
+                        <h6 class="details-title ml-3 hidden-sm-down">&nbsp;</h6>
+                        <h6 class="details-text">
+                            @can('apply',$job)
                                 <a href="javascript:void(0)" id="bid" class="btn-bid">Bid</a>
-                            </h6>
-                        </div>
-                    @endcan @guest
-                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 px-0">
-                            <h6 class="details-title ml-3 hidden-sm-down">&nbsp;</h6>
-                            <h6 class="details-text">
+                            @endcan
+                            @guest
                                 <a class="btn-bid" href="/login">Log In</a>
-                            </h6>
-                        </div>
-                    @endguest
-
+                            @endguest
+                            @if($job->in_progress)
+                                <p>IN PROGRESS</p>
+                            @endif
+                        </h6>
+                    </div>
                 </div>
                 @auth
-                    <new-proposal inline-template v-if="{{ Auth::user()->can('apply',$job) }}">
+                    <new-proposal inline-template v-if="{{ Auth::user()->can('apply',$job) }}" v-cloak>
                         {{-- @can('apply',$job)--}}
                         <div class="row mt-3 pb-4" id="bid-hide">
                             <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 bord">
@@ -153,9 +151,8 @@
                         </div>
                         {{--@endcan--}}
                     </new-proposal>
-                @endif {{--
-
-				<div class="row details-bg-white pt-0">--}} {{--
+                @endif
+                {{--				<div class="row details-bg-white pt-0">--}} {{--
 					<div class="col-xl-2 col-lg-2 col-md-2 col-sm-4 col-4 det-com details-border">--}} {{--
 						<h6 class="details-bids mb-0 border-left-0 first-pad">
 							<span>0</span> Comments</h6>--}} {{--
@@ -312,7 +309,7 @@
 
                                     <div class="col-xl-9 col-lg-9 col-md-8 col-sm-10 col-9 mt-4 px-0">
                                         <h6 class="details-freelance-name mb-1">
-                                            <a href="#">
+                                            <a href="{{ $job->contractor->profile() }}">
                                                 <b>{{ $job->contractor->name }}</b>
                                             </a>
                                         </h6>

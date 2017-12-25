@@ -19,13 +19,15 @@ Vue.component('file-upload', VueUploadComponent);
  */
 
 Vue.component('flash', require('./components/Flash.vue'));
-Vue.component('new-proposal', require('./components/NewProposal.vue'));
 Vue.component('errors', require('./components/Errors.vue'));
+
+Vue.component('new-proposal', require('./components/NewProposal.vue'));
 Vue.component('modal', require('./components/Modal.vue'));
 Vue.component('portfolio-upload', require('./components/FileUploadModal.vue'));
 
 Vue.component('job-view', require('./pages/Job.vue'));
 Vue.component('profile-view', require('./pages/Profile.vue'));
+Vue.component('settings-view', require('./pages/Settings.vue'));
 
 const app = new Vue({
   el: '#app',
