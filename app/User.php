@@ -60,18 +60,6 @@ class User extends Authenticatable
     public function updateContactInformation( $contact )
     {
         $this->contactInformation()->updateOrCreate([ 'user_id' => $this->id ], $contact);
-//        if ( $this->contactInformation != null ) {
-//            $this->contactInformation->save();
-//        } else {
-//        $contactInformation = new ContactInformation();
-//        $contactInformation->skype = $contact['skype'];
-//        $contactInformation->contact_number = $contact['contact_number'];
-//        $contactInformation->address = $contact['address'];
-//        $contactInformation->city = $contact['city'];
-//        $contactInformation->country = $contact['country'];
-//        $this->contactInformation()->save($contactInformation);
-////        }
-//
         return $this;
     }
 

@@ -31,6 +31,21 @@
   color: #000 !important;
 }
 
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.my-jobs-card {
+  @extend .center;
+  width: 90% !important;
+}
+
+.p-2 {
+  padding: 20px;
+}
+
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: red;
   opacity: 1; /* Firefox */

@@ -35,6 +35,21 @@
   color: #000 !important;
 }
 
+.center,
+.my-jobs-card {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.my-jobs-card {
+  width: 90% !important;
+}
+
+.p-2 {
+  padding: 20px;
+}
+
 ::-webkit-input-placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: red;

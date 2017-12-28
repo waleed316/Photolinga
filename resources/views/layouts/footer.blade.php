@@ -18,7 +18,7 @@
                 <ul>
                     <li><a href="#">About Photolinga</a></li>
                     <li><a href="#">How it works</a></li>
-                    <li><a href="#">Directory</a></li>
+                    <li><a href="/profiles">Directory</a></li>
                     <li><a href="/privacy">Privacy Policy</a></li>
                     <li><a href="/terms">Terms of service</a></li>
                 </ul>

@@ -10,22 +10,34 @@ class Job extends Model
 
     public function contractor()
     {
-        return $this->belongsTo( 'App\User' );
+        return $this->belongsTo('App\User');
     }
 
     public function proposals()
     {
-        return $this->hasMany( 'App\Proposal' );
+        return $this->hasMany('App\Proposal');
     }
 
     public function category()
     {
-        return $this->belongsTo( 'App\Category' );
+        return $this->belongsTo('App\Category');
     }
 
+    public function awardedProposal()
+    {
+        return $this->belongsTo('App\Proposal');
+    }
+
+
+    /**
+     * Add a proposal to a job
+     *
+     * @param $proposal
+     * @return Model
+     */
     public function addProposal( $proposal )
     {
-        $proposal = $this->proposals()->create( $proposal );
+        $proposal = $this->proposals()->create($proposal);
 
         return $proposal;
     }
@@ -38,11 +50,11 @@ class Job extends Model
      */
     public function awardJob( Proposal $proposal )
     {
-        $this->update( [
+        $this->update([
             'awarded_proposal_id' => $proposal->id,
             'in_progress' => true,
             'freelancer_id' => $proposal->owner->id,
-        ] );
+        ]);
     }
 
 
