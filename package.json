@@ -19,6 +19,8 @@
         "vue": "^2.1.10"
     },
     "dependencies": {
+        "@xkeshi/image-compressor": "^0.5.2",
+        "cropperjs": "^1.2.1",
         "sweet-modal-vue": "^2.0.0",
         "vue-upload-component": "^2.7.3"
     }

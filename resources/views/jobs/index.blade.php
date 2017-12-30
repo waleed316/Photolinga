@@ -50,6 +50,12 @@
                 </div>
             </div>
 
+            @if(request('location'))
+                <h4 style="text-align: center">
+                    Selected Location: <strong>{{ request('location') }}</strong>
+                </h4>
+            @endif
+
             <div class="row jobs-top-margin">
 
                 <div class="col-xl-2 col-lg-3 col-md-3 col-sm-12">
@@ -83,6 +89,7 @@
                     </ul>
                 </div>
 
+
                 <div class="col-xl-8 col-lg-6 col-md-6 col-sm-12">
                     <div class="card card-box-shadow">
                         <div class="card-heading card-head-bg-color">
@@ -97,7 +104,7 @@
                                     <li>
                                         <div class="row">
                                             {{--<div class="ribbon">--}}
-                                                {{--<span>FEATURED</span>--}}
+                                            {{--<span>FEATURED</span>--}}
                                             {{--</div>--}}
                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                                 <h6 class="event-desc-head">

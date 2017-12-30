@@ -6,7 +6,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xl-12 main-image">
-                <img src="{{ asset('images/Image 3.png') }}" alt="" class="img-fluid">
+                <img src="{{ asset('images/Picture.jpg') }}" alt="" class="img-fluid">
                 <div class="img-banner"></div>
                 <div class="container-fluid login-row">
                     <div class="row">
@@ -31,13 +31,13 @@
                         <div class="col-lg-3 col-xl-3 col-md-2"></div>
                         <div class="col-lg-6 col-xl-6 col-md-8 col-sm-12">
                             <h1 class="text-center do-heading1 animated zoomIn">Don't Just Dream, Do</h1>
-                            <h6 class="text-center do-heading2 animated slideInLeft">Freelance service for the lean
-                                Enterpreneur</h6>
+                            <h6 class="text-center do-heading2 animated slideInLeft">Hire Talented and Professional
+                                Photographers</h6>
                             <form action="{{ route('jobs') }}" method="GET">
 
                                 <div class="input-group input-group-lg input-search animated rotateInUpRight">
                                     <input name="location" type="text" class="form-control"
-                                           placeholder="What are you Looking for...">
+                                           placeholder="Search by Location ...">
                                     <span class="input-group-btn">
                                         <button class="btn btn-secondary btn-search" type="submit">Search</button>
                                     </span>

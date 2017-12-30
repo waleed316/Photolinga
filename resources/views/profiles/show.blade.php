@@ -3,19 +3,6 @@
 <!-- main section -->
 <profile-view inline-template :user="{{ $profileUser }}" avatar="/{{ $profileUser->avatar() }}" v-cloak>
 
-    <!-- main section -->
-    {{--<div class="container-fluid mt-1 pt-1 pb-1 details-margin">--}}
-    {{--<div class="container">--}}
-    {{--<div class="row">--}}
-    {{--<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">--}}
-    {{--<a href="alljobs.php" class="back-btn"><i class="fa fa-chevron-left" aria-hidden="true"></i> &nbsp;Back--}}
-    {{--to results</a>--}}
-    {{--</div>--}}
-    {{--</div>--}}
-    {{--</div>--}}
-    {{--</div>--}}
-
-
     <section class="details-bg-color pt-5">
         <div class="container-fluid">
             <div class="container pb-1">
@@ -27,14 +14,22 @@
                                 <div class="upper-portion">
                                     <div class="left-sec">
                                         <div class="img">
-                                            <img src="/{{ $profileUser->avatar() }}" class="rounded-circle img-fluid"
-                                                 alt="">
+                                            @can('update',$profileUser)
+                                                <img src="/{{ $profileUser->avatar() }}"
+                                                     class="rounded-circle img-fluid"
+                                                     alt="">
+                                                {{--<modal v-if="openModal" open="true"></modal>--}}
+                                            @endcan
+                                            @cannot('update',$profileUser)
+                                                <img src="/{{ $profileUser->avatar() }}"
+                                                     class="rounded-circle img-fluid"
+                                                     alt="">
+                                            @endcannot
                                         </div>
                                         <div class="name">
-                                            <h6 class="details-freelance-name"><a href="#">{{ $profileUser->name }}</a>
-                                            </h6>
+                                            <h6 class="details-freelance-name"><a href="#">{{ $profileUser->name }}</a></h6>
                                             <h6 class="details-freelance-desig">Still Photographer</h6>
-                                            <h6 class="review-p"><a href="#">2 Reviews</a></h6>
+                                            <h6 class="review-p">0 Reviews</h6>
                                         </div>
                                     </div>
                                     <div class="right-sec">
@@ -69,7 +64,7 @@
                                                 <button class="btn btn-danger btn-xs mr-1" @click="updateDescription">
                                                     Update
                                                 </button>
-                                                <button class="btn btn-xs" @click="editing=false">Cancel</button>
+                                                <button class="btn btn-xs" @click="cancelEditing">Cancel</button>
                                             </div>
                                         </div>
                                     </div>
@@ -118,7 +113,13 @@
                                 </div>
                                 <div class="portfolio-portion">
                                     <h1 class="portfolio-head">Portfolio ({{ count($profileUser->portfolio) }}
-                                        items)</h1>
+                                        items)
+                                        @can('update',$profileUser)
+                                            <button @click="" class="btn btn-danger">
+                                                <i style="font-size: 15px" class="fa fa-plus" aria-hidden="true"></i>
+                                            </button>
+                                        @endcan
+                                    </h1>
                                     <ul class="portfolio-list">
                                         @foreach( $profileUser->portfolio as $portfolio )
                                             <li>
@@ -221,7 +222,7 @@
                                             </div>
                                             <div class="bold">
                                                 {{--<b>{{ $profileUser->contactInformation->city }}--}}
-{{--                                                    , {{ $profileUser->contactInformation->country }}</b>--}}
+                                                {{--                                                    , {{ $profileUser->contactInformation->country }}</b>--}}
                                             </div>
                                         </div>
                                     </li>

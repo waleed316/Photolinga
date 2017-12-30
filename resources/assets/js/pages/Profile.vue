@@ -6,6 +6,7 @@
         description: this.user.description,
         editing: false,
         image: this.avatar,
+        openModal: true,
       };
     },
     mounted() {
@@ -30,11 +31,19 @@
         reader.readAsDataURL(file);
       },
       updateDescription() {
+        if ( this.description == '' ) {
+          flash('Description can not be empty');
+          return;
+        }
         axios.patch('/profiles/' + this.user.id, { description: this.description }).then(response => {
           console.log(response);
           flash('Overview updated');
           this.editing = false;
         });
+      },
+      cancelEditing() {
+        this.description = this.user.description;
+        this.editing = false;
       },
       openPortfolioModal() {
         this.$refs.portfolio_modal.open();
