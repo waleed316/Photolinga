@@ -21,7 +21,7 @@
                         <h6 class="details-freelance-name mb-1">
                             <a :href="data.owner.id" v-text="this.data.owner.name"></a>
                         </h6>
-                        <p class="details-freelance-desig mb-1">Senior Graphic - Web Designer</p>
+                        <p class="details-freelance-desig mb-1">Sensdssior Graphic - Web Designer</p>
                         <div v-if="editing">
                             <textarea class="form-control" v-model="body"></textarea>
 
