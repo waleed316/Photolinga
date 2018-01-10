@@ -48,3 +48,7 @@ Route::patch('/change-password', 'UsersController@changePassword');
 
 Route::view('/terms', 'static.terms');
 Route::view('/privacy', 'static.privacy');
+
+
+Route::post('/UploadImages','PortfoliosController@dropzoneStore')->name('dropzone.store');
+Route::post('/remove/image','PortfoliosController@Remove_Image')->

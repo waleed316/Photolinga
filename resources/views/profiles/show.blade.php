@@ -90,9 +90,35 @@
 								</div>
 								<div class="portfolio-portion">
 									<h1 class="portfolio-head">Portfolio ({{ count($profileUser->portfolio) }} items) @can('update',$profileUser)
-										<button @click="" class="btn btn-danger">
+										<button @click="" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
 											<i style="font-size: 15px" class="fa fa-plus" aria-hidden="true"></i>
 										</button>
+										<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Upload Images</h4>
+        </div>
+        <div class="modal-body">
+            <form action="{{route('dropzone.store')}}"
+      class="dropzone"
+      id="my-dropzone">
+          {{csrf_field()}}
+      </form>
+       <button id="submit-all" class="btn btn-primary">Upload all files</button>
+      
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
 										@endcan
 									</h1>
 									<ul class="portfolio-list">
@@ -210,4 +236,5 @@
 	</section>
 </profile-view>
 
+<script type="text/javascript" src="{{asset('js/UploadImage.js')}}"></script>
 @endsection
