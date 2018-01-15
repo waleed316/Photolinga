@@ -51,12 +51,13 @@ Dropzone.options.myDropzone = {
           // you can do the AJAX request here.
              axios({
             method: 'post',
-            url:'http://127.0.0.1:8000/remove/image',
+            url:'/remove/image',
             data:I
           }).then(function(response){
-            // console.log(response);
+            console.log(response);
             if(response.data.status == 'Failed')
             {
+              // console.log(response);
               document.getElementById("Error").innerHTML = "Error in removing file";
                 // alert('Error in uploading file');
 

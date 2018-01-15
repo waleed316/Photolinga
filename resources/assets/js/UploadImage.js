@@ -51,7 +51,7 @@ Dropzone.options.myDropzone = {
           // you can do the AJAX request here.
              axios({
             method: 'post',
-            url:'http://127.0.0.1:8000/remove/image',
+            url:'/remove/image',
             data:I
           }).then(function(response){
             // console.log(response);

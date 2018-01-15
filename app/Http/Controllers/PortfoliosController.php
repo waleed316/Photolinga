@@ -30,8 +30,15 @@ public function dropzoneStore(Request $request)
 
         $image = $request->file('file');
         $imageNewName = $request->fileName;
-        if($image->move(public_path('Uploads'),$imageNewName))
+        $image_path=request()->file('file')->storeAs('public/Uploads',$imageNewName);
+        // if($image->move(public_path('Uploads'),$imageNewName))
+        if($image_path != 'null')
        { 
+           Portfolio::create( [
+            'title'=>'abc',
+            'thumbnail' => $image_path,
+            'user_id' => auth()->id()
+        ] );
             return response()->json(['Status'=>'success','Upload'=>'true']);
        }
        else
@@ -42,12 +49,13 @@ public function dropzoneStore(Request $request)
 
     public function Remove_Image(Request $request)
     {
-        
-        $FilePath=public_path('Uploads/'.$request->name);
-
+        // Storage::disk('public')->delete('Uploads/'.$request->name);
+        $FilePath=public_path('storage/Uploads/'.$request->name);
+        $FileName='public/Uploads/'.$request->name;
+        $portImage=Portfolio::where('thumbnail',$FileName)->delete();
         if(File::delete($FilePath))
         { 
-                return response()->json(['status'=>'success']);
+                return response()->json(['status'=>'success','FileNewName'=>$FileName]);
            
         }
         else
