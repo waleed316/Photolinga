@@ -89,11 +89,15 @@
 									</ul>
 								</div>
 								<div class="portfolio-portion">
-									<h1 class="portfolio-head">Portfolio ({{ count($profileUser->portfolio) }} items) @can('update',$profileUser)
-										<button @click="" class="btn btn-danger" data-toggle="modal" data-target="#AlbumModal">
-											<i style="font-size: 15px" class="fa fa-plus" aria-hidden="true"></i>
-										</button>
-										<div class="modal fade" id="AlbumModal" role="dialog">
+									<h1 class="portfolio-head">Portfolio ({{ count($profileUser->album) }} items) @can('update',$profileUser)
+										
+										
+
+										 
+									
+										@endcan
+										
+<div class="modal fade" id="AlbumModal" role="dialog">
 											<div class="modal-dialog">
 
 												<!-- Modal content-->
@@ -103,12 +107,16 @@
 														<h4 class="modal-title">Album Name</h4>
 													</div>
 													<div class="modal-body">
-														<form action="{{route('Album.store')}}" method="post">
+														<form action="{{route('Album.store')}}" method="post" enctype="multipart/form-data">
 															{{csrf_field()}}
-															<input type="text" name="album" placeholder="Enter Album name">
-
+															<label for="AlbumName" class="album-modal"> Album Name:</label>
+															<input type="text" name="title" id="AlbumName" required>
+															<label for="thumbnailName" class="album-modal album-thumbnail">Thumbnail:</label>
+															<input type="file" name="thumbnail" class="modal-thumbnail" id="thumbnailName" required>
+															<div class="Album-button">
 														<button class="btn btn-primary">Save</button>
-														</form>
+														</div>
+													</form>
 
 													</div>
 													<div class="modal-footer">
@@ -118,12 +126,36 @@
 
 											</div>
 										</div>
-
-										{{--
-										<button @click="" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
+											<button @click="" class="btn btn-danger" data-toggle="modal" data-target="#AlbumModal">
 											<i style="font-size: 15px" class="fa fa-plus" aria-hidden="true"></i>
-										</button>
-										<div class="modal fade" id="myModal" role="dialog">
+										</button>	
+
+									</h1>
+
+									<ul class="portfolio-list" >
+										@foreach( $profileUser->album as $portfolio )
+
+										<li>
+											
+											
+										<!-- @yield('model') -->
+
+										<a href="" class="btn" data-toggle="modal" data-target="#{{$portfolio->id}}">
+											
+
+											
+											
+											<div class="portfoli-box">
+												<div class="p-image">
+													<img src="{{asset('storage/Uploads/'.$portfolio->thumbnail)}}" class="img-fluid" alt="">
+
+													<div class="p-text">
+														<h6>{{ $portfolio->title }}</h6>
+													</div>
+												</div>
+											</div>
+										</a>
+										<div class="modal fade" id="{{$portfolio->id}}" role="dialog">
 											<div class="modal-dialog">
 
 												<!-- Modal content-->
@@ -133,11 +165,13 @@
 														<h4 class="modal-title">Upload Images</h4>
 													</div>
 													<div class="modal-body">
-														<form action="{{route('dropzone.store')}}" class="dropzone" id="my-dropzone">
+														<div id="err"></div>
+														<form action="{{route('dropzone.store',['id'=>$portfolio->id])}}" class="dropzone" id="my-dropzone">
 															{{csrf_field()}}
+														
 														</form>
-														<button id="submit-all" class="btn btn-primary">Upload all files</button>
-
+														<button id="submit-all" class="btn btn-primary" style="display: none">Upload all files</button>
+														
 													</div>
 													<div class="modal-footer">
 														<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -145,23 +179,7 @@
 												</div>
 
 											</div>
-										</div> --}} @endcan
-										<button @click="" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
-											{{session()->get('album')}} {{--
-											<i style="font-size: 15px" class="fa fa-plus" aria-hidden="true"></i> --}}
-										</button>
-									</h1>
-									<ul class="portfolio-list">
-										@foreach( $profileUser->portfolio as $portfolio )
-										<li>
-											<div class="portfoli-box">
-												<div class="p-image">
-													<img src="{{ $portfolio->thumbnail }}" class="img-fluid" alt="">
-													<div class="p-text">
-														<h6>{{ $portfolio->title }}</h6>
-													</div>
-												</div>
-											</div>
+										</div>								
 										</li>
 										@endforeach
 									</ul>

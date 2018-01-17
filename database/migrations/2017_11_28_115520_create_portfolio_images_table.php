@@ -15,8 +15,8 @@ class CreatePortfolioImagesTable extends Migration
     {
         Schema::create( 'portfolio_images', function ( Blueprint $table ) {
             $table->increments( 'id' );
-            $table->string( 'name' );
-            $table->unsignedInteger( 'portfolio_id' );
+            $table->string( 'path' );
+            $table->unsignedInteger( 'album_id' );
             $table->timestamps();
         } );
     }

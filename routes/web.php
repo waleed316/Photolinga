@@ -13,7 +13,7 @@
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('index');
 
 Route::get('/jobs', 'JobsController@index')->name('jobs');
 Route::post('/jobs', 'JobsController@store');
@@ -50,12 +50,8 @@ Route::view('/terms', 'static.terms');
 Route::view('/privacy', 'static.privacy');
 
 
-Route::post('/UploadImages','PortfoliosController@dropzoneStore')->name('dropzone.store');
+Route::post('/UploadImages/{id}','PortfoliosController@dropzoneStore')->name('dropzone.store');
 Route::post('/remove/image','PortfoliosController@Remove_Image');
 
 
-Route::post('/Album/store',function(Request $request){
-    // session()->put();
-    session()->put('album',$request->album);
-    return Redirect()->back();
-})->name('Album.store');
+Route::post('/Album/store','PortfoliosController@store')->name('Album.store');
