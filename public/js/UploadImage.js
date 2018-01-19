@@ -1,15 +1,16 @@
 Dropzone.options.myDropzone = {
             maxFiles         :       5,
+            paramName: "fileImage",
             acceptedFiles: ".jpeg,.jpg,.png,.gif",
-            autoProcessQueue: false,
+            autoProcessQueue: true,
             parallelUploads:5,
             uploadMultiple:false,
     init: function() {
-
       var submitButton = document.querySelector("#submit-all")
         myDropzone = this; // closure
 
     submitButton.addEventListener("click", function() {
+    
       myDropzone.processQueue(); // Tell Dropzone to process all queued files.
     });
 
@@ -25,7 +26,7 @@ Dropzone.options.myDropzone = {
         console.log(responseText);
             if(responseText.Upload == 'false')
             {
-              document.getElementById("Error").innerHTML = "Error in uploading file";
+              document.getElementById("err").innerHTML = "Something went wrong in uploading image";
             }
         });
       this.on("addedfile", function(file) {
@@ -58,7 +59,7 @@ Dropzone.options.myDropzone = {
             if(response.data.status == 'Failed')
             {
               // console.log(response);
-              document.getElementById("Error").innerHTML = "Error in removing file";
+              document.getElementById("err").innerHTML = "Error in removing file";
                 // alert('Error in uploading file');
 
             }
@@ -71,4 +72,5 @@ Dropzone.options.myDropzone = {
       });
     }
   };
+
 

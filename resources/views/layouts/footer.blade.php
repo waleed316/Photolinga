@@ -7,8 +7,8 @@
                 <ul>
                     <li><a href="/">Home</a></li>
                     <li><a href="{{ route('jobs.create') }}">Post a Job</a></li>
-                    <li><a href="/login" data-toggle="modal" data-target=".bd-example-modal-sm">Login</a></li>
-                    <li><a href="/register" data-toggle="modal" data-target=".bd-example1-modal-sm">Register</a></li>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register">Register</a></li>
                     <li><a href="{{ route('jobs') }}">Find a Photographer</a></li>
                 </ul>
             </div>
@@ -57,7 +57,7 @@
         <div class="row copyright">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                 <p class="pull-left">&copy; Copyright. All Rights Reserved</p>
-                <p class="pull-right">Designed by<a href="https://www.mictronicx.com"> Mictronicx</a></p>
+                <p class="pull-right">Developed by<a href="https://www.mictronicx.com"> Mictronicx</a></p>
             </div>
         </div>
     </div>

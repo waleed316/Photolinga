@@ -52,6 +52,11 @@ class User extends Authenticatable
         return $this->hasMany(Portfolio::class);
     }
 
+    public function album()
+    {
+        return $this->hasMany(Album::class);
+    }
+
     public function contactInformation()
     {
         return $this->hasOne(ContactInformation::class)->withDefault();

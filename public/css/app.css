@@ -7950,3 +7950,19 @@
   z-index: 999999;
 }
 
+.album-modal {
+  font-size: 21px !important;
+}
+
+.album-thumbnail {
+  padding-right: 22px;
+}
+
+.modal-thumbnail {
+  font-size: 16px !important;
+}
+
+.Album-button {
+  text-align: center;
+}
+

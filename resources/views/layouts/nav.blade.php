@@ -30,10 +30,12 @@
                     <a href="{{ route('jobs') }}" class="nav-link">All Jobs</a>
                 </li>
                 <li class="nav-item">
-                    {{--                    <a href="{{ route('profiles') }}" class="nav-link">Browse Photographers</a>--}}
-                    <a href="/my-jobs" class="nav-link">My Jobs</a>
+                    <a href="{{ route('profiles') }}" class="nav-link">Browse Photographers</a>
                 </li>
                 @auth
+                <li class="nav-item">
+                    <a href="/my-jobs" class="nav-link">My Jobs</a>
+                </li>
                     <li class="nav-item">
                         <a class="nav-link " href="{{ route('jobs.create') }}">Post a job<span
                                     class="sr-only">(current)</span></a>
