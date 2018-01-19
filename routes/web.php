@@ -9,7 +9,7 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 Auth::routes();
 
@@ -48,14 +48,15 @@ Route::patch('/change-password', 'UsersController@changePassword');
 
 Route::view('/terms', 'static.terms');
 Route::view('/privacy', 'static.privacy');
+Route::view('/pro', 'static.pro');
 
 
-Route::post('/UploadImages','PortfoliosController@dropzoneStore')->name('dropzone.store');
-Route::post('/remove/image','PortfoliosController@Remove_Image');
+Route::post('/UploadImages', 'PortfoliosController@dropzoneStore')->name('dropzone.store');
+Route::post('/remove/image', 'PortfoliosController@Remove_Image');
 
 
-Route::post('/Album/store',function(Request $request){
+Route::post('/Album/store', function (Request $request) {
     // session()->put();
-    session()->put('album',$request->album);
+    session()->put('album', $request->album);
     return Redirect()->back();
 })->name('Album.store');

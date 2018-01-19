@@ -192,7 +192,7 @@
                     <h3>Hand-vetted. High-end. on-demand.</h3>
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4">
-                    <a href="pro.php"><img src="{{ asset('images/Pro.png') }}" alt="" class="img-fluid"></a>
+                    <a href="/pro"><img src="{{ asset('images/Pro.png') }}" alt="" class="img-fluid"></a>
                 </div>
             </div>
         </div>
