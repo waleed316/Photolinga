@@ -208,27 +208,27 @@
                     <div class="row text-center icon-padding">
 
                         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
-                            <a href="#"><img src="{{ asset('images/search.png') }}" alt="" class="img-fluid rubberband"></a>
+                            <a href="#"><img style="width:70%" src="{{ asset('images/search.png') }}" alt="" class="img-fluid rubberband"></a>
                             <h3 class="market-place-heading hiw-icon-text">SEARCH</h3>
                             <p class="lead text-muted">Search photographer as per your requirements and budget</p>
                         </div>
 
                         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
-                            <a href="#"><img src="{{ asset('images/search.png') }}" alt=""
+                            <a href="#"><img style="width:70%" src="{{ asset('images/hire.png') }}" alt=""
                                              class="img-fluid flipouty"></a>
                             <h3 class="market-place-heading hiw-icon-text">HIRE</h3>
                             <p class="lead text-muted">Check profile/ratings, reviews and hire your favorite</p>
                         </div>
 
                         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
-                            <a href="#"><img src="{{ asset('images/photo-camera.png') }}" alt=""
+                            <a href="#"><img style="width:70%" src="{{ asset('images/click.png') }}" alt=""
                                              class="img-fluid slidinright"></a>
                             <h3 class="market-place-heading hiw-icon-text">CLICK</h3>
                             <p class="lead text-muted">Photographer/Videographer will cover your event or project</p>
                         </div>
 
                         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
-                            <a href="#"><img src="{{ asset('images/tick.png') }}" alt=""
+                            <a href="#"><img style="width:70%" src="{{ asset('images/done.png') }}" alt=""
                                              class="img-fluid zoomoutup"></a>
                             <h3 class="market-place-heading hiw-icon-text">DONE</h3>
                             <p class="lead text-muted">Pay through 100% Secure and Easy payment options</p>
