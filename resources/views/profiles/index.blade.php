@@ -16,42 +16,46 @@
                             <div class="form-group">
                                 <select class="form-control form-control-sm" id="category_select">
                                     <option>All</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
+                                    @foreach( \App\Category::latest()->get() as $category)
+                                        <option value="{{ $category->slug }}">{{ $category->name }}</option>
+                                    @endforeach
                                 </select>
-                            </div>
-                            <div class="form-group cat-form">
-                                <input type="text" Placeholder="Keyword"
-                                       class="form-control form-control-sm category-input">
-                                <i class="fa fa-search cat-search"></i>
                             </div>
                         </div>
 
                         <div class="first-box">
                             <h1 class="cat-heading">Countries</h1>
                             <div class="form-group cat-form mb-2">
-                                <input type="text" Placeholder="Keyword"
-                                       class="form-control form-control-sm category-input">
+                                {{--<input type="text" Placeholder="Keyword"--}}
+                                {{--class="form-control form-control-sm category-input">--}}
+                                <select name="country" id="country">
+                                    <option value="pakistan">Pakistan</option>
+                                </select>
                                 <i class="fa fa-search cat-search"></i>
                             </div>
                             <h1 class="cat-heading">City</h1>
                             <div class="form-group cat-form mb-2">
-                                <input type="text" Placeholder="Keyword"
-                                       class="form-control form-control-sm category-input">
+                                {{--<input type="text" Placeholder="Keyword"--}}
+                                       {{--class="form-control form-control-sm category-input">--}}
+                                <select name="city" id="city">
+                                    <option value="karachi">Karachi</option>
+                                    <option value="lahore">Lahore</option>
+                                    <option value="hyderabad">Hyderabad</option>
+                                    <option value="quetta">Quetta</option>
+                                    <option value="islamabad">Islamabad</option>
+                                </select>
                                 <i class="fa fa-search cat-search"></i>
                             </div>
                         </div>
                         <div class="first-box">
                             <h1 class="cat-heading">Feedback Rating</h1>
                             <div class="form-group">
-                                <select class="form-control form-control-sm" id="category_select">
+                                <select class="form-control form-control-sm" id="feedback" name="feedback">
                                     <option>Any Score</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
+                                    <option value="2">2 stars</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
                                 </select>
                             </div>
                         </div>
