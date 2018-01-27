@@ -1,3 +1,7 @@
+function mouseOut(){
+      document.getElementById("skill-list").style.display = "none";
+}
+
 $(document).ready(function(){
 
     $("#bid-hide").hide();
@@ -191,3 +195,4 @@ $(document).ready(function() {
         'moreHTML': '<div class="maxlist-more"><a href="#"></a></div>'
     });
 });
+

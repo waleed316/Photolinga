@@ -273,7 +273,7 @@
 
 
                         <ul class="details-freelance-list">
-                            <proposals :proposals="{{ $job->proposals }}" @removed="proposalsCount--"></proposals>
+                            <proposals :proposals="{{ $job->proposals }}" :skill-set="{{ $skillSet }}"@removed="proposalsCount--"></proposals>
 
                             {{--@forelse($job->proposals as $proposal)--}} {{--@include('jobs.proposal')--}} {{--@empty--}} {{--
 							<div class="row details-bg-white">--}} {{--

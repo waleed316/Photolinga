@@ -1,6 +1,8 @@
 <?php
 
 use Faker\Generator as Faker;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,9 +65,13 @@ $factory->define( App\Category::class, function ( Faker $faker ) {
     ];
 } );
 
-$factory->define( App\Portfolio::class, function ( Faker $faker ) {
+        Storage::fake('public');
+
+
+$factory->define( App\Album::class, function ( Faker $faker ) {
     return [
         'title' => $faker->word,
+        'thumbnail'=>UploadedFile::fake()->image('avatar.jpg'),
         'user_id' => function () {
             return factory( 'App\User' )->create()->id;
         }

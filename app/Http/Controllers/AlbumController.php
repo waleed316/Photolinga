@@ -2,31 +2,45 @@
 
 namespace App\Http\Controllers;
 
-use App\Portfolio;
+// use App\Portfolio;
 use Illuminate\Http\Request;
 use File;
 use App\Album;
+use App\User;
+use Auth;
+use App\Portfolio;
 use App\PortfolioImage;
 
-class PortfoliosController extends Controller
+class AlbumController extends Controller
 {
     public function store(Request $request)
     {
+       
+        $this->authorize('update',Auth::user());
+        
         request()->validate([
             'title'=>'required',
-            'thumbnail'=>'required|image|mimes:jpeg,png,jpg,gif,svg'
-        ]);
+            'thumbnail'=>'required|image|mimes:jpeg,png,jpg,gif,svg',
+            'user_id' => 'required|exists:users,id'
+            ]);
         $image = $request->file('thumbnail');
         $imageNewName = time().$image->getClientOriginalName();
         $image_path=request()->file('thumbnail')->storeAs('public/Uploads',$imageNewName);
 
-        Album::create([
+        $Album=Album::create([
             'title'=>request('title'),
             'user_id'=>auth()->id(),
             'thumbnail'=>$imageNewName
         ]);
-        return redirect()->back();
 
+        // dd($Album);
+        return redirect()->back();
+    // }
+    // else
+    // {
+    //     return redirect()->back();
+        
+    // }
         // request()->validate( [
         //     'title' => 'required',
         //     'user_id' => 'required|exists:users,id'

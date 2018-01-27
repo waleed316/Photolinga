@@ -47,9 +47,9 @@ class User extends Authenticatable
         return $this->hasMany(Job::class, 'freelancer_id');
     }
 
-    public function portfolio()
+    public function skills()
     {
-        return $this->hasMany(Portfolio::class);
+        return $this->hasMany(Skill::class);
     }
 
     public function album()

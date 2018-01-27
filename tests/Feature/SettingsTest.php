@@ -177,13 +177,15 @@ class SettingsTest extends TestCase
     public function userCanChangePassword()
     {
         $this->signIn();
+        $this->withExceptionHandling();
+
         $currentPassword = "secret";
         $newPassword = "secret123";
         $this->patch('/change-password', [
             'current_password' => $currentPassword,
             'new_password' => $newPassword,
             'new_password_confirm' => $newPassword
-        ])->assertStatus(200);
+        ])->assertStatus(302);
         $credentials = [
             'email' => auth()->user()->email,
             'password' => $newPassword

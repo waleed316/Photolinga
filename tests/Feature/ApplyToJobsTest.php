@@ -200,18 +200,18 @@ class ApplyToJobsTest extends TestCase
     /**
      * @test
      */
-    public function userCanNotBidUnlessProfileIsComplete()
-    {
-        $user = create('App\User');
+    // public function userCanNotBidUnlessProfileIsComplete()
+    // {
+    //     $user = create('App\User');
 
-        $this->signIn($user);
+    //     $this->signIn($user);
 
-        $job = create('App\Job');
-        $proposal = make('App\Proposal');
+    //     $job = create('App\Job');
+    //     $proposal = make('App\Proposal');
 
-        $this->post($job->path() . '/proposals', $proposal->toArray())->assertStatus(403);
+    //     $this->post($job->path() . '/proposals', $proposal->toArray())->assertStatus(403);
 
-        $this->assertDatabaseMissing('proposals', [ 'body' => $proposal->body ]);
+    //     $this->assertDatabaseMissing('proposals', [ 'body' => $proposal->body ]);
 
-    }
+    // }
 }

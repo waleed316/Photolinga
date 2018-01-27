@@ -32,6 +32,8 @@ Vue.component(
 Vue.component('job-view', require('./pages/Job.vue'));
 Vue.component('profile-view', require('./pages/Profile.vue'));
 Vue.component('settings-view', require('./pages/Settings.vue'));
+Vue.component('autocomplete',require('./components/Autocomplete.vue'));
+
 
 const app = new Vue({
   el: '#app'

@@ -29,16 +29,45 @@
 									</div>
 									<div class="right-sec">
 										<p class="tags-required">
-											<a href="#" class="required-skills">Cinematography</a>
-											<a href="#" class="required-skills">VideoGraphy</a>
-											<a href="#" class="required-skills">Still Shoots</a>
-											<a href="#" class="required-skills">Wedding Photography</a>
-											<a href="#" class="required-skills">ALbum Making</a>
-											<a href="#" class="required-skills">Editing</a>
-											<a href="#" class="required-skills">Cinematography</a>
-											<a href="#" class="required-skills">Cinematography</a>
-										</p>
-									</div>
+											@can('update',$profileUser)
+											<!-- 	<button class="btn btn-danger" id="button-skill">
+											<i style="font-size: 15px" class="fa fa-pencil" aria-hidden="true"></i>
+										</button> -->
+										
+	<div class="container">
+  	  <div class="row" >
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default" id="skill-input">
+                <div class="panel-heading"></div>
+         
+                	<div class="panel-body">
+    <autocomplete></autocomplete>
+</div>
+     <!--   <div class="right-sec">
+                    <p class="tags-required" id="skill-list">
+                    	@foreach($skillSet as $skill)
+                      <a href="#" class="required-skills" onclick="removeSkill()">{{$skill}}<i class="fa fa-times" aria-hidden="true"></i>
+                      </a>
+                        @endforeach
+                    </p>
+                  </div>   -->       
+            </div>
+        </div>
+    </div>
+</div>
+ @endcan
+			@cannot('update',$profileUser)
+   <div class="right-sec">
+                    <p class="tags-required">
+                    	@foreach($skillSet as $skill)
+                      <a href="#" class="required-skills">{{$skill}}
+                      </a>
+                        @endforeach
+                    </p>
+     </div>
+                  @endcannot
+    
+								</div>
 								</div>
 								<div class="mid-portion">
 									<h1 class="p-overview-head">Overview @can('update',$profileUser)
@@ -91,7 +120,10 @@
 								<div class="portfolio-portion">
 									<h1 class="portfolio-head">Portfolio ({{ count($profileUser->album) }} items) @can('update',$profileUser)
 										
-										
+									
+											<button @click="" class="btn btn-danger" data-toggle="modal" data-target="#AlbumModal">
+											<i style="font-size: 15px" class="fa fa-plus" aria-hidden="true"></i>
+										</button>		
 
 										 
 									
@@ -107,12 +139,13 @@
 														<h4 class="modal-title">Album Name</h4>
 													</div>
 													<div class="modal-body">
-														<form action="{{route('Album.store')}}" method="post" enctype="multipart/form-data">
+														<form action="{{route('album.store')}}" method="post" enctype="multipart/form-data">
 															{{csrf_field()}}
 															<label for="AlbumName" class="album-modal"> Album Name:</label>
 															<input type="text" name="title" id="AlbumName" required>
 															<label for="thumbnailName" class="album-modal album-thumbnail">Thumbnail:</label>
 															<input type="file" name="thumbnail" class="modal-thumbnail" id="thumbnailName" required>
+															<input type="hidden" name="user_id" value="{{auth()->id()}}">
 															<div class="Album-button">
 														<button class="btn btn-primary">Save</button>
 														</div>
@@ -126,9 +159,6 @@
 
 											</div>
 										</div>
-											<button @click="" class="btn btn-danger" data-toggle="modal" data-target="#AlbumModal">
-											<i style="font-size: 15px" class="fa fa-plus" aria-hidden="true"></i>
-										</button>	
 
 									</h1>
 

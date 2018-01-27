@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use DB;
 
 class ProfilesController extends Controller
 {
@@ -20,8 +21,19 @@ class ProfilesController extends Controller
 
     public function show( User $user )
     {
+        $skillSet=array();
+              $UserSkill= DB::table('user_skills')
+                        ->join('skills','skills.id','=','user_skills.skill_id')
+                        ->select('skills.name')
+                        ->where('user_skills.user_id','=',$user->id)
+                        ->get();
+          foreach ($UserSkill as $skill)
+           {
+            $skillSet[]=$skill->name;
+           }
         return view('profiles.show', [
-            'profileUser' => $user
+            'profileUser' => $user,
+            'skillSet' => $skillSet
         ]);
     }
 

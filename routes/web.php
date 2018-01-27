@@ -36,7 +36,7 @@ Route::get('/profiles/{user}/edit', 'ProfilesController@edit');
 
 Route::post('/proposals/{proposal}/award', 'AwardProposalsController@store');
 
-Route::post('/portfolios', 'PortfoliosController@store');
+Route::post('/portfolios', 'AlbumController@store');
 
 Route::post('/api/users/{user}/avatar', 'Api\UserAvatarsController@store')->name('avatar');
 
@@ -51,8 +51,15 @@ Route::view('/privacy', 'static.privacy');
 Route::view('/pro', 'static.pro');
 
 
-Route::post('/UploadImages/{id}','PortfoliosController@dropzoneStore')->name('dropzone.store');
-Route::post('/remove/image','PortfoliosController@Remove_Image');
+Route::post('/uploadimages/{id}','AlbumController@dropzoneStore')->name('dropzone.store');
+Route::post('/remove/image','AlbumController@Remove_Image');
 
 
-Route::post('/Album/store','PortfoliosController@store')->name('Album.store');
+Route::post('/album/store','AlbumController@store')->name('album.store');
+
+Route::get('/search','SkillController@Search')->name('Skill.search');
+Route::get('/skill/store','SkillController@Store')->name('skill.store');
+
+Route::post('/skill/delete/{skill}','SkillController@delete')->name('skill.delete');
+Route::get('/skillList','SkillController@list')->name('skill.list');
+

@@ -7,6 +7,7 @@ class ProfilesTest extends TestCase
 {
     use DatabaseMigrations;
 
+
     /**
      * @test
      */
@@ -102,24 +103,23 @@ class ProfilesTest extends TestCase
     /**
      * @test
      */
-    public function userCanAddPortfolio()
+    public function userCanAddAlbum()
     {
         $this->signIn();
-        $portfolio = make('App\Portfolio');
-        $this->post('/portfolios', $portfolio->toArray())
-            ->assertStatus(200);
-
-
-        $this->assertDatabaseHas('portfolios', [ 'title' => $portfolio->title ]);
+        $album = make('App\Album');
+        $this->withExceptionHandling();
+        $abc=$this->post('/album/store', $album->toArray())
+            ->assertStatus(302);
+        $this->assertDatabaseHas('albums', [ 'title' => $album->title ]);
     }
 
     /**
      * @test
      */
-    public function userProfileContainsPortfolio()
+    public function userProfileContainsAlbum()
     {
         $user = create('App\User');
-        $portfolio = create('App\Portfolio', [ 'user_id' => $user->id ]);
+        $portfolio = create('App\Album', [ 'user_id' => $user->id ]);
 
         $this->get('/profiles/' . $user->id)
             ->assertSee($portfolio->title);

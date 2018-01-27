@@ -8,4 +8,9 @@ class Album extends Model
 {
     //
     protected $fillable = ['title','thumbnail','user_id'];
+    
+    public function images()
+    {
+        return $this->hasMany( PortfolioImage::class );
+    }
 }
