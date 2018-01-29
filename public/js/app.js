@@ -6438,7 +6438,7 @@ return src;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(16);
-module.exports = __webpack_require__(92);
+module.exports = __webpack_require__(94);
 
 
 /***/ }),
@@ -6479,7 +6479,8 @@ Vue.component('portfolio-upload', __webpack_require__(71));
 Vue.component('job-view', __webpack_require__(77));
 Vue.component('profile-view', __webpack_require__(85));
 Vue.component('settings-view', __webpack_require__(87));
-Vue.component('autocomplete', __webpack_require__(89));
+Vue.component('photographersearch', __webpack_require__(89));
+Vue.component('autocomplete', __webpack_require__(91));
 
 var app = new Vue({
   el: '#app'
@@ -54109,7 +54110,114 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(90)
 /* template */
-var __vue_template__ = __webpack_require__(91)
+var __vue_template__ = null
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\PhotographerSearch.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-9b65eb70", Component.options)
+  } else {
+    hotAPI.reload("data-v-9b65eb70", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 90 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['skillSet'],
+  data: function data() {
+    return {
+
+      query: '',
+      city: '',
+      country: '',
+      skill: '',
+      skillname: '',
+      deleteskill: '',
+      skillList: [],
+      results: [],
+      photographerList: [],
+      keyword: []
+    };
+  },
+
+  methods: {
+    autoComplete: function autoComplete() {
+      var _this = this;
+
+      this.results = [];
+      if (this.query.length > 1) {
+        axios.get('/search/photographer', { params: { query: this.query } }).then(function (response) {
+          _this.results = response.data;
+        });
+      }
+    },
+    removeSkill: function removeSkill(index, skill) {
+      this.keyword.splice(index, 1);
+    },
+    Photographer: function Photographer() {
+      var _this2 = this;
+
+      axios.get('/browsePhotographer', { params: { city: this.city, country: this.country, keyword: this.keyword } }).then(function (response) {
+        console.log("Before Photographer List");
+        console.log(response.data);
+        _this2.photographerList = [];
+        _this2.photographerList.push(response.data);
+        console.log("after srcipt");
+        console.log(_this2.photographerList);
+        //       this.$router.push('useless'); 
+      });
+    },
+    skillSelected: function skillSelected(result) {
+      document.getElementById('searchResult').style.display = "none";
+      console.log(result.name);
+      this.keyword.push(result.name);
+    }
+  }
+});
+
+/***/ }),
+/* 91 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(92)
+/* template */
+var __vue_template__ = __webpack_require__(93)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -54148,7 +54256,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 90 */
+/* 92 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54237,14 +54345,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       document.getElementById('searchResult').style.display = "none";
       axios.get('/skill/store', { params: { skill: result.id, skillname: result.name } }).then(function (response) {
         console.log(response);
-        _this5.skillList.push(response.data.skill);
+        _this5.skillList.push(response.data.skill[0]);
       });
     }
   }
 });
 
 /***/ }),
-/* 91 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -54354,7 +54462,7 @@ if (false) {
 }
 
 /***/ }),
-/* 92 */
+/* 94 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

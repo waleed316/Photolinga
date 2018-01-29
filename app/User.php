@@ -47,10 +47,6 @@ class User extends Authenticatable
         return $this->hasMany(Job::class, 'freelancer_id');
     }
 
-    public function skills()
-    {
-        return $this->hasMany(Skill::class);
-    }
 
     public function album()
     {
@@ -81,5 +77,10 @@ class User extends Authenticatable
     public function avatar()
     {
         return $this->avatar_path ?: 'images/person-2.jpg';
+    }
+
+    public function skills()
+    {
+        return $this->belongsToMany('App\Skill');
     }
 }

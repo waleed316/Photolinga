@@ -62,4 +62,11 @@ Route::get('/skill/store','SkillController@Store')->name('skill.store');
 
 Route::post('/skill/delete/{skill}','SkillController@delete')->name('skill.delete');
 Route::get('/skillList','SkillController@list')->name('skill.list');
+Route::get('/search/photographer','SkillController@PSearch')->name('Skill.psearch');
+
+Route::get('/browsePhotographer','SkillController@browse')->name('Skill.browse');
+
+Route::get('/abc',function(){
+		dd('You have done it');
+})->name('useless');
 

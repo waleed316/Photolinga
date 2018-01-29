@@ -73,7 +73,7 @@
     document.getElementById('searchResult').style.display="none";
     axios.get('/skill/store',{params: {skill:result.id,skillname:result.name}}).then(response => {
      console.log(response);
-    this.skillList.push(response.data.skill);
+    this.skillList.push(response.data.skill[0]);
     });
     }
   
