@@ -10,11 +10,20 @@
     skill:'',
     skillname:'',
     deleteskill:'',
+    abc: '',
     skillList: [],
     results: [],
     photographerList: [],
     keyword:[]
    }
+  },
+   mounted(){
+   this.keyword.push('All');
+   axios.get('/allPhotographers').then(
+    response => {
+    console.log(response.data);
+    this.photographerList=response.data;
+    });
   },
   methods: {
    autoComplete(){
@@ -34,11 +43,10 @@
    {
         console.log("Before Photographer List");
         console.log(response.data);
-        this.photographerList=[];
-        this.photographerList.push(response.data);
+        //this.photographerList=[];
+        this.photographerList=response.data;
         console.log("after srcipt");
         console.log(this.photographerList);
- //       this.$router.push('useless'); 
    });
    },
     skillSelected(result){

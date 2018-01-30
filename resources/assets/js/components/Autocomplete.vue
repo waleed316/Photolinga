@@ -16,7 +16,7 @@
                     <p class="tags-required">
                    <div v-for="(skill, index) in skillList">
                        <a class="required-skills" v-on:click="removeSkill(index,skill)" >
-                       {{skill}}<i class="fa fa-times" aria-hidden="true"></i>
+                       {{skill.name}}<i class="fa fa-times" aria-hidden="true"></i>
                       </a>
                     </div>
                     </p>
@@ -64,7 +64,7 @@
     });
     },
     removeSkill( index,skill ){
-    axios.post('/skill/delete/'+skill).then( response=> {
+    axios.post('/skill/delete/'+skill.name).then( response=> {
           console.log(response.data);
           this.skillList.splice(index, 1);
    });
@@ -73,7 +73,7 @@
     document.getElementById('searchResult').style.display="none";
     axios.get('/skill/store',{params: {skill:result.id,skillname:result.name}}).then(response => {
      console.log(response);
-    this.skillList.push(response.data.skill[0]);
+    this.skillList.push(response.data.skill);
     });
     }
   

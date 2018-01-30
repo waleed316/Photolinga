@@ -54166,21 +54166,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       skill: '',
       skillname: '',
       deleteskill: '',
+      abc: '',
       skillList: [],
       results: [],
       photographerList: [],
       keyword: []
     };
   },
+  mounted: function mounted() {
+    var _this = this;
+
+    this.keyword.push('All');
+    axios.get('/allPhotographers').then(function (response) {
+      console.log(response.data);
+      _this.photographerList = response.data;
+    });
+  },
 
   methods: {
     autoComplete: function autoComplete() {
-      var _this = this;
+      var _this2 = this;
 
       this.results = [];
       if (this.query.length > 1) {
         axios.get('/search/photographer', { params: { query: this.query } }).then(function (response) {
-          _this.results = response.data;
+          _this2.results = response.data;
         });
       }
     },
@@ -54188,16 +54198,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.keyword.splice(index, 1);
     },
     Photographer: function Photographer() {
-      var _this2 = this;
+      var _this3 = this;
 
       axios.get('/browsePhotographer', { params: { city: this.city, country: this.country, keyword: this.keyword } }).then(function (response) {
         console.log("Before Photographer List");
         console.log(response.data);
-        _this2.photographerList = [];
-        _this2.photographerList.push(response.data);
+        //this.photographerList=[];
+        _this3.photographerList = response.data;
         console.log("after srcipt");
-        console.log(_this2.photographerList);
-        //       this.$router.push('useless'); 
+        console.log(_this3.photographerList);
       });
     },
     skillSelected: function skillSelected(result) {
@@ -54334,7 +54343,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     removeSkill: function removeSkill(index, skill) {
       var _this4 = this;
 
-      axios.post('/skill/delete/' + skill).then(function (response) {
+      axios.post('/skill/delete/' + skill.name).then(function (response) {
         console.log(response.data);
         _this4.skillList.splice(index, 1);
       });
@@ -54345,7 +54354,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       document.getElementById('searchResult').style.display = "none";
       axios.get('/skill/store', { params: { skill: result.id, skillname: result.name } }).then(function (response) {
         console.log(response);
-        _this5.skillList.push(response.data.skill[0]);
+        _this5.skillList.push(response.data.skill);
       });
     }
   }
@@ -54435,7 +54444,7 @@ var render = function() {
                 }
               },
               [
-                _vm._v("\n                      " + _vm._s(skill)),
+                _vm._v("\n                      " + _vm._s(skill.name)),
                 _c("i", {
                   staticClass: "fa fa-times",
                   attrs: { "aria-hidden": "true" }

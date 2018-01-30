@@ -32,6 +32,9 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    protected $with = [ 'skills' ];
+
+
     public function hasRole( $role )
     {
         return $this->role == $role;

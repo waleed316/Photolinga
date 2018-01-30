@@ -16,21 +16,19 @@ class ProfilesController extends Controller
     public function index()
     {
         $profiles = User::latest()->get();
-        return view('profiles.index',compact('profiles'));
+        // $city='App\ContactInformation'::all()->get(['city']);
+        $cities=DB::table('contact_informations')
+                ->select('city')
+                ->distinct()
+                ->get();
+                // dd($cities);
+        return view('profiles.index',compact('cities'));
     }
 
     public function show( User $user )
     {
         $skillSet=array();
-              $UserSkill= DB::table('user_skills')
-                        ->join('skills','skills.id','=','user_skills.skill_id')
-                        ->select('skills.name')
-                        ->where('user_skills.user_id','=',$user->id)
-                        ->get();
-          foreach ($UserSkill as $skill)
-           {
-            $skillSet[]=$skill->name;
-           }
+        $skillSet=User::find($user->id)->skills()->get();
         return view('profiles.show', [
             'profileUser' => $user,
             'skillSet' => $skillSet

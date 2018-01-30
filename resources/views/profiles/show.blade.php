@@ -41,8 +41,8 @@
                 <div class="panel-heading"></div>
          
                 	<div class="panel-body">
-    <autocomplete></autocomplete>
-</div>
+  					  <autocomplete></autocomplete>
+					</div>
      <!--   <div class="right-sec">
                     <p class="tags-required" id="skill-list">
                     	@foreach($skillSet as $skill)
@@ -60,7 +60,7 @@
    <div class="right-sec">
                     <p class="tags-required">
                     	@foreach($skillSet as $skill)
-                      <a href="#" class="required-skills">{{$skill}}
+                      <a href="#" class="required-skills">{{$skill->name}}
                       </a>
                         @endforeach
                     </p>

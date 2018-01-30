@@ -65,8 +65,5 @@ Route::get('/skillList','SkillController@list')->name('skill.list');
 Route::get('/search/photographer','SkillController@PSearch')->name('Skill.psearch');
 
 Route::get('/browsePhotographer','SkillController@browse')->name('Skill.browse');
-
-Route::get('/abc',function(){
-		dd('You have done it');
-})->name('useless');
+Route::get('/allPhotographers','SkillController@AllPhotographers');
 

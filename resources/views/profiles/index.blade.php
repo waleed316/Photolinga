@@ -9,7 +9,7 @@
         <div class="bluuur"></div>
         <div class="container">
  <photographersearch inline-template>
-    <div>
+    <div v-cloak>
     <div class="row all-jobs">
                 <div class="col-xl-12">
                     <div class="jobs-flex">
@@ -28,19 +28,17 @@
                             <div class="form-group cat-form mb-2">
                                
                                 <select name="country" id="country" v-model="country">
-                                    <option value="pakistan" v-on:click="Photographer">Pakistan</option>
+                                    <option value="pakistan">Pakistan</option>
                                 </select>
-                                <i class="fa fa-search cat-search"></i>
+                                <i class="fa fa-search cat-search" v-on:click="Photographer"></i>
                             </div>
                             <h1 class="cat-heading">City</h1>
                             <div class="form-group cat-form mb-2">
-                                
-                                <select name="city" id="city" v-model="city">
-                                    <option value="karachi">Karachi</option>
-                                    <option value="lahore">Lahore</option>
-                                    <option value="hyderabad">Hyderabad</option>
-                                    <option value="quetta">Quetta</option>
-                                    <option value="islamabad">Islamabad</option>
+                                <select name="city" id="city" v-model="city"> 
+                                    <option value="">All</option>
+                                    @foreach($cities as $city1)
+                                    <option value="{{$city1->city}}">{{$city1->city}}</option>
+                                    @endforeach
                                 </select>
                                 <i class="fa fa-search cat-search" v-on:click="Photographer"></i>
                             </div>
@@ -81,12 +79,6 @@
                        @{{skill}}<i class="fa fa-times" aria-hidden="true"></i>
                       </a>
                       </div>
-                        Photographer List:
-                        <div v-for="(skill, index) in photographerList">
-                       <!-- <a class="required-skills" v-on:click="removeSkill(index,skill)" > -->
-                       @{{skill}}<i class="fa fa-times" aria-hidden="true"></i>
-                      <!-- </a> -->
-                      </div>
                             </p>
 
 
@@ -97,34 +89,32 @@
    
             <div class="row mt-3">
                 <div class="col-xl-12">
-                    <!-- <h1 class="jobs-num"><span>{{ count($profiles) }}</span> Profiles</h1> -->
+                    <h1 class="jobs-num"><span>@{{ photographerList.length }}</span> Profiles</h1>
                 </div>
             </div>
-        </div>
-    </div>
+        
 
     <div class="container-fluid pt-3 post-bg-color">
         <div class="container">
             <div class="row jos-details">
                 <div class="col-xl-12">
                     <ul class="p-list">
-                    <!--     <div v-if=photgraphers.length>
-                            sbc
-                        </div>
-                            <li  v-for="photographer in photographers">
- -->
-                            <li>
+                        <!-- <p > -->
+                         
+                        
+                            <li v-for="photographer12 in photographerList">
                                 <div class="profile-box">
                                     <div class="profile-upper-box">
                                         <div class="profile-image">
-                                           <img src="" class="rounded-circle" alt="">
+                                            <!-- @{{ photographer12.avatar_path }} -->
+<!--                                            <img :src="@{{ photographer12.avatar_path }}" class="rounded-circle" alt=""> -->
                                         </div>
                                         <div class="p-name-section">
                                             <h1 class="details-freelance-name">
-                                            @{{ photographerList }} Contact Info</h1>
+                                             @{{ photographer12.name }}</h1>
                                             <h6 class="details-freelance-desig">Senior Graphic - Web Designer</h6>
                                         </div>
-                                        <a href="#" class="btn-sm viev-all">View Profile</a>
+                                        <a v-bind:href="'/profiles/'+photographer12.id" class="btn-sm viev-all">View Profile</a>
                                     </div>
                                     <div class="profile-lower-box">
                                         <div class="p-left-section">
@@ -143,21 +133,20 @@
                                         </div>
                                         <div class="p-right-section">
                                             <p class="tags-required">
-                                                <a href="#" class="required-skills">Design</a>
-                                                <a href="#" class="required-skills">Graphic</a>
-                                                <a href="#" class="required-skills">UI</a>
-                                                <a href="#" class="required-skills">UX</a>
-                                                <a href="#" class="required-skills">Developer</a>
-                                                <a href="#" class="required-skills">Branding</a>
+                                                
+                                                <a href="#" class="required-skills" v-for="skill12 in photographer12.skills ">@{{ skill12.name}}</a>
+                                           
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                             </li>
+                            <!-- </p> -->
                     </ul>
                 </div>
             </div>
         </div>
+    </div>
     </div>
             </photographersearch>
         </div>
