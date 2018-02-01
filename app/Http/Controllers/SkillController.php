@@ -90,6 +90,7 @@ class SkillController extends Controller
                     ->distinct()
                     ->where('contact_informations.city','LIKE',$request->city)
                     ->where('contact_informations.country','LIKE',$request->country)
+                    ->where('users.rating','>=',$request->rating)
                     ->get();
                 }
                 else 
@@ -103,6 +104,7 @@ class SkillController extends Controller
                     ->whereIn('skills.name',$request->keyword)
                     ->where('contact_informations.city','LIKE',$request->city)
                     ->where('contact_informations.country','LIKE',$request->country)
+                    ->where('users.rating','>=',$request->rating)
                     ->get();
                 }
 

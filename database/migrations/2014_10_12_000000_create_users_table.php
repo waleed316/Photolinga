@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->boolean('is_studio')->default(false);
             $table->string('avatar_path')->nullable();
             $table->text('description')->nullable();
+            $table->float('rating')->nullable();
             $table->rememberToken();
             $table->timestamps();
 

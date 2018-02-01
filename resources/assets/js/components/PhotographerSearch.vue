@@ -1,16 +1,18 @@
 <script>
+
   export default{
  props:[ 'skillSet' ],
   data(){
    return {
-   
+    rating:0,
+    loading: false,
     query: '',
     city:'',
     country:'',
     skill:'',
     skillname:'',
     deleteskill:'',
-    abc: '',
+    Sloading: false,
     skillList: [],
     results: [],
     photographerList: [],
@@ -19,17 +21,20 @@
   },
    mounted(){
    this.keyword.push('All');
+   this.loading=true;
    axios.get('/allPhotographers').then(
     response => {
-    console.log(response.data);
+    this.loading=false;
     this.photographerList=response.data;
     });
   },
   methods: {
    autoComplete(){
+   this.Sloading=true;
     this.results = [];
     if(this.query.length > 1){
      axios.get('/search/photographer',{params: {query: this.query}}).then(response => {
+       this.Sloading=false;
       this.results = response.data;
      });
     }
@@ -39,19 +44,16 @@
    },
    Photographer()
    {
-   axios.get('/browsePhotographer',{params: {city: this.city,country: this.country,keyword:this.keyword}}).then(response => 
+   this.loading=true;
+  this.photographerList=[];
+   axios.get('/browsePhotographer',{params: {city: this.city,country: this.country,keyword:this.keyword,rating:this.rating}}).then(response => 
    {
-        console.log("Before Photographer List");
-        console.log(response.data);
-        //this.photographerList=[];
+       this.loading=false;
         this.photographerList=response.data;
-        console.log("after srcipt");
-        console.log(this.photographerList);
    });
    },
     skillSelected(result){
     document.getElementById('searchResult').style.display="none";
-    console.log(result.name);
     this.keyword.push(result.name);
     }
   }

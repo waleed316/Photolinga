@@ -24,6 +24,7 @@ Route::get('/jobs/browse/{category}', 'JobsController@index');
 
 Route::get('/my-jobs', 'MyJobsController@index');
 
+
 Route::post('/jobs/{job}/proposals', 'ProposalsController@store');
 Route::get('/proposals/{proposal}', 'ProposalsController@show');
 Route::patch('/proposals/{proposal}', 'ProposalsController@update');
@@ -66,4 +67,6 @@ Route::get('/search/photographer','SkillController@PSearch')->name('Skill.psearc
 
 Route::get('/browsePhotographer','SkillController@browse')->name('Skill.browse');
 Route::get('/allPhotographers','SkillController@AllPhotographers');
+
+Route::get('/saveRating','RatingController@store')->name('rating.store');
 

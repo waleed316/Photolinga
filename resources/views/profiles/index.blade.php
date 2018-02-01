@@ -46,9 +46,9 @@
                         <div class="first-box">
                             <h1 class="cat-heading">Feedback Rating</h1>
                             <div class="form-group">
-                                <select class="form-control form-control-sm" id="feedback" name="feedback">
-                                    <option>Any Score</option>
-                                    <option value="2">2 stars</option>
+                                <select class="form-control form-control-sm" id="feedback" v-model="rating">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
                                     <option value="3">3</option>
                                     <option value="4">4</option>
                                     <option value="5">5</option>
@@ -63,6 +63,8 @@
                             <input type="text" placeholder="Keyword" v-model="query" v-on:keyup="autoComplete" class="form-control form-control-sm category-input"><i class="fa fa-search cat-search" v-on:click="Photographer"></i>
   <div v-if="results.length">
    <ul class="list-group" id="searchResult">
+                    <i  v-show="Sloading" class="fa fa-spinner fa-spin"></i>
+    
           <a v-on:click="skillSelected(result)" v-for="result in results">
               <li class="list-group-item list-group-item-action">
                       @{{ result.name }}
@@ -96,35 +98,48 @@
 
     <div class="container-fluid pt-3 post-bg-color">
         <div class="container">
+            <div style="text-align: center;">
+                    <i  v-show="loading" class="fa fa-spinner fa-spin"></i>
+                    </div>
             <div class="row jos-details">
                 <div class="col-xl-12">
                     <ul class="p-list">
-                        <!-- <p > -->
                          
                         
                             <li v-for="photographer12 in photographerList">
                                 <div class="profile-box">
                                     <div class="profile-upper-box">
                                         <div class="profile-image">
-                                            <!-- @{{ photographer12.avatar_path }} -->
-<!--                                            <img :src="@{{ photographer12.avatar_path }}" class="rounded-circle" alt=""> -->
+                                           <!-- <img v-bind:src="photographer12.avatar_path" class="rounded-circle" alt=""> -->
                                         </div>
                                         <div class="p-name-section">
                                             <h1 class="details-freelance-name">
-                                             @{{ photographer12.name }}</h1>
-                                            <h6 class="details-freelance-desig">Senior Graphic - Web Designer</h6>
+                                             @{{ photographer12.name }} </h1>
+                                            <h6 class="details-freelance-desig">Senior Graphic - Web Designer
+                                            </h6>
                                         </div>
                                         <a v-bind:href="'/profiles/'+photographer12.id" class="btn-sm viev-all">View Profile</a>
                                     </div>
                                     <div class="profile-lower-box">
                                         <div class="p-left-section">
                                             <div class="p-rating-section">
-                                                <ul class="r-list">
-                                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                                <ul class="r-list"><!-- 
+                                                    @{{ photographer12.rating }} -->
+                                                     <star-rating 
+                    v-bind:increment="0.5" 
+                    v-bind:read-only="true"
+                    :rating=photographer12.rating  
+             v-bind:max-rating="5" 
+             v-bind:round-start-rating="false"
+             v-bind:show-rating="false"
+             inactive-color="#b296c5" 
+             active-color="#290740" 
+             v-bind:star-size="13">
+                                                    <!-- <li><a href="#"><i class="fa fa-star"></i></a></li>
                                                     <li><a href="#"><i class="fa fa-star"></i></a></li>
                                                     <li><a href="#"><i class="fa fa-star"></i></a></li>
                                                     <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-star-o"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-star-o"></i></a></li> -->
                                                 </ul>
                                             </div>
                                             <div class="p-year">

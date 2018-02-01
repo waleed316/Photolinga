@@ -25,6 +25,8 @@ class CreateJobsTable extends Migration
             $table->unsignedInteger('category_id');
             $table->boolean('featured')->default(false);
             $table->string('location');
+            $table->boolean('completed')->default(false);
+            $table->float('rating')->nullable();
             $table->boolean('in_progress')->default(false);
             $table->timestamps();
             $table->foreign('contractor_id')

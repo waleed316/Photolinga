@@ -18,7 +18,9 @@ Vue.use(SweetModal);
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
+// var StarRating = require('vue-star-rating');
+import StarRating from 'vue-star-rating';
+Vue.component('star-rating', StarRating);
 Vue.component('flash', require('./components/Flash.vue'));
 Vue.component('errors', require('./components/Errors.vue'));
 
@@ -34,8 +36,12 @@ Vue.component('profile-view', require('./pages/Profile.vue'));
 Vue.component('settings-view', require('./pages/Settings.vue'));
 Vue.component('photographersearch',require('./components/PhotographerSearch.vue'));
 Vue.component('autocomplete',require('./components/Autocomplete.vue'));
+Vue.component('rating',require('./components/rating.vue'));
 
 
 const app = new Vue({
-  el: '#app'
+  el: '#app',
+    data: {
+    rating: 0
+  }
 });

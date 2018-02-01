@@ -22,6 +22,7 @@
         "@xkeshi/image-compressor": "^0.5.2",
         "cropperjs": "^1.2.1",
         "sweet-modal-vue": "^2.0.0",
+        "vue-star-rating": "^1.5.1",
         "vue-upload-component": "^2.7.3",
         "vue2-autocomplete-js": "^0.2.2"
     }
