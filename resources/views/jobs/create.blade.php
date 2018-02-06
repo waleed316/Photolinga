@@ -52,13 +52,14 @@
 
                             <br>
 
-                            <label class="label-name" for="skill">Where is your event? <a href="#"
-                                                                                       data-toggle="tooltip"
-                                                                                       data-placement="top"
-                                                                                       title="help"><span
+                            <label class="label-name" for="skill">Where is your event?
+                             <a href="#"  data-toggle="tooltip" data-placement="top" title="help"><span
                                             class="badge badge-default second-badge">?</span></a></label>
+                                            <locsearch></locsearch>
+                                            <!-- 
                             <input class="form-control" name="location" type="text" value="{{ old('location') }}"
-                                   id="example-text-input" required>
+                                   id="example-text-input" required> -->
+                                   <!-- <placesearch></placesearch> -->
                             {{--<label class="label-name" for="skill">What skill are required? <a href="#"--}}
                             {{--data-toggle="tooltip"--}}
                             {{--data-placement="top"--}}

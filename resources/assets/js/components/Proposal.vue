@@ -33,17 +33,27 @@
                         <a v-if="canView" :href="'/proposals/' + this.id" class="btn-sm viev-all">
                             View Proposal
                         </a>
+                        &nbsp;
+                        <a v-if="canView" href="#" class="btn-sm viev-all">
+                        Chat
+                        </a>
                     </div>
                 </div>
             </div>
 
             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-6 no-padding-on-sm">
                 <div class="freelance-year-btn mt-4">
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
+                  <star-rating 
+                    v-bind:increment="0.5" 
+                    v-bind:read-only="true"
+                    :rating=data.owner.rating  
+             v-bind:max-rating="5" 
+             v-bind:round-start-rating="false"
+             v-bind:show-rating="false"
+             inactive-color="#b296c5" 
+             active-color="#290740" 
+             v-bind:star-size="15">
+             </star-rating>
                 </div>
             </div>
 

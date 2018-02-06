@@ -37,11 +37,17 @@ Vue.component('settings-view', require('./pages/Settings.vue'));
 Vue.component('photographersearch',require('./components/PhotographerSearch.vue'));
 Vue.component('autocomplete',require('./components/Autocomplete.vue'));
 Vue.component('rating',require('./components/rating.vue'));
+Vue.component('placesearch',require('./components/GooglePlace.vue'));
+Vue.component('locsearch',require('./components/EventLoc.vue'));
+Vue.component('compseacrh',require('./components/complete.vue'));
+
+
 
 
 const app = new Vue({
   el: '#app',
     data: {
-    rating: 0
+    rating: 0,
+     results: []
   }
 });

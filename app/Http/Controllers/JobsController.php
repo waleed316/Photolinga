@@ -21,7 +21,7 @@ class JobsController extends Controller
         }
 
         if ( $location = request( 'location' ) ) {
-            $jobs->where( 'location', $location )->orderBy( 'created_at' );
+            $jobs->where( 'location',$location )->orderBy( 'created_at' );
         }
 
         $jobs = $jobs->get();

@@ -24,6 +24,9 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:500,600,300,700" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/min/dropzone.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/autocomp.css') }}">
+
+    <!-- <link rel="stylesheet" href="{{ asset('vue2-autocomplete-js/dist/style/vue2-autocomplete.css')}}"> -->
     <!-- <link rel="stylesheet" href="vue2-autocomplete-js/dist/style/vue2-autocomplete.css"> -->
 
     <script>

@@ -33,13 +33,15 @@
                             <h1 class="text-center do-heading1 animated zoomIn">Don't Just Dream, Do</h1>
                             <h6 class="text-center do-heading2 animated slideInLeft">Hire Talented and Professional
                                 Photographers</h6>
-                            <form action="{{ route('jobs') }}" method="GET">
+                            <form action="{{ route('jobs') }}" method="GET" autocomplete="off">
 
                                 <div class="input-group input-group-lg input-search animated rotateInUpRight">
-                                    <input name="location" type="text" class="form-control"
+                                  <!--   <input name="location" type="text" class="form-control"
                                            placeholder="Search by Location ...">
                                     <span class="input-group-btn">
-                                        <button class="btn btn-secondary btn-search" type="submit">Search</button>
+                                        <button class="btn btn-secondary btn-search" type="submit">Search</button> -->
+                        <placesearch></placesearch>
+
                                     </span>
                                 </div>
                             </form>
