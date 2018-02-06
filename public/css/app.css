@@ -4,6 +4,13 @@
   font-family: 'Roboto', sans-serif;
 }
 
+.app {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 100%;
+}
+
 .level {
   display: -webkit-box;
   display: -ms-flexbox;
