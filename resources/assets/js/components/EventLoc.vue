@@ -1,6 +1,6 @@
 <template>
 <div id="app">
-<input class="form-control" name="location" type="text" v-model="query" v-on:keyup="autoCompletePlaces" id="searchLoc">
+<input class="form-control" name="location" type="text" v-model="query" v-on:keyup="autoCompletePlaces" id="searchLoc" autocomplete="off">
 <div v-if="results.length">
    <ul class="list-group" id="searchResult">
           <a v-on:click="skillSelected(result)" v-for="result in results">

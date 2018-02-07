@@ -70,3 +70,7 @@ Route::get('/allPhotographers','SkillController@AllPhotographers');
 
 Route::get('/saveRating','RatingController@store')->name('rating.store');
 
+Route::post('/chat','ChatController@index');
+
+Route::get('/chatList','ChatController@chat');
+

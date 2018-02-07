@@ -33,11 +33,10 @@
                         <a v-if="canView" :href="'/proposals/' + this.id" class="btn-sm viev-all">
                             View Proposal
                         </a>
-                        &nbsp;
-                        <a v-if="canView" href="#" class="btn-sm viev-all">
-                        Chat
-                        </a>
-                    </div>
+                        <div v-if="canView">
+                        <chat v-bind:userid=data.user_id v-bind:jobid=data.job_id></chat>
+                        </div>
+                                           </div>
                 </div>
             </div>
 
@@ -76,13 +75,18 @@
 </template>
 
 <script>
+ import chat from './chat.vue';
   export default {
     props: [ 'data' ],
+    components: { chat },
 
     data() {
       return {
         editing: false,
         id: this.data.id,
+        userid:this.data.user_id,
+        jobid:this.data.job_id,
+        message:'',
         amount: this.data.amount,
         body: this.data.body,
       };
@@ -125,6 +129,13 @@
 //        });
 
       },
+      sendMsg() {
+      axios.post('/chat',{params: {message: this.message,id:this.id,jobid:this.jobid,userid:this.userid}}).then(response=>{
+      console.log(response.data);
+      document.getElementById("msg").innerHTML = response.data.params.message;
+
+      });
+      }
     },
   };
 </script>

@@ -40,6 +40,7 @@ Vue.component('rating',require('./components/rating.vue'));
 Vue.component('placesearch',require('./components/GooglePlace.vue'));
 Vue.component('locsearch',require('./components/EventLoc.vue'));
 Vue.component('compseacrh',require('./components/complete.vue'));
+Vue.component('chat',require('./components/chat.vue'));
 
 
 
