@@ -63,7 +63,7 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                           aria-haspopup="true" aria-expanded="false">Messages</a>
+                           aria-haspopup="true" aria-expanded="false">Messages<span class="badge badge-info">{{Chat::for(auth()->user())->unreadCount()}}</span></a>
                         <div class="dropdown-menu dropdown-menu-zero-padding dropdown-menu-message-padding">
                             <h5 class="dropdown-heading">Messages</h5>
 
@@ -96,13 +96,20 @@
                                     {{--messages</a></td>--}}
                                     {{--</tr>--}}
                                     {{--</li>--}}
-                                    <li>
+                                    @foreach(Chat::commonConversations([auth()->id()]) as $message)
+                                     <li>
                                         <tr>
-                                            <td colspan="5" class="text-center"><a href="#" class="see-message">No
-                                                    new
-                                                    messages</a></td>
+                                            <td colspan="5" class="text-center">
+                                                @foreach(Chat::conversation($message->id)->users as $chatUser)
+                                                @if($chatUser->name != Auth::user()->name)
+                                                <a href="#" class="see-message" >
+                                            {{$chatUser->name}}</a>
+                                            @endif
+                                        @endforeach</td>
                                         </tr>
                                     </li>
+                                    @endforeach
+
                                 </ul>
                                 </tbody>
                             </table>

@@ -1,8 +1,51 @@
-function mouseOut(){
-      document.getElementById("skill-list").style.display = "none";
-}
-
+// function mouseOut(){
+//       document.getElementById("skill-list").style.display = "none";
+// }
 $(document).ready(function(){
+
+
+    // $('#minimize').on('click', function(e) {
+    //     e.preventDefault();
+    //     $('#chatstart').css({ 'bottom': '-325px', 'z-index': '1' })
+    // });
+
+
+    // $('#maximize').on('click', function(e) {
+    //     e.preventDefault();
+    //     $('#chatstart').css({ 'bottom': '0', 'z-index': '1' })
+    // });
+
+    // $('#close').on('click', function(e) {
+    //     e.preventDefault();
+    //     $('#chatstart').css('display', 'none')
+    // });
+
+    // $('#chat').on('click', function(e) {
+    //     e.preventDefault();
+    //     console.log("abc");
+    //     $('#chatstart').css('display', 'block')
+    // });
+
+    $('#send_chat').keyup(function() {
+        var ln = $('#send_chat').val().length;
+        // console.log(ln);
+        if (ln == 43) {
+            $('#chat_body').css("height", "250px");
+            $('#send_chat').css('height', "40px");
+            // console.log('waleed');
+        } else if (ln <= 43) {
+            $('#chat_body').css("height", "262px");
+            $('#send_chat').css('height', "28px");
+        }
+        if (ln >= 86) {
+            $('#chat_body').css("height", "230px");
+            $('#send_chat').css('height', "60px");
+        } else if (ln >= 43 && ln <= 86) {
+            $('#chat_body').css("height", "250px");
+            $('#send_chat').css('height', "40px");
+        }
+    });
+
 
     $("#bid-hide").hide();
     $("#bid").click(function(){
@@ -58,6 +101,30 @@ $(document).ready(function(){
 
 });
 
+// function display()
+// {
+//     $('#chatstart').css('display','block')
+// }
+function display(id) {
+    var disp = ($(id).data('id'));
+    console.log(disp);
+    $('#' + disp).css('display', 'block')
+}
+
+function minimize(id) {
+    var dataid = ($(id).parents('.chatbox').attr('id'));
+    $('#' + dataid).css({ 'bottom': '-325px', 'z-index': '1!important' });
+}
+
+function maximize(id) {
+    var dataid = ($(id).parents('.chatbox').attr('id'));
+    $('#' + dataid).css({ 'bottom': '0', 'z-index': '1!important' });
+}
+
+function closewindow(id) {
+    var dataid = ($(id).parents('.chatbox').attr('id'));
+    $('#' + dataid).css('display', 'none');
+}
 (function($){
     $.fn.extend({
         hideMaxListItems: function(options)

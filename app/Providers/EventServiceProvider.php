@@ -16,6 +16,10 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\Event' => [
             'App\Listeners\EventListener',
         ],
+        'App\Events\SendMessage' =>
+        [
+            'App\Listeners\updateConversation',
+        ]
     ];
 
     /**
@@ -23,10 +27,14 @@ class EventServiceProvider extends ServiceProvider
      *
      * @return void
      */
+    // public function boot(DispatcherContract $events)
+    // {
+    //     // parent::boot($events);
+
+    //     //
+    // }
     public function boot()
     {
-        parent::boot();
-
-        //
+       
     }
 }

@@ -82,5 +82,31 @@
 <script src="{{ asset('js/main.js') }}"></script>
 <script src="/js/test.js"></script>
 <script src="{{asset('js/Skill.js')}}"></script>
+<script type="text/javascript">
+//   function display()
+// {
+//     $('#chatstart').css('display','block')
+// }
+function display(id) {
+    var disp = ($(id).data('id'));
+    console.log(disp);
+    $('#' + disp).css('display', 'block')
+}
+
+function minimize(id) {
+    var dataid = ($(id).parents('.chatbox').attr('id'));
+    $('#' + dataid).css({ 'bottom': '-325px', 'z-index': '1!important' });
+}
+
+function maximize(id) {
+    var dataid = ($(id).parents('.chatbox').attr('id'));
+    $('#' + dataid).css({ 'bottom': '0', 'z-index': '1!important' });
+}
+
+function closewindow(id) {
+    var dataid = ($(id).parents('.chatbox').attr('id'));
+    $('#' + dataid).css('display', 'none');
+}
+</script>
 </body>
 </html>

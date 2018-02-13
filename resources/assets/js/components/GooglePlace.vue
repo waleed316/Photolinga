@@ -1,6 +1,13 @@
 <template>
 <div>
-<div class="input-group form-search">
+<div class="input-group input-group-lg input-search animated rotateInUpRight" v-if="landing">
+  <input name="location" type="text" class="form-control"
+                                           placeholder="Search by Location ..." v-on:keyup="autoCompletePlaces" v-model="query" id="Loc">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-secondary btn-search" type="submit">Search</button>
+                                        </span>
+                                        </div> 
+<div class="input-group form-search" v-else>
                             <input type="text" name="location" class="form-control navbar-search"
                                    placeholder="Search by Location" v-on:keyup="autoCompletePlaces" v-model="query" id="Loc">
                             <span class="input-group-btn">
@@ -31,7 +38,7 @@
     </button>
     </span>
    </div>
-                      
+                    
                         <ul v-show="loading" class="list-group" style="display:block;">
                    <li class="list-group-item list-group-item-action"> <i class="fa fa-spinner fa-spin"></i></li>
 
@@ -51,7 +58,7 @@
 </template>
 <script>
 export default{
- props:[ 'skillSet' ],
+ props:[ 'skillSet','landing' ],
   data(){
    return {
     query: '',
@@ -67,6 +74,10 @@ export default{
    autoCompletePlaces(){
     this.results = [];
     this.loading=true;
+    if(this.query.length < 1)
+    {
+    this.loading=false;
+    }
     if(this.query.length > 1){
      axios.get('https://maps.googleapis.com/maps/api/place/autocomplete/json',{params: {input: this.query,key:"AIzaSyDup0HaTwlqPCzO0e549NTKfWDloKUtjwA",components:"country:pk"}}).then(response => {
    //   console.log(response.data.predictions.length);

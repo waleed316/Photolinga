@@ -72,7 +72,7 @@ class JobPolicy
      */
     public function apply(User $user, Job $job)
     {
-        return $user->id != $job->contractor->id and $job->proposals()->where('user_id', $user->id)->count() == 0;
+        return $user->id != $job->contractor->id and $job->proposals()->where('user_id', $user->id)->count() == 0 and (!$job->completed);
     }
 
     public function award(User $user, Job $job)

@@ -110,7 +110,7 @@
                                 <div class="profile-box">
                                     <div class="profile-upper-box">
                                         <div class="profile-image">
-                                           <!-- <img v-bind:src="photographer12.avatar_path" class="rounded-circle" alt=""> -->
+                                           <img :src="photographer12.avatar_path" class="rounded-circle" alt="">
                                         </div>
                                         <div class="p-name-section">
                                             <h1 class="details-freelance-name">

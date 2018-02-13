@@ -35,14 +35,14 @@
                                 Photographers</h6>
                             <form action="{{ route('jobs') }}" method="GET" autocomplete="off">
 
-                                <div class="input-group input-group-lg input-search animated rotateInUpRight">
-                                  <!--   <input name="location" type="text" class="form-control"
+                                
+                                    <!-- <input name="location" type="text" class="form-control"
                                            placeholder="Search by Location ...">
                                     <span class="input-group-btn">
                                         <button class="btn btn-secondary btn-search" type="submit">Search</button> -->
-                        <placesearch></placesearch>
+                        <placesearch v-bind:landing=true></placesearch>
 
-                                    </span>
+                                   <!--  </span> -->
                                 </div>
                             </form>
 

@@ -53631,6 +53631,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -53744,14 +53745,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
-  props: ['userid', 'jobid'],
+  props: ['userid', 'jobid', 'id'],
   data: function data() {
     return {
       message: '',
-      id: '',
       edit: false,
       chating: []
     };
@@ -53761,20 +53765,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     axios.get('/chatList', { params: { jobid: this.jobid, userid: this.userid } }).then(function (response) {
       console.log(response.data);
+      _this.chating = [];
       _this.chating = response.data;
-      //  document.getElementById('right').style.float="right";
-      //  document.getElementById('left').style.float="left";
     });
   },
 
   methods: {
     sendMsg: function sendMsg() {
-      axios.post('/chat', { params: { message: this.message, id: this.id, jobid: this.jobid, userid: this.userid } }).then(function (response) {
+      var _this2 = this;
+
+      axios.post('/chat', { params: { message: this.message, jobid: this.jobid, userid: this.userid } }).then(function (response) {
         console.log(response.data);
-        document.getElementById("msg").innerHTML = response.data.params.message;
+        _this2.chating.push({ message: _this2.message, class: 'user2', id: 'user' });
+        //  event(new SendMessage(this.response.data));
+        _this2.message = '';
+        //  document.getElementById("msg").innerHTML = response.data.params.message;
       });
     }
   }
+
 });
 
 /***/ }),
@@ -53786,103 +53795,103 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c(
-      "div",
-      {
-        staticClass: "modal fade",
-        attrs: {
-          id: "exampleModal",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-labelledby": "exampleModalLabel",
-          "aria-hidden": "true"
-        }
-      },
-      [
+    _c("div", { staticClass: "chatbox", attrs: { id: _vm.id } }, [
+      _c("div", { staticClass: "header" }, [
         _c(
-          "div",
-          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          "p",
+          {
+            staticClass: "chat-name mb-0",
+            attrs: { onclick: "maximize(this)" }
+          },
           [
-            _c("div", { staticClass: "modal-content" }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "modal-body" },
-                [
-                  _vm._l(_vm.chating, function(chat) {
-                    return _c("div", [
-                      _c("div", { attrs: { id: chat.class } }, [
-                        _c("span", [
-                          _vm._v(
-                            " " +
-                              _vm._s(chat.time) +
-                              " " +
-                              _vm._s(chat.sender) +
-                              ":"
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("p", [_vm._v(" " + _vm._s(chat.message) + " ")])
-                      ]),
-                      _vm._v(" "),
-                      _c("br"),
-                      _vm._v(" "),
-                      _c("br")
-                    ])
-                  }),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.message,
-                        expression: "message"
-                      }
-                    ],
-                    attrs: { type: "text", name: "message" },
-                    domProps: { value: _vm.message },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.message = $event.target.value
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-primary",
-                      on: { click: _vm.sendMsg }
-                    },
-                    [_vm._v("Send")]
-                  )
-                ],
-                2
-              ),
-              _vm._v(" "),
-              _vm._m(1)
-            ])
+            _c("i", { staticClass: "fa fa-circle mr-1 online-green" }),
+            _vm._v(" " + _vm._s(_vm.chating[0]["name"]))
           ]
-        )
-      ]
-    ),
+        ),
+        _vm._v(" "),
+        _vm._m(0)
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "hidden-body" }, [
+        _c("div", { staticClass: "project-name" }, [
+          _c("a", { staticClass: "project-hyperlink", attrs: { href: "#" } }, [
+            _vm._v(_vm._s(_vm.chating[0]["project"]))
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "body", attrs: { id: "chat_body" } }, [
+          _c(
+            "ul",
+            [
+              _vm._l(_vm.chating, function(chat) {
+                return _c("li", { staticStyle: { clear: "both" } }, [
+                  _c("div", { attrs: { id: chat.id } }, [
+                    _c("img", {
+                      staticClass: "chat-img",
+                      attrs: { src: "/images/person-2.jpg", alt: "" }
+                    }),
+                    _c(
+                      "span",
+                      {
+                        staticClass: "badge badge-default",
+                        attrs: { id: chat.class }
+                      },
+                      [_vm._v(_vm._s(chat.message))]
+                    )
+                  ])
+                ])
+              }),
+              _vm._v(" "),
+              _c("li", [
+                _c("div", { staticClass: "chatting" }, [
+                  _c("div", { staticClass: "form-group mb-0" }, [
+                    _c("textarea", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.message,
+                          expression: "message"
+                        }
+                      ],
+                      staticStyle: { resize: "none" },
+                      attrs: { id: "send_chat" },
+                      domProps: { value: _vm.message },
+                      on: {
+                        keyup: function($event) {
+                          if (
+                            !("button" in $event) &&
+                            _vm._k($event.keyCode, "enter", 13, $event.key)
+                          ) {
+                            return null
+                          }
+                          _vm.sendMsg($event)
+                        },
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.message = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ])
+              ])
+            ],
+            2
+          )
+        ])
+      ])
+    ]),
     _vm._v(" "),
     _c(
       "a",
       {
         staticClass: "btn-sm viev-all",
-        attrs: {
-          href: "#",
-          "data-toggle": "modal",
-          "data-target": "#exampleModal"
-        }
+        attrs: { id: "chat", onclick: "display(this)", "data-id": _vm.id }
       },
-      [_vm._v("\r\n                        Chat\r\n                        ")]
+      [_vm._v("\r\nChat\r\n")]
     )
   ])
 }
@@ -53891,39 +53900,17 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-header" }, [
+    return _c("div", { staticClass: "buttons" }, [
       _c(
-        "h5",
-        { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
-        [_vm._v("Chat")]
+        "a",
+        { staticClass: "minimize", attrs: { onclick: "minimize(this)" } },
+        [_c("i", { staticClass: "fa fa-window-minimize" })]
       ),
       _vm._v(" "),
       _c(
-        "button",
-        {
-          staticClass: "close",
-          attrs: {
-            type: "button",
-            "data-dismiss": "modal",
-            "aria-label": "Close"
-          }
-        },
-        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-secondary",
-          attrs: { type: "button", "data-dismiss": "modal" }
-        },
-        [_vm._v("Close")]
+        "a",
+        { staticClass: "close", attrs: { onclick: "closewindow(this)" } },
+        [_c("i", { staticClass: "fa fa-times" })]
       )
     ])
   }
@@ -54059,7 +54046,8 @@ var render = function() {
                       _c("chat", {
                         attrs: {
                           userid: _vm.data.user_id,
-                          jobid: _vm.data.job_id
+                          jobid: _vm.data.job_id,
+                          id: _vm.data.id
                         }
                       })
                     ],
@@ -55089,9 +55077,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['skillSet'],
+  props: ['skillSet', 'landing'],
   data: function data() {
     return {
       query: '',
@@ -55110,6 +55105,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
       this.results = [];
       this.loading = true;
+      if (this.query.length < 1) {
+        this.loading = false;
+      }
       if (this.query.length > 1) {
         axios.get('https://maps.googleapis.com/maps/api/place/autocomplete/json', { params: { input: this.query, key: "AIzaSyDup0HaTwlqPCzO0e549NTKfWDloKUtjwA", components: "country:pk" } }).then(function (response) {
           //   console.log(response.data.predictions.length);
@@ -55139,103 +55137,142 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "input-group form-search" }, [
-      _c("input", {
-        directives: [
+    _vm.landing
+      ? _c(
+          "div",
           {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.query,
-            expression: "query"
-          }
-        ],
-        staticClass: "form-control navbar-search",
-        attrs: {
-          type: "text",
-          name: "location",
-          placeholder: "Search by Location",
-          id: "Loc"
-        },
-        domProps: { value: _vm.query },
-        on: {
-          keyup: _vm.autoCompletePlaces,
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.query = $event.target.value
-          }
-        }
-      }),
-      _vm._v(" "),
-      _c("span", { staticClass: "input-group-btn" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-secondary navbar-search-btn",
-            attrs: { type: "submit" }
+            staticClass:
+              "input-group input-group-lg input-search animated rotateInUpRight"
           },
           [
-            _c(
-              "svg",
-              {
-                staticStyle: { "enable-background": "new 0 0 451 451" },
-                attrs: {
-                  version: "1.1",
-                  id: "Capa_3",
-                  xmlns: "http://www.w3.org/2000/svg",
-                  "xmlns:xlink": "http://www.w3.org/1999/xlink",
-                  x: "0px",
-                  y: "0px",
-                  viewBox: "0 0 451 451",
-                  "xml:space": "preserve"
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.query,
+                  expression: "query"
                 }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                name: "location",
+                type: "text",
+                placeholder: "Search by Location ...",
+                id: "Loc"
               },
-              [
-                _c("g", [
-                  _c("path", {
-                    attrs: {
-                      d:
-                        "M447.05,428l-109.6-109.6c29.4-33.8,47.2-77.9,47.2-126.1C384.65,86.2,298.35,0,192.35,0C86.25,0,0.05,86.3,0.05,192.3s86.3,192.3,192.3,192.3c48.2,0,92.3-17.8,126.1-47.2L428.05,447c2.6,2.6,6.1,4,9.5,4s6.9-1.3,9.5-4C452.25,441.8,452.25,433.2,447.05,428z M26.95,192.3c0-91.2,74.2-165.3,165.3-165.3c91.2,0,165.3,74.2,165.3,165.3s-74.1,165.4-165.3,165.4C101.15,357.7,26.95,283.5,26.95,192.3z"
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("g"),
-                _vm._v(" "),
-                _c("g"),
-                _vm._v(" "),
-                _c("g"),
-                _vm._v(" "),
-                _c("g"),
-                _vm._v(" "),
-                _c("g"),
-                _vm._v(" "),
-                _c("g"),
-                _vm._v(" "),
-                _c("g"),
-                _vm._v(" "),
-                _c("g"),
-                _vm._v(" "),
-                _c("g"),
-                _vm._v(" "),
-                _c("g"),
-                _vm._v(" "),
-                _c("g"),
-                _vm._v(" "),
-                _c("g"),
-                _vm._v(" "),
-                _c("g"),
-                _vm._v(" "),
-                _c("g"),
-                _vm._v(" "),
-                _c("g")
-              ]
-            )
+              domProps: { value: _vm.query },
+              on: {
+                keyup: _vm.autoCompletePlaces,
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.query = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _vm._m(0)
           ]
         )
-      ])
-    ]),
+      : _c("div", { staticClass: "input-group form-search" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.query,
+                expression: "query"
+              }
+            ],
+            staticClass: "form-control navbar-search",
+            attrs: {
+              type: "text",
+              name: "location",
+              placeholder: "Search by Location",
+              id: "Loc"
+            },
+            domProps: { value: _vm.query },
+            on: {
+              keyup: _vm.autoCompletePlaces,
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.query = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: "input-group-btn" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-secondary navbar-search-btn",
+                attrs: { type: "submit" }
+              },
+              [
+                _c(
+                  "svg",
+                  {
+                    staticStyle: { "enable-background": "new 0 0 451 451" },
+                    attrs: {
+                      version: "1.1",
+                      id: "Capa_3",
+                      xmlns: "http://www.w3.org/2000/svg",
+                      "xmlns:xlink": "http://www.w3.org/1999/xlink",
+                      x: "0px",
+                      y: "0px",
+                      viewBox: "0 0 451 451",
+                      "xml:space": "preserve"
+                    }
+                  },
+                  [
+                    _c("g", [
+                      _c("path", {
+                        attrs: {
+                          d:
+                            "M447.05,428l-109.6-109.6c29.4-33.8,47.2-77.9,47.2-126.1C384.65,86.2,298.35,0,192.35,0C86.25,0,0.05,86.3,0.05,192.3s86.3,192.3,192.3,192.3c48.2,0,92.3-17.8,126.1-47.2L428.05,447c2.6,2.6,6.1,4,9.5,4s6.9-1.3,9.5-4C452.25,441.8,452.25,433.2,447.05,428z M26.95,192.3c0-91.2,74.2-165.3,165.3-165.3c91.2,0,165.3,74.2,165.3,165.3s-74.1,165.4-165.3,165.4C101.15,357.7,26.95,283.5,26.95,192.3z"
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("g"),
+                    _vm._v(" "),
+                    _c("g"),
+                    _vm._v(" "),
+                    _c("g"),
+                    _vm._v(" "),
+                    _c("g"),
+                    _vm._v(" "),
+                    _c("g"),
+                    _vm._v(" "),
+                    _c("g"),
+                    _vm._v(" "),
+                    _c("g"),
+                    _vm._v(" "),
+                    _c("g"),
+                    _vm._v(" "),
+                    _c("g"),
+                    _vm._v(" "),
+                    _c("g"),
+                    _vm._v(" "),
+                    _c("g"),
+                    _vm._v(" "),
+                    _c("g"),
+                    _vm._v(" "),
+                    _c("g"),
+                    _vm._v(" "),
+                    _c("g"),
+                    _vm._v(" "),
+                    _c("g")
+                  ]
+                )
+              ]
+            )
+          ])
+        ]),
     _vm._v(" "),
     _c(
       "ul",
@@ -55251,7 +55288,7 @@ var render = function() {
         staticClass: "list-group",
         staticStyle: { display: "block" }
       },
-      [_vm._m(0)]
+      [_vm._m(1)]
     ),
     _vm._v(" "),
     _vm.results.length
@@ -55290,6 +55327,21 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "input-group-btn" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary btn-search",
+          attrs: { type: "submit" }
+        },
+        [_vm._v("Search")]
+      )
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

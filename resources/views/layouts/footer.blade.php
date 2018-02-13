@@ -1,5 +1,62 @@
 <div class="container-fluid footer-bg-color">
     <div class="container">
+         <!--  <div class="chatbox" id="chatstart">
+            <div class="header">
+                <p class="chat-name mb-0" id="maximize"><i class="fa fa-circle mr-1 online-green"></i> Name</p>
+                <div class="buttons">
+                    <a href="#" id="minimize" class="minimize"><i class="fa fa-window-minimize"></i></a>
+                    <a href="#" id="close" class="close"><i class="fa fa-times"></i></a>
+                </div>
+            </div>
+            <div class="hidden-body">
+                <div class="project-name"><a href="#" class="project-hyperlink">Project Name</a></div>
+                <div class="body" id="chat_body">
+                    <div class="reply">
+                        <img src="/images/person-2.jpg" alt="" class="chat-img"><span class="user1 badge badge-default">Hello </span>
+                    </div>
+                    <div class="user">
+                        <span class="user2 badge badge-default">Hello </span>
+                    </div>
+                    <div class="reply">
+                        <img src="/images/person-2.jpg" alt="" class="chat-img"><span class="user1 badge badge-default">Hi Waleed Kaise ho</span>
+                    </div>
+                    <div class="user">
+                        <span class="user2 badge badge-default">Mai thek ap sunao kaise ho or kaha gayb ho ajkal </span>
+                    </div>
+                    <div class="reply">
+                        <img src="/images/person-2.jpg" alt="" class="chat-img"><span class="user1 badge badge-default">Hello </span>
+                    </div>
+                    <div class="user">
+                        <span class="user2 badge badge-default">Hello </span>
+                    </div>
+                    <div class="reply">
+                        <img src="/images/person-2.jpg" alt="" class="chat-img"><span class="user1 badge badge-default">Hi Waleed Kaise ho</span>
+                    </div>
+                    <div class="user">
+                        <span class="user2 badge badge-default">Mai thek ap sunao kaise ho or kaha gayb ho ajkal </span>
+                    </div>
+                    <div class="reply">
+                        <img src="images/person-2.jpg" alt="" class="chat-img"><span class="user1 badge badge-default">Hello </span>
+                    </div>
+                    <div class="user">
+                        <span class="user2 badge badge-default">Hello </span>
+                    </div>
+                    <div class="reply">
+                        <img src="images/person-2.jpg" alt="" class="chat-img"><span class="user1 badge badge-default">Hi Waleed Kaise ho</span>
+                    </div>
+                    <div class="user">
+                        <span class="user2 badge badge-default">Mai thek ap sunao kaise ho or kaha gayb ho ajkal </span>
+                    </div>
+                </div>
+                <div class="chatting">
+                    <form action="">
+                        <div class="form-group mb-0">
+                            <textarea id="send_chat" style="resize:none"></textarea>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>  --> 
         <div class="row footer">
 
             <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3 col-12">

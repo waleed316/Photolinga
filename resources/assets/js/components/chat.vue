@@ -1,49 +1,52 @@
 <template>
 <div>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Chat</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-     	<div v-for="chat in chating">
-     	<div :id=chat.class>
-     	<span> {{chat.time}} {{chat.sender}}:</span>
-     	<p> {{chat.message}} </p>
+ <div class="chatbox" :id=id>
+           <div class="header">
+                <p class="chat-name mb-0" onclick="maximize(this)"><i class="fa fa-circle mr-1 online-green"></i> {{chating[0]['name']}}</p>
+                <div class="buttons">
+                    <a onclick="minimize(this)"  class="minimize"><i class="fa fa-window-minimize"></i></a>
+                    <a onclick="closewindow(this)" class="close"><i class="fa fa-times"></i></a>
+                </div>
+            </div>
+            <div class="hidden-body">
+                <div class="project-name"><a href="#" class="project-hyperlink">{{chating[0]['project']}}</a></div>
+                <div class="body" id="chat_body">
+               <ul>
+                  <li v-for="chat in chating" style="clear:both;">
+                    <div :id=chat.id>
+                        <img src="/images/person-2.jpg" alt="" class="chat-img"><span class="badge badge-default" :id=chat.class>{{chat.message}}</span>
+                    </div> 
+                    </li>
+                    <li>
+                    <div class="chatting">
+                        <div class="form-group mb-0">
+                            <textarea id="send_chat" style="resize:none" @keyup.enter="sendMsg" v-model="message">
+                            </textarea>
+                        </div>
+                </div>
+                    </li>
+                    </ul>
+                </div>
+            </div>
+        </div> 
 
-     	</div>
-     	<br>
-     	<br>
-     	</div>
-            <input type="text" name="message" v-model="message">
-            <button class="btn btn-primary" v-on:click="sendMsg">Send</button>
 
-            
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-    </div>
-  </div>
-</div>
+<a class="btn-sm viev-all" id="chat" onclick="display(this)" :data-id=id>
+Chat
+</a>
 
-                        <a href="#" class="btn-sm viev-all"  data-toggle="modal" data-target="#exampleModal">
+                        <!--<a href="#" class="btn-sm viev-all"  data-toggle="modal" data-target="#exampleModal">
                         Chat
-                        </a>
+                        </a>-->
 </div>
 </template>
 <script>
  export default {
 
-    props: [ 'userid','jobid' ],
+    props: [ 'userid','jobid','id' ],
     data() {
       return {
       message:'',
-      id:'',
       edit:false,
       chating:[]
       };
@@ -51,20 +54,22 @@
     mounted(){
     axios.get('/chatList',{params: {jobid: this.jobid,userid: this.userid}}).then(response => {
     console.log(response.data);
+      this.chating=[];
       this.chating = response.data;
-    //  document.getElementById('right').style.float="right";
-    //  document.getElementById('left').style.float="left";
-
      });
     },
     methods: {
       sendMsg() {
-      axios.post('/chat',{params: {message: this.message,id:this.id,jobid:this.jobid,userid:this.userid}}).then(response=>{
+      axios.post('/chat',{params: {message: this.message,jobid:this.jobid,userid:this.userid}}).then(response=>{
       console.log(response.data);
-      document.getElementById("msg").innerHTML = response.data.params.message;
+      this.chating.push({message:this.message,class:'user2',id:'user'});      
+    //  event(new SendMessage(this.response.data));
+      this.message='';
+    //  document.getElementById("msg").innerHTML = response.data.params.message;
 
       });
       }
-    },
+    }
+   
   };
 </script>
