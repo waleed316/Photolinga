@@ -61,16 +61,20 @@
                             <a class="dropdown-item" href="#">Transaction history</a>
                         </div>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                    <navbutton></navbutton>
+                    <!-- <li class="nav-item dropdown"> -->
+
+                <!--         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
                            aria-haspopup="true" aria-expanded="false">Messages<span class="badge badge-info">{{Chat::for(auth()->user())->unreadCount()}}</span></a>
                         <div class="dropdown-menu dropdown-menu-zero-padding dropdown-menu-message-padding">
                             <h5 class="dropdown-heading">Messages</h5>
+                            <navbutton></navbutton> -->
+<!-- 
 
                             <table class="table table-responsive table-hover"
                                    style="padding:5px 20px 0 20px;margin-bottom:0">
-                                <tbody>
-                                <ul class="message-list">
+                                <tbody> -->
+                               <!--  <ul class="message-list">
 
                                     {{--<li>--}}
                                     {{--<tr>--}}
@@ -96,27 +100,51 @@
                                     {{--messages</a></td>--}}
                                     {{--</tr>--}}
                                     {{--</li>--}}
-                                    @foreach(Chat::commonConversations([auth()->id()]) as $message)
-                                     <li>
+             @foreach(Chat::commonConversations([auth()->id()]) as $message)
+                                     <li><!-- 
                                         <tr>
-                                            <td colspan="5" class="text-center">
-                                                @foreach(Chat::conversation($message->id)->users as $chatUser)
-                                                @if($chatUser->name != Auth::user()->name)
-                                                <a href="#" class="see-message" >
-                                            {{$chatUser->name}}</a>
-                                            @endif
-                                        @endforeach</td>
-                                        </tr>
-                                    </li>
-                                    @endforeach
+                                            <td colspan="5" class="text-center"> -->
+             <!-- @foreach(Chat::conversation($message->id)->users as $chatUser) 
+                        @php
+                  $abc=DB::table('proposals')->select('id')->where('conversation_id',$message->id)->get();
+                         @endphp
+            @if($chatUser->name != Auth::user()->name) -->
+          <!--   <a href="#" onclick="openChat({{$message->id}},{{$abc[0]->id}})">{{$chatUser->name}}</a> -->
+          <!-- {{$chatUser->name}} -->
+            <!-- <button href="#" onclick="display(this)" data-id="1">{{$chatUser->name}}</button> -->
+             <!-- {{$chatUser->name}} -->
+            
+             <!-- <chat v-bind:conversation_id="{{$message->id}}" v-bind:id="{{$abc[0]->id}}"> -->
+<!-- 
+         <span class="badge badge-info">
+            {{DB::table('mc_message_notification')
+                    ->where([
+                        ['conversation_id',$message->id],
+                        ['is_sender',0],
+                        ['is_seen',0],
+                        ['user_id',auth()->id()]
+                    ])
+                    ->count()}}
+                </span> -->
+         <!--    <navbutton v-bind:conversation_id="{{$message->id}}" v-bind:id="{{$abc[0]->id}}"></navbutton> 
+            @endif
+ -->
+                                     <!-- @endforeach -->
 
-                                </ul>
+                                    <!--    </td>
+                                        </tr> 
+                                    </li> -->
+
+                                    <!-- @endforeach -->
+                                   
+                                <!-- </ul> -->
+                                <!--  
                                 </tbody>
-                            </table>
+                            </table> -->
 
-                        </div>
-                    </li>
-
+                       <!--  </div>
+                    </li> -->
+</li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
                            aria-haspopup="true" aria-expanded="false">Notifications</a>
@@ -142,7 +170,7 @@
                                     {{--</h6>--}}
                                     {{--</a>--}}
                                     {{--</td>--}}
-                                    {{--<!-- <TD class="message-hidden"></TD><td class="message-hidden"></td> -->--}}
+                                    {{--<!-- <TD class="message-hidden"></TD><td class="message-hidden"></td>--}}
                                     {{--<td class="message-time-align"><a href="#" class="message-anchor"><h6--}}
                                     {{--class="notification-time">1 Day ago</h6></a></td>--}}
                                     {{--</tr>--}}

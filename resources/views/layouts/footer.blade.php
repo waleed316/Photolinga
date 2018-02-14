@@ -57,6 +57,7 @@
                 </div>
             </div>
         </div>  --> 
+        
         <div class="row footer">
 
             <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3 col-12">

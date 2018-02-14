@@ -8,6 +8,7 @@ use App\Job;
 use App\User;
 // use App\Chat;
 use Chat;
+use Auth;
 // use Illuminate\Support\Facades\Input;
 
 
@@ -77,38 +78,81 @@ class ChatController extends Controller
   //   			return response()->json($abc);
   //   }
 
-    public function sendMessage(Request $request)
+    // public function sendMessage(Request $request)
+    // {
+    //         // $userId=User::find();
+    //        $userId2=User::find($request->params['userid']);
+    //        $Contractor=Job::find($request->params['jobid']);
+    //        $userId=$Contractor->contractor_id;
+    //        $proposalConvoId=db::table('proposals')
+    //                         ->select('conversation_id')
+    //                         ->where('user_id',$request->params['userid'])
+    //                         ->where('job_id',$request->params['jobid'])
+    //                         ->get();
+    //                         // return response()->json($proposalConvoId);
+    //         if($proposalConvoId[0]->conversation_id == null)
+    //         {
+    //        // $conversation=Chat::getConversationBetween($userId, $userId2);
+    //        // return response()->json($conversation);
+    //        // if($conversation == null)
+    //        // {
+    //             $participants = [$userId, $userId2];
+               
+    //             $conversation = Chat::createConversation($participants);
+    //         $proposalConvoId1=db::table('proposals')
+    //                         ->where('user_id',$request->params['userid'])
+    //                         ->where('job_id',$request->params['jobid'])
+    //                         ->update(['conversation_id'=>$conversation->id])
+    //                         ;
+    //             // return response()->json(['Status'=>'Conversation is null']);
+    //         }
+    //         else
+    //         {
+    //            $conversation=Chat::getConversationBetween($userId, $userId2);
+    //             // return response()->json(['Status'=>'Conversation is not null']);
+           
+    //         }
+    //        if($userId == auth()->id())
+    //        {
+    //         $message = Chat::message($request->params['message'])
+    //                     ->from($userId)
+    //                     ->to($conversation)
+    //                     ->send();
+    //        return response()->json($message);
+    //    }
+    //    if($userId2 == auth()->id())
+    //    {
+    //     $message = Chat::message($request->params['message'])
+    //                     ->from($userId2)
+    //                     ->to($conversation)
+    //                     ->send();
+    //        return response()->json($message);
+    //    }
+    // }
+
+     public function sendMessage(Request $request)
     {
-            // $userId=User::find();
-           $userId2=User::find($request->params['userid']);
-           $Contractor=Job::find($request->params['jobid']);
+            $Abc='App\Proposal'::find($request->params['id']);
+           $userId2=User::find($Abc->user_id);
+           $user=$userId2->id;
+           $Contractor=Job::find($Abc->job_id);
            $userId=$Contractor->contractor_id;
            $proposalConvoId=db::table('proposals')
                             ->select('conversation_id')
-                            ->where('user_id',$request->params['userid'])
-                            ->where('job_id',$request->params['jobid'])
+                            ->where('id',$request->params['id'])
                             ->get();
-                            // return response()->json($proposalConvoId);
             if($proposalConvoId[0]->conversation_id == null)
             {
-           // $conversation=Chat::getConversationBetween($userId, $userId2);
-           // return response()->json($conversation);
-           // if($conversation == null)
-           // {
                 $participants = [$userId, $userId2];
-               
                 $conversation = Chat::createConversation($participants);
-            $proposalConvoId1=db::table('proposals')
-                            ->where('user_id',$request->params['userid'])
-                            ->where('job_id',$request->params['jobid'])
+                $proposalConvoId1=db::table('proposals')
+                            ->where('id',$request->params['id'])
                             ->update(['conversation_id'=>$conversation->id])
                             ;
-                // return response()->json(['Status'=>'Conversation is null']);
             }
             else
             {
                $conversation=Chat::getConversationBetween($userId, $userId2);
-                // return response()->json(['Status'=>'Conversation is not null']);
            
             }
            if($userId == auth()->id())
@@ -119,20 +163,15 @@ class ChatController extends Controller
                         ->send();
            return response()->json($message);
        }
-       if($userId2 == auth()->id())
+       if($user == auth()->id())
        {
         $message = Chat::message($request->params['message'])
-                        ->from($userId2)
+                        ->from($user)
                         ->to($conversation)
                         ->send();
            return response()->json($message);
        }
-    }
-
-    // public function sendM(Request $request)
-    // {
-
-    // }
+   }
 
     public function chatMessage(Request $request)
     {
@@ -145,7 +184,6 @@ class ChatController extends Controller
                             ->where('user_id',$request->userid)
                             ->where('job_id',$request->jobid)
                             ->get();
-                             // return response()->json($proposalConvoId[0]);
             if($proposalConvoId[0]->conversation_id != null)
             {
             $convo=Chat::conversation($proposalConvoId[0]->conversation_id);
@@ -172,4 +210,82 @@ class ChatController extends Controller
         $xyz[0]['project']=$Contractor->title;
         return response()->json($xyz);
     }
+
+    public function chatWithId(Request $request)
+    {
+        $xyz=[];
+        $userId=User::find(auth()->id());
+        $Contractor=db::table('proposals')
+                    ->select('job_id','conversation_id')
+                    ->where('id',$request->id)
+                    ->get();
+        $job=Job::find($Contractor[0]->job_id);
+        $userId2=User::find($job->contractor_id);
+        $convo=Chat::conversation($Contractor[0]->conversation_id);
+        $users = $convo->users;
+        foreach ($users as $user) 
+        {
+            if($user->id != auth()->id())  
+            {
+                $userId2=User::find($user->id);
+            } 
+        }
+         $messages=Chat::conversations($convo)->for($userId)->getMessages(100,1);
+           $i=0;
+         foreach ($messages as $message) 
+        {
+            $xyz[$i]['message']=$message->body;
+            $xyz[$i]['sender']=$message->user_id;
+            if($xyz[$i]['sender'] == auth()->id())
+            {
+                $xyz[$i]['class']='user2';
+                $xyz[$i]['id']='user';
+            }
+            else
+            {
+                $xyz[$i]['class']='user1';
+                $xyz[$i]['id']='reply';
+            }
+            $i++;
+        }
+        
+        $xyz[0]['name']=$userId2->name;
+        $xyz[0]['project']=$job->title;
+        return response()->json($xyz); 
+
+    }
+
+    public function markRead(Request $request)
+    {
+       $ConvoId=db::table('proposals')
+                    ->select('conversation_id')
+                    ->where('id',$request->id)
+                    ->get();
+     $conversation1 = Chat::conversation($ConvoId[0]->conversation_id);
+      // return response()->json($conversation1);
+      $User=User::find(auth()->id());
+      // return response()->json($User);
+      $conversation=Chat::conversations($conversation1)->for($User)->readAll();
+      return response()->json(['status'=>'true']);
+    }
+
+    public function navComp()
+    {
+            $convoList=Chat::commonConversations([auth()->id()]);
+            $i=0;
+            foreach ($convoList as $convo) {
+              $chatName=Chat::conversation($convo->id)->users;
+              foreach($chatName as $Uname){
+                $abc=DB::table('proposals')->select('id')->where('conversation_id',$convo->id)->get();
+              if($Uname->name != Auth::user()->name)
+              { 
+                    $navList[$i]['name']=$Uname->name;
+                    $navList[$i]['id']=$abc[0]->id;
+                    $i++;
+              }
+             }
+            }
+            return response()->json($navList);
+    }
+
 }

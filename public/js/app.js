@@ -6485,7 +6485,7 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(17);
-module.exports = __webpack_require__(111);
+module.exports = __webpack_require__(117);
 
 
 /***/ }),
@@ -6537,6 +6537,8 @@ Vue.component('placesearch', __webpack_require__(101));
 Vue.component('locsearch', __webpack_require__(104));
 Vue.component('compseacrh', __webpack_require__(107));
 Vue.component('chat', __webpack_require__(15));
+Vue.component('chatnav', __webpack_require__(111));
+Vue.component('navbutton', __webpack_require__(114));
 
 var app = new Vue({
   el: '#app',
@@ -53632,6 +53634,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -53749,10 +53752,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
-  props: ['userid', 'jobid', 'id'],
+  props: ['userid', 'jobid', 'id', 'conversation_id'],
   data: function data() {
     return {
       message: '',
@@ -53763,18 +53777,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   mounted: function mounted() {
     var _this = this;
 
-    axios.get('/chatList', { params: { jobid: this.jobid, userid: this.userid } }).then(function (response) {
-      console.log(response.data);
-      _this.chating = [];
-      _this.chating = response.data;
-    });
+    if (this.conversation_id > 0) {
+      console.log("mounted");
+      console.log(this.id);
+      axios.get('/chatWithId', { params: { id: this.id } }).then(function (response) {
+        console.log(_this.id);
+        console.log(response.data);
+        _this.chating = [];
+        _this.chating = response.data;
+      });
+    } else {
+      axios.get('/chatWithId', { params: { id: this.id } }).then(function (response) {
+        //console.log(response.data);
+        _this.chating = [];
+        _this.chating = response.data;
+      });
+    }
   },
 
   methods: {
+    markRead: function markRead() {
+      axios.get('/markRead', { params: { id: this.id } }).then(function (response) {
+        console.log("From Mark read");
+        console.log(response.data);
+      });
+    },
     sendMsg: function sendMsg() {
       var _this2 = this;
 
-      axios.post('/chat', { params: { message: this.message, jobid: this.jobid, userid: this.userid } }).then(function (response) {
+      axios.post('/chat', { params: { message: this.message, id: this.id } }).then(function (response) {
         console.log(response.data);
         _this2.chating.push({ message: _this2.message, class: 'user2', id: 'user' });
         //  event(new SendMessage(this.response.data));
@@ -53795,104 +53826,126 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "chatbox", attrs: { id: _vm.id } }, [
-      _c("div", { staticClass: "header" }, [
-        _c(
-          "p",
-          {
-            staticClass: "chat-name mb-0",
-            attrs: { onclick: "maximize(this)" }
-          },
-          [
-            _c("i", { staticClass: "fa fa-circle mr-1 online-green" }),
-            _vm._v(" " + _vm._s(_vm.chating[0]["name"]))
-          ]
-        ),
-        _vm._v(" "),
-        _vm._m(0)
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "hidden-body" }, [
-        _c("div", { staticClass: "project-name" }, [
-          _c("a", { staticClass: "project-hyperlink", attrs: { href: "#" } }, [
-            _vm._v(_vm._s(_vm.chating[0]["project"]))
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "body", attrs: { id: "chat_body" } }, [
+    _vm.conversation_id > 0
+      ? _c("div", [
           _c(
-            "ul",
-            [
-              _vm._l(_vm.chating, function(chat) {
-                return _c("li", { staticStyle: { clear: "both" } }, [
-                  _c("div", { attrs: { id: chat.id } }, [
-                    _c("img", {
-                      staticClass: "chat-img",
-                      attrs: { src: "/images/person-2.jpg", alt: "" }
-                    }),
-                    _c(
-                      "span",
-                      {
-                        staticClass: "badge badge-default",
-                        attrs: { id: chat.class }
-                      },
-                      [_vm._v(_vm._s(chat.message))]
-                    )
-                  ])
-                ])
-              }),
-              _vm._v(" "),
-              _c("li", [
-                _c("div", { staticClass: "chatting" }, [
-                  _c("div", { staticClass: "form-group mb-0" }, [
-                    _c("textarea", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.message,
-                          expression: "message"
-                        }
-                      ],
-                      staticStyle: { resize: "none" },
-                      attrs: { id: "send_chat" },
-                      domProps: { value: _vm.message },
-                      on: {
-                        keyup: function($event) {
-                          if (
-                            !("button" in $event) &&
-                            _vm._k($event.keyCode, "enter", 13, $event.key)
-                          ) {
-                            return null
-                          }
-                          _vm.sendMsg($event)
-                        },
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.message = $event.target.value
-                        }
-                      }
-                    })
-                  ])
-                ])
-              ])
-            ],
-            2
+            "a",
+            {
+              staticClass: "btn",
+              attrs: { id: "chat", onclick: "display(this)", "data-id": _vm.id }
+            },
+            [_vm._v("\r\nView chat \r\n")]
           )
         ])
-      ])
-    ]),
+      : _c("div", [
+          _c(
+            "a",
+            {
+              staticClass: "btn-sm viev-all",
+              attrs: {
+                id: "chat",
+                onclick: "display(this)",
+                "data-id": _vm.id
+              },
+              on: { click: _vm.markRead }
+            },
+            [_vm._v("\r\n Chat\r\n")]
+          )
+        ]),
     _vm._v(" "),
-    _c(
-      "a",
-      {
-        staticClass: "btn-sm viev-all",
-        attrs: { id: "chat", onclick: "display(this)", "data-id": _vm.id }
-      },
-      [_vm._v("\r\nChat\r\n")]
-    )
+    _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "chatbox", attrs: { id: _vm.id } }, [
+        _c("div", { staticClass: "header" }, [
+          _c(
+            "p",
+            {
+              staticClass: "chat-name mb-0",
+              attrs: { onclick: "maximize(this)" }
+            },
+            [
+              _c("i", { staticClass: "fa fa-circle mr-1 online-green" }),
+              _vm._v(" " + _vm._s(_vm.chating[0]["name"]))
+            ]
+          ),
+          _vm._v(" "),
+          _vm._m(0)
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "hidden-body" }, [
+          _c("div", { staticClass: "project-name" }, [
+            _c(
+              "a",
+              { staticClass: "project-hyperlink", attrs: { href: "#" } },
+              [_vm._v(_vm._s(_vm.chating[0]["project"]))]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "body", attrs: { id: "chat_body" } }, [
+            _c(
+              "ul",
+              [
+                _vm._l(_vm.chating, function(chat) {
+                  return _c("li", { staticStyle: { clear: "both" } }, [
+                    _c("div", { attrs: { id: chat.id } }, [
+                      _c("img", {
+                        staticClass: "chat-img",
+                        attrs: { src: "/images/person-2.jpg", alt: "" }
+                      }),
+                      _c(
+                        "span",
+                        {
+                          staticClass: "badge badge-default",
+                          attrs: { id: chat.class }
+                        },
+                        [_vm._v(_vm._s(chat.message))]
+                      )
+                    ])
+                  ])
+                }),
+                _vm._v(" "),
+                _c("li", [
+                  _c("div", { staticClass: "chatting" }, [
+                    _c("div", { staticClass: "form-group mb-0" }, [
+                      _c("textarea", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.message,
+                            expression: "message"
+                          }
+                        ],
+                        staticStyle: { resize: "none" },
+                        attrs: { id: "send_chat" },
+                        domProps: { value: _vm.message },
+                        on: {
+                          keyup: function($event) {
+                            if (
+                              !("button" in $event) &&
+                              _vm._k($event.keyCode, "enter", 13, $event.key)
+                            ) {
+                              return null
+                            }
+                            _vm.sendMsg($event)
+                          },
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.message = $event.target.value
+                          }
+                        }
+                      })
+                    ])
+                  ])
+                ])
+              ],
+              2
+            )
+          ])
+        ])
+      ])
+    ])
   ])
 }
 var staticRenderFns = [
@@ -56462,6 +56515,672 @@ if (false) {
 
 /***/ }),
 /* 111 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(112)
+/* template */
+var __vue_template__ = __webpack_require__(113)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\chatnav.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2e45f844", Component.options)
+  } else {
+    hotAPI.reload("data-v-2e45f844", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 112 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+  props: ['id'],
+  data: function data() {
+    return {
+      message: '',
+      edit: false,
+      chating: []
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    if (this.conversation_id > 0) {
+      console.log("mounted");
+      console.log(this.id);
+      axios.get('/chatWithId', { params: { id: this.id } }).then(function (response) {
+        console.log(_this.id);
+        console.log(response.data);
+        _this.chating = [];
+        _this.chating = response.data;
+      });
+    } else {
+      axios.get('/chatWithId', { params: { id: this.id } }).then(function (response) {
+        //console.log(response.data);
+        _this.chating = [];
+        _this.chating = response.data;
+      });
+    }
+  },
+
+  methods: {
+    markRead: function markRead() {
+      console.log("Mark convo read");
+    },
+    sendMsg: function sendMsg() {
+      var _this2 = this;
+
+      axios.post('/chat', { params: { message: this.message, id: this.id } }).then(function (response) {
+        console.log(response.data);
+        _this2.chating.push({ message: _this2.message, class: 'user2', id: 'user' });
+        //  event(new SendMessage(this.response.data));
+        _this2.message = '';
+        //  document.getElementById("msg").innerHTML = response.data.params.message;
+      });
+    }
+  }
+
+});
+
+/***/ }),
+/* 113 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "mycontainer" }, [
+      _c("div", { staticClass: "chatbox", attrs: { id: _vm.id } }, [
+        _c("div", { staticClass: "header" }, [
+          _c(
+            "p",
+            {
+              staticClass: "chat-name mb-0",
+              attrs: { onclick: "maximize(this)" }
+            },
+            [
+              _c("i", { staticClass: "fa fa-circle mr-1 online-green" }),
+              _vm._v(" " + _vm._s(_vm.chating[0]["name"]))
+            ]
+          ),
+          _vm._v(" "),
+          _vm._m(0)
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "hidden-body" }, [
+          _c("div", { staticClass: "project-name" }, [
+            _c(
+              "a",
+              { staticClass: "project-hyperlink", attrs: { href: "#" } },
+              [_vm._v(_vm._s(_vm.chating[0]["project"]))]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "body", attrs: { id: "chat_body" } }, [
+            _c(
+              "ul",
+              [
+                _vm._l(_vm.chating, function(chat) {
+                  return _c("li", { staticStyle: { clear: "both" } }, [
+                    _c("div", { attrs: { id: chat.id } }, [
+                      _c("img", {
+                        staticClass: "chat-img",
+                        attrs: { src: "/images/person-2.jpg", alt: "" }
+                      }),
+                      _c(
+                        "span",
+                        {
+                          staticClass: "badge badge-default",
+                          attrs: { id: chat.class }
+                        },
+                        [_vm._v(_vm._s(chat.message))]
+                      )
+                    ])
+                  ])
+                }),
+                _vm._v(" "),
+                _c("li", [
+                  _c("div", { staticClass: "chatting" }, [
+                    _c("div", { staticClass: "form-group mb-0" }, [
+                      _c("textarea", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.message,
+                            expression: "message"
+                          }
+                        ],
+                        staticStyle: { resize: "none" },
+                        attrs: { id: "send_chat" },
+                        domProps: { value: _vm.message },
+                        on: {
+                          keyup: function($event) {
+                            if (
+                              !("button" in $event) &&
+                              _vm._k($event.keyCode, "enter", 13, $event.key)
+                            ) {
+                              return null
+                            }
+                            _vm.sendMsg($event)
+                          },
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.message = $event.target.value
+                          }
+                        }
+                      })
+                    ])
+                  ])
+                ])
+              ],
+              2
+            )
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "buttons" }, [
+      _c(
+        "a",
+        { staticClass: "minimize", attrs: { onclick: "minimize(this)" } },
+        [_c("i", { staticClass: "fa fa-window-minimize" })]
+      ),
+      _vm._v(" "),
+      _c(
+        "a",
+        { staticClass: "close", attrs: { onclick: "closewindow(this)" } },
+        [_c("i", { staticClass: "fa fa-times" })]
+      )
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-2e45f844", module.exports)
+  }
+}
+
+/***/ }),
+/* 114 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(115)
+/* template */
+var __vue_template__ = __webpack_require__(116)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\navbutton.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-dfaabb64", Component.options)
+  } else {
+    hotAPI.reload("data-v-dfaabb64", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 115 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['id'],
+  data: function data() {
+    return {
+      Vchat: false,
+      navList: [],
+      chating: [],
+      chats: []
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('/navList').then(function (response) {
+      _this.navList = response.data;
+      _this.chats = response.data;
+      console.log("NavList");
+      console.log(_this.navList);
+      console.log("Chat");
+      console.log(_this.chats);
+    });
+  },
+
+  //  if(this.conversation_id > 0)
+  // {
+  //   console.log("mounted");
+  //  console.log(this.id);
+  //   axios.get('/chatWithId',{params: {id:this.id}}).then(response => {
+  //  console.log(this.id);
+  // console.log(response.data);
+  //  this.chating=[];
+  // this.chating = response.data;
+  //  });
+  // }
+  // else
+  //{
+  //axios.get('/chatWithId',{params: {id:this.id}}).then(response => {
+  // console.log(response.data);
+  //  this.chating=[];
+  // this.chating = response.data;
+  //});
+  // }
+  //},
+  methods: {
+    markRead: function markRead() {
+      console.log("Mark convo read");
+    },
+    sendMsg: function sendMsg() {
+      var _this2 = this;
+
+      axios.post('/chat', { params: { message: this.message, id: this.id } }).then(function (response) {
+        console.log(response.data);
+        _this2.chating.push({ message: _this2.message, class: 'user2', id: 'user' });
+        //  event(new SendMessage(this.response.data));
+        _this2.message = '';
+        //  document.getElementById("msg").innerHTML = response.data.params.message;
+      });
+    }
+  }
+
+});
+
+/***/ }),
+/* 116 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("li", { staticClass: "nav-item dropdown" }, [
+      _c(
+        "a",
+        {
+          staticClass: "nav-link dropdown-toggle",
+          attrs: {
+            "data-toggle": "dropdown",
+            href: "#",
+            role: "button",
+            "aria-haspopup": "true",
+            "aria-expanded": "false"
+          }
+        },
+        [_vm._v("Message")]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "dropdown-menu dropdown-menu-zero-padding dropdown-menu-message-padding"
+        },
+        [
+          _c("h5", { staticClass: "dropdown-heading" }, [_vm._v("Messages")]),
+          _vm._v(" "),
+          _c(
+            "table",
+            {
+              staticClass: "table table-responsive table-hover",
+              staticStyle: { padding: "5px 20px 0 20px", "margin-bottom": "0" }
+            },
+            [
+              _c("tbody", [
+                _c(
+                  "ul",
+                  { staticClass: "message-list" },
+                  _vm._l(_vm.navList, function(list) {
+                    return _c("li", [
+                      _c(
+                        "a",
+                        {
+                          attrs: {
+                            href: "#",
+                            onclick: "display(this)",
+                            "data-id": list.id
+                          }
+                        },
+                        [_vm._v(_vm._s(list.name))]
+                      )
+                    ])
+                  })
+                )
+              ])
+            ]
+          )
+        ]
+      )
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "mycontainer" },
+      _vm._l(_vm.chats, function(chat1) {
+        return _c("div", [
+          _vm._v("\r\n      //"),
+          _c("div", { staticClass: "chatbox", attrs: { id: chat1.id } }, [
+            _vm._v("\r\n        //   "),
+            _c("div", { staticClass: "header" }, [
+              _vm._v("\r\n          //      "),
+              _c(
+                "p",
+                {
+                  staticClass: "chat-name mb-0",
+                  attrs: { onclick: "maximize(this)" }
+                },
+                [
+                  _c("i", { staticClass: "fa fa-circle mr-1 online-green" }),
+                  _vm._v(" " + _vm._s(_vm.chating[0]["name"]))
+                ]
+              ),
+              _vm._v("\r\n            /    "),
+              _vm._m(0, true),
+              _vm._v("\r\n          //  ")
+            ]),
+            _vm._v("\r\n           // "),
+            _c("div", { staticClass: "hidden-body" }, [
+              _vm._v("\r\n             //    "),
+              _vm._m(1, true),
+              _vm._v("\r\n               //             "),
+              _c(
+                "div",
+                { staticClass: "body", attrs: { id: "chat_body" } },
+                [
+                  _vm._v(
+                    "\r\n                               \r\n                 //              "
+                  ),
+                  _vm._l(_vm.chating, function(chat) {
+                    return _c("div", [
+                      _vm._v("\r\n                   //             "),
+                      _c("div", { class: chat.id }, [
+                        _vm._v("\r\n                     //               "),
+                        _c(
+                          "span",
+                          {
+                            staticClass: " badge badge-default",
+                            class: chat.class
+                          },
+                          [_vm._v(_vm._s(chat.message) + " ")]
+                        ),
+                        _vm._v("\r\n                       //         ")
+                      ]),
+                      _vm._v("\r\n                         //       ")
+                    ])
+                  }),
+                  _vm._v("\r\n                           //     ")
+                ],
+                2
+              ),
+              _vm._v("\r\n                           // "),
+              _c("div", { staticClass: "chatting" }, [
+                _vm._v("\r\n                             //       "),
+                _c("div", { staticClass: "form-group mb-0" }, [
+                  _vm._v("\r\n                            //          "),
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.message,
+                        expression: "message"
+                      }
+                    ],
+                    staticStyle: { resize: "none" },
+                    attrs: { id: "send_chat" },
+                    domProps: { value: _vm.message },
+                    on: {
+                      keyup: function($event) {
+                        if (
+                          !("button" in $event) &&
+                          _vm._k($event.keyCode, "enter", 13, $event.key)
+                        ) {
+                          return null
+                        }
+                        _vm.sendMsg($event)
+                      },
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.message = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v("\r\n                                //    ")
+                ])
+              ])
+            ])
+          ])
+        ])
+      })
+    ),
+    _vm._v(" "),
+    _c("div")
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "buttons" }, [
+      _vm._v("\r\n             //       "),
+      _c(
+        "a",
+        { staticClass: "minimize", attrs: { onclick: "minimize(this)" } },
+        [_c("i", { staticClass: "fa fa-window-minimize" })]
+      ),
+      _vm._v("\r\n               //     "),
+      _c(
+        "a",
+        { staticClass: "close", attrs: { onclick: "closewindow(this)" } },
+        [_c("i", { staticClass: "fa fa-times" })]
+      ),
+      _vm._v("\r\n                //")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "project-name" }, [
+      _c("a", { staticClass: "project-hyperlink", attrs: { href: "#" } }, [
+        _vm._v("Project Name")
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-dfaabb64", module.exports)
+  }
+}
+
+/***/ }),
+/* 117 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

@@ -87,10 +87,40 @@
 // {
 //     $('#chatstart').css('display','block')
 // }
+// function display(id) {
+//     var disp = ($(id).data('id'));
+//     console.log("from display function");
+//     console.log(disp);
+//     $('#' + disp).css('display', 'block')
+// }
+
+var box_id = [];
+
 function display(id) {
     var disp = ($(id).data('id'));
-    console.log(disp);
-    $('#' + disp).css('display', 'block')
+
+    if ($.inArray(disp, box_id) === -1) {
+        box_id.push(disp);
+    } else {
+        box_id = box_id.filter(item => item !== disp);
+    }
+    console.log(box_id);
+
+    if (box_id.length == 1) {
+        console.log("Array lenght 1");
+        $('#' + disp).css({ 'display': 'block', 'right': '5%' });
+
+    } else if (box_id.length == 2) {
+        console.log("Array lenght 2");
+
+        $('#' + disp).css({ 'display': 'block', 'right': '360px' });
+    }
+    else if (box_id.length == 3) {
+        console.log("Array lenght 2");
+
+        $('#' + disp).css({ 'display': 'block', 'right': '800px' });
+    }
+
 }
 
 function minimize(id) {
@@ -103,10 +133,37 @@ function maximize(id) {
     $('#' + dataid).css({ 'bottom': '0', 'z-index': '1!important' });
 }
 
+// function closewindow(id) {
+//     var dataid = ($(id).parents('.chatbox').attr('id'));
+//     $('#' + dataid).css('display', 'none');
+// }
 function closewindow(id) {
     var dataid = ($(id).parents('.chatbox').attr('id'));
+    var index = box_id.indexOf(dataid);
+    box_id.splice(index, 1);
     $('#' + dataid).css('display', 'none');
+    console.log(box_id);
 }
+
+// function openChat(id,convoId)
+// {
+//         <chatnav v-bind:conversation_id=id v-bind:id=convoId></chatnav>
+//         var disp = ($(id).data('id'));
+
+//     if ($.inArray(disp, box_id) === -1) {
+//         box_id.push(disp);
+//     } else {
+//         box_id = box_id.filter(item => item !== disp);
+//     }
+//     console.log(box_id);
+
+//     if (box_id.length == 1) {
+//         $('#' + disp).css({ 'display': 'block', 'right': '5%' });
+
+//     } else if (box_id.length == 2) {
+//         $('#' + disp).css({ 'display': 'block', 'right': '360px' });
+//     }
+// }
 </script>
 </body>
 </html>

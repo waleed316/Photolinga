@@ -1,17 +1,6 @@
 <template>
 <div>
-<div v-if="conversation_id > 0">
-<a class="btn" id="chat" onclick="display(this)" :data-id=id>
-<!--{{uName}}-->
-View chat 
-</a>
-</div>
-<div v-else>
-<a class="btn-sm viev-all" id="chat" onclick="display(this)" :data-id=id v-on:click="markRead">
- Chat
-</a>
-</div>
-<div class="container">
+<div class="mycontainer">
  <div class="chatbox" :id=id>
            <div class="header">
                 <p class="chat-name mb-0" onclick="maximize(this)"><i class="fa fa-circle mr-1 online-green"></i> {{chating[0]['name']}}</p>
@@ -44,8 +33,6 @@ View chat
         </div>
 
 
-
-
                         <!--<a href="#" class="btn-sm viev-all"  data-toggle="modal" data-target="#exampleModal">
                         Chat
                         </a>-->
@@ -54,7 +41,7 @@ View chat
 <script>
  export default {
 
-    props: [ 'userid','jobid','id','conversation_id' ],
+    props: ['id'],
     data() {
       return {
       message:'',
@@ -85,10 +72,7 @@ View chat
     },
     methods: {
     markRead(){
-    axios.get('/markRead',{params: {id:this.id}}).then(response => {
-    console.log("From Mark read");
-    console.log(response.data);
-    });
+        console.log("Mark convo read");
     },
       sendMsg() {
       axios.post('/chat',{params: {message: this.message,id:this.id}}).then(response=>{

@@ -107,6 +107,7 @@ $(document).ready(function(){
 // }
 function display(id) {
     var disp = ($(id).data('id'));
+    console.log('From main.js');
     console.log(disp);
     $('#' + disp).css('display', 'block')
 }

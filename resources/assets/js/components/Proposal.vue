@@ -34,6 +34,7 @@
                             View Proposal
                         </a>
                         
+                        
                         <div v-if="canView">
                         <chat v-bind:userid=data.user_id v-bind:jobid=data.job_id v-bind:id=data.id></chat>
                         </div>

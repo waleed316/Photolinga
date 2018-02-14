@@ -60,20 +60,20 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 112);
+/******/ 	return __webpack_require__(__webpack_require__.s = 118);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 112:
+/***/ 118:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(113);
+module.exports = __webpack_require__(119);
 
 
 /***/ }),
 
-/***/ 113:
+/***/ 119:
 /***/ (function(module, exports) {
 
 // function mouseOut(){
@@ -179,6 +179,7 @@ $(document).ready(function () {
 // }
 function display(id) {
     var disp = $(id).data('id');
+    console.log('From main.js');
     console.log(disp);
     $('#' + disp).css('display', 'block');
 }
