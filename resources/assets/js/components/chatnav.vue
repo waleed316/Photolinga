@@ -2,7 +2,7 @@
 <div>
  <div class="chatbox" :id=id>
            <div class="header">
-                <p class="chat-name mb-0" onclick="maximize(this)"><i class="fa fa-circle mr-1 online-green"></i> {{chating[0]['name']}}</p>
+                <p class="chat-name mb-0" onclick="maximize(this)"><i class="fa fa-circle mr-1"></i> {{chating[0]['name']}}</p>
                 <div class="buttons">
                     <a onclick="minimize(this)"  class="minimize"><i class="fa fa-window-minimize"></i></a>
                     <a onclick="closewindow(this)" class="close"><i class="fa fa-times"></i></a>
@@ -44,40 +44,37 @@
       };
     },
     mounted(){
-    if(this.conversation_id > 0)
-    {
-    console.log("mounted");
-    console.log(this.id);
     axios.get('/chatWithId',{params: {id:this.id}}).then(response => {
-    console.log(this.id);
-    console.log(response.data);
+    //console.log(response.data);
       this.chating=[];
       this.chating = response.data;
+      setInterval(this.realTime, 10000);
+
      });
-    }
-    else
-    {
+    },
+    methods: {
+    realTime(){
     axios.get('/chatWithId',{params: {id:this.id}}).then(response => {
     //console.log(response.data);
       this.chating=[];
       this.chating = response.data;
      });
-     }
+
     },
-    methods: {
     markRead(){
-        console.log("Mark convo read");
+    axios.get('/markRead',{params: {id:this.id}}).then(response => {
+    console.log("From Mark read");
+    console.log(response.data);
+    });
     },
       sendMsg() {
       axios.post('/chat',{params: {message: this.message,id:this.id}}).then(response=>{
+      this.markRead();
       console.log(response.data);
       this.chating.push({message:this.message,class:'user2',id:'user'});      
-    //  event(new SendMessage(this.response.data));
       this.message='';
-    //  document.getElementById("msg").innerHTML = response.data.params.message;
-
       });
-      }
+      },
     }
    
   };

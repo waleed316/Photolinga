@@ -38,6 +38,7 @@ methods: {
    	axios.get('/saveRating',{params: {jobid: this.jobid,ratings:this.ratings}}).then(
     response => {
     this.loading=false;
+   // document.getElementById('jobComp').innerHTML="Complete";
     });
    	}
   }

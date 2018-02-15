@@ -141,6 +141,7 @@ class ChatController extends Controller
                             ->select('conversation_id')
                             ->where('id',$request->params['id'])
                             ->get();
+                            // return response()->json($proposalConvoId);
             if($proposalConvoId[0]->conversation_id == null)
             {
                 $participants = [$userId, $userId2];
@@ -152,7 +153,9 @@ class ChatController extends Controller
             }
             else
             {
-               $conversation=Chat::getConversationBetween($userId, $userId2);
+               // $conversation=Chat::getConversationBetween($userId, $userId2);
+            $conversation=Chat::conversation($proposalConvoId[0]->conversation_id);
+
            
             }
            if($userId == auth()->id())
@@ -214,6 +217,7 @@ class ChatController extends Controller
     public function chatWithId(Request $request)
     {
         $xyz=[];
+        $i=0;
         $userId=User::find(auth()->id());
         $Contractor=db::table('proposals')
                     ->select('job_id','conversation_id')
@@ -222,6 +226,7 @@ class ChatController extends Controller
         $job=Job::find($Contractor[0]->job_id);
         $userId2=User::find($job->contractor_id);
         $convo=Chat::conversation($Contractor[0]->conversation_id);
+
         $users = $convo->users;
         foreach ($users as $user) 
         {
@@ -231,7 +236,7 @@ class ChatController extends Controller
             } 
         }
          $messages=Chat::conversations($convo)->for($userId)->getMessages(100,1);
-           $i=0;
+           
          foreach ($messages as $message) 
         {
             $xyz[$i]['message']=$message->body;
@@ -271,10 +276,23 @@ class ChatController extends Controller
 
     public function navComp()
     {
+            $navList=[];
             $convoList=Chat::commonConversations([auth()->id()]);
             $i=0;
+            $authUser=User::find(auth()->id());
+            $UnreadAll=Chat::for($authUser)->unreadCount();
+            $navList[0]['allUnread']=$UnreadAll;
             foreach ($convoList as $convo) {
               $chatName=Chat::conversation($convo->id)->users;
+               $unread=DB::table('mc_message_notification')
+            ->where([
+              ['conversation_id',$convo->id],
+              ['is_sender',0],
+            ['is_seen',0],
+              ['user_id',Auth()->id()]
+            ])
+            ->count();
+            $navList[$i]['unread']=$unread;
               foreach($chatName as $Uname){
                 $abc=DB::table('proposals')->select('id')->where('conversation_id',$convo->id)->get();
               if($Uname->name != Auth::user()->name)

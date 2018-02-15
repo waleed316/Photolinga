@@ -57,7 +57,7 @@
                         <h4 class="card-title">{{ $job->title }}</h4>
                     </a>
                    @if($job->completed)
-                     <button type="button" class="btn btn-primary" style="float: right;">
+                     <button type="button" class="btn btn-primary" style="float: right;" disabled>
                             Completed 
                     </button>
                     
