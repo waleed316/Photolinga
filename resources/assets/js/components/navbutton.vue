@@ -8,13 +8,18 @@
         <table class="table table-responsive table-hover" style="padding:5px 20px 0 20px;margin-bottom:0" >
             <tbody>
                 <ul class="message-list">
+<<<<<<< HEAD
       
+=======
+>>>>>>> 3c5d44019c0ccf098cbc68086da918c5bbbf9a20
                      <li v-for="list in navList">
                                         <tr>
                                             <td class="img-top-padding"><a href="#" class="message-anchor"><img src="images/person-2.jpg" alt="" class="message-profile"></a></td>
                                             <td>
                                                 <a href="#" v-on:click="display(list.id)" :data-id=list.id class="message-anchor">
+
                                                     <h6 class="message-head">{{list.name}}<span class="badge badge-info">{{list.unread}}</span></h6>
+                                                   
                                                 </a>    
                                             </td>
                                             <TD class="message-hidden"></TD>

@@ -56789,7 +56789,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       //console.log(response.data);
       _this.chating = [];
       _this.chating = response.data;
-      setInterval(_this.realTime, 10000);
+      setInterval(_this.realTime, 15000);
     });
   },
 
@@ -57037,6 +57037,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['id'],
@@ -57162,44 +57167,50 @@ var render = function() {
                 _c(
                   "ul",
                   { staticClass: "message-list" },
-                  _vm._l(_vm.navList, function(list) {
-                    return _c("li", [
-                      _c(
-                        "tr",
-                        [
-                          _vm._m(0, true),
-                          _vm._v(" "),
-                          _c("td", [
-                            _c(
-                              "a",
-                              {
-                                staticClass: "message-anchor",
-                                attrs: { href: "#", "data-id": list.id },
-                                on: {
-                                  click: function($event) {
-                                    _vm.display(list.id)
+                  [
+                    _vm._v(
+                      "\r\n<<<<<<< HEAD\r\n      \r\n=======\r\n>>>>>>> 3c5d44019c0ccf098cbc68086da918c5bbbf9a20\r\n                     "
+                    ),
+                    _vm._l(_vm.navList, function(list) {
+                      return _c("li", [
+                        _c(
+                          "tr",
+                          [
+                            _vm._m(0, true),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "message-anchor",
+                                  attrs: { href: "#", "data-id": list.id },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.display(list.id)
+                                    }
                                   }
-                                }
-                              },
-                              [
-                                _c("h6", { staticClass: "message-head" }, [
-                                  _vm._v(_vm._s(list.name)),
-                                  _c(
-                                    "span",
-                                    { staticClass: "badge badge-info" },
-                                    [_vm._v(_vm._s(list.unread))]
-                                  )
-                                ])
-                              ]
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("TD", { staticClass: "message-hidden" })
-                        ],
-                        1
-                      )
-                    ])
-                  })
+                                },
+                                [
+                                  _c("h6", { staticClass: "message-head" }, [
+                                    _vm._v(_vm._s(list.name)),
+                                    _c(
+                                      "span",
+                                      { staticClass: "badge badge-info" },
+                                      [_vm._v(_vm._s(list.unread))]
+                                    )
+                                  ])
+                                ]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("TD", { staticClass: "message-hidden" })
+                          ],
+                          1
+                        )
+                      ])
+                    })
+                  ],
+                  2
                 )
               ])
             ]

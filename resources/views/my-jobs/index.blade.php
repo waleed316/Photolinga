@@ -37,7 +37,6 @@
                     <a href="{{ $job->path() }}">
                         <h4 class="card-title">{{ $job->title }}</h4>
                     </a>
-
                     
                     <p class="card-text">{{ $job->description }}</p>
                     <p class="item-right text-right">Amount: {{ $job->budget}} PKR</p>

@@ -48,7 +48,8 @@
     //console.log(response.data);
       this.chating=[];
       this.chating = response.data;
-      setInterval(this.realTime, 10000); 
+      setInterval(this.realTime, 15000); 
+
 
      });
     },
