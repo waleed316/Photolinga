@@ -18,7 +18,7 @@ Route::get('/', 'HomeController@index')->name('index');
 Route::get('/jobs', 'JobsController@index')->name('jobs');
 Route::post('/jobs', 'JobsController@store');
 Route::get('/jobs/create', 'JobsController@create')->name('jobs.create');
-Route::get('/jobs/{job}', 'JobsController@show');
+Route::get('/jobs/{job}', 'JobsController@show')->name('jobs.show');
 
 Route::get('/jobs/browse/{category}', 'JobsController@index');
 
@@ -69,6 +69,8 @@ Route::get('/browsePhotographer','SkillController@browse')->name('Skill.browse')
 Route::get('/allPhotographers','SkillController@AllPhotographers');
 
 Route::get('/saveRating','RatingController@store')->name('rating.store');
+Route::get('/jobcomplete','RatingController@Jobcomplete');
+
 
 Route::post('/chat','ChatController@sendMessage');
 

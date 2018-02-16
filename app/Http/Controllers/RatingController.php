@@ -29,4 +29,26 @@ class RatingController extends Controller
     	return response()->json($avgJob);
 
     }
+
+     public function Jobcomplete(Request $request)
+    {
+        $job=Job::find($request->jobid);
+        if ($job->freelancer_id == null) 
+        {
+            $abc[0]['freelancerStatus']="false";
+        }
+        else
+        {
+            $abc[0]['freelancerStatus']="true";
+            if ($job->completed)
+             {
+                  $abc[0]['status']='complete';  
+             }
+             else
+             {
+                  $abc[0]['status']='incomplete';  
+             }
+        }
+          return response()->json($abc);
+    }
 }

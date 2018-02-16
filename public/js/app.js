@@ -54920,15 +54920,68 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['jobid'],
   data: function data() {
     return {
       ratings: 0,
+      isComplete: '',
       loading: false,
+      comp: 'Mark as complete',
+      freelancer: false,
       rating: 0
     };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('/jobcomplete', { params: { jobid: this.jobid } }).then(function (response) {
+      //  console.log(this.jobid);
+      //  console.log(response.data[0].freelancerStatus);
+      if (response.data[0].freelancerStatus == 'false') {
+        _this.freelancer = false;
+      } else {
+        _this.freelancer = true;
+        if (response.data[0].status == 'complete') {
+          _this.isComplete = true;
+        } else {
+          _this.isComplete = false;
+        }
+      }
+    });
   },
 
   methods: {
@@ -54936,11 +54989,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.ratings = rating;
     },
     saveRating: function saveRating() {
-      var _this = this;
+      var _this2 = this;
 
       this.loading = true;
       axios.get('/saveRating', { params: { jobid: this.jobid, ratings: this.ratings } }).then(function (response) {
-        _this.loading = false;
+        _this2.loading = false;
+        _this2.comp = "Completed";
+        document.getElementById("compModel-" + _this2.jobid).disabled = true;
       });
     }
   }
@@ -54954,69 +55009,185 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("star-rating", {
+  return _c("div", [
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
         attrs: {
-          increment: 0.5,
-          "max-rating": 5,
-          "show-rating": false,
-          "inactive-color": "#b296c5",
-          "active-color": "#290740",
-          "star-size": 20
-        },
-        on: { "rating-selected": _vm.setRating },
-        model: {
-          value: _vm.rating,
-          callback: function($$v) {
-            _vm.rating = $$v
-          },
-          expression: "rating"
+          id: "exampleModal-" + _vm.jobid,
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "exampleModalLabel",
+          "aria-hidden": "true"
         }
-      }),
-      _vm._v(" "),
-      _c("i", {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: _vm.loading,
-            expression: "loading"
-          }
-        ],
-        staticClass: "fa fa-spinner fa-spin"
-      }),
-      _vm._v(" "),
-      _vm.rating == 0
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "modal-body" },
+                [
+                  _c("star-rating", {
+                    attrs: {
+                      increment: 0.5,
+                      "max-rating": 5,
+                      "show-rating": false,
+                      "inactive-color": "#b296c5",
+                      "active-color": "#290740",
+                      "star-size": 20
+                    },
+                    on: { "rating-selected": _vm.setRating },
+                    model: {
+                      value: _vm.rating,
+                      callback: function($$v) {
+                        _vm.rating = $$v
+                      },
+                      expression: "rating"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("i", {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.loading,
+                        expression: "loading"
+                      }
+                    ],
+                    staticClass: "fa fa-spinner fa-spin"
+                  }),
+                  _vm._v(" "),
+                  _vm.rating == 0
+                    ? _c("div", [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-info",
+                            attrs: { "data-dismiss": "modal", disabled: "" },
+                            on: { click: _vm.saveRating }
+                          },
+                          [_vm._v("Update")]
+                        )
+                      ])
+                    : _c("div", [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-info",
+                            attrs: { "data-dismiss": "modal" },
+                            on: { click: _vm.saveRating }
+                          },
+                          [_vm._v("Update")]
+                        )
+                      ]),
+                  _vm._v("\r\n*Please give review\r\n ")
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _vm._m(1)
+            ])
+          ]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c("div", [
+      _vm.freelancer
         ? _c("div", [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-info",
-                attrs: { "data-dismiss": "modal", disabled: "" },
-                on: { click: _vm.saveRating }
-              },
-              [_vm._v("Update")]
-            )
+            _vm.isComplete
+              ? _c("div", [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary",
+                      staticStyle: { float: "right" },
+                      attrs: { type: "button", "data-toggle": "modal" }
+                    },
+                    [
+                      _vm._v(
+                        "\r\n                           Completed\r\n                    "
+                      )
+                    ]
+                  )
+                ])
+              : _c("div", [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary",
+                      staticStyle: { float: "right" },
+                      attrs: {
+                        type: "button",
+                        "data-toggle": "modal",
+                        "data-target": "#exampleModal-" + _vm.jobid,
+                        id: "compModel-" + _vm.jobid
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\r\n                           " +
+                          _vm._s(_vm.comp) +
+                          "\r\n                    "
+                      )
+                    ]
+                  )
+                ])
           ])
-        : _c("div", [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-info",
-                attrs: { "data-dismiss": "modal" },
-                on: { click: _vm.saveRating }
-              },
-              [_vm._v("Update")]
-            )
-          ]),
-      _vm._v("\r\n*Please give review\r\n")
-    ],
-    1
-  )
+        : _vm._e()
+    ])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
+        [_vm._v("Review")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Close")]
+      )
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -56614,37 +56785,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   mounted: function mounted() {
     var _this = this;
 
-    if (this.conversation_id > 0) {
-      console.log("mounted");
-      console.log(this.id);
-      axios.get('/chatWithId', { params: { id: this.id } }).then(function (response) {
-        console.log(_this.id);
-        console.log(response.data);
-        _this.chating = [];
-        _this.chating = response.data;
-      });
-    } else {
-      axios.get('/chatWithId', { params: { id: this.id } }).then(function (response) {
-        //console.log(response.data);
-        _this.chating = [];
-        _this.chating = response.data;
-      });
-    }
+    axios.get('/chatWithId', { params: { id: this.id } }).then(function (response) {
+      //console.log(response.data);
+      _this.chating = [];
+      _this.chating = response.data;
+      setInterval(_this.realTime, 10000);
+    });
   },
 
   methods: {
-    markRead: function markRead() {
-      console.log("Mark convo read");
-    },
-    sendMsg: function sendMsg() {
+    realTime: function realTime() {
       var _this2 = this;
 
-      axios.post('/chat', { params: { message: this.message, id: this.id } }).then(function (response) {
+      axios.get('/chatWithId', { params: { id: this.id } }).then(function (response) {
+        //console.log(response.data);
+        _this2.chating = [];
+        _this2.chating = response.data;
+      });
+    },
+    markRead: function markRead() {
+      axios.get('/markRead', { params: { id: this.id } }).then(function (response) {
+        console.log("From Mark read");
         console.log(response.data);
-        _this2.chating.push({ message: _this2.message, class: 'user2', id: 'user' });
-        //  event(new SendMessage(this.response.data));
-        _this2.message = '';
-        //  document.getElementById("msg").innerHTML = response.data.params.message;
+      });
+    },
+    sendMsg: function sendMsg() {
+      var _this3 = this;
+
+      axios.post('/chat', { params: { message: this.message, id: this.id } }).then(function (response) {
+        _this3.markRead();
+        console.log(response.data);
+        _this3.chating.push({ message: _this3.message, class: 'user2', id: 'user' });
+        _this3.message = '';
       });
     }
   }
@@ -56669,7 +56841,7 @@ var render = function() {
             attrs: { onclick: "maximize(this)" }
           },
           [
-            _c("i", { staticClass: "fa fa-circle mr-1 online-green" }),
+            _c("i", { staticClass: "fa fa-circle mr-1" }),
             _vm._v(" " + _vm._s(_vm.chating[0]["name"]))
           ]
         ),
@@ -56865,159 +57037,78 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['id'],
-  data: function data() {
-    return {
-      Vchat: false,
-      navList: [],
-      chating: [],
-      chats: []
-    };
-  },
-  mounted: function mounted() {
-    var _this = this;
+    props: ['id'],
+    data: function data() {
+        return {
+            Vchat: false,
+            navList: [],
+            chating: [],
+            chats: []
+        };
+    },
+    mounted: function mounted() {
+        var _this = this;
 
-    axios.get('/navList').then(function (response) {
-      _this.navList = response.data;
-      _this.chats = response.data;
-      console.log("NavList");
-      console.log(_this.navList);
-      console.log("Chat");
-      console.log(_this.chats);
-    });
-    //  if(this.conversation_id > 0)
-    // {
-    //   console.log("mounted");
-    //  console.log(this.id);
-    //   axios.get('/chatWithId',{params: {id:this.id}}).then(response => {
-    //  console.log(this.id);
-    // console.log(response.data);
-    //  this.chating=[];
-    // this.chating = response.data;
-    //  });
-    // }
-    // else
-    //{
-    //  axios.get('/chatWithId',{params: {id:this.id}}).then(response => {
-    //  console.log(response.data);
-    //   this.chating=[];
-    //  this.chating = response.data;
-    //  });
-    // }
-  },
-
-  methods: {
-    //  ShowConvo(abc)
-    //  {
-    //  display(abc);
-    //  axios.get('/chatWithId',{params: {id:this.id}}).then(response => {
-    // console.log(response.data);
-    //  this.chating=[];
-    // this.chating = response.data;
-    //   });
-    //  },
-    display: function display(id) {
-      var _this2 = this;
-
-      // var disp = ($(id).data('id'));
-      var disp = id;
-      if ($.inArray(disp, box_id) === -1) {
-        box_id.push(disp);
-      } else {
-        box_id = box_id.filter(function (item) {
-          return item !== disp;
+        axios.get('/navList').then(function (response) {
+            _this.navList = response.data;
+            _this.chats = response.data;
+            console.log("NavList");
+            console.log(_this.navList);
+            console.log("Chat");
+            console.log(_this.chats);
         });
-      }
-      console.log(box_id);
-
-      if (box_id.length == 1) {
-        console.log("Array lenght 1");
-        $('#' + disp).css({ 'display': 'block', 'right': '5%' });
-      } else if (box_id.length == 2) {
-        console.log("Array lenght 2");
-
-        $('#' + disp).css({ 'display': 'block', 'right': '360px' });
-      } else if (box_id.length == 3) {
-        console.log("Array lenght 2");
-
-        $('#' + disp).css({ 'display': 'block', 'right': '800px' });
-      }
-      console.log("disp value");
-
-      console.log(disp);
-      axios.get('/chatWithId', { params: { id: disp } }).then(function (response) {
-        console.log(response.data);
-        _this2.chating = [];
-        _this2.chating = response.data;
-      });
     },
-    markRead: function markRead() {
-      console.log("Mark convo read");
-    },
-    sendMsg: function sendMsg() {
-      var _this3 = this;
 
-      axios.post('/chat', { params: { message: this.message, id: this.id } }).then(function (response) {
-        console.log(response.data);
-        _this3.chating.push({ message: _this3.message, class: 'user2', id: 'user' });
-        //  event(new SendMessage(this.response.data));
-        _this3.message = '';
-        //  document.getElementById("msg").innerHTML = response.data.params.message;
-      });
+    methods: {
+        display: function display(id) {
+            // var disp = ($(id).data('id'));
+            var disp = id;
+            if ($.inArray(disp, box_id) === -1) {
+                box_id.push(disp);
+            } else {
+                box_id = box_id.filter(function (item) {
+                    return item !== disp;
+                });
+            }
+            console.log(box_id);
+
+            if (box_id.length == 1) {
+                console.log("Array lenght 1");
+                $('#' + disp).css({ 'display': 'block', 'right': '5%' });
+            } else if (box_id.length == 2) {
+                console.log("Array lenght 2");
+
+                $('#' + disp).css({ 'display': 'block', 'right': '360px' });
+            } else if (box_id.length == 3) {
+                console.log("Array lenght 2");
+
+                $('#' + disp).css({ 'display': 'block', 'right': '800px' });
+            }
+            console.log("disp value");
+
+            console.log(disp);
+            axios.get('/markRead', { params: { id: disp } }).then(function (response) {
+                console.log("From Mark read");
+                console.log(response.data);
+            });
+        },
+        markRead: function markRead() {
+            console.log("Mark convo read");
+        },
+        sendMsg: function sendMsg() {
+            var _this2 = this;
+
+            axios.post('/chat', { params: { message: this.message, id: this.id } }).then(function (response) {
+                console.log(response.data);
+                _this2.chating.push({ message: _this2.message, class: 'user2', id: 'user' });
+                //  event(new SendMessage(this.response.data));
+                _this2.message = '';
+                //  document.getElementById("msg").innerHTML = response.data.params.message;
+            });
+        }
     }
-  }
 
 });
 
@@ -57043,7 +57134,12 @@ var render = function() {
             "aria-expanded": "false"
           }
         },
-        [_vm._v("Message")]
+        [
+          _vm._v("Message"),
+          _c("span", { staticClass: "badge badge-info" }, [
+            _vm._v(_vm._s(_vm.navList[0].allUnread))
+          ])
+        ]
       ),
       _vm._v(" "),
       _c(
@@ -57069,16 +57165,38 @@ var render = function() {
                   _vm._l(_vm.navList, function(list) {
                     return _c("li", [
                       _c(
-                        "a",
-                        {
-                          attrs: { href: "#", "data-id": list.id },
-                          on: {
-                            click: function($event) {
-                              _vm.display(list.id)
-                            }
-                          }
-                        },
-                        [_vm._v(_vm._s(list.name))]
+                        "tr",
+                        [
+                          _vm._m(0, true),
+                          _vm._v(" "),
+                          _c("td", [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "message-anchor",
+                                attrs: { href: "#", "data-id": list.id },
+                                on: {
+                                  click: function($event) {
+                                    _vm.display(list.id)
+                                  }
+                                }
+                              },
+                              [
+                                _c("h6", { staticClass: "message-head" }, [
+                                  _vm._v(_vm._s(list.name)),
+                                  _c(
+                                    "span",
+                                    { staticClass: "badge badge-info" },
+                                    [_vm._v(_vm._s(list.unread))]
+                                  )
+                                ])
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("TD", { staticClass: "message-hidden" })
+                        ],
+                        1
                       )
                     ])
                   })
@@ -57099,7 +57217,21 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "img-top-padding" }, [
+      _c("a", { staticClass: "message-anchor", attrs: { href: "#" } }, [
+        _c("img", {
+          staticClass: "message-profile",
+          attrs: { src: "images/person-2.jpg", alt: "" }
+        })
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

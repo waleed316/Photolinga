@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                    <a href="alljobs.php" class="back-btn"><i class="fa fa-chevron-left" aria-hidden="true"></i> &nbsp;Back
+                    <a href="{{route('jobs.show',['id'=>$proposal->job_id])}}" class="back-btn"><i class="fa fa-chevron-left" aria-hidden="true"></i> &nbsp;Back
                         to results</a>
                 </div>
             </div>

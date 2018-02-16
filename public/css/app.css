@@ -8267,3 +8267,11 @@
   outline: transparent;
 }
 
+#searchResult a {
+  cursor: pointer;
+}
+
+.form-search {
+  z-index: 0 !important;
+}
+
