@@ -46,6 +46,17 @@ To Do:
 - Highlight "Post a job"
 - Photolinga Pro "Let's talk" and "Become a Pro" modal
 - 404 Page
+- Share profile Fb, twitter, linkedIn
+- Invite to project
+- "Contact me" in profile
+- Cities Drop down in landing page and in "All jobs"
+- Filters in "Browse Photographers" (Cities, Categories)
+- Remove animations from landing page
+- Change "How It works" icons in landing page and reduce size
+- Dummy testimonials (Mictronicx, Techtree, Wondertree, Social Champ)
+- Footer like flaticon.com
+- Header font sizes reduce
+
 
 Categories:
 -
