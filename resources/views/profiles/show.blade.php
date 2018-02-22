@@ -42,15 +42,7 @@
          
                 	<div class="panel-body">
   					  <autocomplete></autocomplete>
-					</div>
-     <!--   <div class="right-sec">
-                    <p class="tags-required" id="skill-list">
-                    	@foreach($skillSet as $skill)
-                      <a href="#" class="required-skills" onclick="removeSkill()">{{$skill}}<i class="fa fa-times" aria-hidden="true"></i>
-                      </a>
-                        @endforeach
-                    </p>
-                  </div>   -->       
+					</div>   
             </div>
         </div>
     </div>
@@ -170,7 +162,9 @@
 											
 										<!-- @yield('model') -->
 
-										<a href="" class="btn" data-toggle="modal" data-target="#{{$portfolio->id}}">
+
+										@can('update',$profileUser)
+										<a href="" class="btn" data-toggle="modal" data-target="#album-{{$portfolio->id}}">
 											
 
 											
@@ -185,7 +179,7 @@
 												</div>
 											</div>
 										</a>
-										<div class="modal fade" id="{{$portfolio->id}}" role="dialog">
+										<div class="modal fade" id="album-{{$portfolio->id}}" role="dialog">
 											<div class="modal-dialog">
 
 												<!-- Modal content-->
@@ -209,7 +203,55 @@
 												</div>
 
 											</div>
-										</div>								
+										</div>
+										@endcan
+
+
+										@cannot('update',$profileUser)	
+
+
+										<a href="" class="btn" data-toggle="modal" data-target="#albumShow-{{$portfolio->id}}">
+											
+
+											
+											
+											<div class="portfoli-box">
+												<div class="p-image">
+													<img src="{{asset('storage/Uploads/'.$portfolio->thumbnail)}}" class="img-fluid" alt="">
+
+													<div class="p-text">
+														<h6>{{ $portfolio->title }}</h6>
+													</div>
+												</div>
+											</div>
+										</a>
+										<div class="modal fade" id="albumShow-{{$portfolio->id}}" role="dialog">
+											<div class="modal-dialog"  style="height: 450px;overflow: scroll;">
+
+												<!-- Modal content-->
+												<div class="modal-content">
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal">&times;</button>
+														<h4 class="modal-title">Portfolio</h4>
+													</div>
+													<div class="modal-body">
+														<div id="err"></div>
+														@foreach($portfolio->images as $abc)
+														<img src="{{asset('storage/Uploads/'.$abc->path)}}" class="img-fluid" alt="">
+														@endforeach
+													</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+													</div>
+												</div>
+
+											</div>
+										</div>
+
+
+
+										@endcannot							
+										
 										</li>
 										@endforeach
 									</ul>
@@ -222,7 +264,12 @@
 							<h1 class="about-head">INFO</h1>
 							<div class="f-profile-box">
 								<div class="btn-box">
-									<a href="#" class="btn-sm btn btn-join-me">Invite me to join</a> or
+<!--  -->
+									<a href="#" class="btn-sm btn btn-join-me" data-toggle="modal" data-target="#invite">Invite me to join</a>
+									
+									
+									<!-- <a href="#" class="btn-sm btn btn-join-me">Invite me to join</a> --> 
+									or
 									<a href="#" class="contact-me">Contact me</a>
 								</div>
 								<ul class="person-detail">
@@ -235,7 +282,7 @@
 												<h6>Hourly Rate</h6>
 											</div>
 											<div class="bold">
-												<b>$60</b>
+												<b>{{$profileUser->rate}} PKR</b>
 											</div>
 										</div>
 									</li>
@@ -248,7 +295,7 @@
 												<h6>Rating</h6>
 											</div>
 											<div class="bold">
-												<b>$60</b>
+												<b>{{$profileUser->rating}}</b>
 											</div>
 										</div>
 									</li>
@@ -303,6 +350,22 @@
 												<b>{{ $profileUser->contactInformation->city }}, {{ $profileUser->contactInformation->country }}</b>
 											</div>
 										</div>
+										@can('update',$profileUser)
+						  <div class="fb-share-button" 
+    data-href="http://127.0.0.1:8000/profiles/{{$profileUser->id }}" 
+    data-layout="button_count">Share
+  </div>
+<script type="IN/Share" data-url="https://photolinga.com/profiles/{{$profileUser->id }}" style="padding: 20px;"></script>
+<a class="twitter-share-button"
+  href="https://twitter.com/share" 
+  data-text="Write Something.."
+  data-url="https:photolinga.com/profiles/{{$profileUser->id}}"
+  data-hashtags="photolinga"
+  data-via="Photolinga"
+  data-related="photolinga">
+Tweet
+</a>
+@endcan
 									</li>
 								</ul>
 							</div>

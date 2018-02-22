@@ -54437,7 +54437,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         address: this.contact_info.address,
         contact_number: this.contact_info.contact_number,
         city: this.contact_info.city,
-        country: this.contact_info.country
+        country: this.contact_info.country,
+        rate: this.currentUser.rate
       }
     };
   },
@@ -54453,6 +54454,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       axios.patch('/settings/account', {
         'name': this.account.name,
         'email': this.account.email,
+        'rate': this.account.rate,
         'skype': this.account.skype,
         'address': this.account.address,
         'contact_number': this.account.contact_number,

@@ -34,11 +34,22 @@
                             </div>
                             <h1 class="cat-heading">City</h1>
                             <div class="form-group cat-form mb-2">
-                                <select name="city" id="city" v-model="city"> 
+                               <!--  <select name="city" id="city" v-model="city"> 
                                     <option value="">All</option>
                                     @foreach($cities as $city1)
                                     <option value="{{$city1->city}}">{{$city1->city}}</option>
                                     @endforeach
+                                </select> -->
+                                 <select name="city" id="city" v-model="city"> 
+                                             <option value="">All</option>
+                                             <option>Faisalabad</option>
+                                              <option>Islamabad</option>
+                                              <option>Karachi</option>
+                                              <option>Lahore</option>
+                                              <option>Multan</option>
+                                              <option>Peshawar</option>
+                                              <option>Quetta</option>
+                                              <option>Hyderabad</option>
                                 </select>
                                 <i class="fa fa-search cat-search" v-on:click="Photographer"></i>
                             </div>

@@ -50,6 +50,16 @@
                                            required>
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <label for="PerHour"
+                                       class="form-label-color col-12 col-xl-3 col-lg-3 col-md-4 col-form-label">Per hour rate</label>
+                                <div class="col-12 col-xl-9 col-lg-9 col-md-8">
+                                    <input class="form-control form-input-border" type="text" name="rate"
+                                           placeholder="per hour rate (in PKR)"
+                                           id="PerHour" v-model="account.rate"
+                                           required>
+                                </div>
+                            </div>
                             <hr>
 
                             <h6 class="form-heading">Location</h6>
@@ -93,9 +103,21 @@
                                 <label for="city"
                                        class="form-label-color col-12 col-xl-3 col-lg-3 col-md-4 col-form-label">City</label>
                                 <div class="col-12 col-xl-9 col-lg-9 col-md-8">
-                                    <input class="form-control form-input-border" type="text" placeholder="City"
+                                    <!-- <input class="form-control form-input-border" type="text" placeholder="City"
                                            id="city" name="city"
                                            v-model="account.city" required>
+                                </div> -->
+                                <select name="city" id="city" class="form-control form-input-border"
+                                            v-model="account.city">
+                                             <option selected>Faisalabad</option>
+                                              <option>Islamabad</option>
+                                              <option>Karachi</option>
+                                              <option>Lahore</option>
+                                              <option>Multan</option>
+                                              <option>Peshawar</option>
+                                              <option>Quetta</option>
+                                              <option>Hyderabad</option>
+                                    </select>
                                 </div>
                             </div>
 
@@ -107,7 +129,7 @@
                                     {{--<p class="form-control form-input-border" style="color: #000 !important;">Pakistan</p>--}}
                                     <select name="country" id="country" class="form-control form-input-border"
                                             v-model="account.country">
-                                        <option selected value="pakistan">Pakistan</option>
+                                        <option selected value="Pakistan">Pakistan</option>
                                     </select>
                                 </div>
                             </div>

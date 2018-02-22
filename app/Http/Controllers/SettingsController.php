@@ -31,11 +31,13 @@ class SettingsController extends Controller
             'address' => 'required',
             'city' => 'required',
             'country' => 'required',
+            'rate'=>'required'
         ]);
 
         $user = auth()->user();
         $user->name = request('name');
         $user->email = request('email');
+        $user->rate = request('rate');
         $user->save();
 
         $user->updateContactInformation([

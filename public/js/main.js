@@ -128,37 +128,39 @@ $(document).ready(function () {
         $("#bid-hide").show(1000);
     });
 
-    $("#Capa_1").hover(function () {
-        $("#Capa_1").toggleClass('animated flash');
-    });
+    // $("#Capa_1").hover(function(){
+    //     $("#Capa_1").toggleClass('animated flash');
+    // });
 
-    $(".video").hover(function () {
-        $(".video").toggleClass('animated bounceOutUp');
-    });
+    // $(".video").hover(function(){
+    //     $(".video").toggleClass('animated bounceOutUp');
+    // });
 
-    $(".editing").hover(function () {
-        $(".editing").toggleClass('animated hinge');
-    });
+    // $(".editing").hover(function(){
+    //     $(".editing").toggleClass('animated hinge');
+    // });
 
-    $(".designing").hover(function () {
-        $(".designing").toggleClass('animated bounce');
-    });
+    // $(".designing").hover(function(){
+    //     $(".designing").toggleClass('animated bounce');
+    // });
 
-    $(".rubberband").hover(function () {
-        $(".rubberband").toggleClass('animated flipOutY');
-    });
+    // $(".rubberband").hover(function(){
+    //     $(".rubberband").toggleClass('animated flipOutY');
+    // });
 
-    $(".flipouty").hover(function () {
-        $(".flipouty").toggleClass('animated flipOutY');
-    });
+    // $(".flipouty").hover(function(){
+    //     $(".flipouty").toggleClass('animated flipOutY');
+    // });
 
-    $(".slidinright").hover(function () {
-        $(".slidinright").toggleClass('animated flipOutY');
-    });
 
-    $(".zoomoutup").hover(function () {
-        $(".zoomoutup").toggleClass('animated flipOutY');
-    });
+    // $(".slidinright").hover(function(){
+    //     $(".slidinright").toggleClass('animated flipOutY');
+    // });
+
+
+    // $(".zoomoutup").hover(function(){
+    //     $(".zoomoutup").toggleClass('animated flipOutY');
+    // });
 
     // modwidth= 768;
 

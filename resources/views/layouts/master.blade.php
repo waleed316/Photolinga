@@ -17,6 +17,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name','Photolinga') }}</title>
+    <meta property="og:url"           content="https://Photolinga.com" />
+  <meta property="og:type"          content="website" />
+  <meta property="og:title"         content="Your Website Title" />
+  <meta property="og:description"   content="Your description" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
           integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
@@ -66,6 +70,8 @@
 
 {{--  <script src="{{asset('js/dropzone.js')}}"></script>  --}}
 <script type="text/javascript" src="{{asset('js/UploadImage.js')}}"></script>
+<script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <script>
   (function( d, s, id ) {
     var js, fjs = d.getElementsByTagName(s)[ 0 ];
@@ -74,10 +80,12 @@
     }
     js = d.createElement(s);
     js.id = id;
-    js.src = '//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=123106857726295';
+    js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.12';
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
 </script>
+    <!-- js.src = '//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=123106857726295'; -->
+
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
 <script src="/js/test.js"></script>

@@ -40,7 +40,23 @@
                                            placeholder="Search by Location ...">
                                     <span class="input-group-btn">
                                         <button class="btn btn-secondary btn-search" type="submit">Search</button> -->
-                        <placesearch v-bind:landing=true></placesearch>
+                                          <div class="form-group row">
+                                            <select class="form-control col-8" name="location">
+                                              <option>Faisalabad</option>
+                                              <option>Islamabad</option>
+                                              <option>Karachi</option>
+                                              <option>Lahore</option>
+                                              <option>Multan</option>
+                                              <option>Peshawar</option>
+                                              <option>Quetta</option>
+                                              <option>Hyderabad</option>
+
+
+                                         </select>
+                                         <button class="btn btn-secondary btn-search" type="submit">Search</button>
+                                        </div>
+                                      
+                        <!-- <placesearch v-bind:landing=true></placesearch> -->
 
                                    <!--  </span> -->
                                 </div>
