@@ -220,11 +220,13 @@ class ChatController extends Controller
         $i=0;
         $userId=User::find(auth()->id());
         $Contractor=db::table('proposals')
-                    ->select('job_id','conversation_id')
+                    ->select('job_id','conversation_id','user_id')
                     ->where('id',$request->id)
                     ->get();
         $job=Job::find($Contractor[0]->job_id);
         $userId2=User::find($job->contractor_id);
+        if(!(is_null($Contractor[0]->conversation_id)))
+        {
         $convo=Chat::conversation($Contractor[0]->conversation_id);
 
         $users = $convo->users;
@@ -244,19 +246,32 @@ class ChatController extends Controller
             if($xyz[$i]['sender'] == auth()->id())
             {
                 $xyz[$i]['class']='user2';
-                $xyz[$i]['id']='user';
+                $xyz[$i]['id']='user';             
+                $xyz[$i]['avatar']=$userId->avatar_path;
             }
             else
             {
                 $xyz[$i]['class']='user1';
                 $xyz[$i]['id']='reply';
+                $xyz[$i]['avatar']=$userId2->avatar_path;
+
             }
             $i++;
         }
         
         $xyz[0]['name']=$userId2->name;
+      
         $xyz[0]['project']=$job->title;
-        return response()->json($xyz); 
+      }
+      else
+      {
+        $userId2=User::find($Contractor[0]->user_id);
+        $xyz[0]['name']=$userId2->name;
+        $xyz[0]['avatar']=$userId2->avatar_path;
+        $xyz[0]['project']=$job->title;
+           
+      }    
+          return response()->json($xyz); 
 
     }
 
@@ -266,11 +281,12 @@ class ChatController extends Controller
                     ->select('conversation_id')
                     ->where('id',$request->id)
                     ->get();
-     $conversation1 = Chat::conversation($ConvoId[0]->conversation_id);
-      // return response()->json($conversation1);
+      if(!(is_null($ConvoId[0]->conversation_id)))
+      {
+      $conversation1 = Chat::conversation($ConvoId[0]->conversation_id);
       $User=User::find(auth()->id());
-      // return response()->json($User);
       $conversation=Chat::conversations($conversation1)->for($User)->readAll();
+      }
       return response()->json(['status'=>'true']);
     }
 

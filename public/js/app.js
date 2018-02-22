@@ -53763,6 +53763,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -53788,7 +53794,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       });
     } else {
       axios.get('/chatWithId', { params: { id: this.id } }).then(function (response) {
-        //console.log(response.data);
+        console.log(response.data);
         _this.chating = [];
         _this.chating = response.data;
       });
@@ -53805,13 +53811,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     sendMsg: function sendMsg() {
       var _this2 = this;
 
-      axios.post('/chat', { params: { message: this.message, id: this.id } }).then(function (response) {
-        console.log(response.data);
-        _this2.chating.push({ message: _this2.message, class: 'user2', id: 'user' });
-        //  event(new SendMessage(this.response.data));
-        _this2.message = '';
-        //  document.getElementById("msg").innerHTML = response.data.params.message;
-      });
+      this.message = this.message.trim();
+      if (this.message.length > 0) {
+        document.getElementById('snd').disabled = true;
+        axios.post('/chat', { params: { message: this.message, id: this.id } }).then(function (response) {
+          console.log(response.data);
+          document.getElementById('snd').disabled = false;
+          _this2.chating.push({ message: _this2.message, class: 'user2', id: 'user' });
+          _this2.message = '';
+        });
+      }
     }
   }
 
@@ -53887,10 +53896,16 @@ var render = function() {
                 _vm._l(_vm.chating, function(chat) {
                   return _c("li", { staticStyle: { clear: "both" } }, [
                     _c("div", { attrs: { id: chat.id } }, [
-                      _c("img", {
-                        staticClass: "chat-img",
-                        attrs: { src: "/images/person-2.jpg", alt: "" }
-                      }),
+                      chat.avatar
+                        ? _c("img", {
+                            staticClass: "chat-img",
+                            attrs: { src: chat.avatar, alt: "" }
+                          })
+                        : _c("img", {
+                            staticClass: "chat-img",
+                            attrs: { src: "/images/person-2.jpg", alt: "" }
+                          }),
+                      _vm._v(" "),
                       _c(
                         "span",
                         {
@@ -53919,15 +53934,6 @@ var render = function() {
                         attrs: { id: "send_chat" },
                         domProps: { value: _vm.message },
                         on: {
-                          keyup: function($event) {
-                            if (
-                              !("button" in $event) &&
-                              _vm._k($event.keyCode, "enter", 13, $event.key)
-                            ) {
-                              return null
-                            }
-                            _vm.sendMsg($event)
-                          },
                           input: function($event) {
                             if ($event.target.composing) {
                               return
@@ -53935,7 +53941,17 @@ var render = function() {
                             _vm.message = $event.target.value
                           }
                         }
-                      })
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger",
+                          attrs: { id: "snd" },
+                          on: { click: _vm.sendMsg }
+                        },
+                        [_vm._v("Send")]
+                      )
                     ])
                   ])
                 ])
@@ -56773,6 +56789,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -56788,7 +56809,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     var _this = this;
 
     axios.get('/chatWithId', { params: { id: this.id } }).then(function (response) {
-      //console.log(response.data);
+      console.log(response.data);
       _this.chating = [];
       _this.chating = response.data;
       setInterval(_this.realTime, 15000);
@@ -56814,12 +56835,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     sendMsg: function sendMsg() {
       var _this3 = this;
 
-      axios.post('/chat', { params: { message: this.message, id: this.id } }).then(function (response) {
-        _this3.markRead();
-        console.log(response.data);
-        _this3.chating.push({ message: _this3.message, class: 'user2', id: 'user' });
-        _this3.message = '';
-      });
+      this.message = this.message.trim();
+      if (this.message.length > 0) {
+        axios.post('/chat', { params: { message: this.message, id: this.id } }).then(function (response) {
+          _this3.markRead();
+          console.log(response.data);
+          _this3.chating.push({ message: _this3.message, class: 'user2', id: 'user' });
+          _this3.message = '';
+        });
+      }
     }
   }
 
@@ -56865,10 +56889,15 @@ var render = function() {
             _vm._l(_vm.chating, function(chat) {
               return _c("div", [
                 _c("div", { class: chat.id }, [
-                  _c("img", {
-                    staticClass: "chat-img",
-                    attrs: { src: "/images/person-2.jpg", alt: "" }
-                  }),
+                  chat.avatar
+                    ? _c("img", {
+                        staticClass: "chat-img",
+                        attrs: { src: chat.avatar, alt: "" }
+                      })
+                    : _c("img", {
+                        staticClass: "chat-img",
+                        attrs: { src: "/images/person-2.jpg", alt: "" }
+                      }),
                   _c(
                     "span",
                     { staticClass: "badge badge-default", class: chat.class },
@@ -56893,15 +56922,6 @@ var render = function() {
                   attrs: { id: "send_chat" },
                   domProps: { value: _vm.message },
                   on: {
-                    keyup: function($event) {
-                      if (
-                        !("button" in $event) &&
-                        _vm._k($event.keyCode, "enter", 13, $event.key)
-                      ) {
-                        return null
-                      }
-                      _vm.sendMsg($event)
-                    },
                     input: function($event) {
                       if ($event.target.composing) {
                         return
@@ -56909,7 +56929,17 @@ var render = function() {
                       _vm.message = $event.target.value
                     }
                   }
-                })
+                }),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-danger",
+                    attrs: { id: "snd" },
+                    on: { click: _vm.sendMsg }
+                  },
+                  [_vm._v("Send")]
+                )
               ])
             ])
           ],
@@ -57040,18 +57070,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['id'],
     data: function data() {
         return {
             Vchat: false,
-            haveMsg: true,
             navList: [],
             chating: [],
             chats: []
@@ -57061,24 +57085,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var _this = this;
 
         axios.get('/navList').then(function (response) {
-            // console.log("response Data");
-
-            // console.log(response.data[0].hasOwnProperty('id'));
-            if (response.data[0].hasOwnProperty('id')) {
-                _this.haveMsg = true;
-                _this.navList = response.data;
-                _this.chats = response.data;
-                console.log("NavList");
-                console.log(_this.navList);
-                _this.unread = _this.navList[0].allUnread;
-                console.log("Chat");
-                console.log(_this.chats);
-            } else {
-                _this.haveMsg = false;
-                console.log(response.data[0].allUnread);
-                _this.unread = response.data[0].allUnread;
-                console.log(_this.haveMsg);
-            }
+            _this.navList = response.data;
+            _this.chats = response.data;
+            console.log("NavList");
+            console.log(_this.navList);
+            console.log("Chat");
+            console.log(_this.chats);
         });
     },
 
@@ -57180,61 +57192,48 @@ var render = function() {
             },
             [
               _c("tbody", [
-                _c("ul", { staticClass: "message-list" }, [
-                  _vm.haveMsg
-                    ? _c(
-                        "div",
-                        _vm._l(_vm.navList, function(list) {
-                          return _c("li", [
+                _c(
+                  "ul",
+                  { staticClass: "message-list" },
+                  _vm._l(_vm.navList, function(list) {
+                    return _c("li", [
+                      _c(
+                        "tr",
+                        [
+                          _vm._m(0, true),
+                          _vm._v(" "),
+                          _c("td", [
                             _c(
-                              "tr",
+                              "a",
+                              {
+                                staticClass: "message-anchor",
+                                attrs: { href: "#", "data-id": list.id },
+                                on: {
+                                  click: function($event) {
+                                    _vm.display(list.id)
+                                  }
+                                }
+                              },
                               [
-                                _vm._m(0, true),
-                                _vm._v(" "),
-                                _c("td", [
+                                _c("h6", { staticClass: "message-head" }, [
+                                  _vm._v(_vm._s(list.name)),
                                   _c(
-                                    "a",
-                                    {
-                                      staticClass: "message-anchor",
-                                      attrs: { href: "#", "data-id": list.id },
-                                      on: {
-                                        click: function($event) {
-                                          _vm.display(list.id)
-                                        }
-                                      }
-                                    },
-                                    [
-                                      _c(
-                                        "h6",
-                                        { staticClass: "message-head" },
-                                        [
-                                          _vm._v(_vm._s(list.name)),
-                                          _c(
-                                            "span",
-                                            { staticClass: "badge badge-info" },
-                                            [_vm._v(_vm._s(list.unread))]
-                                          )
-                                        ]
-                                      )
-                                    ]
+                                    "span",
+                                    { staticClass: "badge badge-info" },
+                                    [_vm._v(_vm._s(list.unread))]
                                   )
-                                ]),
-                                _vm._v(" "),
-                                _c("TD", { staticClass: "message-hidden" })
-                              ],
-                              1
+                                ])
+                              ]
                             )
-                          ])
-                        })
+                          ]),
+                          _vm._v(" "),
+                          _c("TD", { staticClass: "message-hidden" })
+                        ],
+                        1
                       )
-                    : _c("div", [
-                        _c("li", [
-                          _vm._v(
-                            "\r\n                                    No messages\r\n                                    "
-                          )
-                        ])
-                      ])
-                ])
+                    ])
+                  })
+                )
               ])
             ]
           )

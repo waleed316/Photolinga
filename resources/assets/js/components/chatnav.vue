@@ -13,13 +13,18 @@
                 <div class="body" id="chat_body">
                   <div v-for="chat in chating">
                     <div :class=chat.id>
-                        <img src="/images/person-2.jpg" alt="" class="chat-img"><span class="badge badge-default" :class=chat.class>{{chat.message}}</span>
+
+                       <img :src="chat.avatar" alt="" class="chat-img" v-if="chat.avatar">
+
+                        <img src="/images/person-2.jpg" alt="" class="chat-img" v-else><span class="badge badge-default" :class=chat.class>{{chat.message}}</span>
                     </div> 
                     </div>
                     <div class="chatting">
                         <div class="form-group mb-0">
-                            <textarea id="send_chat" style="resize:none" @keyup.enter="sendMsg" v-model="message">
+                            <textarea id="send_chat" style="resize:none"  v-model="message">
                             </textarea>
+
+                            <button class="btn btn-danger" v-on:click="sendMsg" id="snd">Send</button>
                         </div>
                 </div>
                 </div>
@@ -45,7 +50,7 @@
     },
     mounted(){
     axios.get('/chatWithId',{params: {id:this.id}}).then(response => {
-    //console.log(response.data);
+    console.log(response.data);
       this.chating=[];
       this.chating = response.data;
       setInterval(this.realTime, 15000); 
@@ -69,12 +74,16 @@
     });
     },
       sendMsg() {
+       this.message= this.message.trim();
+      if(this.message.length > 0)
+      {
       axios.post('/chat',{params: {message: this.message,id:this.id}}).then(response=>{
       this.markRead();
       console.log(response.data);
       this.chating.push({message:this.message,class:'user2',id:'user'});      
       this.message='';
       });
+      }
       },
     }
    

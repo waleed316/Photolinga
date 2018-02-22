@@ -26,14 +26,20 @@ View chat
                <ul>
                   <li v-for="chat in chating" style="clear:both;">
                     <div :id=chat.id>
-                        <img src="/images/person-2.jpg" alt="" class="chat-img"><span class="badge badge-default" :id=chat.class>{{chat.message}}</span>
+
+                        <img :src="chat.avatar" alt="" class="chat-img" v-if="chat.avatar">
+
+                        <img src="/images/person-2.jpg" alt="" class="chat-img" v-else>
+
+                        <span class="badge badge-default" :id=chat.class>{{chat.message}}</span>
                     </div> 
                     </li>
                     <li>
                     <div class="chatting">
                         <div class="form-group mb-0">
-                            <textarea id="send_chat" style="resize:none" @keyup.enter="sendMsg" v-model="message">
+                            <textarea id="send_chat" style="resize:none"  v-model="message">
                             </textarea>
+                            <button class="btn btn-danger" v-on:click="sendMsg" id="snd">Send</button>
                         </div>
                 </div>
                     </li>
@@ -77,7 +83,7 @@ View chat
     else
     {
     axios.get('/chatWithId',{params: {id:this.id}}).then(response => {
-    //console.log(response.data);
+      console.log(response.data);
       this.chating=[];
       this.chating = response.data;
      });
@@ -91,14 +97,18 @@ View chat
     });
     },
       sendMsg() {
+      this.message= this.message.trim();
+      if(this.message.length > 0)
+      {
+      document.getElementById('snd').disabled=true;
       axios.post('/chat',{params: {message: this.message,id:this.id}}).then(response=>{
       console.log(response.data);
-      this.chating.push({message:this.message,class:'user2',id:'user'});      
-    //  event(new SendMessage(this.response.data));
+      document.getElementById('snd').disabled=false;
+      this.chating.push({message:this.message,class:'user2',id:'user'});    
       this.message='';
-    //  document.getElementById("msg").innerHTML = response.data.params.message;
 
       });
+      }
       }
     }
    
