@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Category;
 use App\Job;
+use App\Invite;
 
 class JobsController extends Controller
 {
@@ -58,5 +60,18 @@ class JobsController extends Controller
         ] );
 
         return redirect( $job->path() )->with( 'flash', 'Your job has been Successfully posted' );
+    }
+
+    public function invite(Request $request,$id)
+    {
+        $invite=Invite::create([
+            'job_id'=>$request->jobid,
+            'user_id'=>$id
+        ]);
+        // return response()->json($invite);
+        return redirect()->back();
+
+        // dd($request->all());
+
     }
 }

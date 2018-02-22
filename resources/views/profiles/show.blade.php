@@ -264,7 +264,50 @@
 							<h1 class="about-head">INFO</h1>
 							<div class="f-profile-box">
 								<div class="btn-box">
-<!--  -->
+<!--  -->	<div class="modal fade" id="invite" role="dialog">
+											<div class="modal-dialog">
+
+												
+												<div class="modal-content">
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal">&times;</button>
+														<h4 class="modal-title">Invite</h4>
+													</div>
+									<div class="modal-body">
+										<div>
+											@auth
+											@if(count(auth()->user()->createdJobs))
+											@foreach(auth()->user()->createdJobs as $job)
+													{{ $job->title }}
+													<form method="POST" action="{{route('invite',['id'=>$profileUser->id])}}">
+														{{csrf_field()}}
+												<input type="hidden" name="jobid" value="{{$job->id}}" >
+												<!-- <input type="hidden" name="userid" value="{{$profileUser->id}}"> -->
+											<button class="btn btn-danger" >
+												<div>Invite</div> 
+											</button>
+																</form>
+
+
+															@endforeach
+												@else
+												<div>You have no projects</div>
+												@endif
+											@endauth
+												@guest
+												<div>Login please</div>
+												@endguest
+														</div>
+														
+													</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+													</div>
+												</div>
+
+											</div>
+										</div>	
+							
 									<a href="#" class="btn-sm btn btn-join-me" data-toggle="modal" data-target="#invite">Invite me to join</a>
 									
 									

@@ -8,10 +8,7 @@
         <table class="table table-responsive table-hover" style="padding:5px 20px 0 20px;margin-bottom:0" >
             <tbody>
                 <ul class="message-list">
-<<<<<<< HEAD
-      
-=======
->>>>>>> 3c5d44019c0ccf098cbc68086da918c5bbbf9a20
+                <div v-if="haveMsg">
                      <li v-for="list in navList">
                                         <tr>
                                             <td class="img-top-padding"><a href="#" class="message-anchor"><img src="images/person-2.jpg" alt="" class="message-profile"></a></td>
@@ -25,20 +22,24 @@
                                             <TD class="message-hidden"></TD>
                                         </tr>
                                     </li>
-                   <!-- <li v-for="list in navList">
-           <a href="#" v-on:click="display(list.id)" :data-id=list.id>{{list.name}}<span class="badge badge-info">{{list.unread}}</span></a>
-           </li> -->
+                                    </div>
+                                 
+                                    <div v-else>
+                                    <li>
+                                    No messages
+                                    </li>
+                                    </div>
                 </ul>
             </tbody>
         </table>
          
     </div>
   </li>
-  <div class="mycontainer">
-  <div v-for="chat1 in chats">
-  <chatnav :id=chat1.id></chatnav>
-  </div>
-  </div>
+   <div class="mycontainer">
+     <div v-for="chat1 in chats">
+         <chatnav :id=chat1.id></chatnav>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -47,6 +48,7 @@
     data() {
       return {
       Vchat:false,
+      haveMsg:true,
       navList:[],
       chating:[],
       chats:[],
@@ -54,14 +56,30 @@
     },
 
     mounted(){
-     axios.get('/navList').then(response => {
+    axios.get('/navList').then(response => {
+    // console.log("response Data");
+
+    // console.log(response.data[0].hasOwnProperty('id'));
+    if(response.data[0].hasOwnProperty('id'))
+     {
+     this.haveMsg=true;
      this.navList=response.data;
      this.chats=response.data;
      console.log("NavList");
     console.log(this.navList);
+    this.unread=this.navList[0].allUnread;
     console.log("Chat");
     console.log(this.chats);
+    }
+   else
+    {    
+    this.haveMsg=false;
+    console.log(response.data[0].allUnread);
+    this.unread=response.data[0].allUnread;
+    console.log(this.haveMsg);
+    }
     });
+    
      },
     methods: {
  

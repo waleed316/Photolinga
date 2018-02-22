@@ -79,4 +79,5 @@ Route::get('/chatList','ChatController@chatMessage');
 Route::get('/chatWithId','ChatController@chatWithId');
 Route::get('/markRead','ChatController@markRead');
 Route::get('/navList','ChatController@navComp');
+Route::post('/invite/{id}','JobsController@invite')->name('invite');
 

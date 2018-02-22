@@ -57044,12 +57044,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['id'],
     data: function data() {
         return {
             Vchat: false,
+            haveMsg: true,
             navList: [],
             chating: [],
             chats: []
@@ -57059,12 +57061,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var _this = this;
 
         axios.get('/navList').then(function (response) {
-            _this.navList = response.data;
-            _this.chats = response.data;
-            console.log("NavList");
-            console.log(_this.navList);
-            console.log("Chat");
-            console.log(_this.chats);
+            // console.log("response Data");
+
+            // console.log(response.data[0].hasOwnProperty('id'));
+            if (response.data[0].hasOwnProperty('id')) {
+                _this.haveMsg = true;
+                _this.navList = response.data;
+                _this.chats = response.data;
+                console.log("NavList");
+                console.log(_this.navList);
+                _this.unread = _this.navList[0].allUnread;
+                console.log("Chat");
+                console.log(_this.chats);
+            } else {
+                _this.haveMsg = false;
+                console.log(response.data[0].allUnread);
+                _this.unread = response.data[0].allUnread;
+                console.log(_this.haveMsg);
+            }
         });
     },
 
@@ -57166,54 +57180,61 @@ var render = function() {
             },
             [
               _c("tbody", [
-                _c(
-                  "ul",
-                  { staticClass: "message-list" },
-                  [
-                    _vm._v(
-                      "\r\n<<<<<<< HEAD\r\n      \r\n=======\r\n>>>>>>> 3c5d44019c0ccf098cbc68086da918c5bbbf9a20\r\n                     "
-                    ),
-                    _vm._l(_vm.navList, function(list) {
-                      return _c("li", [
-                        _c(
-                          "tr",
-                          [
-                            _vm._m(0, true),
-                            _vm._v(" "),
-                            _c("td", [
-                              _c(
-                                "a",
-                                {
-                                  staticClass: "message-anchor",
-                                  attrs: { href: "#", "data-id": list.id },
-                                  on: {
-                                    click: function($event) {
-                                      _vm.display(list.id)
-                                    }
-                                  }
-                                },
-                                [
-                                  _c("h6", { staticClass: "message-head" }, [
-                                    _vm._v(_vm._s(list.name)),
-                                    _c(
-                                      "span",
-                                      { staticClass: "badge badge-info" },
-                                      [_vm._v(_vm._s(list.unread))]
-                                    )
-                                  ])
-                                ]
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("TD", { staticClass: "message-hidden" })
-                          ],
-                          1
-                        )
+                _c("ul", { staticClass: "message-list" }, [
+                  _vm.haveMsg
+                    ? _c(
+                        "div",
+                        _vm._l(_vm.navList, function(list) {
+                          return _c("li", [
+                            _c(
+                              "tr",
+                              [
+                                _vm._m(0, true),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "a",
+                                    {
+                                      staticClass: "message-anchor",
+                                      attrs: { href: "#", "data-id": list.id },
+                                      on: {
+                                        click: function($event) {
+                                          _vm.display(list.id)
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _c(
+                                        "h6",
+                                        { staticClass: "message-head" },
+                                        [
+                                          _vm._v(_vm._s(list.name)),
+                                          _c(
+                                            "span",
+                                            { staticClass: "badge badge-info" },
+                                            [_vm._v(_vm._s(list.unread))]
+                                          )
+                                        ]
+                                      )
+                                    ]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("TD", { staticClass: "message-hidden" })
+                              ],
+                              1
+                            )
+                          ])
+                        })
+                      )
+                    : _c("div", [
+                        _c("li", [
+                          _vm._v(
+                            "\r\n                                    No messages\r\n                                    "
+                          )
+                        ])
                       ])
-                    })
-                  ],
-                  2
-                )
+                ])
               ])
             ]
           )
