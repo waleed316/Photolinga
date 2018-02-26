@@ -1,32 +1,22 @@
 <template>
 <div>
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Message<span class="badge badge-info">{{navList[0].allUnread}}</span></a>
-    <div class="dropdown-menu dropdown-menu-zero-padding dropdown-menu-message-padding">
+    <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Message<span class="badge badge-mess">{{navList[0].allUnread}}</span></a>
+    <div class="dropdown-menu dropdown-menu-zero-padding dropdown-menu-message-padding" >
         <h5 class="dropdown-heading">Messages</h5>
     
-        <table class="table table-responsive table-hover" style="padding:5px 20px 0 20px;margin-bottom:0" >
-            <tbody>
                 <ul class="message-list">
-                     <li v-for="list in navList">
-                                        <tr>
-                                            <td class="img-top-padding"><a href="#" class="message-anchor"><img src="images/person-2.jpg" alt="" class="message-profile"></a></td>
-                                            <td>
-                                                <a href="#" v-on:click="display(list.id)" :data-id=list.id class="message-anchor">
+                    <li v-for="list in navList">
+                        <a href="#" v-on:click="display(list.id)" :data-id=list.id class="message-anchor">
 
-                                                    <h6 class="message-head">{{list.name}}<span class="badge badge-info">{{list.unread}}</span></h6>
-                                                   
-                                                </a>    
-                                            </td>
-                                            <TD class="message-hidden"></TD>
-                                        </tr>
-                                    </li>
-                   <!-- <li v-for="list in navList">
-           <a href="#" v-on:click="display(list.id)" :data-id=list.id>{{list.name}}<span class="badge badge-info">{{list.unread}}</span></a>
-           </li> -->
+                            <h6 class="message-head">{{list.name}}<span class="badge badge-message">{{list.unread}}</span></h6>
+                            
+                        </a>    
+                    </li>
+                    <!-- <li v-for="list in navList">
+                        <a href="#" v-on:click="display(list.id)" :data-id=list.id>{{list.name}}<span class="badge badge-info">{{list.unread}}</span></a>
+                    </li> -->
                 </ul>
-            </tbody>
-        </table>
          
     </div>
   </li>
@@ -83,7 +73,7 @@ var disp=id;
     else if (box_id.length == 3) {
         console.log("Array lenght 2");
 
-        $('#' + disp).css({ 'display': 'block', 'right': '800px' });
+        $('#' + disp).css({ 'display': 'block', 'right': '655px' });
     }
     console.log("disp value");
 

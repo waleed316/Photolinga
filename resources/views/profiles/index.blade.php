@@ -13,7 +13,7 @@
     <div class="row all-jobs">
                 <div class="col-xl-12">
                     <div class="jobs-flex">
-                        <div class="first-box">
+                        <!-- <div class="first-box">
                             <h1 class="cat-heading">Category</h1>
                             <div class="form-group">
                                 <select class="form-control form-control-sm" id="category_select">
@@ -21,16 +21,18 @@
                                   
                                 </select>
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="first-box">
                             <h1 class="cat-heading">Countries</h1>
                             <div class="form-group cat-form mb-2">
-                               
-                                <select name="country" id="country" v-model="country">
-                                    <option value="pakistan">Pakistan</option>
-                                </select>
-                                <i class="fa fa-search cat-search" v-on:click="Photographer"></i>
+                                <!-- <select >
+                                    <option selected value="pakistan">Pakistan</option>
+                                </select> -->
+                                    <select class="form-control form-control-sm" name="country" id="country" v-model="country">
+                                        <option value="">Pakistan</option>
+                                    </select>
+                                    <!-- <i class="fa fa-search cat-search" v-on:click="Photographer"></i> -->
                             </div>
                             <h1 class="cat-heading">City</h1>
                             <div class="form-group cat-form mb-2">
@@ -40,7 +42,7 @@
                                     <option value="{{$city1->city}}">{{$city1->city}}</option>
                                     @endforeach
                                 </select> -->
-                                 <select name="city" id="city" v-model="city"> 
+                                 <select class="form-control form-control-sm" name="city" id="city" v-model="city"> 
                                              <option value="">All</option>
                                              <option>Faisalabad</option>
                                               <option>Islamabad</option>
@@ -51,18 +53,18 @@
                                               <option>Quetta</option>
                                               <option>Hyderabad</option>
                                 </select>
-                                <i class="fa fa-search cat-search" v-on:click="Photographer"></i>
+                                <!-- <i class="fa fa-search cat-search" v-on:click="Photographer"></i> -->
                             </div>
                         </div>
                         <div class="first-box">
                             <h1 class="cat-heading">Feedback Rating</h1>
                             <div class="form-group">
                                 <select class="form-control form-control-sm" id="feedback" v-model="rating">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
+                                    <option selected value="">1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
                                 </select>
                             </div>
                         </div>
@@ -71,7 +73,7 @@
                             <h1 class="cat-heading">Skills</h1>
                             <div class="form-group cat-form mb-2">
                             
-                            <input type="text" placeholder="Keyword" v-model="query" v-on:keyup="autoComplete" class="form-control form-control-sm category-input"><i class="fa fa-search cat-search" v-on:click="Photographer"></i>
+                            <input type="text" placeholder="Keyword" v-model="query" v-on:keyup="autoComplete" class="form-control form-control-sm category-input">
   <div v-if="results.length">
    <ul class="list-group" id="searchResult">
                     <i  v-show="Sloading" class="fa fa-spinner fa-spin"></i>
@@ -94,11 +96,16 @@
                       </div>
                             </p>
 
-
+ 
+                        </div>
+                        <div class="search-button">
+                            <button class="btn btn-md">Search</button>
                         </div>
                     </div>
+                   
                 </div>
             </div>
+            
    
             <div class="row mt-3">
                 <div class="col-xl-12">

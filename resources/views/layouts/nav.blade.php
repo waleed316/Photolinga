@@ -7,12 +7,12 @@
     </button>
     <a class="navbar-brand" href="/">
         <img src="{{ asset('images/logoblack.png') }}" alt="Photolinga"
-             class="d-inline-block align-top img-fluid  navbar-logo">
+             class="d-inline-block align-top img-fluid navbar-logo">
     </a>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
             <form class="form-inline">
                 <div class="input-group form-search">
                     <input type="text" class="form-control navbar-search" placeholder="Find Services">
@@ -23,7 +23,7 @@
             </form>
         </div>
 
-        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
+        <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12">
             <ul class="navbar-nav mr-auto navbar-text-color justify-content-end">
 
                 <li class="nav-item">
@@ -72,9 +72,9 @@
 
                             <h5 class="dropdown-heading">Notifications</h5>
 
-                            <table class="table table-responsive table-hover"
+                            <!-- <table class="table table-responsive table-hover"
                                    style="padding:5px 20px 0 20px;margin-bottom:0">
-                                <tbody>
+                                <tbody> -->
                                 <ul class="message-list">
 
                                     {{--<li>--}}

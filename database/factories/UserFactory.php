@@ -25,6 +25,7 @@ $factory->define( App\User::class, function ( Faker $faker ) {
         'is_studio' => $faker->boolean( 50 ),
         'remember_token' => str_random( 10 ),
         'description' => $faker->paragraph,
+        'phoneNo'=>$faker->phoneNumber,
     ];
 } );
 
