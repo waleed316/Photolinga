@@ -1,7 +1,7 @@
 <template>
     <div>
         <div v-for="(proposal, index) in items">
-            <proposal :data="proposal" @deleted="remove(index)"></proposal>
+            <proposal :data="proposal" @deleted="remove(index)" v-cloak></proposal>
         </div>
     </div>
 </template>

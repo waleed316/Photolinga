@@ -24,6 +24,7 @@ $factory->define( App\User::class, function ( Faker $faker ) {
         'password' => $password ?: $password = bcrypt( 'secret' ),
         'is_studio' => $faker->boolean( 50 ),
         'remember_token' => str_random( 10 ),
+        'phoneNo'=>$faker->phoneNumber,
         'description' => $faker->paragraph,
     ];
 } );

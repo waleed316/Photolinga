@@ -55,10 +55,21 @@
                             <label class="label-name" for="skill">Where is your event?
                              <a href="#"  data-toggle="tooltip" data-placement="top" title="help"><span
                                             class="badge badge-default second-badge">?</span></a></label>
-                                            <locsearch></locsearch>
-                                            <!-- 
+                                            <!-- <locsearch></locsearch> -->
+<!--                                             
                             <input class="form-control" name="location" type="text" value="{{ old('location') }}"
                                    id="example-text-input" required> -->
+                                 <select name="location" class="form-control" id="example-text-input"> 
+                                   
+                                             <option>Faisalabad</option>
+                                              <option>Islamabad</option>
+                                              <option>Karachi</option>
+                                              <option>Lahore</option>
+                                              <option>Multan</option>
+                                              <option>Peshawar</option>
+                                              <option>Quetta</option>
+                                              <option>Hyderabad</option>
+                                 </select>
                                    <!-- <placesearch></placesearch> -->
                             {{--<label class="label-name" for="skill">What skill are required? <a href="#"--}}
                             {{--data-toggle="tooltip"--}}

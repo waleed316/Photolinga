@@ -24,7 +24,7 @@
                             <textarea id="send_chat" style="resize:none"  v-model="message">
                             </textarea>
 
-                            <button class="btn btn-danger" v-on:click="sendMsg" id="snd">Send</button>
+                            <button class="btn btn-danger" v-on:click="sendMsg" :id="'snd-'+id">Send</button>
                         </div>
                 </div>
                 </div>
@@ -50,7 +50,7 @@
     },
     mounted(){
     axios.get('/chatWithId',{params: {id:this.id}}).then(response => {
-    console.log(response.data);
+    // console.log(response.data);
       this.chating=[];
       this.chating = response.data;
       setInterval(this.realTime, 15000); 
@@ -70,18 +70,21 @@
     markRead(){
     axios.get('/markRead',{params: {id:this.id}}).then(response => {
     console.log("From Mark read");
-    console.log(response.data);
+    // console.log(response.data);
     });
     },
       sendMsg() {
        this.message= this.message.trim();
       if(this.message.length > 0)
       {
+       document.getElementById('snd-'+this.id).disabled=true;
       axios.post('/chat',{params: {message: this.message,id:this.id}}).then(response=>{
       this.markRead();
-      console.log(response.data);
+      // console.log(response.data);
       this.chating.push({message:this.message,class:'user2',id:'user'});      
       this.message='';
+       document.getElementById('snd-'+this.id).disabled=false;
+      
       });
       }
       },

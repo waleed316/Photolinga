@@ -19,6 +19,8 @@ Vue.use(SweetModal);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 // var StarRating = require('vue-star-rating');
+
+// window.Event= new Vue();
 import StarRating from 'vue-star-rating';
 Vue.component('star-rating', StarRating);
 Vue.component('flash', require('./components/Flash.vue'));
@@ -37,7 +39,7 @@ Vue.component('settings-view', require('./pages/Settings.vue'));
 Vue.component('photographersearch',require('./components/PhotographerSearch.vue'));
 Vue.component('autocomplete',require('./components/Autocomplete.vue'));
 Vue.component('rating',require('./components/rating.vue'));
-Vue.component('placesearch',require('./components/GooglePlace.vue'));
+// Vue.component('placesearch',require('./components/GooglePlace.vue'));
 Vue.component('locsearch',require('./components/EventLoc.vue'));
 Vue.component('compseacrh',require('./components/complete.vue'));
 Vue.component('chat',require('./components/chat.vue'));

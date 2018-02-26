@@ -1,7 +1,7 @@
 <template>
 <div>
   <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Message<span class="badge badge-info">{{navList[0].allUnread}}</span></a>
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Message<span class="badge badge-info">{{unread}}</span></a>
     <div class="dropdown-menu dropdown-menu-zero-padding dropdown-menu-message-padding">
         <h5 class="dropdown-heading">Messages</h5>
     
@@ -21,6 +21,15 @@
                                             <TD class="message-hidden"></TD>
                                         </tr>
                                     </li>
+                        <li v-if="navList.length == 0">
+                                      <tr>
+                                        <td class="img-top-padding">
+                                             <a href="#" class="message-anchor">
+                                                 No new message
+                                             </a>
+                                        </td>
+                                      </tr>
+                                </li>
                    <!-- <li v-for="list in navList">
            <a href="#" v-on:click="display(list.id)" :data-id=list.id>{{list.name}}<span class="badge badge-info">{{list.unread}}</span></a>
            </li> -->
@@ -43,23 +52,35 @@
     data() {
       return {
       Vchat:false,
+      unread:'',
       navList:[],
       chating:[],
       chats:[],
       };
     },
+   // created(){
+   //     Event.$on('click',() => 
+   //     this.userList()
+    //    );
+  //  },
 
     mounted(){
-     axios.get('/navList').then(response => {
-     this.navList=response.data;
-     this.chats=response.data;
-     console.log("NavList");
-    console.log(this.navList);
-    console.log("Chat");
-    console.log(this.chats);
-    });
+     this.userList();
+   
      },
     methods: {
+        userList(){
+     axios.get('/navList').then(response => {
+         if(response.data.length)
+         {
+             this.navList=response.data;
+             this.chats=response.data;
+             this.unread=this.navList[0].allUnread;
+             console.log(this.navList);
+         }
+     });            
+
+        },
  
  display(id) {
    // var disp = ($(id).data('id'));

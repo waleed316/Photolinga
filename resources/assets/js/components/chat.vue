@@ -1,116 +1,118 @@
 <template>
-<div>
-<div v-if="conversation_id > 0">
-<a class="btn" id="chat" onclick="display(this)" :data-id=id>
-<!--{{uName}}-->
-View chat 
-</a>
-</div>
-<div v-else>
-<a class="btn-sm viev-all" id="chat" onclick="display(this)" :data-id=id v-on:click="markRead">
- Chat
-</a>
-</div>
-<div class="container">
- <div class="chatbox" :id=id>
-           <div class="header">
-                <p class="chat-name mb-0" onclick="maximize(this)"><i class="fa fa-circle mr-1 online-green"></i> {{chating[0]['name']}}</p>
-                <div class="buttons">
-                    <a onclick="minimize(this)"  class="minimize"><i class="fa fa-window-minimize"></i></a>
-                    <a onclick="closewindow(this)" class="close"><i class="fa fa-times"></i></a>
+    <div>
+        <div v-if="conversation_id > 0">
+            <a class="btn" id="chat" onclick="display(this)" :data-id=id>
+                <!--{{uName}}-->
+                View chat
+            </a>
+        </div>
+        <div v-else>
+            <a class="btn-sm viev-all" id="chat" onclick="display(this)" :data-id=id v-on:click="markRead">
+                Chat
+            </a>
+        </div>
+        <div class="container">
+            <div class="chatbox" :id=id>
+                <div class="header">
+                    <p class="chat-name mb-0" onclick="maximize(this)"><i class="fa fa-circle mr-1 online-green"></i>
+                        {{chating[ 0 ][ 'name' ]}}</p>
+                    <div class="buttons">
+                        <a onclick="minimize(this)" class="minimize"><i class="fa fa-window-minimize"></i></a>
+                        <a onclick="closewindow(this)" class="close"><i class="fa fa-times"></i></a>
+                    </div>
                 </div>
-            </div>
-            <div class="hidden-body">
-                <div class="project-name"><a href="#" class="project-hyperlink">{{chating[0]['project']}}</a></div>
-                <div class="body" id="chat_body">
-               <ul>
-                  <li v-for="chat in chating" style="clear:both;">
-                    <div :id=chat.id>
+                <div class="hidden-body">
+                    <div class="project-name"><a href="#" class="project-hyperlink">{{chating[ 0 ][ 'project' ]}}</a>
+                    </div>
+                    <div class="body" id="chat_body">
+                        <ul>
+                            <li v-for="chat in chating" style="clear:both;" v-if="chating[0].id">
+                                <div :id=chat.id>
 
-                        <img :src="chat.avatar" alt="" class="chat-img" v-if="chat.avatar">
+                                    <img :src="chat.avatar" alt="" class="chat-img" v-if="chat.avatar">
 
-                        <img src="/images/person-2.jpg" alt="" class="chat-img" v-else>
+                                    <img src="/images/person-2.jpg" alt="" class="chat-img" v-else>
 
-                        <span class="badge badge-default" :id=chat.class>{{chat.message}}</span>
-                    </div> 
-                    </li>
-                    <li>
-                    <div class="chatting">
-                        <div class="form-group mb-0">
-                            <textarea id="send_chat" style="resize:none"  v-model="message">
+                                    <span class="badge badge-default" :id=chat.class>{{chat.message}}</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="chatting">
+                                    <div class="form-group mb-0">
+                            <textarea id="send_chat" style="resize:none" v-model="message">
                             </textarea>
-                            <button class="btn btn-danger" v-on:click="sendMsg" id="snd">Send</button>
-                        </div>
-                </div>
-                    </li>
-                    </ul>
+                                        <button class="btn btn-danger" v-on:click="sendMsg" :id="'snd-'+id">Send
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-        </div>
 
 
-
-
-                        <!--<a href="#" class="btn-sm viev-all"  data-toggle="modal" data-target="#exampleModal">
-                        Chat
-                        </a>-->
-</div>
+        <!--<a href="#" class="btn-sm viev-all"  data-toggle="modal" data-target="#exampleModal">
+        Chat
+        </a>-->
+    </div>
 </template>
 <script>
- export default {
+  export default {
 
-    props: [ 'userid','jobid','id','conversation_id' ],
+    props: [ 'userid', 'jobid', 'id', 'conversation_id' ],
     data() {
       return {
-      message:'',
-      edit:false,
-      chating:[]
+        message: '',
+        edit: false,
+        chating: [],
       };
     },
-    mounted(){
-    if(this.conversation_id > 0)
+    mounted() 
     {
-    console.log("mounted");
-    console.log(this.id);
-    axios.get('/chatWithId',{params: {id:this.id}}).then(response => {
-    console.log(this.id);
-    console.log(response.data);
-      this.chating=[];
-      this.chating = response.data;
-     });
-    }
-    else
-    {
-    axios.get('/chatWithId',{params: {id:this.id}}).then(response => {
-      console.log(response.data);
-      this.chating=[];
-      this.chating = response.data;
-     });
-     }
+        axios.get('/chatWithId', { params: { id: this.id } }).then(response => {
+           //     console.log("From chatvue");            
+           // console.log(response.data);
+           console.log('From '+this.id+response.data);
+          this.chating = [];
+          this.chating = response.data;
+        });
+      
     },
     methods: {
-    markRead(){
-    axios.get('/markRead',{params: {id:this.id}}).then(response => {
-    console.log("From Mark read");
-    console.log(response.data);
-    });
-    },
+      markRead() {
+        axios.get('/markRead', { params: { id: this.id } }).then(response => {
+          console.log('From Mark read');
+          // console.log(response.data);
+        });
+      },
       sendMsg() {
-      this.message= this.message.trim();
-      if(this.message.length > 0)
-      {
-      document.getElementById('snd').disabled=true;
-      axios.post('/chat',{params: {message: this.message,id:this.id}}).then(response=>{
-      console.log(response.data);
-      document.getElementById('snd').disabled=false;
-      this.chating.push({message:this.message,class:'user2',id:'user'});    
-      this.message='';
+        this.message = this.message.trim();
+        if ( this.message.length > 0 ) {
+          document.getElementById('snd-' + this.id).disabled = true;
 
-      });
-      }
-      }
-    }
-   
+          axios.post('/chat', { params: { message: this.message, id: this.id } }).then(response => {
+            document.getElementById('snd-' + this.id).disabled = false;
+            if (this.chating[0].hasOwnProperty('id')) 
+            {
+              this.chating.push({ message: this.message, class: 'user2', id: 'user' });
+            }
+            else
+            {
+                this.chating[0]['message']=this.message;
+                this.chating[0]['class']='user2';
+                this.chating[0]['id']='user';
+                console.log('From new Chat');
+                console.log(this.chating);                
+          //      Event.$emit('click');
+            }
+             this.message = '';
+
+          });
+        }
+      },
+    },
+
   };
 </script>
