@@ -217,27 +217,27 @@
 											
 											<div class="portfoli-box">
 												<div class="p-image">
-													<img src="{{asset('storage/Uploads/'.$portfolio->thumbnail)}}" class="img-fluid" alt="">
-
+													<img style="height:120px!important" src="{{asset('storage/Uploads/'.$portfolio->thumbnail)}}" class="img-fluid" alt="">
 													<div class="p-text">
 														<h6>{{ $portfolio->title }}</h6>
 													</div>
 												</div>
 											</div>
 										</a>
-										<div class="modal fade" id="albumShow-{{$portfolio->id}}" role="dialog">
-											<div class="modal-dialog"  style="height: 450px;overflow: scroll;">
+										<div class="modal fade bd-example-modal-lg" id="albumShow-{{$portfolio->id}}" tabindex="-1" role="dialog">
+											<div class="modal-dialog modal-lg"  role="document"  style="height: 450px;">
 
 												<!-- Modal content-->
 												<div class="modal-content">
 													<div class="modal-header">
-														<button type="button" class="close" data-dismiss="modal">&times;</button>
 														<h4 class="modal-title">Portfolio</h4>
+														<button type="button" class="close" data-dismiss="modal">&times;</button>
 													</div>
 													<div class="modal-body">
 														<div id="err"></div>
 														@foreach($portfolio->images as $abc)
-														<img src="{{asset('storage/Uploads/'.$abc->path)}}" class="img-fluid" alt="">
+														
+															<img src="{{asset('storage/Uploads/'.$abc->path)}}" class="img-fluid portfolio-imgages" alt="">
 														@endforeach
 													</div>
 													<div class="modal-footer">
@@ -269,40 +269,44 @@
 
 												
 												<div class="modal-content">
-													<div class="modal-header">
+													<div class="modal-header invite-header">
+														<h4 class="modal-title">Invite Freelancer</h4>
 														<button type="button" class="close" data-dismiss="modal">&times;</button>
-														<h4 class="modal-title">Invite</h4>
 													</div>
-									<div class="modal-body">
-										<div>
-											@auth
-											@if(count(auth()->user()->createdJobs))
-											@foreach(auth()->user()->createdJobs as $job)
-													{{ $job->title }}
-													<form method="POST" action="{{route('invite',['id'=>$profileUser->id])}}">
-														{{csrf_field()}}
-												<input type="hidden" name="jobid" value="{{$job->id}}" >
-												<!-- <input type="hidden" name="userid" value="{{$profileUser->id}}"> -->
-											<button class="btn btn-danger" >
-												<div>Invite</div> 
-											</button>
-																</form>
+													<div class="modal-body invite-bg m-0">
+														<!-- <img src="{{URL::asset('/images/alert.png')}}" alt=""> -->
+														<div class="invite-alert">
+															@auth
+															@if(count(auth()->user()->createdJobs))
+																<h6>
+															
+																@foreach(auth()->user()->createdJobs as $job)
+																	{{ $job->title }}
+																	</h6>
+																	<form method="POST" action="{{route('invite',['id'=>$profileUser->id])}}">
+																		{{csrf_field()}}
+																			<input type="hidden" name="jobid" value="{{$job->id}}" >
+																			<!-- <input type="hidden" name="userid" value="{{$profileUser->id}}"> -->
+																		<button class="btn btn-danger btn-sm" >
+																			<div>Invite</div> 
+																		</button>
+																	</form>
 
 
-															@endforeach
-												@else
-												<div>You have no projects</div>
-												@endif
-											@endauth
-												@guest
-												<div>Login please</div>
-												@endguest
+																@endforeach
+																@else
+																<div>You have no projects</div>
+																@endif
+															@endauth
+																@guest
+																<div>Login please</div>
+																@endguest
 														</div>
-														
+																		
 													</div>
-													<div class="modal-footer">
-														<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-													</div>
+													<!-- <div class="modal-footer">
+														<button type="button" class="btn btn-default invite-button" data-dismiss="modal">Close</button>
+													</div> -->
 												</div>
 
 											</div>

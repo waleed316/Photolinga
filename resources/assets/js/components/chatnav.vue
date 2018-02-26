@@ -13,20 +13,17 @@
                 <div class="body" id="chat_body">
                   <div v-for="chat in chating">
                     <div :class=chat.id>
-
-                       <img :src="chat.avatar" alt="" class="chat-img" v-if="chat.avatar">
-
-                        <img src="/images/person-2.jpg" alt="" class="chat-img" v-else><span class="badge badge-default" :class=chat.class>{{chat.message}}</span>
+                      <img :src="chat.avatar" alt="" class="chat-img" v-if="chat.avatar">
+                      <img src="/images/person-2.jpg" alt="" class="chat-img" v-else><span class="badge badge-default" :class=chat.class>{{chat.message}}</span>
                     </div> 
-                    </div>
-                    <div class="chatting">
-                        <div class="form-group mb-0">
-                            <textarea id="send_chat" style="resize:none"  v-model="message">
-                            </textarea>
-
-                            <button class="btn btn-danger" v-on:click="sendMsg" :id="'snd-'+id">Send</button>
-                        </div>
+                  </div>
                 </div>
+                <div class="chatting">
+                    <div class="form-group mb-0">
+                        <textarea id="send_chat" style="resize:none"  v-model="message">
+                        </textarea>
+                        <button class="btn btn-danger" v-on:click="sendMsg" :id="'snd-'+id">Send</button>
+                    </div>
                 </div>
             </div>
         </div> 

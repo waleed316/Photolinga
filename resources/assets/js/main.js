@@ -105,12 +105,6 @@ $(document).ready(function(){
 // {
 //     $('#chatstart').css('display','block')
 // }
-function display(id) {
-    var disp = ($(id).data('id'));
-    console.log('From main.js');
-    console.log(disp);
-    $('#' + disp).css('display', 'block')
-}
 
 function minimize(id) {
     var dataid = ($(id).parents('.chatbox').attr('id'));

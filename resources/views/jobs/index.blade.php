@@ -15,8 +15,8 @@
 
                 <div class="col-xl-8 col-lg-6 col-md-6 col-sm-6">
                      <form class="form" method="GET" action="{{ route('jobs') }}" autocomplete="off">
-                         <div class="form-group row">
-                                             <select class="form-control col-8" name="location">
+                         <div class="form-group row  mx-0">
+                                             <select class="form-control city-search" name="location">
                                               <option>Faisalabad</option>
                                               <option>Islamabad</option>
                                               <option>Karachi</option>
@@ -24,11 +24,11 @@
                                               <option>Multan</option>
                                               <option>Peshawar</option>
                                               <option>Quetta</option>
-                                              <option>Hyderabad</option>                                              
+                                              <option>Hyderabad</option>
 
 
                                          </select>
-                                    <span class="input-group-btn">
+                                    <span class="input-group-btn search-btn-city">
                                         <button class="btn btn-secondary btn-search" type="submit">Search</button>
                                         </span>
                                     </div>

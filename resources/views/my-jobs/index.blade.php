@@ -32,8 +32,9 @@
 
             @forelse(auth()->user()->createdJobs as $job)
                     
-              <rating :jobid="{{ $job->id }}"></rating>  
                 <div class="card-body p-2">
+                    <rating :jobid="{{ $job->id }}"></rating>  
+                    
                     <a href="{{ $job->path() }}">
                         <h4 class="card-title">{{ $job->title }}</h4>
                     </a>

@@ -2,35 +2,33 @@
 <div>
 <div class="modal fade" :id="'exampleModal-'+jobid" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content rating-modal">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Review</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body m-0">
+*Please give review
+      
   <star-rating v-model="rating" 
                     v-bind:increment="0.5" 
              v-bind:max-rating="5" 
              v-bind:show-rating="false"
              inactive-color="#b296c5" 
-             active-color="#290740" 
-             v-bind:star-size="20" @rating-selected ="setRating">
+             active-color="#2c004f" 
+             v-bind:star-size="35" @rating-selected ="setRating">
 </star-rating>
   <i  v-show="loading" class="fa fa-spinner fa-spin"></i>
 
 <div v-if="rating == 0">
-<button class="btn btn-info" v-on:click="saveRating" data-dismiss="modal" disabled>Update</button>
+<button class="btn btn-update btn-sm" v-on:click="saveRating" data-dismiss="modal" disabled>Update</button>
 </div>
 <div v-else>
-<button class="btn btn-info" v-on:click="saveRating" data-dismiss="modal">Update</button>
+<button class="btn btn-update btn-sm" v-on:click="saveRating" data-dismiss="modal">Update</button>
 </div>
-*Please give review
  </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
     </div>
   </div>
 </div>
@@ -38,12 +36,12 @@
 <div>
             <div v-if="freelancer"> 
                <div v-if="isComplete"> 
-                  <button type="button" class="btn btn-primary" data-toggle="modal" style="float: right;">
+                  <button type="button" class="btn job-completed" data-toggle="modal" style="float: right;">
                            Completed
                     </button>
                     </div>
                     <div v-else>   
-                    <button type="button" class="btn btn-primary" data-toggle="modal" :data-target="'#exampleModal-'+jobid" style="float: right;" :id="'compModel-'+jobid">
+                    <button type="button" class="btn job-complete" data-toggle="modal" :data-target="'#exampleModal-'+jobid" style="float: right;" :id="'compModel-'+jobid">
                            {{ comp }}
                     </button>
                     </div> 

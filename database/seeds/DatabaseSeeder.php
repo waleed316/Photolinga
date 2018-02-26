@@ -13,7 +13,21 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
 
-
+        DB::table('skills')->insert([
+            'name' => 'Wedding Photography'
+        ]);
+            DB::table('skills')->insert([
+            'name' => 'Album Making'
+        ]);
+             DB::table('skills')->insert([
+            'name' => 'Videography'
+        ]);
+              DB::table('skills')->insert([
+            'name' => 'Still Shoots'
+        ]);
+               DB::table('skills')->insert([
+            'name' => 'Cinematography'
+        ]);
           $skills=App\Skill::pluck('id')->toArray();
     $user=App\User::pluck('id')->toArray();
 
@@ -99,21 +113,7 @@ class DatabaseSeeder extends Seeder
 
 
         
-        //    DB::table('skills')->insert([
-        //     'name' => 'Wedding Photography'
-        // ]);
-        //     DB::table('skills')->insert([
-        //     'name' => 'Album Making'
-        // ]);
-        //      DB::table('skills')->insert([
-        //     'name' => 'Videography'
-        // ]);
-        //       DB::table('skills')->insert([
-        //     'name' => 'Still Shoots'
-        // ]);
-        //        DB::table('skills')->insert([
-        //     'name' => 'Cinematography'
-        // ]);
+           
         
         
     }
