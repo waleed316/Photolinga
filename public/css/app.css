@@ -8423,6 +8423,7 @@
 
 .invite-alert {
   width: 150px !important;
+  height: 100px;
   display: inline-block;
   border: 1px solid #2C004F;
   padding: 10px;

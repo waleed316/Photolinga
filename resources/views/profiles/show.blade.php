@@ -273,14 +273,17 @@
 														<h4 class="modal-title">Invite Freelancer</h4>
 														<button type="button" class="close" data-dismiss="modal">&times;</button>
 													</div>
-													<div class="modal-body invite-bg m-0">
-														<!-- <img src="{{URL::asset('/images/alert.png')}}" alt=""> -->
-														<div class="invite-alert">
-															@auth
+													@auth
 															@if(count(auth()->user()->createdJobs))
-																<h6>
+													
+																<div class="modal-body invite-bg m-0">
+															
 															
 																@foreach(auth()->user()->createdJobs as $job)
+														<!-- <img src="{{URL::asset('/images/alert.png')}}" alt=""> -->
+														<div class="invite-alert">
+											  						<h6>
+																
 																	{{ $job->title }}
 																	</h6>
 																	<form method="POST" action="{{route('invite',['id'=>$profileUser->id])}}">
@@ -292,8 +295,11 @@
 																		</button>
 																	</form>
 
-
+																		
+													</div>
 																@endforeach
+														</div>
+																
 																@else
 																<div>You have no projects</div>
 																@endif
@@ -301,9 +307,7 @@
 																@guest
 																<div>Login please</div>
 																@endguest
-														</div>
-																		
-													</div>
+														
 													<!-- <div class="modal-footer">
 														<button type="button" class="btn btn-default invite-button" data-dismiss="modal">Close</button>
 													</div> -->
@@ -316,8 +320,8 @@
 									
 									
 									<!-- <a href="#" class="btn-sm btn btn-join-me">Invite me to join</a> --> 
-									or
-									<a href="#" class="contact-me">Contact me</a>
+									<!-- or -->
+									<!-- <a href="#" class="contact-me">Contact me</a> -->
 								</div>
 								<ul class="person-detail">
 									<li>
@@ -399,7 +403,7 @@
 										</div>
 										@can('update',$profileUser)
 						  <div class="fb-share-button" 
-    data-href="http://127.0.0.1:8000/profiles/{{$profileUser->id }}" 
+    data-href="https://photolinga.com/profiles/{{$profileUser->id }}" 
     data-layout="button_count">Share
   </div>
 <script type="IN/Share" data-url="https://photolinga.com/profiles/{{$profileUser->id }}" style="padding: 20px;"></script>

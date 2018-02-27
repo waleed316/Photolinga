@@ -26,6 +26,10 @@
         <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12">
             <ul class="navbar-nav mr-auto navbar-text-color justify-content-end">
 
+<li class="nav-item">
+                        <a class="nav-link btn btn-danger" style="color:white !important" href="{{ route('jobs.create') }}">Post a job<span
+                                    class="sr-only">(current)</span></a>
+                    </li>
                 <li class="nav-item">
                     <a href="{{ route('jobs') }}" class="nav-link">All Jobs</a>
                 </li>
@@ -36,10 +40,7 @@
                 <li class="nav-item">
                     <a href="/my-jobs" class="nav-link">My Jobs</a>
                 </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="{{ route('jobs.create') }}">Post a job<span
-                                    class="sr-only">(current)</span></a>
-                    </li>
+                    
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"

@@ -31,27 +31,28 @@ Guests Can:
 
 To Do:
 -
-- Upload Profile Picture (DONE)
-- Upload Portfolio
+<!-- - Upload Profile Picture (DONE) -->
+<!-- - Upload Portfolio -->
 <!-- - CRUD Packages -->
 <!-- - Browse and Buy Packages -->
-- Search Freelancers
-- Chat with Freelancers
+<!-- - Search Freelancers -->
+<!-- - Chat with Freelancers -->
 <!-- - Footer Links -->
 <!-- - Settings Page -->
 - Transaction History
-- Messages
+<!-- - Messages -->
 - Notifications
-- Change Profile Cover Photo
+<!-- - Change Profile Cover Photo -->
 - Highlight "Post a job"
 - Photolinga Pro "Let's talk" and "Become a Pro" modal
 - 404 Page
-- Share profile Fb, twitter, linkedIn
-- Invite to project
-- "Contact me" in profile
-- Cities Drop down in landing page and in "All jobs"
-- Filters in "Browse Photographers" (Cities, Categories)
-- Remove animations from landing page
+- "Question Marks" in Post a job
+<!-- - Share profile Fb, twitter, linkedIn -->
+<!-- - Invite to project -->
+<!-- - "Contact me" in profile -->
+<!-- - Cities Drop down in landing page and in "All jobs" -->
+<!-- - Filters in "Browse Photographers" (Cities, Categories) -->
+<!-- - Remove animations from landing page -->
 - Change "How It works" icons in landing page and reduce size
 - Dummy testimonials (Mictronicx, Techtree, Wondertree, Social Champ)
 - Footer like flaticon.com
