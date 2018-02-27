@@ -47,6 +47,8 @@ $(document).ready(function(){
     });
 
 
+
+
     $("#bid-hide").hide();
     $("#bid").click(function(){
         $("#bid-hide").show(1000);
@@ -101,10 +103,6 @@ $(document).ready(function(){
 
 });
 
-// function display()
-// {
-//     $('#chatstart').css('display','block')
-// }
 
 function minimize(id) {
     var dataid = ($(id).parents('.chatbox').attr('id'));
@@ -120,6 +118,9 @@ function closewindow(id) {
     var dataid = ($(id).parents('.chatbox').attr('id'));
     $('#' + dataid).css('display', 'none');
 }
+
+
+
 (function($){
     $.fn.extend({
         hideMaxListItems: function(options)

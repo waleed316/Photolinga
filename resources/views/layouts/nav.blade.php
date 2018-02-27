@@ -12,7 +12,7 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
+        <!-- <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
             <form class="form-inline">
                 <div class="input-group form-search">
                     <input type="text" class="form-control navbar-search" placeholder="Find Services">
@@ -21,13 +21,13 @@
                     </span>
                 </div>
             </form>
-        </div>
+        </div> -->
 
-        <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
             <ul class="navbar-nav mr-auto navbar-text-color justify-content-end">
 
 <li class="nav-item">
-                        <a class="nav-link btn btn-danger" style="color:white !important" href="{{ route('jobs.create') }}">Post a job<span
+                        <a class="nav-link btn btn-post-job btn-sm" style="color:white !important" href="{{ route('jobs.create') }}">Post a job<span
                                     class="sr-only">(current)</span></a>
                     </li>
                 <li class="nav-item">

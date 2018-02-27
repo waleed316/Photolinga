@@ -175,11 +175,6 @@ $(document).ready(function () {
     });
 });
 
-// function display()
-// {
-//     $('#chatstart').css('display','block')
-// }
-
 function minimize(id) {
     var dataid = $(id).parents('.chatbox').attr('id');
     $('#' + dataid).css({ 'bottom': '-325px', 'z-index': '1!important' });
@@ -194,6 +189,7 @@ function closewindow(id) {
     var dataid = $(id).parents('.chatbox').attr('id');
     $('#' + dataid).css('display', 'none');
 }
+
 (function ($) {
     $.fn.extend({
         hideMaxListItems: function hideMaxListItems(options) {
