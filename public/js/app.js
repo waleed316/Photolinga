@@ -54677,60 +54677,73 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['skillSet'],
-  data: function data() {
-    return {
+    props: ['skillSet'],
+    data: function data() {
+        return {
 
-      query: '',
-      skill: '',
-      skillname: '',
-      loading: false,
-      deleteskill: '',
-      skillList: [],
-      results: [],
-      skills: []
-    };
-  },
-  mounted: function mounted() {
-    var _this = this;
+            query: '',
+            skill: '',
+            skillname: '',
+            loading: false,
+            deleteskill: '',
+            skillList: [],
+            results: [],
+            skills: []
+        };
+    },
+    mounted: function mounted() {
+        var _this = this;
 
-    axios.get('/skillList').then(function (response) {
-      console.log(response.data);
-      _this.skillList = response.data;
-    });
-  },
-
-  methods: {
-    autoComplete: function autoComplete() {
-      var _this2 = this;
-
-      this.results = [];
-      if (this.query.length > 1) {
-        axios.get('/search', { params: { query: this.query } }).then(function (response) {
-          _this2.results = response.data;
+        axios.get('/skillList').then(function (response) {
+            console.log(response.data);
+            _this.skillList = response.data;
         });
-      }
     },
-    removeSkill: function removeSkill(index, skill) {
-      var _this3 = this;
 
-      axios.post('/skill/delete/' + skill.name).then(function (response) {
-        _this3.skillList.splice(index, 1);
-      });
-    },
-    skillSelected: function skillSelected(result) {
-      var _this4 = this;
+    methods: {
+        autoComplete: function autoComplete() {
+            var _this2 = this;
 
-      document.getElementById('searchResult').style.display = "none";
-      this.loading = true;
-      axios.get('/skill/store', { params: { skill: result.id, skillname: result.name } }).then(function (response) {
-        _this4.loading = false;
-        _this4.skillList.push(response.data.skill);
-      });
+            this.results = [];
+            if (this.query.length > 1) {
+                axios.get('/search', {
+                    params: {
+                        query: this.query
+                    }
+                }).then(function (response) {
+                    _this2.results = response.data;
+                });
+            }
+        },
+        removeSkill: function removeSkill(index, skill) {
+            var _this3 = this;
+
+            axios.post('/skill/delete/' + skill.name).then(function (response) {
+                _this3.skillList.splice(index, 1);
+            });
+        },
+        skillSelected: function skillSelected(result) {
+            var _this4 = this;
+
+            document.getElementById('searchResult').style.display = "none";
+            this.loading = true;
+            axios.get('/skill/store', {
+                params: {
+                    skill: result.id,
+                    skillname: result.name
+                }
+            }).then(function (response) {
+                _this4.loading = false;
+                _this4.skillList.push(response.data.skill);
+            });
+        }
     }
-  }
 });
 
 /***/ }),
@@ -54786,9 +54799,9 @@ var render = function() {
                     { staticClass: "list-group-item list-group-item-action" },
                     [
                       _vm._v(
-                        "\n                     " +
+                        "\n                        " +
                           _vm._s(result.name) +
-                          "\n             "
+                          "\n                    "
                       )
                     ]
                   )
@@ -54799,49 +54812,47 @@ var render = function() {
         ])
       : _vm._e(),
     _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "right-sec" },
-      [
-        _c("p", { staticClass: "tags-required" }, [
-          _c("i", {
-            directives: [
-              {
-                name: "show",
-                rawName: "v-show",
-                value: _vm.loading,
-                expression: "loading"
-              }
-            ],
-            staticClass: "fa fa-spinner fa-spin"
-          })
-        ]),
-        _vm._l(_vm.skillList, function(skill, index) {
-          return _c("div", [
-            _c(
-              "a",
-              {
-                staticClass: "required-skills",
-                on: {
-                  click: function($event) {
-                    _vm.removeSkill(index, skill)
-                  }
-                }
-              },
-              [
-                _vm._v("\n                      " + _vm._s(skill.name)),
-                _c("i", {
-                  staticClass: "fa fa-times",
-                  attrs: { "aria-hidden": "true" }
-                })
-              ]
-            )
-          ])
-        }),
-        _vm._v(" "),
-        _c("p")
+    _c("i", {
+      directives: [
+        {
+          name: "show",
+          rawName: "v-show",
+          value: _vm.loading,
+          expression: "loading"
+        }
       ],
-      2
+      staticClass: "fa fa-spinner fa-spin"
+    }),
+    _vm._v(" "),
+    _c(
+      "p",
+      { staticClass: "tags-required" },
+      _vm._l(_vm.skillList, function(skill, index) {
+        return _c("span", { staticClass: "skillsets" }, [
+          _c(
+            "a",
+            {
+              staticClass: "required-skills",
+              on: {
+                click: function($event) {
+                  _vm.removeSkill(index, skill)
+                }
+              }
+            },
+            [
+              _vm._v(
+                "\n                    " +
+                  _vm._s(skill.name) +
+                  "\n                    "
+              ),
+              _c("i", {
+                staticClass: "fa fa-times",
+                attrs: { "aria-hidden": "true" }
+              })
+            ]
+          )
+        ])
+      })
     )
   ])
 }

@@ -4,13 +4,6 @@
   font-family: 'Roboto', sans-serif;
 }
 
-.app {
-  min-height: 100%;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  grid-template-columns: 100%;
-}
-
 .level {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -293,6 +286,7 @@
 
 .nav-item {
   padding-top: 5px !important;
+  font-size: 16px;
 }
 
 .nav-link {
@@ -2779,6 +2773,7 @@
 /* all jobs page styling */
 
 .all-jos {
+  background-image: url("/images/bench.jpg");
   padding: 0 25px 25px 25px;
 }
 
@@ -2836,6 +2831,10 @@
 .first-box .tags-required .required-skills {
   display: inline-block;
   margin-bottom: 2px;
+}
+
+.tags-required {
+  margin-top: 15px;
 }
 
 .jobdetail-list {
@@ -3067,7 +3066,7 @@
   visibility: hidden;
   width: 100%;
   position: absolute;
-  height: 51%;
+  height: 73%;
   top: 0;
   border-radius: 50%;
   background-color: rgba(0, 0, 0, 0.3);
@@ -3084,7 +3083,7 @@
 .about-freelancer-box .freelance-box .upper-portion .left-sec .img a {
   visibility: hidden;
   position: absolute;
-  top: 25%;
+  top: 38%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
@@ -3320,7 +3319,16 @@
 }
 
 .about-freelancer-box .f-profile-box .person-detail li .p-box .ico {
-  width: 10%;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
+}
+
+.about-freelancer-box .f-profile-box .person-detail li .p-box .ico h6 {
+  display: inline-block;
 }
 
 .about-freelancer-box .f-profile-box .person-detail li .p-box .ico i {
@@ -3339,7 +3347,12 @@
 }
 
 .about-freelancer-box .f-profile-box .person-detail li .p-box .bold {
-  width: 40%;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
   text-align: right;
 }
 
@@ -3370,6 +3383,12 @@
 
 .privacy-list {
   padding-left: 5%;
+}
+
+.skillsets {
+  display: inline-block;
+  white-space: nowrap;
+  margin-right: 5px;
 }
 
 .privacy-list .privacy-desc {
@@ -3422,6 +3441,26 @@
     width: 100% !important;
   }
 
+  .upper-portion {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+
+  .left-sec,
+  .right-sec {
+    width: 100% !important;
+  }
+
+  .no-padding {
+    padding: 0;
+  }
+
+  .name {
+    padding-top: 0 !important;
+  }
+
   .p-list > li .profile-upper-box .p-name-section {
     width: 55% !important;
   }
@@ -3466,6 +3505,29 @@
   .p-list > li {
     width: 100% !important;
   }
+
+  .upper-portion {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+
+  .left-sec,
+  .right-sec {
+    width: 100% !important;
+  }
+
+  .p-box {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+
+  .bold {
+    text-align: center !important;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -3475,6 +3537,21 @@
 
   .p-list > li .profile-box .profile-image {
     width: 12% !important;
+  }
+
+  .name {
+    padding-top: 0 !important;
+  }
+
+  .p-box {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+
+  .bold {
+    text-align: center !important;
   }
 }
 
@@ -8554,6 +8631,12 @@
           transform: translate(-50%, -50%);
   font-size: 20px;
   color: white;
+}
+
+.navbar-text-color {
+  color: #2c004f;
+  font-size: 26px;
+  margin-top: 3px;
 }
 
 .fb-share-button {

@@ -11,7 +11,7 @@
         <div class="container-fluid">
             <div class="container pb-1">
                 <div class="row mx-0">
-                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 no-padding">
                         <div class="about-freelancer-box">
                             <h6 class="about-head">ABOUT FREELANCER</h6>
                             <div class="freelance-box">
@@ -25,11 +25,13 @@
                                                 alt="">
                                             <div class="blur-bg"></div>
                                             <a href="#" class="change-dp-btn">
-                                                <input
-                                                    type="file"
-                                                    class="form-control-file upload-dp"
-                                                    id="exampleInputFile"
-                                                    aria-describedby="fileHelp">
+                                                <form action="">
+                                                    <input
+                                                        type="file"
+                                                        class="form-control-file upload-dp"
+                                                        id="exampleInputFile"
+                                                        aria-describedby="fileHelp">
+                                                </form>
                                                 <i class="fa fa-edit"></i>
                                             </a>
                                             <!-- <modal v-if="openModal" open="true"></modal> -->
@@ -56,7 +58,7 @@
 
                                             <div class="container">
                                                 <div class="row">
-                                                    <div class="col-md-8 col-md-offset-2">
+                                                    <div class="col-12">
                                                         <div class="panel panel-default" id="skill-input">
                                                             <div class="panel-heading"></div>
 
@@ -145,62 +147,60 @@
                                         </button>
 
                                         @endcan
-
-                                        <div class="modal fade" id="AlbumModal" role="dialog">
-                                            <div class="modal-dialog">
-
-                                                <!-- Modal content-->
-                                                <div class="modal-content album-upload">
-                                                    <div class="modal-header">
-                                                        <h4 class="modal-title">Create New Album</h4>
-                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                    </div>
-                                                    <div class="modal-body m-0">
-                                                        <img
-                                                            id="display_thumbnail"
-                                                            class="img-fluid img-thumbnail"
-                                                            src="/images/upload.jpg">
-                                                        <form
-                                                            action="{{route('album.store')}}"
-                                                            method="post"
-                                                            enctype="multipart/form-data">
-                                                            {{csrf_field()}}
-                                                            <div class="form-group row m-0">
-                                                                <label for="example-text-input" class="col-3 col-form-label">Album Name</label>
-                                                                <div class="col-6">
-                                                                    <input
-                                                                        class="form-control form-control-sm"
-                                                                        type="text"
-                                                                        name="title"
-                                                                        id="AlbumName"
-                                                                        required="required">
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row mx-0 my-2">
-                                                                <label for="example-text-input" class="col-3 col-form-label">Thumbnail</label>
-                                                                <div class="col-6">
-                                                                    <input
-                                                                        type="file"
-                                                                        name="thumbnail"
-                                                                        onchange="readURL(this)"
-                                                                        class="modal-thumbnail"
-                                                                        id="thumbnailName"
-                                                                        required="required">
-                                                                    <input type="hidden" name="user_id" value="{{auth()->id()}}">
-                                                                </div>
-                                                            </div>
-                                                            <div class="Album-button">
-                                                                <button class="btn btn-default">Save</button>
-                                                            </div>
-                                                        </form>
-
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-
                                     </h1>
+                                    <div class="modal fade" id="AlbumModal" role="dialog">
+                                        <div class="modal-dialog">
+
+                                            <!-- Modal content-->
+                                            <div class="modal-content album-upload">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title">Create New Album</h4>
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                </div>
+                                                <div class="modal-body m-0">
+                                                    <img
+                                                        id="display_thumbnail"
+                                                        class="img-fluid img-thumbnail"
+                                                        src="/images/upload.jpg">
+                                                    <form
+                                                        action="{{route('album.store')}}"
+                                                        method="post"
+                                                        enctype="multipart/form-data">
+                                                        {{csrf_field()}}
+                                                        <div class="form-group row m-0">
+                                                            <label for="example-text-input" class="col-3 col-form-label">Album Name</label>
+                                                            <div class="col-6">
+                                                                <input
+                                                                    class="form-control form-control-sm"
+                                                                    type="text"
+                                                                    name="title"
+                                                                    id="AlbumName"
+                                                                    required="required">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row mx-0 my-2">
+                                                            <label for="example-text-input" class="col-3 col-form-label">Thumbnail</label>
+                                                            <div class="col-6">
+                                                                <input
+                                                                    type="file"
+                                                                    name="thumbnail"
+                                                                    onchange="readURL(this)"
+                                                                    class="modal-thumbnail"
+                                                                    id="thumbnailName"
+                                                                    required="required">
+                                                                <input type="hidden" name="user_id" value="{{auth()->id()}}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="Album-button">
+                                                            <button class="btn btn-default">Save</button>
+                                                        </div>
+                                                    </form>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
 
                                     <ul class="portfolio-list">
                                         @foreach( $profileUser->album as $portfolio )
@@ -265,7 +265,6 @@
 
                                                             </form>
                                                             <button id="submit-all" class="btn btn-primary" style="display: none">Upload all files</button>
-
                                                         </div>
                                                     </div>
 
@@ -293,11 +292,11 @@
                                                 </div>
                                             </a>
                                             <div
-                                                class="modal fade bd-example-modal-lg"
+                                                class="modal fade"
                                                 id="albumShow-{{$portfolio->id}}"
                                                 tabindex="-1"
                                                 role="dialog">
-                                                <div class="modal-dialog modal-lg" role="document">
+                                                <div class="modal-dialog" role="document">
 
                                                     <!-- Modal content-->
                                                     <div class="modal-content">
@@ -337,7 +336,6 @@
                             <h1 class="about-head">INFO</h1>
                             <div class="f-profile-box">
                                 <div class="btn-box">
-                                    <!-- -->
                                     <div class="modal fade" id="invite" role="dialog">
                                         <div class="modal-dialog">
 
@@ -387,7 +385,8 @@
                                         href="#"
                                         class="btn-sm btn btn-join-me"
                                         data-toggle="modal"
-                                        data-target="#invite">Invite me to join</a>
+                                        data-target="#invite">Invite me to join
+                                    </a>
 
                                     <!-- <a href="#" class="btn-sm btn btn-join-me">Invite me to join</a> -->
                                     <!-- or -->
@@ -398,10 +397,9 @@
                                         <div class="p-box">
                                             <div class="ico">
                                                 <i class="fa fa-dollar" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="it">
                                                 <h6>Hourly Rate</h6>
                                             </div>
+                                            <!-- <div class="it"> </div> -->
                                             <div class="bold">
                                                 <b>{{$profileUser->rate}}
                                                     PKR</b>
@@ -412,10 +410,9 @@
                                         <div class="p-box">
                                             <div class="ico">
                                                 <i class="fa fa-star" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="it">
                                                 <h6>Rating</h6>
                                             </div>
+                                            <!-- <div class="it"> </div> -->
                                             <div class="bold">
                                                 <b>{{$profileUser->rating}}</b>
                                             </div>
@@ -425,10 +422,9 @@
                                         <div class="p-box">
                                             <div class="ico">
                                                 <i class="fa fa-trophy" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="it">
                                                 <h6>Experience</h6>
                                             </div>
+                                            <!-- <div class="it"> </div> -->
                                             <div class="bold">
                                                 <b>2 years</b>
                                             </div>
@@ -438,10 +434,9 @@
                                         <div class="p-box">
                                             <div class="ico">
                                                 <i class="fa fa-briefcase" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="it">
                                                 <h6>Jobs Worked</h6>
                                             </div>
+                                            <!-- <div class="it"> </div> -->
                                             <div class="bold">
                                                 <b>10</b>
                                             </div>
@@ -451,10 +446,9 @@
                                         <div class="p-box">
                                             <div class="ico">
                                                 <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="it">
                                                 <h6>Hours Worked</h6>
                                             </div>
+                                            <!-- <div class="it"> </div> -->
                                             <div class="bold">
                                                 <b>2,707</b>
                                             </div>
@@ -464,10 +458,9 @@
                                         <div class="p-box">
                                             <div class="ico">
                                                 <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="it">
                                                 <h6>City</h6>
                                             </div>
+                                            <!-- <div class="it"> </div> -->
                                             <div class="bold">
                                                 <b>{{ $profileUser->contactInformation->city }}</b>
                                             </div>
@@ -477,10 +470,9 @@
                                         <div class="p-box">
                                             <div class="ico">
                                                 <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="it">
                                                 <h6>Country</h6>
                                             </div>
+                                            <!-- <div class="it"> </div> -->
                                             <div class="bold">
                                                 <b>{{ $profileUser->contactInformation->country }}</b>
                                             </div>
