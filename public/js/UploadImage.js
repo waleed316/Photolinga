@@ -1,5 +1,5 @@
 Dropzone.options.myDropzone = {
-            maxFiles         :       5,
+            maxFiles         :       15,
             paramName: "fileImage",
             acceptedFiles: ".jpeg,.jpg,.png,.gif",
             autoProcessQueue: true,

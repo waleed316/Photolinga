@@ -91,16 +91,19 @@
 <script src="/js/test.js"></script>
 <script src="{{asset('js/Skill.js')}}"></script>
 <script type="text/javascript">
-//   function display()
-// {
-//     $('#chatstart').css('display','block')
-// }
-// function display(id) {
-//     var disp = ($(id).data('id'));
-//     console.log("from display function");
-//     console.log(disp);
-//     $('#' + disp).css('display', 'block')
-// }
+    function unreadnotfication($id)
+    {
+        console.log($id);
+        $.ajax({
+        type:"GET",
+        url: "/notifications",
+        data: {"id":$id},
+        success: function(data){
+         // $(this).addClass("done");
+         // alert(data);
+    }
+});
+    }
 
 var box_id = [];
 
@@ -152,6 +155,7 @@ function closewindow(id) {
     $('#' + dataid).css('display', 'none');
     console.log(box_id);
 }
+
 
 // function openChat(id,convoId)
 // {

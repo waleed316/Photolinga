@@ -13,15 +13,29 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\Event' => [
-            'App\Listeners\EventListener',
+        // 'App\Events\Event' => [
+        //     'App\Listeners\EventListener',
+        // ],
+        // 'App\Events\SendMessage' =>
+        // [
+        //     'App\Listeners\updateConversation',
+        // ],
+        // 'App\Events\Invite' => [
+        //     'App\Listeners\notificatons',
+        // ],
+        'App\Events\UserInvited' => [
+            'App\Listeners\notifyUser',
         ],
-        'App\Events\SendMessage' =>
-        [
-            'App\Listeners\updateConversation',
-        ]
+         'App\Events\Bidplaced' => [
+            'App\Listeners\bidNotify',
+        ],
+        'App\Events\JobComplete' => [
+            'App\Listeners\jobNotify',
+        ],
     ];
-
+//     protected $dispatchesEvents = [
+//     'invited' => Events\UserInvited::class
+// ];
     /**
      * Register any events for your application.
      *
@@ -29,12 +43,20 @@ class EventServiceProvider extends ServiceProvider
      */
     // public function boot(DispatcherContract $events)
     // {
-    //     // parent::boot($events);
+    //     parent::boot($events);
+        // Event::listen('App\Events\UserInvited','App\Listeners\notifyUser');
 
-    //     //
+        //
     // }
-    public function boot()
+
+     public function boot()
     {
-       
+        parent::boot();
+
+        //
     }
+    // public function boot()
+    // {
+       
+    // }
 }

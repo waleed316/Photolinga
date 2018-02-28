@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Job;
 use App\User;
 use DB;
+use App\Events\JobComplete;
 
 class RatingController extends Controller
 {
@@ -14,10 +15,12 @@ class RatingController extends Controller
     {
     	$job=Job::find($request->jobid);
     	$job->rating=$request->ratings;
-        $job->in_progress = 0;
-        $job->completed=1;
+      $job->in_progress = 0;
+      $job->completed=1;
     	$job->save();
 
+
+      event(new JobComplete($job));
     	$avgJob=DB::table('jobs')
     	->where('freelancer_id','=',$job->freelancer_id)
     	->avg('rating');
@@ -50,5 +53,13 @@ class RatingController extends Controller
              }
         }
           return response()->json($abc);
+    }
+
+    public function notified(Request $request)
+    {
+
+          $user=User::find($request->id);
+          $notify = $user->notify()->update(['unread' => false]);
+          return response()->json($notify);
     }
 }

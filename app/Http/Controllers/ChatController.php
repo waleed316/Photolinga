@@ -166,7 +166,8 @@ class ChatController extends Controller
         // dd($navList[0]);      
         foreach ( $convoList as $convo ) {
             $chatName = Chat::conversation($convo->id)->users;
-            $navList[0]['allUnread'] = $UnreadAll;  
+            $navList[0]['allUnread'] = $UnreadAll;
+            // $navList  
             
             $unread = DB::table('mc_message_notification')
                 ->where([

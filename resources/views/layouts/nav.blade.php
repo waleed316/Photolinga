@@ -68,7 +68,14 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                           aria-haspopup="true" aria-expanded="false">Notifications</a>
+                           aria-haspopup="true" aria-expanded="false" onclick="unreadnotfication({{auth()->id()}})">
+                       @if(auth()->user()->notify()->where('unread',1)->count())
+                       Notifications<span>(new)</span>
+                       @else
+                       Notification
+                       @endif
+                    </a>
+                       
                         <div class="dropdown-menu dropdown-menu-zero-padding dropdown-menu-message-padding">
 
                             <h5 class="dropdown-heading">Notifications</h5>
@@ -91,7 +98,7 @@
                                     {{--</h6>--}}
                                     {{--</a>--}}
                                     {{--</td>--}}
-                                    {{--<!-- <TD class="message-hidden"></TD><td class="message-hidden"></td>--}}
+                                    {{-- <TD class="message-hidden"></TD><td class="message-hidden"></td>--}}
                                     {{--<td class="message-time-align"><a href="#" class="message-anchor"><h6--}}
                                     {{--class="notification-time">1 Day ago</h6></a></td>--}}
                                     {{--</tr>--}}
@@ -104,13 +111,30 @@
                                     {{--notifications</a></td>--}}
                                     {{--</tr>--}}
                                     {{--</li>--}}
+                                    @if(auth()->user()->notify()->count())
+                                    @foreach(auth()->user()->notify()->orderBy('created_at','desc')->get() as $notify)
                                     <li>
                                         <tr>
-                                            <td colspan="5" class="text-center"><a href="#" class="see-message">No
+                                            <td colspan="5" class="text-center"><!-- <a href="#" class="see-message"> --><!-- No
                                                     new
-                                                    notifications</a></td>
+                                                    notifications -->
+                                                        <?php echo $notify->data
+                                                        ?>
+                                                    <!-- </a>-->
+                                                    </td>
                                         </tr>
                                     </li>
+                                    @endforeach
+                                    @else
+                                       <li>
+                                        <tr>
+                                            <td colspan="5" class="text-center"><a href="#" class="see-message">
+                                             No new notifications
+                                             </a>        
+                                            </td>
+                                        </tr>
+                                    </li>
+                                    @endif
                                 </ul>
                                 </tbody>
                             </table>

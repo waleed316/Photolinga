@@ -32,29 +32,8 @@ class AlbumController extends Controller
             'user_id'=>auth()->id(),
             'thumbnail'=>$imageNewName
         ]);
-
-        // dd($Album);
-        return redirect()->back();
-    // }
-    // else
-    // {
-    //     return redirect()->back();
-        
-    // }
-        // request()->validate( [
-        //     'title' => 'required',
-        //     'user_id' => 'required|exists:users,id'
-        // ] );
-        // Portfolio::create( [
-        //     'title' => request( 'title' ),
-        //     'user_id' => auth()->id()
-        // ] );
+        return redirect()->back();   
     }
-
-
-
-
-
 
 public function dropzoneStore(Request $request,$id)
     {
@@ -78,6 +57,13 @@ public function dropzoneStore(Request $request,$id)
     public function Remove_Image(Request $request)
     {
         // Storage::disk('public')->delete('Uploads/'.$request->name);
+        // return response()->json($request->has('name'));
+        if($request->param['name'])
+        {
+            $request->name=$request->param['name'];
+            // return response()->json($request->name);
+
+        }
         $FilePath=public_path('storage/Uploads/'.$request->name);
         $FileName=$request->name;
         $portImage=PortfolioImage::where('path',$FileName)->delete();
@@ -91,5 +77,12 @@ public function dropzoneStore(Request $request,$id)
                
                return response()->json(['status'=>'failed']);
          }
+    }
+
+    public function ShowImage(Album $album)
+    {
+            $image=$album->Images()->get();
+            // dd($abc)
+            return response()->json($image);
     }
 }

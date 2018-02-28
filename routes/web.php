@@ -57,6 +57,7 @@ Route::post('/remove/image','AlbumController@Remove_Image');
 
 
 Route::post('/album/store','AlbumController@store')->name('album.store');
+Route::get('/album/show/{album}','AlbumController@ShowImage')->name('album.show');
 
 Route::get('/search','SkillController@Search')->name('Skill.search');
 Route::get('/skill/store','SkillController@Store')->name('skill.store');
@@ -80,4 +81,8 @@ Route::get('/chatWithId','ChatController@chatWithId');
 Route::get('/markRead','ChatController@markRead');
 Route::get('/navList','ChatController@navComp');
 Route::post('/invite/{id}','JobsController@invite')->name('invite');
+Route::get('/notifications','RatingController@notified');
+
+
+// Route::get('/notify','JobsController@notified');
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Job;
 use App\Invite;
+use App\Events\UserInvited;
 
 class JobsController extends Controller
 {
@@ -68,10 +69,7 @@ class JobsController extends Controller
             'job_id'=>$request->jobid,
             'user_id'=>$id
         ]);
-        // return response()->json($invite);
+        event(new UserInvited($invite));
         return redirect()->back();
-
-        // dd($request->all());
-
     }
 }

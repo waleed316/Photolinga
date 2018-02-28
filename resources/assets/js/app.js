@@ -40,11 +40,13 @@ Vue.component('photographersearch',require('./components/PhotographerSearch.vue'
 Vue.component('autocomplete',require('./components/Autocomplete.vue'));
 Vue.component('rating',require('./components/rating.vue'));
 // Vue.component('placesearch',require('./components/GooglePlace.vue'));
+Vue.component('album-image',require('./components/AlbumImage'));
 Vue.component('locsearch',require('./components/EventLoc.vue'));
 Vue.component('compseacrh',require('./components/complete.vue'));
 Vue.component('chat',require('./components/chat.vue'));
 Vue.component('chatnav',require('./components/chatnav.vue'));
 Vue.component('navbutton',require('./components/navbutton.vue'));
+// Vue.component('notification',require('./components/notificationNav'));
 
 
 

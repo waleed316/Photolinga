@@ -9,21 +9,22 @@ use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use App\Job;
 
-class SendMessage
+class JobComplete
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-    public $chat;
 
+    public $job;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($chat)
+    public function __construct(Job $job)
     {
         //
-        $this.chat=$chat;
+        $this->job=$job;
     }
 
     /**

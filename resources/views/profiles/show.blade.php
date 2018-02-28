@@ -94,16 +94,47 @@
 											<div class="review-box">
 												<div class="r-name">
 													<h6 class="r-company-name">{{ $job->title }}</h6>
-													<h6 class="r-progress">Job in progress</h6>
+													@if($job->completed)
+													<h6 class="r-progress">
+														
+														Complete
+														 
+													</h6>
 												</div>
 												<div class="r-history">
-													<h6 class="r-date">27 July 2014 - Present</h6>
+													<h6 class="r-date">{{ date('d F, Y', strtotime($job->created_at)) }}  - {{ date('d F, Y', strtotime($job->updated_at)) }}</h6>
+													<h6 class="r-date">
+														<star-rating 
+									                    v-bind:increment="0.5" 
+									                    v-bind:read-only="true"
+									                    :rating="'{!! json_encode($job->rating) !!}'"  
+									             v-bind:max-rating="5" 
+									             v-bind:round-start-rating="false"
+									             v-bind:show-rating="false"
+									             inactive-color="#b296c5" 
+									             active-color="#290740" 
+									             v-bind:star-size="13">
+	      										  </star-rating>
+													</h6>
 													{{--
 													<h6 class="r-date">3 hours @
 														<b>$350</b>
 													</h6>--}}
 													<h6 class="r-date">Earned $125</h6>
+													
 												</div>
+												@else
+												<h6 class="r-progress">
+														
+														In progess
+														 
+													</h6>
+												</div>
+												<div class="r-history">
+													<h6 class="r-date">{{ date('d F, Y', strtotime($job->created_at)) }}  - present</h6>
+													
+												</div>
+												@endif
 											</div>
 										</li>
 										@endforeach
@@ -189,8 +220,8 @@
 														<h4 class="modal-title">Upload Images</h4>
 													</div>
 													<div class="modal-body">
-														<div id="err"></div>
-														<form action="{{route('dropzone.store',['id'=>$portfolio->id])}}" class="dropzone" id="my-dropzone">
+														<album-image :albumid='{{$portfolio->id}}'></album-image>
+															<form action="{{route('dropzone.store',['id'=>$portfolio->id])}}" class="dropzone" id="my-dropzone">
 															{{csrf_field()}}
 														
 														</form>
@@ -217,7 +248,7 @@
 											
 											<div class="portfoli-box">
 												<div class="p-image">
-													<img style="height:120px!important" src="{{asset('storage/Uploads/'.$portfolio->thumbnail)}}" class="img-fluid" alt="">
+													<img style="height:120px!important" src="{{url('storage/Uploads/'.$portfolio->thumbnail)}}" class="img-fluid" alt="">
 													<div class="p-text">
 														<h6>{{ $portfolio->title }}</h6>
 													</div>
@@ -234,6 +265,7 @@
 														<button type="button" class="close" data-dismiss="modal">&times;</button>
 													</div>
 													<div class="modal-body">
+
 														<div id="err"></div>
 														@foreach($portfolio->images as $abc)
 														
@@ -274,12 +306,12 @@
 														<button type="button" class="close" data-dismiss="modal">&times;</button>
 													</div>
 													@auth
-															@if(count(auth()->user()->createdJobs))
+															@if(count(auth()->user()->createdJobs->where('completed',0)->where('in_progress',0)))
 													
 																<div class="modal-body invite-bg m-0">
 															
-															
-																@foreach(auth()->user()->createdJobs as $job)
+														
+					@foreach(auth()->user()->createdJobs->where('completed',0)->where('in_progress',0) as $job)
 														<!-- <img src="{{URL::asset('/images/alert.png')}}" alt=""> -->
 														<div class="invite-alert">
 											  						<h6>
@@ -346,7 +378,17 @@
 												<h6>Rating</h6>
 											</div>
 											<div class="bold">
-												<b>{{$profileUser->rating}}</b>
+												<b><star-rating 
+									                    v-bind:increment="0.5" 
+									                    v-bind:read-only="true"
+									                    :rating="'{!! json_encode($profileUser->rating) !!}'"  
+									             v-bind:max-rating="5" 
+									             v-bind:round-start-rating="false"
+									             v-bind:show-rating="false"
+									             inactive-color="#b296c5" 
+									             active-color="#290740" 
+									             v-bind:star-size="13">
+	      										  </star-rating></b>
 											</div>
 										</div>
 									</li>

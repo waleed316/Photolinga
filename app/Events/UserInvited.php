@@ -9,19 +9,22 @@ use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use App\Invite;
 
-class Event
+class UserInvited
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public $details;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Invite $details)
     {
         //
+        $this->details=$details;
     }
 
     /**

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddPhoneNoColumnInUsersTable extends Migration
+class AddUnreadColumnInNotificationTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class AddPhoneNoColumnInUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('notifications', function (Blueprint $table) {
             //
-            $table->string('phoneNo')->unique();
+            $table->boolean('unread')->default(true);
         });
     }
 
@@ -26,10 +26,9 @@ class AddPhoneNoColumnInUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('notifications', function (Blueprint $table) {
             //
-             $table->dropColumn('phoneNo');
-
+            $table->dropColumn('unread');
         });
     }
 }

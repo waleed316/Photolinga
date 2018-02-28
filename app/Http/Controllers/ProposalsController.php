@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Job;
 use App\Proposal;
+use App\Events\Bidplaced;
 
 class ProposalsController extends Controller
 {
@@ -21,12 +22,12 @@ class ProposalsController extends Controller
             'amount' => 'required|numeric'
         ]);
 
-        $job->addProposal([
+        $Proposal=$job->addProposal([
             'body' => request('body'),
             'amount' => request('amount'),
             'user_id' => auth()->id(),
         ]);
-
+        event(new Bidplaced($Proposal));
         return redirect($job->path());
     }
 
