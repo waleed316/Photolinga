@@ -1,4 +1,4 @@
-<template>
+<template v-cloak>
 <div>
 <div v-for="(Images, index) in AlbumImage" class="upload-box">
 <a id="dd" href="#" data-toggle="tooltip" data-placement="top" title="Delete">

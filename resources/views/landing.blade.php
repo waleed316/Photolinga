@@ -41,7 +41,7 @@
                                     <span class="input-group-btn">
                                         <button class="btn btn-secondary btn-search" type="submit">Search</button> -->
                                           <div class="form-group row">
-                                            <select class="form-control col-8" name="location">
+                                            <select class="form-control col-10  " name="location">
                                               <option>Faisalabad</option>
                                               <option>Islamabad</option>
                                               <option>Karachi</option>

@@ -104,6 +104,18 @@
     }
 });
     }
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#display_thumbnail')
+                .attr('src', e.target.result);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
 
 var box_id = [];
 
@@ -176,6 +188,10 @@ function closewindow(id) {
 //         $('#' + disp).css({ 'display': 'block', 'right': '360px' });
 //     }
 // }
+
+$(document).ready(function(){
+    $('#dd').tooltip('show');
+})
 </script>
 </body>
 </html>

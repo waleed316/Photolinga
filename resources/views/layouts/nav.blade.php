@@ -3,7 +3,7 @@
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
             aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon navbar-text-color"></span>
+        <span class="fa fa-bars navbar-text-color"></span>
     </button>
     <a class="navbar-brand" href="/">
         <img src="{{ asset('images/logoblack.png') }}" alt="Photolinga"
@@ -12,7 +12,7 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
+        <!-- <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
             <form class="form-inline">
                 <div class="input-group form-search">
                     <input type="text" class="form-control navbar-search" placeholder="Find Services">
@@ -21,13 +21,13 @@
                     </span>
                 </div>
             </form>
-        </div>
+        </div> -->
 
-        <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
             <ul class="navbar-nav mr-auto navbar-text-color justify-content-end">
 
 <li class="nav-item">
-                        <a class="nav-link btn btn-danger" style="color:white !important" href="{{ route('jobs.create') }}">Post a job<span
+                        <a class="nav-link btn btn-post-job btn-sm" style="color:white !important" href="{{ route('jobs.create') }}">Post a job<span
                                     class="sr-only">(current)</span></a>
                     </li>
                 <li class="nav-item">
@@ -70,12 +70,11 @@
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
                            aria-haspopup="true" aria-expanded="false" onclick="unreadnotfication({{auth()->id()}})">
                        @if(auth()->user()->notify()->where('unread',1)->count())
-                       Notifications<span>(new)</span>
+                       Notifications<span class="badge badge-default notification-badge">New</span>
                        @else
                        Notification
                        @endif
                     </a>
-                       
                         <div class="dropdown-menu dropdown-menu-zero-padding dropdown-menu-message-padding">
 
                             <h5 class="dropdown-heading">Notifications</h5>
