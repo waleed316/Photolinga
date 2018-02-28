@@ -91,6 +91,10 @@
   margin-top: 5px;
 }
 
+.notification-badge {
+  background-color: #f74545;
+}
+
 .job-completed,
 .job-complete {
   position: absolute;
