@@ -5,16 +5,32 @@
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Message<span class="badge badge-mess">{{unread}}</span></a>
     <div class="dropdown-menu dropdown-menu-zero-padding dropdown-menu-message-padding" >
         <h5 class="dropdown-heading">Messages</h5>
-    
+     <table class="table table-responsive table-hover" style="padding:5px 20px 0 20px;margin-bottom:0" >
+                            <tbody>
                 <ul class="message-list">
                     <li v-for="list in navList">
+                    <tr>
+                                            <td class="img-top-padding"><a href="#" class="message-anchor">
+
+                                            <img :src="list.avatar" alt="" class="message-profile" v-if="list.avatar">
+
+                                            <img src="images/person-2.jpg" alt="" class="message-profile" v-else></a></td>
+                                            <td>
                         <a href="#" v-on:click="display(list.id)" :data-id=list.id class="message-anchor">
-
-
-                            <h6 class="message-head">{{list.name}}<span class="badge badge-message">{{list.unread}}</span></h6>
-                            
-                        </a>    
+                                                
+                                                    <h6 class="message-head">{{list.name}}<span class="badge badge-message">{{list.unread}}</span></h6>
+                                                    <h6 class="message-last-seen">Last Message</h6>
+                                                </a>    
+                                            </td>
+                                            <TD class="message-hidden"></TD><td class="message-hidden"></td>
+                                            <td class="message-time-align"><a href="#" class="message-anchor"><h6 class="message-time">{{list.time}}</h6></a></td>
+                                            </tr>
+                           
                     </li>
+
+  <li>
+                                       
+
                         <li v-if="navList.length == 0">
                           <a href="#" class="message-anchor">
                                                  No new message
@@ -22,6 +38,8 @@
                         </li>                    
                     
                 </ul>
+                 </tbody>
+                        </table>
          
     </div>
   </li>

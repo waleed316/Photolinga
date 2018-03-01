@@ -9,6 +9,7 @@ use App\User;
 // use App\Chat;
 use Chat;
 use Auth;
+use Carbon\Carbon;
 
 // use Illuminate\Support\Facades\Input;
 
@@ -160,15 +161,30 @@ class ChatController extends Controller
         $convoList = Chat::commonConversations([ auth()->id() ]);
         $i = 0;
         // dd($convoList);
-        
+
         $authUser = User::find(auth()->id());
+     // $messages = Chat::conversations()->for($authUser)->limit(25)->page(1)->get();
+        // dd($messages);
+
         $UnreadAll = Chat::for ($authUser)->unreadCount();
-        // dd($navList[0]);      
+        // dd($navList[0]); 
+
         foreach ( $convoList as $convo ) {
+       $Conversa = Chat::conversation($convo->id);
+
             $chatName = Chat::conversation($convo->id)->users;
-            $navList[0]['allUnread'] = $UnreadAll;
+            // $unreadCount = Chat::for($authUser)->unreadCount();
+            // $navList[0]['allUnread'] = $UnreadAll;
+            // dd($navList[0]['allUnread']);
             // $navList  
-            
+        $messages = Chat::conversations($Conversa)->for($authUser)->getMessages(100, 1);
+
+            foreach ( $messages as $message ) {
+                $navList[$i]['message'] = $message->body;
+                $navList[$i]['time'] = $message->created_at;
+                $navList[$i]['messageId'] = $message->id;
+            }
+            // dd($xyz);
             $unread = DB::table('mc_message_notification')
                 ->where([
                     [ 'conversation_id', $convo->id ],
@@ -178,18 +194,37 @@ class ChatController extends Controller
                 ])
                 ->count();
             $navList[$i]['unread'] = $unread;
-            // dd($chatName);
+            $navList[$i]['allUnread'] = $UnreadAll;
+            
+
+
             foreach ( $chatName as $Uname ) {
                 $abc = DB::table('proposals')->select('id')->where('conversation_id', $convo->id)->get();
                 if ( $Uname->name != Auth::user()->name ) {
                     $navList[$i]['name'] = $Uname->name;
                     $navList[$i]['id'] = $abc[0]->id;
+                    $navList[$i]['avatar'] = $Uname->avatar_path;
                     $i++;
                 }
                 // dd($i);
             }
             
         }
+
+        foreach ($navList as $key => $value) {
+            $time[$key] = $value['time'];
+        }
+        // dd($time);
+        array_multisort($time,SORT_DESC,$navList);
+        // dd($navList);
+        $now=Carbon::now();
+        $i=0;
+        foreach ($navList as $nav) {
+            $navList[$i]['time']=$nav['time']->diffForHumans($now);
+            $i++;
+            # code...
+        }
+        // dd($abcd);
         return response()->json($navList);
     }
 

@@ -56810,6 +56810,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['id'],
@@ -56936,49 +56954,122 @@ var render = function() {
           _c("h5", { staticClass: "dropdown-heading" }, [_vm._v("Messages")]),
           _vm._v(" "),
           _c(
-            "ul",
-            { staticClass: "message-list" },
+            "table",
+            {
+              staticClass: "table table-responsive table-hover",
+              staticStyle: { padding: "5px 20px 0 20px", "margin-bottom": "0" }
+            },
             [
-              _vm._l(_vm.navList, function(list) {
-                return _c("li", [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "message-anchor",
-                      attrs: { href: "#", "data-id": list.id },
-                      on: {
-                        click: function($event) {
-                          _vm.display(list.id)
-                        }
-                      }
-                    },
-                    [
-                      _c("h6", { staticClass: "message-head" }, [
-                        _vm._v(_vm._s(list.name)),
-                        _c("span", { staticClass: "badge badge-message" }, [
-                          _vm._v(_vm._s(list.unread))
-                        ])
-                      ])
-                    ]
-                  )
-                ])
-              }),
-              _vm._v(" "),
-              _vm.navList.length == 0
-                ? _c("li", [
-                    _c(
-                      "a",
-                      { staticClass: "message-anchor", attrs: { href: "#" } },
-                      [
-                        _vm._v(
-                          "\r\n                                                 No new message\r\n                                             "
+              _c("tbody", [
+                _c(
+                  "ul",
+                  { staticClass: "message-list" },
+                  [
+                    _vm._l(_vm.navList, function(list) {
+                      return _c("li", [
+                        _c(
+                          "tr",
+                          [
+                            _c("td", { staticClass: "img-top-padding" }, [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "message-anchor",
+                                  attrs: { href: "#" }
+                                },
+                                [
+                                  list.avatar
+                                    ? _c("img", {
+                                        staticClass: "message-profile",
+                                        attrs: { src: list.avatar, alt: "" }
+                                      })
+                                    : _c("img", {
+                                        staticClass: "message-profile",
+                                        attrs: {
+                                          src: "images/person-2.jpg",
+                                          alt: ""
+                                        }
+                                      })
+                                ]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "message-anchor",
+                                  attrs: { href: "#", "data-id": list.id },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.display(list.id)
+                                    }
+                                  }
+                                },
+                                [
+                                  _c("h6", { staticClass: "message-head" }, [
+                                    _vm._v(_vm._s(list.name)),
+                                    _c(
+                                      "span",
+                                      { staticClass: "badge badge-message" },
+                                      [_vm._v(_vm._s(list.unread))]
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "h6",
+                                    { staticClass: "message-last-seen" },
+                                    [_vm._v("Last Message")]
+                                  )
+                                ]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("TD", { staticClass: "message-hidden" }),
+                            _c("td", { staticClass: "message-hidden" }),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "message-time-align" }, [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "message-anchor",
+                                  attrs: { href: "#" }
+                                },
+                                [
+                                  _c("h6", { staticClass: "message-time" }, [
+                                    _vm._v(_vm._s(list.time))
+                                  ])
+                                ]
+                              )
+                            ])
+                          ],
+                          1
                         )
-                      ]
-                    )
-                  ])
-                : _vm._e()
-            ],
-            2
+                      ])
+                    }),
+                    _vm._v(" "),
+                    _c("li"),
+                    _vm.navList.length == 0
+                      ? _c("li", [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "message-anchor",
+                              attrs: { href: "#" }
+                            },
+                            [
+                              _vm._v(
+                                "\r\n                                                 No new message\r\n                                             "
+                              )
+                            ]
+                          )
+                        ])
+                      : _vm._e()
+                  ],
+                  2
+                )
+              ])
+            ]
           )
         ]
       )
