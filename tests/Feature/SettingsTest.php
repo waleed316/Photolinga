@@ -46,15 +46,18 @@ class SettingsTest extends TestCase
 
         $updatedName = "John Doe";
         $updatedEmail = "john@example.com";
+        $rate=2.3;
         $skype = "johnSkype";
         $contactNumber = "+923332015123";
         $address = "Some Address";
         $city = "Some City";
         $country = "Some Country";
 
+
         $this->patch('/settings/account', [
             'name' => $updatedName,
             'email' => $updatedEmail,
+            'rate' => $rate,
             'skype' => $skype,
             'contact_number' => $contactNumber,
             'address' => $address,
@@ -62,7 +65,7 @@ class SettingsTest extends TestCase
             'country' => $country
         ]);
 
-        $this->assertDatabaseHas('users', [ 'name' => $updatedName, 'email' => $updatedEmail ]);
+        $this->assertDatabaseHas('users', [ 'name' => $updatedName, 'email' => $updatedEmail,'rate' => $rate ]);
         $this->assertDatabaseHas('contact_informations',
             [
                 'skype' => $skype,

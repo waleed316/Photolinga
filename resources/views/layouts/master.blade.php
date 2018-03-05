@@ -50,6 +50,7 @@
 
     <flash message="{{ session('flash') }}"></flash>
 
+    <!-- <errors :errors="{{ $errors }}"></errors> -->
     <errors :errors="{{ $errors }}"></errors>
 
 </div>

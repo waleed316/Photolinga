@@ -6,6 +6,7 @@ use App\Events\JobComplete;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use App\Notification;
+use App\Mail\JobRated;
 
 class jobNotify
 {
@@ -41,6 +42,9 @@ class jobNotify
                                             'notifiable_id' => $freelancer,
                                             'type'=>'JobComplete'
                                             ]);
+         $user='App\User'::find($freelancer);
+         \Mail::to($user->email)->send(new JobRated($event->job));
+
        
     }
 }

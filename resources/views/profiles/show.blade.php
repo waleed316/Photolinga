@@ -539,7 +539,7 @@
                                             class="twitter-share-button"
                                             href="https://twitter.com/share"
                                             data-text="Write Something.."
-                                            data-url="https:photolinga.com/profiles/{{$profileUser->id}}"
+                                            data-url="https://photolinga.com/profiles/{{$profileUser->id}}"
                                             data-hashtags="photolinga"
                                             data-via="Photolinga"
                                             data-related="photolinga">
@@ -555,6 +555,5 @@
             </div>
         </div>
     </section>
->>>>>>> origin/cssfix2
 </profile-view>
 @endsection

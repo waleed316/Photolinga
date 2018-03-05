@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Proposal;
 use Illuminate\Http\Request;
 use App\Notification;
+use App\Mail\Hired;
+
 
 class AwardProposalsController extends Controller
 {
@@ -22,7 +24,8 @@ class AwardProposalsController extends Controller
                                             'notifiable_id' => $freelancer,
                                             'type'=>'Hire'
                                             ]);
-        
+         $user='App\User'::find($freelancer);
+         \Mail::to($user->email)->send(new Hired($proposal->job));        
         return redirect( $proposal->job->path() );
     }
 }

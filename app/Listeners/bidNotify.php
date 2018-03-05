@@ -6,6 +6,9 @@ use App\Events\Bidplaced;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use App\Notification;
+use App\Mail\Bid;
+
+// use App\User;
 
 class bidNotify
 {
@@ -38,10 +41,12 @@ class bidNotify
          $notification=Notification::create([
                                             // 'id'=>1,
                                             'notifiable_type' => 'Bid',
-                                            'data'=>"<a class='see-message' href='/proposals/$proposalid'>New bid on you job  '$jobname' </a>",
+                                            'data'=>"<a class='see-message' href='/proposals/$proposalid'>New bid on your job  '$jobname' </a>",
                                             'notifiable_id' => $contractor,
                                             'type'=>'bid'
                                             ]);
+         $user='App\User'::find($contractor);
+         \Mail::to($user->email)->send(new Bid($event->bid));
         
     }
 }

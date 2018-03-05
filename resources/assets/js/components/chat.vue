@@ -65,9 +65,6 @@ View chat
     mounted() 
     {
         axios.get('/chatWithId', { params: { id: this.id } }).then(response => {
-           //     console.log("From chatvue");            
-           // console.log(response.data);
-           console.log('From '+this.id+response.data);
           this.chating = [];
           this.chating = response.data;
         });
@@ -77,7 +74,6 @@ View chat
       markRead() {
         axios.get('/markRead', { params: { id: this.id } }).then(response => {
           console.log('From Mark read');
-          // console.log(response.data);
         });
       },
       sendMsg() {
@@ -95,9 +91,7 @@ View chat
             {
                 this.chating[0]['message']=this.message;
                 this.chating[0]['class']='user2';
-                this.chating[0]['id']='user';
-                console.log('From new Chat');
-                console.log(this.chating);                
+                this.chating[0]['id']='user';             
           //      Event.$emit('click');
             }
              this.message = '';

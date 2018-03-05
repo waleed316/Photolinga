@@ -49,7 +49,6 @@
                 axios
                     .get('/skillList')
                     .then(response => {
-                        console.log(response.data);
                         this.skillList = response.data;
                     });
             },
