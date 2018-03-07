@@ -24,13 +24,15 @@
                                                 class="rounded-circle img-fluid"
                                                 alt="">
                                             <div class="blur-bg"></div>
-                                            <a href="#" class="change-dp-btn">
-                                                <form action="">
+                                            <a href="javascript: submitform()" class="change-dp-btn">
+                                                <form action="{{route('avatar',['user'=>$profileUser->id])}}" method="GET" id="profilePic">
+                                                    
                                                     <input
                                                         type="file"
                                                         class="form-control-file upload-dp"
                                                         id="exampleInputFile"
                                                         aria-describedby="fileHelp">
+                                                    }
                                                 </form>
                                                 <i class="fa fa-edit"></i>
                                             </a>
@@ -416,14 +418,14 @@
 
                                         </div>
                                     </div>
-
+                                    @cannot('update',$profileUser)
                                     <a
                                         href="#"
                                         class="btn-sm btn btn-join-me"
                                         data-toggle="modal"
                                         data-target="#invite">Invite me to join
                                     </a>
-
+                                    @endcannot
                                     <!-- <a href="#" class="btn-sm btn btn-join-me">Invite me to join</a> -->
                                     <!-- or -->
                                     <!-- <a href="#" class="contact-me">Contact me</a> -->

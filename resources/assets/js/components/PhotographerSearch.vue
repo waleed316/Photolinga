@@ -48,6 +48,7 @@
   this.photographerList=[];
    axios.get('/browsePhotographer',{params: {city: this.city,country: this.country,keyword:this.keyword,rating:this.rating}}).then(response => 
    {
+   console.log(response.data);
        this.loading=false;
         this.photographerList=response.data;
    });

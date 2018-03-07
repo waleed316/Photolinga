@@ -208,14 +208,17 @@ class ChatController extends Controller
         foreach ($navList as $key => $value) {
             $time[$key] = $value['time'];
         }
-        array_multisort($time,SORT_DESC,$navList);
-        $now=Carbon::now();
-        $i=0;
-        foreach ($navList as $nav) {
-            $navList[$i]['time']=$nav['time']->diffForHumans();
-            $i++;
-            # code...
-        }
+        if(count($navList))
+        {    
+                array_multisort($time,SORT_DESC,$navList);
+                $now=Carbon::now();
+                $i=0;
+                foreach ($navList as $nav) {
+                    $navList[$i]['time']=$nav['time']->diffForHumans();
+                    $i++;
+                    # code...
+                }
+            }
         return response()->json($navList);
     }
 

@@ -53786,32 +53786,47 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       _this.chating = [];
       _this.chating = response.data;
     });
+
+    // if(this.chating.length > 0)
+    //  {
+    //  setInterval(this.realTimeChat, 15000); 
+
+    //}
   },
 
   methods: {
+    realTimeChat: function realTimeChat() {
+      var _this2 = this;
+
+      axios.get('/chatWithId', { params: { id: this.id } }).then(function (response) {
+        _this2.chating = [];
+        _this2.chating = response.data;
+      });
+    },
     markRead: function markRead() {
       axios.get('/markRead', { params: { id: this.id } }).then(function (response) {
         console.log('From Mark read');
       });
     },
     sendMsg: function sendMsg() {
-      var _this2 = this;
+      var _this3 = this;
 
       this.message = this.message.trim();
       if (this.message.length > 0) {
         document.getElementById('snd-' + this.id).disabled = true;
 
         axios.post('/chat', { params: { message: this.message, id: this.id } }).then(function (response) {
-          document.getElementById('snd-' + _this2.id).disabled = false;
-          if (_this2.chating[0].hasOwnProperty('id')) {
-            _this2.chating.push({ message: _this2.message, class: 'user2', id: 'user' });
+          document.getElementById('snd-' + _this3.id).disabled = false;
+          if (_this3.chating[0].hasOwnProperty('id')) {
+            _this3.chating.push({ message: _this3.message, class: 'user2', id: 'user' });
           } else {
-            _this2.chating[0]['message'] = _this2.message;
-            _this2.chating[0]['class'] = 'user2';
-            _this2.chating[0]['id'] = 'user';
+            _this3.chating[0]['message'] = _this3.message;
+            _this3.chating[0]['class'] = 'user2';
+            _this3.chating[0]['id'] = 'user';
             //      Event.$emit('click');
           }
-          _this2.message = '';
+          _this3.message = '';
+          setInterval(_this3.realTimeChat, 15000);
         });
       }
     }
@@ -54583,6 +54598,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.loading = true;
       this.photographerList = [];
       axios.get('/browsePhotographer', { params: { city: this.city, country: this.country, keyword: this.keyword, rating: this.rating } }).then(function (response) {
+        console.log(response.data);
         _this3.loading = false;
         _this3.photographerList = response.data;
       });

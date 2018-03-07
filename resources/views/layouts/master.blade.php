@@ -92,6 +92,12 @@
 <script src="/js/test.js"></script>
 <script src="{{asset('js/Skill.js')}}"></script>
 <script type="text/javascript">
+
+    function submitform()
+    {
+        document.forms['profilePic'].submit();
+        alert('form submitted');
+    }
     function unreadnotfication($id)
     {
         console.log($id);

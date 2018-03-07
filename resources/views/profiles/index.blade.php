@@ -23,7 +23,7 @@
                                         name="country"
                                         id="country"
                                         v-model="country">
-                                        <option value="">Pakistan</option>
+                                        <option>Pakistan</option>
                                     </select>
                                     <!-- <i class="fa fa-search cat-search" v-on:click="Photographer"></i> -->
                                 </div>
@@ -54,7 +54,7 @@
                                 <h1 class="cat-heading">Feedback Rating</h1>
                                 <div class="form-group">
                                     <select class="form-control form-control-sm" id="feedback" v-model="rating">
-                                        <option selected="selected" value="">1</option>
+                                        <option selected="selected">1</option>
                                         <option>2</option>
                                         <option>3</option>
                                         <option>4</option>
@@ -98,7 +98,7 @@
 
                             </div>
                             <div class="search-button">
-                                <button class="btn btn-md">Search</button>
+                                <button class="btn btn-md" v-on:click="Photographer">Search</button>
                             </div>
                         </div>
 

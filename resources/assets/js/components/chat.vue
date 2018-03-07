@@ -68,9 +68,21 @@ View chat
           this.chating = [];
           this.chating = response.data;
         });
+
+      // if(this.chating.length > 0)
+      //  {
+      //  setInterval(this.realTimeChat, 15000); 
+
+        //}
       
     },
     methods: {
+      realTimeChat(){
+         axios.get('/chatWithId',{params: {id:this.id}}).then(response => {
+      this.chating=[];
+      this.chating = response.data;
+     });
+      },
       markRead() {
         axios.get('/markRead', { params: { id: this.id } }).then(response => {
           console.log('From Mark read');
@@ -95,6 +107,8 @@ View chat
           //      Event.$emit('click');
             }
              this.message = '';
+        setInterval(this.realTimeChat, 15000); 
+
 
           });
         }
