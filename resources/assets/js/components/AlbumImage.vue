@@ -19,8 +19,6 @@
   mounted(){
    axios.get('/album/show/'+this.albumid).then(
     response => {
-    console.log('from album response');
-    console.log(response.data);
     this.AlbumImage=response.data;
     });
  },

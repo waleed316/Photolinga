@@ -47,7 +47,6 @@
     },
     mounted(){
     axios.get('/chatWithId',{params: {id:this.id}}).then(response => {
-    // console.log(response.data);
       this.chating=[];
       this.chating = response.data;
       setInterval(this.realTime, 15000); 
@@ -58,7 +57,6 @@
     methods: {
     realTime(){
     axios.get('/chatWithId',{params: {id:this.id}}).then(response => {
-    //console.log(response.data);
       this.chating=[];
       this.chating = response.data;
      });
@@ -66,7 +64,6 @@
     },
     markRead(){
     axios.get('/markRead',{params: {id:this.id}}).then(response => {
-    console.log("From Mark read");
     // console.log(response.data);
     });
     },
@@ -77,7 +74,6 @@
        document.getElementById('snd-'+this.id).disabled=true;
       axios.post('/chat',{params: {message: this.message,id:this.id}}).then(response=>{
       this.markRead();
-      // console.log(response.data);
       this.chating.push({message:this.message,class:'user2',id:'user'});      
       this.message='';
        document.getElementById('snd-'+this.id).disabled=false;

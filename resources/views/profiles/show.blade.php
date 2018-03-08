@@ -431,14 +431,14 @@
 
                                         </div>
                                     </div>
-
+                                    @cannot('update',$profileUser)
                                     <a
                                         href="#"
                                         class="btn-sm btn btn-join-me"
                                         data-toggle="modal"
                                         data-target="#invite">Invite me to join
                                     </a>
-
+                                    @endcannot
                                     <!-- <a href="#" class="btn-sm btn btn-join-me">Invite me to join</a> -->
                                     <!-- or -->
                                     <!-- <a href="#" class="contact-me">Contact me</a> -->
@@ -556,7 +556,7 @@
                                             class="twitter-share-button"
                                             href="https://twitter.com/share"
                                             data-text="Write Something.."
-                                            data-url="https:photolinga.com/profiles/{{$profileUser->id}}"
+                                            data-url="https://photolinga.com/profiles/{{$profileUser->id}}"
                                             data-hashtags="photolinga"
                                             data-via="Photolinga"
                                             data-related="photolinga">
@@ -572,6 +572,5 @@
             </div>
         </div>
     </section>
->>>>>>> origin/cssfix2
 </profile-view>
 @endsection

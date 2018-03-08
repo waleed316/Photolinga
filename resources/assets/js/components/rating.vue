@@ -66,8 +66,6 @@ mounted(){
   axios.get('/jobcomplete',{params: {jobid: this.jobid}}).then(
     response =>
     {
-  //  console.log(this.jobid);
-  //  console.log(response.data[0].freelancerStatus);
    if(response.data[0].freelancerStatus == 'false')
     {
         this.freelancer=false;

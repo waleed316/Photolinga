@@ -53783,41 +53783,50 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     var _this = this;
 
     axios.get('/chatWithId', { params: { id: this.id } }).then(function (response) {
-      //     console.log("From chatvue");            
-      // console.log(response.data);
-      console.log('From ' + _this.id + response.data);
       _this.chating = [];
       _this.chating = response.data;
     });
+
+    // if(this.chating.length > 0)
+    //  {
+    //  setInterval(this.realTimeChat, 15000); 
+
+    //}
   },
 
   methods: {
+    realTimeChat: function realTimeChat() {
+      var _this2 = this;
+
+      axios.get('/chatWithId', { params: { id: this.id } }).then(function (response) {
+        _this2.chating = [];
+        _this2.chating = response.data;
+      });
+    },
     markRead: function markRead() {
       axios.get('/markRead', { params: { id: this.id } }).then(function (response) {
         console.log('From Mark read');
-        // console.log(response.data);
       });
     },
     sendMsg: function sendMsg() {
-      var _this2 = this;
+      var _this3 = this;
 
       this.message = this.message.trim();
       if (this.message.length > 0) {
         document.getElementById('snd-' + this.id).disabled = true;
 
         axios.post('/chat', { params: { message: this.message, id: this.id } }).then(function (response) {
-          document.getElementById('snd-' + _this2.id).disabled = false;
-          if (_this2.chating[0].hasOwnProperty('id')) {
-            _this2.chating.push({ message: _this2.message, class: 'user2', id: 'user' });
+          document.getElementById('snd-' + _this3.id).disabled = false;
+          if (_this3.chating[0].hasOwnProperty('id')) {
+            _this3.chating.push({ message: _this3.message, class: 'user2', id: 'user' });
           } else {
-            _this2.chating[0]['message'] = _this2.message;
-            _this2.chating[0]['class'] = 'user2';
-            _this2.chating[0]['id'] = 'user';
-            console.log('From new Chat');
-            console.log(_this2.chating);
+            _this3.chating[0]['message'] = _this3.message;
+            _this3.chating[0]['class'] = 'user2';
+            _this3.chating[0]['id'] = 'user';
             //      Event.$emit('click');
           }
-          _this2.message = '';
+          _this3.message = '';
+          setInterval(_this3.realTimeChat, 15000);
         });
       }
     }
@@ -54589,6 +54598,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.loading = true;
       this.photographerList = [];
       axios.get('/browsePhotographer', { params: { city: this.city, country: this.country, keyword: this.keyword, rating: this.rating } }).then(function (response) {
+        console.log(response.data);
         _this3.loading = false;
         _this3.photographerList = response.data;
       });
@@ -54704,7 +54714,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var _this = this;
 
         axios.get('/skillList').then(function (response) {
-            console.log(response.data);
             _this.skillList = response.data;
         });
     },
@@ -54990,8 +54999,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     var _this = this;
 
     axios.get('/jobcomplete', { params: { jobid: this.jobid } }).then(function (response) {
-      //  console.log(this.jobid);
-      //  console.log(response.data[0].freelancerStatus);
       if (response.data[0].freelancerStatus == 'false') {
         _this.freelancer = false;
       } else {
@@ -55276,8 +55283,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     var _this = this;
 
     axios.get('/album/show/' + this.albumid).then(function (response) {
-      console.log('from album response');
-      console.log(response.data);
       _this.AlbumImage = response.data;
     });
   },
@@ -56555,7 +56560,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     var _this = this;
 
     axios.get('/chatWithId', { params: { id: this.id } }).then(function (response) {
-      // console.log(response.data);
       _this.chating = [];
       _this.chating = response.data;
       setInterval(_this.realTime, 15000);
@@ -56567,14 +56571,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var _this2 = this;
 
       axios.get('/chatWithId', { params: { id: this.id } }).then(function (response) {
-        //console.log(response.data);
         _this2.chating = [];
         _this2.chating = response.data;
       });
     },
     markRead: function markRead() {
       axios.get('/markRead', { params: { id: this.id } }).then(function (response) {
-        console.log("From Mark read");
         // console.log(response.data);
       });
     },
@@ -56586,7 +56588,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         document.getElementById('snd-' + this.id).disabled = true;
         axios.post('/chat', { params: { message: this.message, id: this.id } }).then(function (response) {
           _this3.markRead();
-          // console.log(response.data);
           _this3.chating.push({ message: _this3.message, class: 'user2', id: 'user' });
           _this3.message = '';
           document.getElementById('snd-' + _this3.id).disabled = false;
@@ -56840,13 +56841,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             chats: []
         };
     },
-
-    // created(){
-    //     Event.$on('click',() => 
-    //     this.userList()
-    //    );
-    //  },
-
     mounted: function mounted() {
         this.userList();
     },
@@ -56860,7 +56854,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this.navList = response.data;
                     _this.chats = response.data;
                     _this.unread = _this.navList[0].allUnread;
-                    console.log(_this.navList);
                 }
             });
         },
@@ -56892,22 +56885,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             console.log(disp);
             axios.get('/markRead', { params: { id: disp } }).then(function (response) {
-                console.log("From Mark read");
-                console.log(response.data);
+                // console.log("From Mark read");
+                // console.log(response.data);
             });
         },
-        markRead: function markRead() {
-            console.log("Mark convo read");
-        },
+
+
+        // markRead(){
+        //     console.log("Mark convo read");
+        // },
         sendMsg: function sendMsg() {
             var _this2 = this;
 
             axios.post('/chat', { params: { message: this.message, id: this.id } }).then(function (response) {
-                console.log(response.data);
+                //  console.log(response.data);
                 _this2.chating.push({ message: _this2.message, class: 'user2', id: 'user' });
-                //  event(new SendMessage(this.response.data));
                 _this2.message = '';
-                //  document.getElementById("msg").innerHTML = response.data.params.message;
             });
         }
     }

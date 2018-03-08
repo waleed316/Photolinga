@@ -6,6 +6,7 @@ use App\Events\UserInvited;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use App\Notification;
+use App\Mail\Invite;
 
 class notifyUser
 {
@@ -38,6 +39,11 @@ class notifyUser
                                             'notifiable_id' => $event->details->user_id,
                                             'type'=>'Invite'
                                             ]);
+
+         $user='App\User'::find($event->details->user_id);
+         \Mail::to($user->email)->send(new Invite($job));
+        
+
          // echo $notification->data;
     }
 }

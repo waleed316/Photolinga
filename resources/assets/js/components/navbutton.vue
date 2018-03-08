@@ -62,12 +62,6 @@
       chats:[],
       };
     },
-   // created(){
-   //     Event.$on('click',() => 
-   //     this.userList()
-    //    );
-  //  },
-
     mounted(){
      this.userList();
    
@@ -80,7 +74,6 @@
              this.navList=response.data;
              this.chats=response.data;
              this.unread=this.navList[0].allUnread;
-             console.log(this.navList);
          }
      });            
 
@@ -114,21 +107,19 @@ var disp=id;
 
     console.log(disp);
    axios.get('/markRead',{params: {id:disp}}).then(response => {
-    console.log("From Mark read");
-    console.log(response.data);
+   // console.log("From Mark read");
+   // console.log(response.data);
     });
 },
 
-    markRead(){
-        console.log("Mark convo read");
-    },
+   // markRead(){
+   //     console.log("Mark convo read");
+   // },
       sendMsg() {
       axios.post('/chat',{params: {message: this.message,id:this.id}}).then(response=>{
-      console.log(response.data);
+    //  console.log(response.data);
       this.chating.push({message:this.message,class:'user2',id:'user'});      
-    //  event(new SendMessage(this.response.data));
       this.message='';
-    //  document.getElementById("msg").innerHTML = response.data.params.message;
 
       });
       }

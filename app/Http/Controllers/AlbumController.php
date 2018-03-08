@@ -15,14 +15,15 @@ class AlbumController extends Controller
 {
     public function store(Request $request)
     {
-       
+       // dd($request->all());
         $this->authorize('update',Auth::user());
         
-        request()->validate([
+        $validator=$request->validate([
             'title'=>'required',
             'thumbnail'=>'required|image|mimes:jpeg,png,jpg,gif,svg',
             'user_id' => 'required|exists:users,id'
             ]);
+        
         $image = $request->file('thumbnail');
         $imageNewName = time().$image->getClientOriginalName();
         $image_path=request()->file('thumbnail')->storeAs('public/Uploads',$imageNewName);
