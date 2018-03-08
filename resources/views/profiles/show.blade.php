@@ -19,27 +19,42 @@
                                     <div class="left-sec">
                                         <div class="img">
                                             @can('update',$profileUser)
+                                            @if($profileUser->avatar_path)
+                                            <img
+                                                src="{{asset('storage/'.$profileUser->avatar())}}"
+                                                class="rounded-circle img-fluid"
+                                                alt="">
+                                            @else
                                             <img
                                                 src="/{{ $profileUser->avatar() }}"
                                                 class="rounded-circle img-fluid"
                                                 alt="">
+                                            @endif
                                             <div class="blur-bg"></div>
                                             <a href="#" class="change-dp-btn">
-                                                <form action="">
+                                                <form action="{{route('avatar',['use'=>$profileUser->id])}}" method="POST" id ="profilePic" enctype="multipart/form-data">
+                                                    {{csrf_field()}}
                                                     <input
-                                                        type="file"
+                                                        type="file" onchange="this.form.submit()"
                                                         class="form-control-file upload-dp"
                                                         id="exampleInputFile"
-                                                        aria-describedby="fileHelp">
+                                                        aria-describedby="fileHelp" name="avatar">
                                                 </form>
                                                 <i class="fa fa-edit"></i>
                                             </a>
                                             <!-- <modal v-if="openModal" open="true"></modal> -->
                                             @endcan @cannot('update',$profileUser)
+                                            @if($profileUser->avatar_path)
+                                            <img
+                                                src="{{asset('storage/'.$profileUser->avatar())}}"
+                                                class="rounded-circle img-fluid"
+                                                alt="">
+                                            @else
                                             <img
                                                 src="/{{ $profileUser->avatar() }}"
                                                 class="rounded-circle img-fluid"
                                                 alt="">
+                                            @endif
                                             @endcannot
                                         </div>
                                         <div class="name">
@@ -450,17 +465,19 @@
                                             </div>
                                             <!-- <div class="it"> </div> -->
                                             <div class="bold">
-                                                <b><star-rating 
-									                    v-bind:increment="0.5" 
-									                    v-bind:read-only="true"
-									                    :rating="'{!! json_encode($profileUser->rating) !!}'"  
-									             v-bind:max-rating="5" 
-									             v-bind:round-start-rating="false"
-									             v-bind:show-rating="false"
-									             inactive-color="#b296c5" 
-									             active-color="#290740" 
-									             v-bind:star-size="13">
-	      										  </star-rating></b>
+                                                <b>
+                                                    <star-rating 
+                                                    v-bind:increment="0.5" 
+                                                    v-bind:read-only="true"
+                                                    :rating="'{!! json_encode($profileUser->rating) !!}'"  
+                                                    v-bind:max-rating="5" 
+                                                    v-bind:round-start-rating="false"
+                                                    v-bind:show-rating="false"
+                                                    inactive-color="#b296c5" 
+                                                    active-color="#290740" 
+                                                    v-bind:star-size="13">
+                                                    </star-rating>
+                                                </b>
                                             </div>
                                         </div>
                                     </li>

@@ -3366,6 +3366,10 @@
   color: black;
 }
 
+.about-freelancer-box .f-profile-box .person-detail li .p-box .bold b .vue-star-rating {
+  float: right !important;
+}
+
 /* Privacy Section */
 
 .privacy-heading {
@@ -8496,6 +8500,7 @@
   text-align: inherit;
   float: left;
   margin-bottom: 10px;
+  font-size: 12px;
 }
 
 .mycontainer .chatbox .body .user {
@@ -8523,6 +8528,7 @@
   white-space: normal !important;
   line-height: unset;
   margin-right: 5px;
+  font-size: 12px;
   font-weight: 600;
   background-color: #F74545;
 }
