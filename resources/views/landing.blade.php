@@ -30,45 +30,45 @@
                     <div class="row">
                         <div class="col-lg-3 col-xl-3 col-md-2"></div>
                         <div class="col-lg-6 col-xl-6 col-md-8 col-sm-12">
-                            <h1 class="text-center do-heading1 animated zoomIn">Don't Just Dream, Do</h1>
-                            <h6 class="text-center do-heading2 animated slideInLeft">Hire Talented and Professional
-                                Photographers</h6>
+                            <h1 class="text-center do-heading1 animated zoomIn">Picture Perfect Memories</h1>
+                            <h6 class="text-center do-heading2 animated slideInLeft">Hire talented and professional
+                                photographers</h6>
                             <form action="{{ route('jobs') }}" method="GET" autocomplete="off">
 
-                                
-                                    <!-- <input name="location" type="text" class="form-control"
-                                           placeholder="Search by Location ...">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-secondary btn-search" type="submit">Search</button> -->
-                                          <div class="form-group row">
-                                            <select class="form-control col-10  " name="location">
-                                              <option>Faisalabad</option>
-                                              <option>Islamabad</option>
-                                              <option>Karachi</option>
-                                              <option>Lahore</option>
-                                              <option>Multan</option>
-                                              <option>Peshawar</option>
-                                              <option>Quetta</option>
-                                              <option>Hyderabad</option>
+
+                                <!-- <input name="location" type="text" class="form-control"
+                                       placeholder="Search by Location ...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-secondary btn-search" type="submit">Search</button> -->
+                                <div class="form-group row">
+                                    <select class="form-control col-10  " name="location">
+                                        <option>Faisalabad</option>
+                                        <option>Islamabad</option>
+                                        <option>Karachi</option>
+                                        <option>Lahore</option>
+                                        <option>Multan</option>
+                                        <option>Peshawar</option>
+                                        <option>Quetta</option>
+                                        <option>Hyderabad</option>
 
 
-                                         </select>
-                                         <button class="btn btn-secondary btn-search" type="submit">Search</button>
-                                        </div>
-                                      
-                        <!-- <placesearch v-bind:landing=true></placesearch> -->
-
-                                   <!--  </span> -->
+                                    </select>
+                                    <button class="btn btn-secondary btn-search" type="submit">Search</button>
                                 </div>
-                            </form>
 
+                                <!-- <placesearch v-bind:landing=true></placesearch> -->
+
+                                <!--  </span> -->
                         </div>
-                        <div class="col-lg-3 col-xl-3 col-md-2"></div>
-                    </div>
-                </div>
+                        </form>
 
+                    </div>
+                    <div class="col-lg-3 col-xl-3 col-md-2"></div>
+                </div>
             </div>
+
         </div>
+    </div>
     </div>
 
     <!-- iconbar  -->
@@ -106,7 +106,7 @@
                                     <g></g>
                                     <g></g></svg>
                             </a>
-                            <a href="#" class="svg-text"><h5 class="market-place-heading">PhotoGraphy</h5></a>
+                            <a href="#" class="svg-text"><h5 class="market-place-heading">Photography</h5></a>
                         </div>
 
                         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3">
@@ -163,7 +163,7 @@
                                     <g></g>
                                     <g></g></svg>
                             </a>
-                            <a href="#" class="svg-text"><h5 class="market-place-heading">VideoEditing</h5></a>
+                            <a href="#" class="svg-text"><h5 class="market-place-heading">Video Editing</h5></a>
                         </div>
 
                         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3">
@@ -207,7 +207,7 @@
                 <div class="col-xl-1 col-lg-1"></div>
                 <div class="col-xl-7 col-lg-7 col-md-8 col-sm-8 allign-middle">
                     <h1>Introducing PHOTOLINGA PRO</h1>
-                    <h3>Hand-vetted. High-end. on-demand.</h3>
+                    <h3>Have photolinga team on board with you throughout the process</h3>
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4">
                     <a href="/pro"><img src="{{ asset('images/Pro.png') }}" alt="" class="img-fluid"></a>
@@ -226,27 +226,28 @@
                     <div class="row text-center icon-padding">
 
                         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
-                            <a href="#"><img style="width:70%" src="{{ asset('images/search.png') }}" alt="" class="img-fluid rubberband"></a>
+                            <a href="#"><img style="width:50%" src="{{ asset('images/search.png') }}" alt=""
+                                             class="img-fluid rubberband"></a>
                             <h3 class="market-place-heading hiw-icon-text">SEARCH</h3>
                             <p class="lead text-muted">Search photographer as per your requirements and budget</p>
                         </div>
 
                         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
-                            <a href="#"><img style="width:70%" src="{{ asset('images/hire.png') }}" alt=""
+                            <a href="#"><img style="width:50%" src="{{ asset('images/hire.png') }}" alt=""
                                              class="img-fluid flipouty"></a>
                             <h3 class="market-place-heading hiw-icon-text">HIRE</h3>
                             <p class="lead text-muted">Check profile/ratings, reviews and hire your favorite</p>
                         </div>
 
                         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
-                            <a href="#"><img style="width:70%" src="{{ asset('images/click.png') }}" alt=""
+                            <a href="#"><img style="width:50%" src="{{ asset('images/click.png') }}" alt=""
                                              class="img-fluid slidinright"></a>
                             <h3 class="market-place-heading hiw-icon-text">CLICK</h3>
                             <p class="lead text-muted">Photographer/Videographer will cover your event or project</p>
                         </div>
 
                         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
-                            <a href="#"><img style="width:70%" src="{{ asset('images/done.png') }}" alt=""
+                            <a href="#"><img style="width:50%" src="{{ asset('images/done.png') }}" alt=""
                                              class="img-fluid zoomoutup"></a>
                             <h3 class="market-place-heading hiw-icon-text">DONE</h3>
                             <p class="lead text-muted">Pay through 100% Secure and Easy payment options</p>
@@ -265,126 +266,89 @@
             <div class="row icon-padding text-center">
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 right-border">
                     <h4>Your <strong>Terms</strong></h4>
-                    <p>Whatever you need to simplify your to-do list, no matter your budget.</p>
+                    <p>Find best services according to your needs</p>
                 </div>
 
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 right-border">
                     <h4>Your <strong>Timeline</strong></h4>
-                    <p>Find service based on your goals and deadlines, it's that simple.</p>
+                    <p>Event coverage according to your will</p>
                 </div>
 
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
                     <h4>Your <strong>Safety</strong></h4>
-                    <p>Your payment is always secure, Photolinga is built to protect your peace of mind.</p>
+                    <p>Secure payment and work credibility</p>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- people saying -->
-    {{--<div class="container-fluid how-bg-color">--}}
-    {{--<div class="container">--}}
-    {{--<div class="row icon-padding">--}}
-    {{--<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">--}}
-    {{--<h1 class="text-center market-place-heading">What people are saying</h1>--}}
-    {{--<h6 class="text-center market-place-heading">Companies and individuals loves using Photolinga to--}}
-    {{--work--}}
-    {{--their way.</h6>--}}
+    <div class="container-fluid how-bg-color">
+        <div class="container">
+            <div class="row icon-padding">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <h1 class="text-center market-place-heading">What people are saying</h1>
+                    <h6 class="text-center market-place-heading">Companies and individuals loves using Photolinga to
+                        work their way.</h6>
+                    <ul class="remove-list-style">
+                        <li>
+                            <div class="row">
 
-    {{--<ul class="remove-list-style">--}}
-    {{--<li>--}}
-    {{--<div class="row">--}}
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                    <div class="row">
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                            <p class="desc">"Wow what a great service, I love it! I wish I would have
+                                                thought of it first. Thanks for the great service. Photolinga.com has
+                                                really helped our business."
+                                            </p>
+                                            <h6 class="author-name">Yaseen Sheikh</h6>
+                                        </div>
+                                    </div>
+                                </div>
 
-    {{--<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">--}}
-    {{--<div class="row">--}}
-    {{--<div class="col-xl-2 col-lg-2 col-md-4 col-sm-2 col-4">--}}
-    {{--<img src="{{ asset('./images/Image -1.png') }}" alt="" class="img-fluid">--}}
-    {{--</div>--}}
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                    <div class="row">
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                            <p class="desc">It's all good. Photolinga.com should be nominated for
+                                                service of the year. It's all good.</p>
+                                            <h6 class="author-name">Humaira Nawaz</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                </div>
 
-    {{--<div class="col-xl-10 col-lg-10 col-md-8 col-sm-10 col-8">--}}
-    {{--<p class="desc">Guru is an amazing service thati highly recommend to--}}
-    {{--bussiness--}}
-    {{--of all sizes looking to find short or long-term, high quality--}}
-    {{--resources.</p>--}}
-    {{--<h6 class="author-name">Bev Flaxington</h6>--}}
-    {{--<footer class="blockquote-footer">PRINCIPAL OF THE<cite--}}
-    {{--title="Source Title">COLLABORATIVE</cite>--}}
-    {{--</footer>--}}
-    {{--</div>--}}
-    {{--</div>--}}
-    {{--</div>--}}
+                </li>
 
-    {{--<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">--}}
-    {{--<div class="row">--}}
-    {{--<div class="col-xl-2 col-lg-2 col-md-4 col-sm-2 col-4">--}}
-    {{--<img src="{{ asset('./images/Image -1.png') }}" alt="" class="img-fluid">--}}
-    {{--</div>--}}
+                <li>
+                    <div class="row">
 
-    {{--<div class="col-xl-10 col-lg-10 col-md-8 col-sm-10 col-8">--}}
-    {{--<p class="desc">Guru is an amazing service thati highly recommend to--}}
-    {{--bussiness--}}
-    {{--of all sizes looking to find short or long-term, high quality--}}
-    {{--resources.</p>--}}
-    {{--<h6 class="author-name">Bev Flaxington</h6>--}}
-    {{--<footer class="blockquote-footer">PRINCIPAL OF THE<cite--}}
-    {{--title="Source Title">COLLABORATIVE</cite>--}}
-    {{--</footer>--}}
-    {{--</div>--}}
-    {{--</div>--}}
-    {{--</div>--}}
-    {{--</div>--}}
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                            <div class="row">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <p class="desc">We were treated like royalty. I will recommend you to my colleagues. I am completely blown away. Thank you for making it painless, pleasant and most of all hassle free!</p>
+                                    <h6 class="author-name">Mouaz Imran</h6>
+                                </div>
+                            </div>
+                        </div>
 
-    {{--</li>--}}
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                            <div class="row">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <p class="desc">The very best. I like Photolinga.com more and more each day because it makes my life a lot easier. I will let my mum know about this, she could really make use of Photolinga.com!</p>
+                                    <h6 class="author-name">Mohammad Ali Jaffery</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-    {{--<li>--}}
-    {{--<div class="row">--}}
+                </li>
 
-    {{--<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">--}}
-    {{--<div class="row">--}}
-    {{--<div class="col-xl-2 col-lg-2 col-md-4 col-sm-2 col-4">--}}
-    {{--<img src="{{ asset('./images/Image -1.png') }}" alt="" class="img-fluid">--}}
-    {{--</div>--}}
+                </ul>
 
-    {{--<div class="col-xl-10 col-lg-10 col-md-8 col-sm-10 col-8">--}}
-    {{--<p class="desc">Guru is an amazing service thati highly recommend to--}}
-    {{--bussiness--}}
-    {{--of all sizes looking to find short or long-term, high quality--}}
-    {{--resources.</p>--}}
-    {{--<h6 class="author-name">Bev Flaxington</h6>--}}
-    {{--<footer class="blockquote-footer">PRINCIPAL OF THE<cite--}}
-    {{--title="Source Title">COLLABORATIVE</cite>--}}
-    {{--</footer>--}}
-    {{--</div>--}}
-    {{--</div>--}}
-    {{--</div>--}}
-
-    {{--<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">--}}
-    {{--<div class="row">--}}
-    {{--<div class="col-xl-2 col-lg-2 col-md-4 col-sm-2 col-4">--}}
-    {{--<img src="{{ asset('./images/Image -1.png') }}" alt="" class="img-fluid">--}}
-    {{--</div>--}}
-
-    {{--<div class="col-xl-10 col-lg-10 col-md-8 col-sm-10 col-8">--}}
-    {{--<p class="desc">Guru is an amazing service thati highly recommend to--}}
-    {{--bussiness--}}
-    {{--of all sizes looking to find short or long-term, high quality--}}
-    {{--resources.</p>--}}
-    {{--<h6 class="author-name">Bev Flaxington</h6>--}}
-    {{--<footer class="blockquote-footer">PRINCIPAL OF THE<cite--}}
-    {{--title="Source Title">COLLABORATIVE</cite>--}}
-    {{--</footer>--}}
-    {{--</div>--}}
-    {{--</div>--}}
-    {{--</div>--}}
-    {{--</div>--}}
-
-    {{--</li>--}}
-
-    {{--</ul>--}}
-
-    {{--</div>--}}
-    {{--</div>--}}
-    {{--</div>--}}
-    {{--</div>--}}
+            </div>
+        </div>
+    </div>
+    </div>
 
 @endsection
