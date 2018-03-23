@@ -56849,6 +56849,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['id'],
@@ -56964,7 +56966,9 @@ var render = function() {
             "dropdown-menu dropdown-menu-zero-padding dropdown-menu-message-padding"
         },
         [
-          _c("h5", { staticClass: "dropdown-heading" }, [_vm._v("Messages")]),
+          _c("h5", { staticClass: "dropdown-heading text-center" }, [
+            _vm._v("Messages")
+          ]),
           _vm._v(" "),
           _c(
             "table",
@@ -56973,7 +56977,7 @@ var render = function() {
               staticStyle: { "margin-bottom": "0" }
             },
             [
-              _c("tbody", [
+              _c("tbody", { staticStyle: { display: "inherit" } }, [
                 _c(
                   "ul",
                   { staticClass: "message-list" },
@@ -57063,7 +57067,7 @@ var render = function() {
                     }),
                     _vm._v(" "),
                     _vm.navList.length == 0
-                      ? _c("li", [
+                      ? _c("li", { staticClass: "no-message" }, [
                           _c(
                             "a",
                             {

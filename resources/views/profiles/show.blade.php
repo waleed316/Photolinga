@@ -196,6 +196,7 @@
 
                                         @endcan
                                     </h1>
+                                    <!--Create New Album Modal  -->
                                     <div class="modal fade" id="AlbumModal" role="dialog">
                                         <div class="modal-dialog" role="document">
 
@@ -280,13 +281,16 @@
                                                 class="modal fade"
                                                 tabindex="-1"
                                                 id="album-{{$portfolio->id}}"
-                                                role="dialog">
+                                                role="dialog"
+                                                aria-labelledby="album-{{$portfolio->id}}"
+                                                aria-hidden="true"
+                                                >
                                                 <div class="modal-dialog modal-lg" role="document">
 
                                                     <!-- Modal content-->
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">Upload Images</h4>
+                                                            <h4 class="modal-title" id="album-{{$portfolio->id}}">Upload Images</h4>
                                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                         </div>
                                                         <div class="modal-body">

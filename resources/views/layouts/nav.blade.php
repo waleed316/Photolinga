@@ -77,7 +77,7 @@
                     </a>
                         <div class="dropdown-menu dropdown-menu-zero-padding dropdown-menu-message-padding">
 
-                            <h5 class="dropdown-heading">Notifications</h5>
+                            <h5 class="dropdown-heading text-center">Notifications</h5>
 
                             <table class="table table-responsive table-hover"
                                    style=";margin-bottom:0">
@@ -119,13 +119,14 @@
                                             </li>
                                     @endforeach
                                     @else
-                                       <li>
-                                            <tr>
-                                                <td colspan="5" class="text-center"><a href="#" class="see-message">
+                                       <li class="no-message">
+                                            <!-- <tr>
+                                                <td colspan="5" class="text-center"> -->
+                                                <a href="#" class="see-message">
                                                 No new notifications
                                                 </a>        
-                                                </td>
-                                            </tr>
+                                                <!-- </td>
+                                            </tr> -->
                                         </li>
                                     @endif
                                 </ul>
