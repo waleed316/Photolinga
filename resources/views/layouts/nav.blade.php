@@ -79,9 +79,9 @@
 
                             <h5 class="dropdown-heading">Notifications</h5>
 
-                            <!-- <table class="table table-responsive table-hover"
-                                   style="padding:5px 20px 0 20px;margin-bottom:0">
-                                <tbody> -->
+                            <table class="table table-responsive table-hover"
+                                   style=";margin-bottom:0">
+                                <tbody>
                                 <ul class="message-list">
 
                                     {{--<li>--}}
@@ -112,27 +112,21 @@
                                     {{--</li>--}}
                                     @if(auth()->user()->notify()->count())
                                     @foreach(auth()->user()->notify()->orderBy('created_at','desc')->get() as $notify)
-                                    <li>
-                                        <tr>
-                                            <td colspan="5" class="text-center"><!-- <a href="#" class="see-message"> --><!-- No
-                                                    new
-                                                    notifications -->
-                                                        <?php echo $notify->data
-                                                        ?>
-                                                    <!-- </a>-->
-                                                    </td>
-                                        </tr>
-                                    </li>
+                                    <?php echo $notify->data ?>
+                                      <!-- <TD class="message-hidden"></TD><td class="message-hidden"></td> -->
+                                                <td class="message-time-align"><a href="#" class="message-anchor"><h6 class="notification-time">1 Day ago</h6></a></td>
+                                                </tr>
+                                            </li>
                                     @endforeach
                                     @else
                                        <li>
-                                        <tr>
-                                            <td colspan="5" class="text-center"><a href="#" class="see-message">
-                                             No new notifications
-                                             </a>        
-                                            </td>
-                                        </tr>
-                                    </li>
+                                            <tr>
+                                                <td colspan="5" class="text-center"><a href="#" class="see-message">
+                                                No new notifications
+                                                </a>        
+                                                </td>
+                                            </tr>
+                                        </li>
                                     @endif
                                 </ul>
                                 </tbody>

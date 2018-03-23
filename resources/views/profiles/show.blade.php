@@ -196,7 +196,7 @@
                                         @endcan
                                     </h1>
                                     <div class="modal fade" id="AlbumModal" role="dialog">
-                                        <div class="modal-dialog">
+                                        <div class="modal-dialog" role="document">
 
                                             <!-- Modal content-->
                                             <div class="modal-content album-upload">
@@ -281,7 +281,7 @@
                                                 tabindex="-1"
                                                 id="album-{{$portfolio->id}}"
                                                 role="dialog">
-                                                <div class="modal-dialog modal-lg">
+                                                <div class="modal-dialog modal-lg" role="document">
 
                                                     <!-- Modal content-->
                                                     <div class="modal-content">
@@ -291,27 +291,12 @@
                                                         </div>
                                                         <div class="modal-body">
 
-                                                          <!--   <div id="err"></div>
-
-                                                            @foreach($portfolio->images as $abc)
-                                                            <div class="upload-box">
-                                                                <a id="dd" href="#" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                                    <i class="fa fa-times"></i>
-                                                                </a>
-                                                                <img
-                                                                    src="{{asset('storage/Uploads/'.$abc->path)}}"
-                                                                    class="img-fluid portfolio-imgages"
-                                                                    alt="">
-                                                            </div>
-                                                            @endforeach
-                                                           -->
-                                                           <album-image :albumid='{{$portfolio->id}}'></album-image>
-                                                             <form
+                                                            <album-image :albumid='{{$portfolio->id}}'></album-image>
+                                                            <form
                                                                 action="{{route('dropzone.store',['id'=>$portfolio->id])}}"
                                                                 class="dropzone mt-3"
                                                                 id="my-dropzone">
                                                                 {{csrf_field()}}
-
                                                             </form>
                                                             <button id="submit-all" class="btn btn-primary" style="display: none">Upload all files</button>
                                                         </div>
@@ -345,7 +330,7 @@
                                                 id="albumShow-{{$portfolio->id}}"
                                                 tabindex="-1"
                                                 role="dialog">
-                                                <div class="modal-dialog" role="document">
+                                                <div class="modal-dialog modal-lg" role="document">
 
                                                     <!-- Modal content-->
                                                     <div class="modal-content">

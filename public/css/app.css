@@ -367,6 +367,7 @@
 }
 
 .avatar {
+  width: 32px;
   height: 32px !important;
   border-radius: 1.25rem !important;
 }
@@ -885,6 +886,7 @@
 .profile-img {
   height: 60px !important;
   border-radius: 2.25rem;
+  width: 60px;
   border: 1px solid black;
 }
 
@@ -922,14 +924,13 @@
 }
 
 .dropdown-menu-message-padding {
-  width: 13rem;
+  left: -230px !important;
+  width: 20rem;
 }
 
 .message-head {
   font-size: 12px;
   font-weight: bold;
-  margin-bottom: 0px;
-  padding: 5px;
 }
 
 .badge-message {
@@ -979,7 +980,6 @@
 
 .message-time-align {
   vertical-align: middle !important;
-  padding-right: 1px !important;
 }
 
 .message-profile {
@@ -1008,12 +1008,7 @@
 }
 
 .message-list li {
-  border-top: 1px solid lightgray;
-  padding: 5px;
-}
-
-.message-list li:hover {
-  background-color: lightgray;
+  padding: 0 4px;
 }
 
 .see-message {
@@ -3066,6 +3061,11 @@
   position: relative;
 }
 
+.about-freelancer-box .freelance-box .upper-portion .left-sec .img img {
+  height: 88px;
+  width: 100%;
+}
+
 .about-freelancer-box .freelance-box .upper-portion .left-sec .img .blur-bg {
   visibility: hidden;
   width: 100%;
@@ -3244,12 +3244,12 @@
   overflow: hidden;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
-  height: 150px;
+  height: 100%;
   width: 200px;
 }
 
 .about-freelancer-box .freelance-box .portfolio-portion .portfolio-list li .portfoli-box .p-image img {
-  height: 100%;
+  height: 120px;
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -4040,6 +4040,11 @@
     width: 100;
     clear: both;
   }
+
+  .left-sec .img {
+    height: 104px;
+    width: 80px !important;
+  }
 }
 
 /* // Small devices (landscape phones, 576px and up) */
@@ -4327,6 +4332,10 @@
     width: 100;
     clear: both;
   }
+
+  .left-sec .img {
+    height: 105px;
+  }
 }
 
 /* // Medium devices (tablets, 768px and up) */
@@ -4567,6 +4576,10 @@
   .margin-hr {
     margin-top: 5rem;
   }
+
+  .left-sec .img {
+    height: 80px;
+  }
 }
 
 /* // Large devices (desktops, 992px and up) */
@@ -4688,6 +4701,10 @@
 
   .margin-hr {
     margin-top: 6rem;
+  }
+
+  .left-sec .img {
+    height: 100px;
   }
 }
 

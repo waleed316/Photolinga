@@ -127,13 +127,15 @@
                                     <div class="profile-box">
                                         <div class="profile-upper-box">
                                             <div class="profile-image">
-                                                <img :src="photographer12.avatar_path" class="rounded-circle" alt="">
+                                                <img :src="'storage/'+photographer12.avatar_path" class="rounded-circle" alt="" v-if="photographer12.avatar_path">
+                                                
+                                                <img src="/images/person-2.jpg" class="rounded-circle" alt="" v-else>
                                             </div>
                                             <div class="p-name-section">
                                                 <h1 class="details-freelance-name">
                                                     @{{ photographer12.name }}
                                                 </h1>
-                                                <h6 class="details-freelance-desig">Senior Graphic - Web Designer
+                                                <h6 class="details-freelance-desig">S enior Graphic - Web Designer
                                                 </h6>
                                             </div>
                                             <a v-bind:href="'/profiles/'+photographer12.id" class="btn-sm viev-all">View Profile</a>
