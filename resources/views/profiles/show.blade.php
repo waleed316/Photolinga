@@ -6,6 +6,7 @@
     :user="{{ $profileUser }}"
     avatar="/{{ $profileUser->avatar() }}"
     v-cloak="v-cloak">
+    
 
     <section class="details-bg-color pt-5">
         <div class="container-fluid">
@@ -242,12 +243,11 @@
                                                             <button class="btn btn-default">Save</button>
                                                         </div>
                                                     </form>
-
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
+                                   
 
                                     <ul class="portfolio-list">
                                         @foreach( $profileUser->album as $portfolio )
@@ -365,7 +365,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 px-0">
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 px-0 pb-3">
                         <div class="about-freelancer-box">
                             <h1 class="about-head">INFO</h1>
                             <div class="f-profile-box">

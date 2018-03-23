@@ -46,7 +46,7 @@ class notifyUser
                                             'notifiable_type' => 'Invite',
                                             'data'=>"<li>
                                             <tr>
-                                                <td class='img-top-padding'><a href='' class='message-anchor'><img src='$img' class='message-profile'></a></td>
+                                                <td class='img-top-paddin g'><a href='' class='message-anchor'><img src='$img' class='message-profile'></a></td>
                                                 <td>
                                                     <a href='/jobs/$job->id' class='message-anchor'>
                                                         <h6 class='notification-head'><span class='person-name'>'$user->name'</span>Invited you in a job<span class='event-title'>'$jobname'</span></h6>

@@ -985,6 +985,11 @@
 .message-profile {
   height: 40px !important;
   border-radius: 20px !important;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  width: 40px;
 }
 
 .message-anchor {
@@ -999,8 +1004,6 @@
 
 .img-top-padding {
   padding-top: 8px !important;
-  padding-left: 1px !important;
-  padding-right: 2px !important;
 }
 
 .message-list {
@@ -1024,7 +1027,7 @@
 }
 
 .notification-head {
-  font-size: 14px !important;
+  font-size: 12px !important;
   line-height: 1.3em;
 }
 
