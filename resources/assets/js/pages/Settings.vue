@@ -44,7 +44,8 @@
         }, err => {
           console.log('Logging error: ');
           console.error(err.response);
-          flash('Error while processing request');
+          flash('Error while processing request','danger');
+          errors(err.response.data.errors);
         });
       },
     },

@@ -490,19 +490,7 @@
                                             </div>
                                             <!-- <div class="it"> </div> -->
                                             <div class="bold">
-                                                <b>10</b>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="p-box">
-                                            <div class="ico">
-                                                <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                                <h6>Hours Worked</h6>
-                                            </div>
-                                            <!-- <div class="it"> </div> -->
-                                            <div class="bold">
-                                                <b>2,707</b>
+                                                <b>0</b>
                                             </div>
                                         </div>
                                     </li>

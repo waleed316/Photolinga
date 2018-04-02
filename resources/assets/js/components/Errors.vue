@@ -15,6 +15,10 @@
       return {};
     },
 
+    created(){
+      window.events.$on('events',errors => this.errors = errors);
+    },
+
     computed: {
       showModal() {
         if ( Object.keys(this.errors).length ) {
