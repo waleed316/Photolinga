@@ -95,7 +95,7 @@
 
     function submitform()
     {
-        document.forms['profilePic'].submit();
+        // document.forms['profilePic'].submit();
         alert('form submitted');
     }
     function unreadnotfication($id)

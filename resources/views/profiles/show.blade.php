@@ -32,7 +32,7 @@
                                                         class="form-control-file upload-dp"
                                                         id="exampleInputFile"
                                                         aria-describedby="fileHelp">
-                                                    }
+                                                    
                                                 </form>
                                                 <i class="fa fa-edit"></i>
                                             </a>
@@ -486,7 +486,7 @@
                                             </div>
                                             <!-- <div class="it"> </div> -->
                                             <div class="bold">
-                                                <b>10</b>
+                                                <b>{{$profileUser->jobs->where('completed',1)->count()}}</b>
                                             </div>
                                         </div>
                                     </li>
