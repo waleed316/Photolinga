@@ -203,6 +203,12 @@
             $(document).ready(function () {
                 $('#dd').tooltip('show');
             })
+            function deleteAlbum(this)
+            {
+                // $(this).data('portfolio-id').val()
+                console.log('delete Function Called');
+                // console.log()
+            }
         </script>
     </body>
 </html>

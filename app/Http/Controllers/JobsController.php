@@ -51,6 +51,20 @@ class JobsController extends Controller
             'category_id' => 'required|exists:categories,id',
             'location' => 'required'
         ] );
+        if(auth()->user()->premium)
+        {
+            $job = Job::create( [
+                'title' => request( 'title' ),
+                'category_id' => request( 'category_id' ),
+                'contractor_id' => auth()->id(),
+                'description' => request( 'description' ),
+                'budget' => request( 'budget' ),
+                'location' => request( 'location' ),
+                'featured'=>1
+            ] ); 
+        }
+        else
+        {
         $job = Job::create( [
             'title' => request( 'title' ),
             'category_id' => request( 'category_id' ),
@@ -59,6 +73,7 @@ class JobsController extends Controller
             'budget' => request( 'budget' ),
             'location' => request( 'location' )
         ] );
+        }
 
         return redirect( $job->path() )->with( 'flash', 'Your job has been Successfully posted' );
     }

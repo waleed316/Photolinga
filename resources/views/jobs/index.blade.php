@@ -92,10 +92,13 @@
                                 @foreach($jobs as $job)
                                     <li>
                                         <div class="row">
-                                            {{--<div class="ribbon">--}}
-                                            {{--<span>FEATURED</span>--}}
-                                            {{--</div>--}}
+                                        
                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                            @if($job->featured)
+                                            <div class="ribbon">
+                                            <span>FEATURED</span>
+                                            </div>
+                                        @endif
                                                 <h6 class="event-desc-head">
                                                     <a href="{{ $job->path() }}">{{ $job->title }}</a>
                                                 </h6>

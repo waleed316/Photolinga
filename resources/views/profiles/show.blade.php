@@ -490,7 +490,6 @@
                                             </div>
                                             <!-- <div class="it"> </div> -->
                                             <div class="bold">
-<<<<<<< HEAD
                                                 <b>{{$profileUser->jobs->where('completed',1)->count()}}</b>
                                             </div>
                                         </div>
@@ -504,9 +503,6 @@
                                             <!-- <div class="it"> </div> -->
                                             <div class="bold">
                                                 <b>2,707</b>
-=======
-                                                <b>0</b>
->>>>>>> 611c499d0db5f61819b0ae1b093736ac10974cc5
                                             </div>
                                         </div>
                                     </li>
