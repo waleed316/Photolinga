@@ -77,11 +77,11 @@
                     </a>
                         <div class="dropdown-menu dropdown-menu-zero-padding dropdown-menu-message-padding">
 
-                            <h5 class="dropdown-heading">Notifications</h5>
+                            <h5 class="dropdown-heading text-center">Notifications</h5>
 
-                            <!-- <table class="table table-responsive table-hover"
-                                   style="padding:5px 20px 0 20px;margin-bottom:0">
-                                <tbody> -->
+                            <table class="table table-responsive table-hover"
+                                   style=";margin-bottom:0">
+                                <tbody>
                                 <ul class="message-list">
 
                                     {{--<li>--}}
@@ -112,27 +112,22 @@
                                     {{--</li>--}}
                                     @if(auth()->user()->notify()->count())
                                     @foreach(auth()->user()->notify()->orderBy('created_at','desc')->get() as $notify)
-                                    <li>
-                                        <tr>
-                                            <td colspan="5" class="text-center"><!-- <a href="#" class="see-message"> --><!-- No
-                                                    new
-                                                    notifications -->
-                                                        <?php echo $notify->data
-                                                        ?>
-                                                    <!-- </a>-->
-                                                    </td>
-                                        </tr>
-                                    </li>
+                                    <?php echo $notify->data ?>
+                                      <!-- <TD class="message-hidden"></TD><td class="message-hidden"></td> -->
+                                                <td class="message-time-align"><a href="#" class="message-anchor"><h6 class="notification-time">1 Day ago</h6></a></td>
+                                                </tr>
+                                            </li>
                                     @endforeach
                                     @else
-                                       <li>
-                                        <tr>
-                                            <td colspan="5" class="text-center"><a href="#" class="see-message">
-                                             No new notifications
-                                             </a>        
-                                            </td>
-                                        </tr>
-                                    </li>
+                                       <li class="no-message">
+                                            <!-- <tr>
+                                                <td colspan="5" class="text-center"> -->
+                                                <a href="#" class="see-message">
+                                                No new notifications
+                                                </a>        
+                                                <!-- </td>
+                                            </tr> -->
+                                        </li>
                                     @endif
                                 </ul>
                                 </tbody>
@@ -144,8 +139,14 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
                            aria-haspopup="true" aria-expanded="false">
+                           @if(auth()->user()->avatar_path)
+                            <img src="{{ asset('storage/'.auth()->user()->avatar()) }}" alt=""
+                                 class="img-fluid avatar rounded">
+                            @else
                             <img src="{{ asset(auth()->user()->avatar()) }}" alt=""
-                                 class="img-fluid avatar rounded"></a>
+                                 class="img-fluid avatar rounded">
+                            @endif     
+                            </a>
                         <div class="dropdown-menu dropdown-menu-zero-padding-last">
                             <h5 class="dropdown-heading">{{ auth()->user()->name }}</h5>
                             <a class="dropdown-item" href="/settings">Settings</a>

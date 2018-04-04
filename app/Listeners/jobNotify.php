@@ -34,6 +34,7 @@ class jobNotify
         $jobname=$event->job->title;
         $freelancer=$event->job->freelancer_id;
         $rating=$event->job->rating;
+        
         // $contractor=$job->contractor_id;
         // $jobname=$event->bid->title;
          $notification=Notification::create([
@@ -43,7 +44,7 @@ class jobNotify
                                             'type'=>'JobComplete'
                                             ]);
          $user='App\User'::find($freelancer);
-         \Mail::to($user->email)->send(new JobRated($event->job));
+        //  \Mail::to($user->email)->send(new JobRated($event->job));
 
        
     }

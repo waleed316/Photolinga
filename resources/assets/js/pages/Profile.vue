@@ -32,7 +32,7 @@
       },
       updateDescription() {
         if ( this.description == '' ) {
-          flash('Description can not be empty');
+          flash('Description can not be empty','danger');
           return;
         }
         axios.patch('/profiles/' + this.user.id, { description: this.description }).then(response => {

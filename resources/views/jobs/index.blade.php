@@ -123,8 +123,15 @@
                         <ul class="profile-list">
                             <li>
                                 <a href="{{ route('profile',Auth::user()) }}">
-                                    <img src="{{ asset(auth()->user()->avatar()) }}" alt=""
-                                         class="img-fluid profile-img">
+                                    <!-- <img src="{{ asset(auth()->user()->avatar()) }}" alt=""
+                                         class="img-fluid profile-img"> -->
+                                         @if(auth()->user()->avatar_path)
+                            <img src="{{ asset('storage/'.auth()->user()->avatar()) }}" alt=""
+                                 class="img-fluid profile-img">
+                            @else
+                            <img src="{{ asset(auth()->user()->avatar()) }}" alt=""
+                                 class="img-fluid profile-img">
+                            @endif
                                     <span class="profile-name"> My Profile</span>
                                 </a>
                             </li>

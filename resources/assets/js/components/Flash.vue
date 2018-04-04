@@ -1,51 +1,59 @@
 <template>
-    <div v-if="show" class="alert alert-success alert-flash" role="alert">
-        <strong>Success!</strong> {{ body }}
+    <div class="alert alert-flash"
+         :class="'alert-'+level"
+         role="alert"
+         v-show="show"
+         v-text="body">
     </div>
 </template>
 
 <script>
-  export default {
-    props: [ 'message' ],
+    export default {
+        props: ['message'],
 
-    data() {
-      return {
-        body: '',
-        show: false,
-      };
-    },
+        data() {
+            return {
+                body: this.message,
+                level: 'success',
+                show: false
+            }
+        },
 
-    created() {
-      if ( this.message ) {
-        this.flash( this.message );
-      }
+        created() {
+            if (this.message) {
+                this.flash();
+            }
 
-      window.events.$on( 'flash', message => this.flash( message ) );
-    },
+            window.events.$on(
+                'flash', data => this.flash(data)
+            );
+        },
 
-    methods: {
-      flash( message ) {
-        this.show = true;
-        this.body = message;
+        methods: {
+            flash(data) {
+                if (data) {
+                    this.body = data.message;
+                    this.level = data.level;
+                }
 
-        this.hide();
-      },
+                this.show = true;
 
-      hide() {
-        setTimeout( () => {
-          this.show = false;
-        }, 3000 );
-      },
-    },
-  };
+                this.hide();
+            },
+
+            hide() {
+                setTimeout(() => {
+                    this.show = false;
+                }, 3000);
+            }
+        }
+    };
 </script>
 
 <style>
-
     .alert-flash {
         position: fixed;
         right: 25px;
         bottom: 25px;
     }
-
 </style>

@@ -6,6 +6,7 @@
     :user="{{ $profileUser }}"
     avatar="/{{ $profileUser->avatar() }}"
     v-cloak="v-cloak">
+    
 
     <section class="details-bg-color pt-5">
         <div class="container-fluid">
@@ -19,29 +20,42 @@
                                     <div class="left-sec">
                                         <div class="img">
                                             @can('update',$profileUser)
+                                            @if($profileUser->avatar_path)
+                                            <img
+                                                src="{{asset('storage/'.$profileUser->avatar())}}"
+                                                class="rounded-circle img-fluid"
+                                                alt="">
+                                            @else
                                             <img
                                                 src="/{{ $profileUser->avatar() }}"
                                                 class="rounded-circle img-fluid"
                                                 alt="">
+                                            @endif
                                             <div class="blur-bg"></div>
-                                            <a href="javascript: submitform()" class="change-dp-btn">
-                                                <form action="{{route('avatar',['user'=>$profileUser->id])}}" method="GET" id="profilePic">
-                                                    
+                                            <a href="#" class="change-dp-btn">
+                                                <form action="{{route('avatar',['use'=>$profileUser->id])}}" method="POST" id ="profilePic" enctype="multipart/form-data">
+                                                    {{csrf_field()}}
                                                     <input
-                                                        type="file"
+                                                        type="file" onchange="this.form.submit()"
                                                         class="form-control-file upload-dp"
                                                         id="exampleInputFile"
-                                                        aria-describedby="fileHelp">
-                                                    
+                                                        aria-describedby="fileHelp" name="avatar">
                                                 </form>
                                                 <i class="fa fa-edit"></i>
                                             </a>
                                             <!-- <modal v-if="openModal" open="true"></modal> -->
                                             @endcan @cannot('update',$profileUser)
+                                            @if($profileUser->avatar_path)
+                                            <img
+                                                src="{{asset('storage/'.$profileUser->avatar())}}"
+                                                class="rounded-circle img-fluid"
+                                                alt="">
+                                            @else
                                             <img
                                                 src="/{{ $profileUser->avatar() }}"
                                                 class="rounded-circle img-fluid"
                                                 alt="">
+                                            @endif
                                             @endcannot
                                         </div>
                                         <div class="name">
@@ -182,8 +196,9 @@
 
                                         @endcan
                                     </h1>
+                                    <!--Create New Album Modal  -->
                                     <div class="modal fade" id="AlbumModal" role="dialog">
-                                        <div class="modal-dialog">
+                                        <div class="modal-dialog" role="document">
 
                                             <!-- Modal content-->
                                             <div class="modal-content album-upload">
@@ -229,12 +244,11 @@
                                                             <button class="btn btn-default">Save</button>
                                                         </div>
                                                     </form>
-
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
+                                   
 
                                     <ul class="portfolio-list">
                                         @foreach( $profileUser->album as $portfolio )
@@ -267,38 +281,26 @@
                                                 class="modal fade"
                                                 tabindex="-1"
                                                 id="album-{{$portfolio->id}}"
-                                                role="dialog">
-                                                <div class="modal-dialog modal-lg">
+                                                role="dialog"
+                                                aria-labelledby="album-{{$portfolio->id}}"
+                                                aria-hidden="true"
+                                                >
+                                                <div class="modal-dialog modal-lg" role="document">
 
                                                     <!-- Modal content-->
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">Upload Images</h4>
+                                                            <h4 class="modal-title" id="album-{{$portfolio->id}}">Upload Images</h4>
                                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                         </div>
                                                         <div class="modal-body">
 
-                                                          <!--   <div id="err"></div>
-
-                                                            @foreach($portfolio->images as $abc)
-                                                            <div class="upload-box">
-                                                                <a id="dd" href="#" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                                    <i class="fa fa-times"></i>
-                                                                </a>
-                                                                <img
-                                                                    src="{{asset('storage/Uploads/'.$abc->path)}}"
-                                                                    class="img-fluid portfolio-imgages"
-                                                                    alt="">
-                                                            </div>
-                                                            @endforeach
-                                                           -->
-                                                           <album-image :albumid='{{$portfolio->id}}'></album-image>
-                                                             <form
+                                                            <album-image :albumid='{{$portfolio->id}}'></album-image>
+                                                            <form
                                                                 action="{{route('dropzone.store',['id'=>$portfolio->id])}}"
                                                                 class="dropzone mt-3"
                                                                 id="my-dropzone">
                                                                 {{csrf_field()}}
-
                                                             </form>
                                                             <button id="submit-all" class="btn btn-primary" style="display: none">Upload all files</button>
                                                         </div>
@@ -332,7 +334,7 @@
                                                 id="albumShow-{{$portfolio->id}}"
                                                 tabindex="-1"
                                                 role="dialog">
-                                                <div class="modal-dialog" role="document">
+                                                <div class="modal-dialog modal-lg" role="document">
 
                                                     <!-- Modal content-->
                                                     <div class="modal-content">
@@ -367,7 +369,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 px-0">
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 px-0 pb-3">
                         <div class="about-freelancer-box">
                             <h1 class="about-head">INFO</h1>
                             <div class="f-profile-box">
@@ -452,17 +454,19 @@
                                             </div>
                                             <!-- <div class="it"> </div> -->
                                             <div class="bold">
-                                                <b><star-rating 
-									                    v-bind:increment="0.5" 
-									                    v-bind:read-only="true"
-									                    :rating="'{!! json_encode($profileUser->rating) !!}'"  
-									             v-bind:max-rating="5" 
-									             v-bind:round-start-rating="false"
-									             v-bind:show-rating="false"
-									             inactive-color="#b296c5" 
-									             active-color="#290740" 
-									             v-bind:star-size="13">
-	      										  </star-rating></b>
+                                                <b>
+                                                    <star-rating 
+                                                    v-bind:increment="0.5" 
+                                                    v-bind:read-only="true"
+                                                    :rating="'{!! json_encode($profileUser->rating) !!}'"  
+                                                    v-bind:max-rating="5" 
+                                                    v-bind:round-start-rating="false"
+                                                    v-bind:show-rating="false"
+                                                    inactive-color="#b296c5" 
+                                                    active-color="#290740" 
+                                                    v-bind:star-size="13">
+                                                    </star-rating>
+                                                </b>
                                             </div>
                                         </div>
                                     </li>
@@ -486,6 +490,7 @@
                                             </div>
                                             <!-- <div class="it"> </div> -->
                                             <div class="bold">
+<<<<<<< HEAD
                                                 <b>{{$profileUser->jobs->where('completed',1)->count()}}</b>
                                             </div>
                                         </div>
@@ -499,6 +504,9 @@
                                             <!-- <div class="it"> </div> -->
                                             <div class="bold">
                                                 <b>2,707</b>
+=======
+                                                <b>0</b>
+>>>>>>> 611c499d0db5f61819b0ae1b093736ac10974cc5
                                             </div>
                                         </div>
                                     </li>

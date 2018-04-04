@@ -4,11 +4,25 @@
   font-family: 'Roboto', sans-serif;
 }
 
-.app {
+body{
+  padding: 0!important;
+}
+
+#app {
   // min-height: 100%;
   // display: grid;
   // grid-template-rows: auto 1fr auto;
   // grid-template-columns: 100%;
+  overflow: hidden;
+}
+
+.no-message{
+  padding: 10px!important;
+  text-align: center;
+  border-top: 1px solid lightgray;
+  &:hover{
+    background-color: #e9ecef;
+  }
 }
 
 .level {
@@ -336,8 +350,10 @@
 }
 
 .avatar {
+  width: 32px;
   height: 32px !important;
   border-radius: 1.25rem !important;
+  object-fit: cover;
 }
 
 /* Footer styling */
@@ -849,6 +865,7 @@
 .profile-img {
   height: 60px !important;
   border-radius: 2.25rem;
+  width: 60px;
   border: 1px solid black;
 }
 
@@ -886,15 +903,15 @@
 }
 
 .dropdown-menu-message-padding {
-  // left: -230px !important;
-  width: 13rem;
+  left: -230px !important;
+  width: 20rem;
 }
 
 .message-head {
   font-size: 12px;
   font-weight: bold;
-  margin-bottom: 0px;
-  padding: 5px;
+  // margin-bottom: 0px;
+  // padding: 5px;
 }
 
 .badge-message{
@@ -941,12 +958,15 @@
 
 .message-time-align {
   vertical-align: middle !important;
-  padding-right: 1px !important;
+  // padding-right: 1px !important;
 }
 
 .message-profile {
   height: 40px !important;
   border-radius: 20px !important;
+  object-fit: cover;
+  object-position: center;
+  width: 40px;
 }
 
 .message-anchor {
@@ -961,18 +981,18 @@
 
 .img-top-padding {
   padding-top: 8px !important;
-  padding-left: 1px !important;
-  padding-right: 2px !important;
+  // padding-left: 1px !important;
+  // padding-right: 2px !important;
 }
 
 .message-list {
   list-style: none;
   li{
-    border-top: 1px solid lightgray;
-    padding: 5px;
-    &:hover{
-      background-color: lightgray;
-    }
+    // border-top: 1px solid lightgray;
+    padding: 0 4px;
+    // &:hover{
+    //   background-color: lightgray;
+    // }
   }
 }
 
@@ -989,7 +1009,7 @@
 }
 
 .notification-head {
-  font-size: 14px !important;
+  font-size: 12px !important;
   line-height: 1.3em;
 }
 
@@ -2888,6 +2908,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 
 .p-list > li .profile-box .profile-upper-box .p-name-section {
@@ -3033,11 +3054,17 @@
   width: 25%;
   margin-right: 10px;
   position: relative;
+  img{
+    height: 88px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
   .blur-bg{
     visibility: hidden;
     width: 100%;
     position: absolute;
-    height: 73%;
+    height: 88px;
     top: 0;
     border-radius: 50%;
     background-color: rgba(0,0,0,0.3);
@@ -3246,10 +3273,10 @@
   position: relative;
   overflow: hidden;
   transition: all 0.2s ease-in-out;
-  height: 150px;
+  height: 100%;
   width: 200px;
   img{
-    height: 100%;
+    height: 120px;
     width: 100%;
     object-fit: cover;
   }
@@ -3373,6 +3400,9 @@
   display: inline;
   vertical-align: sub;
   color: black;
+  .vue-star-rating{
+    float: right!important;
+  }
 }
 
 /* Privacy Section */
@@ -3773,6 +3803,7 @@
   .profile-avatar {
     height: 80px !important;
     border-radius: 40px !important;
+
   }
   .profile-pic {
     position: absolute;
@@ -3927,6 +3958,11 @@
     text-align: center;
     width: 100;
     clear: both;
+  }
+
+  .left-sec .img{
+    height: 104px;
+    width: 80px!important;
   }
 }
 
@@ -4157,6 +4193,11 @@
     width: 100;
     clear: both;
   }
+
+  .left-sec .img{
+    height: 105px;
+  }
+
 }
 
 /* // Medium devices (tablets, 768px and up) */
@@ -4348,6 +4389,9 @@
   .margin-hr {
     margin-top: 5rem;
   }
+  .left-sec .img {
+    height: 80px;
+  }
 }
 
 /* // Large devices (desktops, 992px and up) */
@@ -4446,6 +4490,16 @@
   .margin-hr {
     margin-top: 6rem;
   }
+
+  .left-sec{
+    .img{
+      height: 100px;
+      img{
+        // height: ;
+      }
+    }
+  }
+
 }
 
 /* // Extra large devices (large desktops, 1200px and up) */
@@ -6289,6 +6343,7 @@
                             text-align: inherit;
                             float: left;
                             margin-bottom: 10px;
+                            font-size: 12px;
                         }
                     }
                     .user {
@@ -6312,6 +6367,7 @@
                             white-space: normal!important;
                             line-height: unset;
                             margin-right: 5px;
+                            font-size: 12px;
                             font-weight: 600;
                             background-color: #F74545;
                         }
