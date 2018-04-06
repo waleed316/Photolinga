@@ -25,7 +25,6 @@ class CreateUsersTable extends Migration
             $table->text('description')->nullable();
             $table->float('rating')->nullable();
             $table->string('phoneNo');
-            $table->boolean('premium')->default(false);            
             $table->rememberToken();
             $table->timestamps();
 
