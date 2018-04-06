@@ -103,7 +103,7 @@
                                 <button type="submit" class="btn btn-post">Post Project Now</button>
                                 <button class="btn-text">By clicking 'Post Project now', you are indicating that you
                                     have
-                                    read and agree to the <a href="#">terms & Conditions</a> and <a href="#">privacy
+                                    read and agree to the <a href="/terms">terms & Conditions</a> and <a href="/privacy">privacy
                                         Policy</a></button>
                             </div>
 
