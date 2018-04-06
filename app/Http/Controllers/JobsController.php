@@ -39,11 +39,27 @@ class JobsController extends Controller
         $user='App\User'::find($job->contractor_id);
         $memberSince=$user->created_at;
         $contractorDetail['rate']=$user->rate;
+        if(is_null($contractorDetail['rate']))
+        {
+        $contractorDetail['rate']=0;            
+        }
+        
         // dd($user->contactInformation->city);
         $contractorDetail['city']=$user->contactInformation->city;
-        $contractorDetail['country']=$user->contactInformation->country;        
+        if(is_null($contractorDetail['city']))
+        {
+        $contractorDetail['city']='-';
+        }
+        
+        $contractorDetail['country']=$user->contactInformation->country;
+        if(is_null($contractorDetail['country']))
+        {
+        $contractorDetail['country']='-';
+        }
+                
         // dd($user);
         $contractorDetail['memberSince']=$memberSince->toFormattedDateString(); 
+        // dd($contractorDetail);
         return view( 'jobs.show', compact( 'job','contractorDetail' ) );
     }
 
