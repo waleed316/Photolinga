@@ -34,7 +34,17 @@ class JobsController extends Controller
 
     public function show( Job $job )
     {
-        return view( 'jobs.show', compact( 'job' ) );
+        $contractorDetail['count']=Job::where('contractor_id',$job->contractor_id)->count();
+        $contractorDetail['hire']=Job::where('contractor_id',$job->contractor_id)->whereNotNull('freelancer_id')->count();
+        $user='App\User'::find($job->contractor_id);
+        $memberSince=$user->created_at;
+        $contractorDetail['rate']=$user->rate;
+        // dd($user->contactInformation->city);
+        $contractorDetail['city']=$user->contactInformation->city;
+        $contractorDetail['country']=$user->contactInformation->country;        
+        // dd($user);
+        $contractorDetail['memberSince']=$memberSince->toFormattedDateString(); 
+        return view( 'jobs.show', compact( 'job','contractorDetail' ) );
     }
 
     public function create()

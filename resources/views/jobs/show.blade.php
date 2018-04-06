@@ -314,12 +314,17 @@
                                             </a>
                                         </h6>
                                         <p class="details-freelance-desig">
+                                            <!-- <i class="fa fa-star" aria-hidden="true"></i>
                                             <i class="fa fa-star" aria-hidden="true"></i>
                                             <i class="fa fa-star" aria-hidden="true"></i>
                                             <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <span class="ml-2 text-muted">Member Since Aug, 3 2014</span>
+                                            <i class="fa fa-star" aria-hidden="true"></i> -->
+
+                                            <star-rating v-bind:increment="0.5" v-bind:read-only="true" :rating={{$contractorDetail['rate']}}  
+                                                v-bind:max-rating="5" v-bind:round-start-rating="false"
+                                                v-bind:show-rating="false" inactive-color="#b296c5" active-color="#290740" v-bind:star-size="9">
+                                              </star-rating>
+                                            <span class="ml-2 text-muted">since {{$contractorDetail['memberSince']}}</span>
                                         </p>
                                     </div>
                                 </div>
@@ -332,12 +337,30 @@
                                             </div>
 
                                             <div class="col-xl-6 col-lg-5 col-md-5 col-sm-6 col-5 no-padd-on-md-down">
-                                                <p class="text-muted">Location</p>
+                                                <p class="text-muted">City</p>
                                             </div>
 
                                             <div class="col-xl-4 col-lg-5 col-md-5 col-sm-3 col-5 no-padd-on-md-down text-right">
                                                 <p>
-                                                    <b>Viet Nam</b>
+                                                    <b>{{$contractorDetail['city']}}</b>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-2 text-center">
+                                                <i class="fa fa-map-marker text-muted" aria-hidden="true"></i>
+                                            </div>
+
+                                            <div class="col-xl-6 col-lg-5 col-md-5 col-sm-6 col-5 no-padd-on-md-down">
+                                                <p class="text-muted">Country</p>
+                                            </div>
+
+                                            <div class="col-xl-4 col-lg-5 col-md-5 col-sm-3 col-5 no-padd-on-md-down text-right">
+                                                <p>
+                                                    <b>{{$contractorDetail['country']}}</b>
                                                 </p>
                                             </div>
                                         </div>
@@ -355,7 +378,7 @@
 
                                             <div class="col-xl-4 col-lg-5 col-md-5 col-sm-3 col-5 no-padd-on-md-down text-right">
                                                 <p>
-                                                    <b>$ 2,707</b>
+                                                    <b>Rs 0</b>
                                                 </p>
                                             </div>
                                         </div>
@@ -373,7 +396,7 @@
 
                                             <div class="col-xl-4 col-lg-4 col-md-3 col-sm-3 col-5 no-padd-on-md-down text-right">
                                                 <p>
-                                                    <b>8</b>
+                                                    <b>{{$contractorDetail['count']}}</b>
                                                 </p>
                                             </div>
                                         </div>
@@ -391,7 +414,7 @@
 
                                             <div class="col-xl-4 col-lg-5 col-md-3 col-sm-3 col-5 no-padd-on-md-down text-right">
                                                 <p>
-                                                    <b>4</b>
+                                                    <b>{{$contractorDetail['hire']}}</b>
                                                 </p>
                                             </div>
                                         </div>

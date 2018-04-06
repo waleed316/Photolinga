@@ -51,13 +51,12 @@
         href="vue2-autocomplete-js/dist/style/vue2-autocomplete.css"> -->
 
         <script>
-            window.App = {
-                !!json_encode([
+            window.App = 
+            {!!json_encode([
                     'csrfToken' => csrf_token(),
                     'user' => Auth::user(),
                     'signedIn' => Auth::check()
-                ])!!
-            };
+                ])!!};
         </script>
     </head>
     <body style="padding:0!important">
@@ -203,12 +202,12 @@
             $(document).ready(function () {
                 $('#dd').tooltip('show');
             })
-            function deleteAlbum(this)
-            {
-                // $(this).data('portfolio-id').val()
-                console.log('delete Function Called');
-                // console.log()
-            }
+            // function deleteAlbum(this)
+            // {
+            //     // $(this).data('portfolio-id').val()
+            //     console.log('delete Function Called');
+            //     // console.log()
+            // }
         </script>
     </body>
 </html>
