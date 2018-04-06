@@ -144,15 +144,6 @@
                             <li class="availablity">
                                 <i class="fa fa-clock-o" aria-hidden="true"></i> Available to work
                             </li>
-                            <li>
-                                <h5 class="profile-available">Proposals</h5>
-                            </li>
-                            <li>
-                                <a href="#" class="proposals">3 submitted proposals</a>
-                            </li>
-                            <li>
-                                <a href="#" class="proposals">4 bids remaining</a>
-                            </li>
                         </ul>
                     </div>
                 @endauth
